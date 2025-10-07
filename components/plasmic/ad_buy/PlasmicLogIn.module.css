@@ -69,7 +69,7 @@
     margin-right: 0px;
   }
 }
-.freeBox__s9QBn {
+.freeBox {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -381,25 +381,6 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
-}
-.freeBox__dKuOr {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-.text__jMwwq {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
 }
 .step1 {
   display: flex;

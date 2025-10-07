@@ -86,6 +86,7 @@ export type PlasmicLogIn__OverridesType = {
   root?: Flex__<"div">;
   step2?: Flex__<"div">;
   h1218?: Flex__<"div">;
+  freeBox?: Flex__<"div">;
   parentOtp17?: Flex__<"div">;
   otp1?: Flex__<"input">;
   parentOtp18?: Flex__<"div">;
@@ -328,9 +329,11 @@ function PlasmicLogIn__RenderFunc(props: {
                 </React.Fragment>
               </div>
               <div
+                data-plasmic-name={"freeBox"}
+                data-plasmic-override={overrides.freeBox}
                 className={classNames(
                   projectcss.all,
-                  sty.freeBox__s9QBn,
+                  sty.freeBox,
                   "load-in-compat"
                 )}
               >
@@ -714,31 +717,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   <React.Fragment>{""}</React.Fragment>
                 </React.Fragment>
               </div>
-            </div>
-          ) : null}
-          <div className={classNames(projectcss.all, sty.freeBox__dKuOr)} />
-
-          {(() => {
-            try {
-              return currentUser.isLoggedIn == true;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__jMwwq
-              )}
-            >
-              {"LOGGED IN"}
             </div>
           ) : null}
           {(() => {
@@ -1142,6 +1120,7 @@ const PlasmicDescendants = {
     "root",
     "step2",
     "h1218",
+    "freeBox",
     "parentOtp17",
     "otp1",
     "parentOtp18",
@@ -1170,6 +1149,7 @@ const PlasmicDescendants = {
   step2: [
     "step2",
     "h1218",
+    "freeBox",
     "parentOtp17",
     "otp1",
     "parentOtp18",
@@ -1186,6 +1166,21 @@ const PlasmicDescendants = {
     "h2144"
   ],
   h1218: ["h1218"],
+  freeBox: [
+    "freeBox",
+    "parentOtp17",
+    "otp1",
+    "parentOtp18",
+    "otp2",
+    "parentOtp19",
+    "otp3",
+    "parentOtp110",
+    "otp4",
+    "parentOtp111",
+    "otp5",
+    "parentOtp112",
+    "otp6"
+  ],
   parentOtp17: ["parentOtp17", "otp1"],
   otp1: ["otp1"],
   parentOtp18: ["parentOtp18", "otp2"],
@@ -1228,6 +1223,7 @@ type NodeDefaultElementType = {
   root: "div";
   step2: "div";
   h1218: "div";
+  freeBox: "div";
   parentOtp17: "div";
   otp1: "input";
   parentOtp18: "div";
@@ -1318,6 +1314,7 @@ export const PlasmicLogIn = Object.assign(
     // Helper components rendering sub-elements
     step2: makeNodeComponent("step2"),
     h1218: makeNodeComponent("h1218"),
+    freeBox: makeNodeComponent("freeBox"),
     parentOtp17: makeNodeComponent("parentOtp17"),
     otp1: makeNodeComponent("otp1"),
     parentOtp18: makeNodeComponent("parentOtp18"),

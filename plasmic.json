@@ -109,7 +109,7 @@
           "projectId": "fKsvVS5XnenaZB1533Xwx5",
           "renderModuleFilePath": "plasmic/ad_buy/PlasmicLogIn.tsx",
           "importSpec": {
-            "modulePath": "../pages/log-in.tsx"
+            "modulePath": "../pages/login.tsx"
           },
           "cssFilePath": "plasmic/ad_buy/PlasmicLogIn.module.css",
           "scheme": "blackbox",
