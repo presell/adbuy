@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import type { AppProps } from "next/app";
 import { useState, useEffect } from "react";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
-import GlobalContextsProvider from "../components/plasmic/adbuy/PlasmicGlobalContextsProvider";
 import "../styles/globals.css";
 import { supabase } from "../lib/supabaseClient";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
 
-  // ✅ Syncs user context to Plasmic and browser
+  // ✅ Sync user into Plasmic context
   function syncPlasmicUser(u: any) {
     (window as any).__PLASMIC_USER__ = u;
     (window as any).plasmicUser = u;
@@ -18,9 +15,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   useEffect(() => {
-    console.log("[App] 🧭 Initializing Supabase session...");
+    console.log("[App] Initializing Supabase session...");
 
-    // ✅ Restore existing session on app load
     supabase.auth.getSession().then(({ data }) => {
       const session = data?.session;
       if (session?.user) {
@@ -32,13 +28,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         };
         setUser(restoredUser);
         syncPlasmicUser(restoredUser);
-        console.log("[App] ✅ Restored user via getSession:", restoredUser);
-      } else {
-        console.log("[App] No existing session found.");
+        console.log("[App] ✅ Restored user:", restoredUser);
       }
     });
 
-    // ✅ Keep Supabase + Plasmic synced on auth state change
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         const newUser = {
@@ -49,24 +42,20 @@ function MyApp({ Component, pageProps }: AppProps) {
         };
         setUser(newUser);
         syncPlasmicUser(newUser);
-        console.log("[App] 🔄 Synced Supabase + Plasmic user context:", newUser);
+        console.log("[App] 🔄 Synced user:", newUser);
       } else {
         setUser(null);
         syncPlasmicUser(null);
-        console.log("[App] 🚪 Logged out and cleared context.");
+        console.log("[App] 🚪 Logged out");
       }
     });
 
-    return () => {
-      listener?.subscription.unsubscribe();
-    };
+    return () => listener?.subscription.unsubscribe();
   }, []);
 
   return (
     <PlasmicRootProvider user={user}>
-      <GlobalContextsProvider>
-        <Component {...pageProps} />
-      </GlobalContextsProvider>
+      <Component {...pageProps} />
     </PlasmicRootProvider>
   );
 }
