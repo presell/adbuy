@@ -7,7 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
 
-  // ✅ Helper: Sync Plasmic with Supabase user
+  // ✅ Sync helper (unchanged)
   const syncPlasmicUser = (u: any) => {
     if (typeof window === "undefined") return;
     (window as any).__PLASMIC_USER__ = u;
@@ -23,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       const session = data?.session;
 
       if (session?.user) {
+        // ✅ Standard Supabase session restore
         const restoredUser = {
           id: session.user.id,
           email: session.user.email,
@@ -31,16 +32,42 @@ function MyApp({ Component, pageProps }: AppProps) {
         };
         setUser(restoredUser);
         syncPlasmicUser(restoredUser);
-        console.log("[App] ✅ Restored session for:", restoredUser.email);
+        console.log("[App] ✅ Restored Supabase session for:", restoredUser.email);
       } else {
-        console.log("[App] No existing session found.");
+        console.log("[App] No existing Supabase session found — checking Plasmic Auth cookie...");
+
+        // ✅ NEW: Fallback to Plasmic Auth cookie
+        const match = document.cookie.match(/plasmic_auth=([^;]+)/);
+        if (match) {
+          try {
+            const token = match[1];
+            const decoded = JSON.parse(atob(token.split(".")[1]));
+            const cookieUser = {
+              id: decoded.userId,
+              email: decoded.email,
+              isLoggedIn: true,
+              role: decoded.roles?.[0] || "Normal User",
+            };
+            setUser(cookieUser);
+            syncPlasmicUser(cookieUser);
+            console.log("[App] 🍪 Restored user from Plasmic Auth cookie:", cookieUser.email);
+            return;
+          } catch (err) {
+            console.warn("[App] ⚠️ Failed to decode Plasmic Auth cookie:", err);
+          }
+        }
+
+        // No valid cookie or session
+        setUser(null);
+        syncPlasmicUser(null);
+        console.log("[App] 🚪 Logged out");
       }
     };
 
     // Run immediately on load
     restoreSession();
 
-    // 🔄 Listen for any auth state changes
+    // 🔄 Keep Supabase and Plasmic in sync for OTP/magic-link logins
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
       if (session?.user) {
         const newUser = {
@@ -55,13 +82,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       } else {
         setUser(null);
         syncPlasmicUser(null);
-        console.log("[App] 🚪 Logged out");
+        console.log("[App] 🚪 Logged out (auth state change)");
       }
     });
 
-    return () => {
-      listener?.subscription.unsubscribe();
-    };
+    return () => listener?.subscription.unsubscribe();
   }, []);
 
   return (
