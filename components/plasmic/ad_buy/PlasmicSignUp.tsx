@@ -367,7 +367,7 @@ function PlasmicSignUp__RenderFunc(props: {
                   sty.primaryctaStage28,
                   ``
                 )}
-                id={"emailSubmitBTN"}
+                id={``}
                 onClick={async event => {
                   const $steps = {};
 
@@ -492,18 +492,18 @@ function PlasmicSignUp__RenderFunc(props: {
                                       "[Account Creation] \uD83E\uDDE0 Plasmic user context updated:",
                                       plasmicUser
                                     );
-                                    if (json.redirectURL) {
+                                    if (window.PlasmicRootContext) {
                                       console.log(
-                                        "[Account Creation] \uD83D\uDD01 Redirecting to:",
-                                        json.redirectURL
+                                        "[Account Creation] \uD83D\uDD01 Forcing Plasmic re-render"
                                       );
-                                      window.location.href = json.redirectURL;
-                                    } else {
-                                      console.warn(
-                                        "[Account Creation] \u26A0️ No redirectURL in response \u2014 going home"
+                                      window.dispatchEvent(
+                                        new Event("visibilitychange")
                                       );
-                                      window.location.href = "/";
                                     }
+                                    setTimeout(() => {
+                                      window.location.href =
+                                        json.redirectURL || "/";
+                                    }, 250);
                                   } else {
                                     console.warn(
                                       `[Account Creation] ⚠️ Non-200 or missing token — status ${response.status}`
