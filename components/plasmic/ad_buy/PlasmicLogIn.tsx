@@ -566,7 +566,7 @@ function PlasmicLogIn__RenderFunc(props: {
                                       console.warn(
                                         "[OTP Verification] \u26A0️ Incomplete code entered."
                                       );
-                                      $state.invalidOTP = true;
+                                      $state.invalidOtp = true;
                                       return;
                                     }
                                     console.log(
@@ -586,7 +586,7 @@ function PlasmicLogIn__RenderFunc(props: {
                                         "[OTP Verification] \u274C Invalid OTP or missing session:",
                                         error?.message
                                       );
-                                      $state.invalidOTP = true;
+                                      $state.invalidOtp = true;
                                       return;
                                     }
                                     console.log(
@@ -634,17 +634,23 @@ function PlasmicLogIn__RenderFunc(props: {
                                         plasmicUser
                                       );
                                     }
-                                    $state.invalidOTP = false;
+                                    $state.invalidOtp = false;
                                     $state.emailExists = true;
                                     console.log(
                                       "[OTP Verification] \u2705 Login fully completed and synced with Plasmic."
                                     );
+                                    setTimeout(() => {
+                                      console.log(
+                                        "[OTP Verification] \uD83D\uDD01 Redirecting to home '/' ..."
+                                      );
+                                      window.location.href = "/";
+                                    }, 300);
                                   } catch (err) {
                                     console.error(
                                       "[OTP Verification] \uD83D\uDCA5 Unexpected error:",
                                       err
                                     );
-                                    $state.invalidOTP = true;
+                                    $state.invalidOtp = true;
                                   }
                                 })();
                               }
@@ -929,39 +935,11 @@ function PlasmicLogIn__RenderFunc(props: {
                                 formData.append("email", $state.email);
                                 return formData;
                               }
-                              function handleSuccess(response) {
-                                return response
-                                  .json()
-                                  .then(jsonResponse => {
-                                    console.log(
-                                      "Parsed JSON Response:",
-                                      jsonResponse
-                                    );
-                                    if (
-                                      jsonResponse.hasOwnProperty("redirectURL")
-                                    ) {
-                                      console.log(
-                                        "Redirecting to:",
-                                        jsonResponse.redirectURL
-                                      );
-                                      window.location.href =
-                                        jsonResponse.redirectURL;
-                                    } else {
-                                      console.error(
-                                        "RedirectURL not found in response."
-                                      );
-                                    }
-                                    return "Success";
-                                  })
-                                  .catch(err => {
-                                    console.error(
-                                      "Error parsing JSON response:",
-                                      err
-                                    );
-                                    throw new Error(
-                                      "Error processing the webhook response."
-                                    );
-                                  });
+                              function handleSuccess() {
+                                console.log(
+                                  "\u2705 Webhook responded successfully \u2014 proceeding."
+                                );
+                                return "Success";
                               }
                               function handleError() {
                                 return "There was an error. Please try again.";
@@ -981,11 +959,9 @@ function PlasmicLogIn__RenderFunc(props: {
                                       "Webhook responded with 200 \u2014 setting $state.emailExists = TRUE"
                                     );
                                     $state.emailExists = true;
-                                    return handleSuccess(response);
+                                    return handleSuccess();
                                   } else if (
-                                    response.status === 400 ||
-                                    response.status === 422 ||
-                                    response.status === 404
+                                    [400, 404, 422].includes(response.status)
                                   ) {
                                     console.warn(
                                       `Webhook responded with ${response.status} — setting $state.invalidEmail = TRUE`
@@ -1006,12 +982,8 @@ function PlasmicLogIn__RenderFunc(props: {
                                 }
                               }
                               return submit()
-                                .then(response => {
-                                  console.log(response);
-                                })
-                                .catch(error => {
-                                  console.error(error);
-                                });
+                                .then(response => console.log(response))
+                                .catch(error => console.error(error));
                             })();
                           }
                         };
