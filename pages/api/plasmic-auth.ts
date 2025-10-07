@@ -6,7 +6,7 @@ const PLASMIC_SECRET =
   process.env.PLASMIC_SECRET ||
   "6deTnq42dNIImRBzotdmaBCtt6qw1gjuqWXJw88c3YRFTYYwb1rrnv73a4nhVdvjUJrwY3kxCSy5jdjBWnMA";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { email, userId, redirectURL = "/" } = req.body;
 
   // 🚨 Validate input
@@ -31,15 +31,39 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       `plasmic_auth=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`,
     ]);
 
+    // 🧩 Background: Register or update the user in Plasmic’s User Directory
+    try {
+      const plasmicResponse = await fetch("https://studio.plasmic.app/api/v1/auth/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-plasmic-api-token": PLASMIC_SECRET,
+        },
+        body: JSON.stringify({
+          email,
+          userId,
+          roles: ["Normal User"], // optional; you can map from your app
+        }),
+      });
+
+      if (!plasmicResponse.ok) {
+        console.warn("[Plasmic Auth] ⚠️ Failed to register user in Plasmic directory:", await plasmicResponse.text());
+      } else {
+        console.log(`[Plasmic Auth] ✅ User registered in Plasmic directory (${email})`);
+      }
+    } catch (regErr) {
+      console.warn("[Plasmic Auth] ⚠️ Error calling Plasmic User API:", regErr);
+    }
+
     // ✅ Respond with success payload
     return res.status(200).json({
       success: true,
       token,
       redirectURL, // e.g. "/" or "/dashboard"
-      message: "Plasmic authentication token generated and cookie set",
+      message: "Plasmic authentication token generated, cookie set, and user registered.",
     });
   } catch (err: any) {
-    console.error("[Plasmic Auth] Error generating token:", err);
+    console.error("[Plasmic Auth] ❌ Error generating token:", err);
     return res.status(500).json({ error: "Failed to generate Plasmic token" });
   }
 }
