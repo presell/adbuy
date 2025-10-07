@@ -1,13 +1,14 @@
 import type { AppProps } from "next/app";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
 import "../styles/globals.css";
 import { supabase } from "../lib/supabaseClient";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
+  const authenticatedViaCookie = useRef(false);
 
-  // ✅ Sync helper (unchanged)
+  // ✅ Sync helper
   const syncPlasmicUser = (u: any) => {
     if (typeof window === "undefined") return;
     (window as any).__PLASMIC_USER__ = u;
@@ -23,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       const session = data?.session;
 
       if (session?.user) {
-        // ✅ Standard Supabase session restore
+        // ✅ Supabase session found
         const restoredUser = {
           id: session.user.id,
           email: session.user.email,
@@ -34,9 +35,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         syncPlasmicUser(restoredUser);
         console.log("[App] ✅ Restored Supabase session for:", restoredUser.email);
       } else {
-        console.log("[App] No existing Supabase session found — checking Plasmic Auth cookie...");
+        console.log("[App] No existing Supabase session — checking Plasmic Auth cookie...");
 
-        // ✅ NEW: Fallback to Plasmic Auth cookie
+        // ✅ Fallback to Plasmic Auth cookie
         const match = document.cookie.match(/plasmic_auth=([^;]+)/);
         if (match) {
           try {
@@ -48,6 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               isLoggedIn: true,
               role: decoded.roles?.[0] || "Normal User",
             };
+            authenticatedViaCookie.current = true;
             setUser(cookieUser);
             syncPlasmicUser(cookieUser);
             console.log("[App] 🍪 Restored user from Plasmic Auth cookie:", cookieUser.email);
@@ -57,18 +59,23 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
         }
 
-        // No valid cookie or session
+        // No valid cookie or Supabase session
         setUser(null);
         syncPlasmicUser(null);
-        console.log("[App] 🚪 Logged out");
+        console.log("[App] 🚪 Logged out (no session or cookie)");
       }
     };
 
-    // Run immediately on load
     restoreSession();
 
-    // 🔄 Keep Supabase and Plasmic in sync for OTP/magic-link logins
+    // 🔄 Listen for Supabase auth changes
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      // ⚠️ Ignore Supabase sign-out events if cookie-based auth is active
+      if (_event === "SIGNED_OUT" && authenticatedViaCookie.current) {
+        console.log("[App] ⚠️ Ignoring Supabase sign-out (cookie-based session still valid)");
+        return;
+      }
+
       if (session?.user) {
         const newUser = {
           id: session.user.id,
@@ -76,6 +83,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           isLoggedIn: true,
           role: "authenticated",
         };
+        authenticatedViaCookie.current = false;
         setUser(newUser);
         syncPlasmicUser(newUser);
         console.log("[App] 🔄 Updated user:", newUser.email);
