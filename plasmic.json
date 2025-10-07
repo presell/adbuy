@@ -127,6 +127,11 @@
           "id": "KuDULaM8dChm",
           "name": "CursorIsolatedSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__CursorIsolatedSvg.tsx"
+        },
+        {
+          "id": "DXSTQ80UnIaK",
+          "name": "LogoutSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LogoutSvgrepoComSvg.tsx"
         }
       ],
       "images": [

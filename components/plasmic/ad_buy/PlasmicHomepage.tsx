@@ -67,6 +67,8 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: OI86U2J16OqJ/css
 
+import LogoutSvgrepoComSvgIcon from "./icons/PlasmicIcon__LogoutSvgrepoComSvg"; // plasmic-import: DXSTQ80UnIaK/icon
+
 createPlasmicElementProxy;
 
 export type PlasmicHomepage__VariantMembers = {};
@@ -81,6 +83,7 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
+  svg?: Flex__<"svg">;
 };
 
 export interface DefaultHomepageProps {}
@@ -244,6 +247,97 @@ function PlasmicHomepage__RenderFunc(props: {
                 {"Logged In"}
               </h1>
             ) : null}
+            {(() => {
+              try {
+                return currentUser.isLoggedIn == true;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <LogoutSvgrepoComSvgIcon
+                data-plasmic-name={"svg"}
+                data-plasmic-override={overrides.svg}
+                className={classNames(projectcss.all, sty.svg)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (async () => {
+                              return (async () => {
+                                try {
+                                  console.log("[Logout] Starting logout...");
+                                  const { createClient } = await import(
+                                    "@supabase/supabase-js"
+                                  );
+                                  const supabase = createClient(
+                                    "https://habwycahldzwxreftesz.supabase.co",
+                                    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhYnd5Y2FobGR6d3hyZWZ0ZXN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4NDY0NjcsImV4cCI6MjA3NTQyMjQ2N30.TWRXYN6942fhPEPG4fT6UDRzPeu06abxrFkbwxhEVQQ"
+                                  );
+                                  const { error } =
+                                    await supabase.auth.signOut();
+                                  if (error) {
+                                    console.error(
+                                      "[Logout] Error signing out:",
+                                      error.message
+                                    );
+                                    alert("Error logging out");
+                                    return;
+                                  }
+                                  const sessionKey =
+                                    "sb-habwycahldzwxreftesz-auth-token";
+                                  localStorage.removeItem(sessionKey);
+                                  const clearedUser = {
+                                    id: null,
+                                    email: null,
+                                    isLoggedIn: false,
+                                    role: "anonymous"
+                                  };
+                                  window.__PLASMIC_USER__ = clearedUser;
+                                  window.plasmicUser = clearedUser;
+                                  window.dispatchEvent(
+                                    new StorageEvent("storage", {
+                                      key: "plasmicUser"
+                                    })
+                                  );
+                                  console.log(
+                                    "[Logout] \u2705 User logged out and context cleared"
+                                  );
+                                  window.location.href = "/log-in";
+                                } catch (err) {
+                                  console.error(
+                                    "[Logout] \uD83D\uDCA5 Unexpected error:",
+                                    err
+                                  );
+                                }
+                              })();
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }}
+                role={"img"}
+              />
+            ) : null}
           </section>
         </div>
       </div>
@@ -252,8 +346,9 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section"],
-  section: ["section"]
+  root: ["root", "section", "svg"],
+  section: ["section", "svg"],
+  svg: ["svg"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -261,6 +356,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   section: "section";
+  svg: "svg";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -326,6 +422,7 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
+    svg: makeNodeComponent("svg"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
