@@ -7,6 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
   const authenticatedViaCookie = useRef(false);
+  const suppressLogoutRef = useRef(false); // 👈 new debounce guard flag
 
   // ✅ Sync helper
   const syncPlasmicUser = (u: any) => {
@@ -44,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             const token = match[1];
             const decoded = JSON.parse(atob(token.split(".")[1]));
 
-            // 🕒 Check if token has expired
+            // 🕒 Check expiry
             if (decoded.exp && decoded.exp * 1000 < Date.now()) {
               console.warn("[App] ⚠️ Plasmic Auth token expired — clearing cookie");
               document.cookie = "plasmic_auth=; Max-Age=0; Path=/;";
@@ -62,6 +63,13 @@ function MyApp({ Component, pageProps }: AppProps) {
             setUser(cookieUser);
             syncPlasmicUser(cookieUser);
             console.log("[App] 🍪 Restored user from Plasmic Auth cookie:", cookieUser.email);
+
+            // 👇 prevent Supabase SIGNED_OUT from overriding right after mount
+            suppressLogoutRef.current = true;
+            setTimeout(() => {
+              suppressLogoutRef.current = false;
+            }, 200);
+
             return;
           } catch (err) {
             console.warn("[App] ⚠️ Failed to decode Plasmic Auth cookie:", err);
@@ -79,9 +87,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     // 🔄 Listen for Supabase auth changes
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      // ⚠️ Ignore Supabase sign-out events if cookie-based auth is active
-      if (_event === "SIGNED_OUT" && authenticatedViaCookie.current) {
-        console.log("[App] ⚠️ Ignoring Supabase sign-out (cookie-based session still valid)");
+      // 👇 Ignore Supabase sign-out events if we just authenticated via cookie
+      if (_event === "SIGNED_OUT" && (authenticatedViaCookie.current || suppressLogoutRef.current)) {
+        console.log("[App] ⚠️ Ignoring Supabase sign-out (cookie session still valid)");
         return;
       }
 
