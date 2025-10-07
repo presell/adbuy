@@ -43,12 +43,21 @@ function MyApp({ Component, pageProps }: AppProps) {
           try {
             const token = match[1];
             const decoded = JSON.parse(atob(token.split(".")[1]));
+
+            // 🕒 Check if token has expired
+            if (decoded.exp && decoded.exp * 1000 < Date.now()) {
+              console.warn("[App] ⚠️ Plasmic Auth token expired — clearing cookie");
+              document.cookie = "plasmic_auth=; Max-Age=0; Path=/;";
+              return;
+            }
+
             const cookieUser = {
               id: decoded.userId,
               email: decoded.email,
               isLoggedIn: true,
               role: decoded.roles?.[0] || "Normal User",
             };
+
             authenticatedViaCookie.current = true;
             setUser(cookieUser);
             syncPlasmicUser(cookieUser);
