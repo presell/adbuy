@@ -7,7 +7,7 @@ import { supabase } from "../lib/supabaseClient";
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
   const authenticatedViaCookie = useRef(false);
-  const suppressLogoutRef = useRef(false); // 👈 new debounce guard flag
+  const suppressLogoutRef = useRef(false);
 
   // ✅ Sync helper
   const syncPlasmicUser = (u: any) => {
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       const session = data?.session;
 
       if (session?.user) {
-        // ✅ Supabase session found
+        // ✅ Standard Supabase session
         const restoredUser = {
           id: session.user.id,
           email: session.user.email,
@@ -36,18 +36,16 @@ function MyApp({ Component, pageProps }: AppProps) {
         syncPlasmicUser(restoredUser);
         console.log("[App] ✅ Restored Supabase session for:", restoredUser.email);
       } else {
-        console.log("[App] No existing Supabase session — checking Plasmic Auth cookie...");
+        console.log("[App] No Supabase session — checking Plasmic cookie...");
 
-        // ✅ Fallback to Plasmic Auth cookie
         const match = document.cookie.match(/plasmic_auth=([^;]+)/);
         if (match) {
           try {
             const token = match[1];
             const decoded = JSON.parse(atob(token.split(".")[1]));
 
-            // 🕒 Check expiry
             if (decoded.exp && decoded.exp * 1000 < Date.now()) {
-              console.warn("[App] ⚠️ Plasmic Auth token expired — clearing cookie");
+              console.warn("[App] ⚠️ Token expired — clearing cookie");
               document.cookie = "plasmic_auth=; Max-Age=0; Path=/;";
               return;
             }
@@ -62,49 +60,47 @@ function MyApp({ Component, pageProps }: AppProps) {
             authenticatedViaCookie.current = true;
             setUser(cookieUser);
             syncPlasmicUser(cookieUser);
-            console.log("[App] 🍪 Restored user from Plasmic Auth cookie:", cookieUser.email);
+            console.log("[App] 🍪 Restored user from cookie:", cookieUser.email);
 
-            // 👇 prevent Supabase SIGNED_OUT from overriding right after mount
+            // 👇 prevent Supabase logout from firing immediately
             suppressLogoutRef.current = true;
             setTimeout(() => {
               suppressLogoutRef.current = false;
-            }, 200);
+            }, 1000); // slightly longer window (1s)
 
             return;
           } catch (err) {
-            console.warn("[App] ⚠️ Failed to decode Plasmic Auth cookie:", err);
+            console.warn("[App] ⚠️ Failed to decode cookie:", err);
           }
         }
 
-        // No valid cookie or Supabase session
         setUser(null);
         syncPlasmicUser(null);
-        console.log("[App] 🚪 Logged out (no session or cookie)");
+        console.log("[App] 🚪 Logged out (no cookie/session)");
       }
     };
 
     restoreSession();
 
     // 🔄 Listen for Supabase auth changes
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      // 👇 Ignore Supabase sign-out events if we just authenticated via cookie
-      if (_event === "SIGNED_OUT" && (authenticatedViaCookie.current || suppressLogoutRef.current)) {
-        console.log("[App] ⚠️ Ignoring Supabase sign-out (cookie session still valid)");
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      // ✅ Ignore Supabase events if user came from Plasmic cookie
+      if (authenticatedViaCookie.current) {
+        console.log(`[App] ⚠️ Ignoring Supabase event (${event}) — cookie auth active`);
         return;
       }
 
-      if (session?.user) {
+      if (event === "SIGNED_IN" && session?.user) {
         const newUser = {
           id: session.user.id,
           email: session.user.email,
           isLoggedIn: true,
           role: "authenticated",
         };
-        authenticatedViaCookie.current = false;
         setUser(newUser);
         syncPlasmicUser(newUser);
-        console.log("[App] 🔄 Updated user:", newUser.email);
-      } else {
+        console.log("[App] 🔄 Supabase signed in:", newUser.email);
+      } else if (event === "SIGNED_OUT" && !suppressLogoutRef.current) {
         setUser(null);
         syncPlasmicUser(null);
         console.log("[App] 🚪 Logged out (auth state change)");
