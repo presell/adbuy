@@ -445,18 +445,21 @@ function PlasmicSignUp__RenderFunc(props: {
                         const actionArgs = {
                           customFunction: async () => {
                             return (async () => {
-                              function getFormData() {
-                                const formData = new FormData();
-                                formData.append("email", $state.email);
-                                return formData;
-                              }
                               async function submit() {
                                 try {
+                                  const payload = { email: $state.email };
+                                  console.log(
+                                    "[Account Creation] \uD83D\uDE80 Sending payload:",
+                                    payload
+                                  );
                                   const response = await fetch(
                                     "https://hook.us1.make.com/76n0xmqgzmrp42l8r34iy2vlxa95jsw5",
                                     {
                                       method: "POST",
-                                      body: getFormData()
+                                      headers: {
+                                        "Content-Type": "application/json"
+                                      },
+                                      body: JSON.stringify(payload)
                                     }
                                   );
                                   const json = await response.json();
@@ -490,11 +493,20 @@ function PlasmicSignUp__RenderFunc(props: {
                                       plasmicUser
                                     );
                                     if (json.redirectURL) {
+                                      console.log(
+                                        "[Account Creation] \uD83D\uDD01 Redirecting to:",
+                                        json.redirectURL
+                                      );
                                       window.location.href = json.redirectURL;
+                                    } else {
+                                      console.warn(
+                                        "[Account Creation] \u26A0️ No redirectURL in response \u2014 going home"
+                                      );
+                                      window.location.href = "/";
                                     }
                                   } else {
                                     console.warn(
-                                      "[Account Creation] \u26A0️ Non-200 or missing token"
+                                      `[Account Creation] ⚠️ Non-200 or missing token — status ${response.status}`
                                     );
                                     window.location.href = "/login";
                                   }
@@ -503,7 +515,7 @@ function PlasmicSignUp__RenderFunc(props: {
                                     "[Account Creation] \uD83D\uDCA5 Submission error:",
                                     err
                                   );
-                                  window.location.href = "/log-in";
+                                  window.location.href = "/login";
                                 }
                               }
                               return submit();
