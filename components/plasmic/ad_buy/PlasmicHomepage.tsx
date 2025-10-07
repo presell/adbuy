@@ -311,7 +311,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   console.log(
                                     "[Logout] \u2705 User logged out and context cleared"
                                   );
-                                  window.location.href = "/log-in";
+                                  window.location.href = "/";
                                 } catch (err) {
                                   console.error(
                                     "[Logout] \uD83D\uDCA5 Unexpected error:",

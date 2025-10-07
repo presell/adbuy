@@ -115,6 +115,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/log-in"
+        },
+        {
+          "id": "AcnUZfvf143O",
+          "name": "SignUp",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicSignUp.tsx",
+          "importSpec": {
+            "modulePath": "../pages/signup.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicSignUp.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/signup"
         }
       ],
       "icons": [
