@@ -289,12 +289,19 @@ function PlasmicHomepage__RenderFunc(props: {
                                       "[Logout] Error signing out:",
                                       error.message
                                     );
-                                    alert("Error logging out");
-                                    return;
+                                  } else {
+                                    console.log(
+                                      "[Logout] \u2705 Supabase session cleared"
+                                    );
                                   }
-                                  const sessionKey =
-                                    "sb-habwycahldzwxreftesz-auth-token";
-                                  localStorage.removeItem(sessionKey);
+                                  localStorage.removeItem(
+                                    "sb-habwycahldzwxreftesz-auth-token"
+                                  );
+                                  document.cookie =
+                                    "plasmic_auth=; Max-Age=0; Path=/;";
+                                  console.log(
+                                    "[Logout] \uD83C\uDF6A Plasmic Auth cookie cleared"
+                                  );
                                   const clearedUser = {
                                     id: null,
                                     email: null,
@@ -309,9 +316,11 @@ function PlasmicHomepage__RenderFunc(props: {
                                     })
                                   );
                                   console.log(
-                                    "[Logout] \u2705 User logged out and context cleared"
+                                    "[Logout] \uD83E\uDDF9 User context fully cleared"
                                   );
-                                  window.location.href = "/";
+                                  setTimeout(() => {
+                                    window.location.href = "/";
+                                  }, 300);
                                 } catch (err) {
                                   console.error(
                                     "[Logout] \uD83D\uDCA5 Unexpected error:",
