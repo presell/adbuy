@@ -450,95 +450,63 @@ function PlasmicSignUp__RenderFunc(props: {
                                 formData.append("email", $state.email);
                                 return formData;
                               }
-                              function handleSuccess(response) {
-                                return response
-                                  .json()
-                                  .then(jsonResponse => {
-                                    console.log(
-                                      "[Account Creation] \u2705 Parsed Response:",
-                                      jsonResponse
-                                    );
-                                    if (jsonResponse.token) {
-                                      document.cookie = `plasmic_auth=${jsonResponse.token}; Path=/; SameSite=Lax; Max-Age=2592000`;
-                                      window.dispatchEvent(
-                                        new StorageEvent("storage", {
-                                          key: "plasmicUser"
-                                        })
-                                      );
-                                      console.log(
-                                        "[Account Creation] \uD83C\uDF6A Plasmic auth cookie set."
-                                      );
-                                    }
-                                    if (jsonResponse.redirectURL) {
-                                      console.log(
-                                        "[Account Creation] \uD83D\uDD01 Redirecting to:",
-                                        jsonResponse.redirectURL
-                                      );
-                                      window.location.href =
-                                        jsonResponse.redirectURL;
-                                    } else {
-                                      console.warn(
-                                        "[Account Creation] \u26A0️ No redirectURL provided, defaulting to /"
-                                      );
-                                      window.location.href = "/";
-                                    }
-                                    return "Success";
-                                  })
-                                  .catch(err => {
-                                    console.error(
-                                      "[Account Creation] \u274C Error parsing JSON:",
-                                      err
-                                    );
-                                    throw new Error(
-                                      "Error processing webhook response."
-                                    );
-                                  });
-                              }
                               async function submit() {
-                                const formData = getFormData();
                                 try {
                                   const response = await fetch(
                                     "https://hook.us1.make.com/76n0xmqgzmrp42l8r34iy2vlxa95jsw5",
                                     {
                                       method: "POST",
-                                      body: formData
+                                      body: getFormData()
                                     }
                                   );
-                                  if (response.status === 200) {
+                                  const json = await response.json();
+                                  console.log(
+                                    "[Account Creation] Response:",
+                                    json
+                                  );
+                                  if (response.status === 200 && json.token) {
+                                    document.cookie = `plasmic_auth=${json.token}; Path=/; SameSite=Lax; Max-Age=2592000`;
                                     console.log(
-                                      "[Account Creation] \u2705 Webhook 200 \u2014 user created."
+                                      "[Account Creation] \uD83C\uDF6A Plasmic auth cookie set"
                                     );
-                                    return handleSuccess(response);
-                                  } else if (
-                                    [400, 404, 409, 422].includes(
-                                      response.status
-                                    )
-                                  ) {
+                                    const decoded = JSON.parse(
+                                      atob(json.token.split(".")[1])
+                                    );
+                                    const plasmicUser = {
+                                      id: decoded.userId,
+                                      email: decoded.email,
+                                      isLoggedIn: true,
+                                      role: decoded.roles?.[0] || "Normal User"
+                                    };
+                                    window.__PLASMIC_USER__ = plasmicUser;
+                                    window.plasmicUser = plasmicUser;
+                                    window.dispatchEvent(
+                                      new StorageEvent("storage", {
+                                        key: "plasmicUser"
+                                      })
+                                    );
+                                    console.log(
+                                      "[Account Creation] \uD83E\uDDE0 Plasmic user context updated:",
+                                      plasmicUser
+                                    );
+                                    if (json.redirectURL) {
+                                      window.location.href = json.redirectURL;
+                                    }
+                                  } else {
                                     console.warn(
-                                      `[Account Creation] ⚠️ Existing account found — redirecting to /login`
+                                      "[Account Creation] \u26A0️ Non-200 or missing token"
                                     );
                                     window.location.href = "/login";
-                                  } else {
-                                    console.error(
-                                      `[Account Creation] ❌ Unexpected status ${response.status}`
-                                    );
-                                    alert(
-                                      "There was an unexpected error. Please try again."
-                                    );
                                   }
                                 } catch (err) {
                                   console.error(
                                     "[Account Creation] \uD83D\uDCA5 Submission error:",
                                     err
                                   );
-                                  alert(
-                                    "There was a network error. Please try again."
-                                  );
+                                  window.location.href = "/log-in";
                                 }
                               }
-                              return submit()
-                                .then(response => console.log(response))
-                                .catch(console.error);
+                              return submit();
                             })();
                           }
                         };
