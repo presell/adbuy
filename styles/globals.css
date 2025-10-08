@@ -50,10 +50,10 @@ a {
 ---------------------------------------- */
 @font-face {
   font-family: "Geologica";
-  src: url("/fonts/geologica/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf") format("truetype");
-  font-weight: 100 900; /* Variable range */
-  font-display: swap;   /* Ensures no FOIT (flash of invisible text) */
+  src: url("/fonts/geologica/geologica-var.ttf") format("truetype");
+  font-weight: 100 900;     /* variable range */
   font-style: normal;
+  font-display: swap;
 }
 
 /* Optional: ensure all Geologica variants inherit smoothly */
