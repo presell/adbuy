@@ -288,3 +288,37 @@ a {
     transform: translateY(0); /* Final position */
   }
 }
+
+/* ---------------------------------------------------
+   💥 Cursor Shoot Animation
+   Used for decorative floating icons or particles
+---------------------------------------------------- */
+
+@keyframes shootUpFixed {
+  0%   { bottom: 0; opacity: 0; }
+  2%   { opacity: 1; }
+  10%  { bottom: 100%; opacity: 1; }
+  12%  { bottom: 100%; opacity: 0; }
+  100% { bottom: 100%; opacity: 0; }
+}
+
+/* 🌌 Global wrapper for all shooting icons */
+.cursor-shoot-wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999; /* ensures it's always visible above app content */
+}
+
+/* 🚀 Individual shooting icons */
+.cursor-shoot {
+  position: fixed;
+  left: var(--x, 50%);
+  bottom: 0;
+  transform: translateX(-50%);
+  animation: shootUpFixed 30s ease-in infinite;
+  animation-delay: var(--delay, 0s);
+  pointer-events: none;
+  opacity: 0;
+}
