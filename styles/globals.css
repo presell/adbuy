@@ -46,6 +46,34 @@ a {
 }
 
 /* ---------------------------------------
+   Local Geologica Font
+---------------------------------------- */
+@font-face {
+  font-family: "Geologica";
+  src: url("/fonts/geologica/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf") format("truetype");
+  font-weight: 100 900; /* Variable range */
+  font-display: swap;   /* Ensures no FOIT (flash of invisible text) */
+  font-style: normal;
+}
+
+/* Optional: ensure all Geologica variants inherit smoothly */
+.geologica-text,
+.geologica-text-medium-plus,
+.geologica-text-medium,
+.geologica-text-less-medium,
+.geologica-text-regular,
+.geologica-text-regular-lighter {
+  font-family: "Geologica", sans-serif;
+}
+
+.geologica-text { font-weight: 700; }
+.geologica-text-medium-plus { font-weight: 500; }
+.geologica-text-medium { font-weight: 400; }
+.geologica-text-less-medium { font-weight: 280; }
+.geologica-text-regular { font-weight: 200; }
+.geologica-text-regular-lighter { font-weight: 150; }
+
+/* ---------------------------------------
    Custom Global Utilities / Container Styles
 ---------------------------------------- */
 
