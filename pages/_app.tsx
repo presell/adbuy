@@ -3,19 +3,20 @@ import { useState, useEffect, useRef } from "react";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
 import "../styles/globals.css";
 import { supabase } from "../lib/supabaseClient";
-import Script from "next/script"; // ✅ Added for external scripts
-import localFont from "next/font/local"; // ✅ Added for local font
+import Script from "next/script";
+import localFont from "next/font/local";
 
-// ✅ Define Geologica variable font (placed under /pages/fonts/)
+// ✅ Corrected Geologica variable font setup
+// Keeping the font in /pages/fonts/ is fine — just resolve the path properly.
 const geologica = localFont({
   src: [
     {
-      path: "./fonts/geologica-var.ttf", // relative to /pages/_app.tsx
+      path: "./fonts/geologica-var.ttf", // ✅ Works when _app.tsx is in /pages/
       weight: "100 900",
       style: "normal",
     },
   ],
-  variable: "--plasmic-font-geologica", // will populate the CSS var
+  variable: "--plasmic-font-geologica",
   display: "swap",
   preload: true,
 });
@@ -25,7 +26,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const authenticatedViaCookie = useRef(false);
   const suppressLogoutRef = useRef(false);
 
-  // ✅ Sync helper
   const syncPlasmicUser = (u: any) => {
     if (typeof window === "undefined") return;
     (window as any).__PLASMIC_USER__ = u;
@@ -41,7 +41,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       const session = data?.session;
 
       if (session?.user) {
-        // ✅ Standard Supabase session
         const restoredUser = {
           id: session.user.id,
           email: session.user.email,
@@ -78,11 +77,10 @@ function MyApp({ Component, pageProps }: AppProps) {
             syncPlasmicUser(cookieUser);
             console.log("[App] 🍪 Restored user from cookie:", cookieUser.email);
 
-            // 👇 prevent Supabase logout from firing immediately
             suppressLogoutRef.current = true;
             setTimeout(() => {
               suppressLogoutRef.current = false;
-            }, 1000); // slightly longer window (1s)
+            }, 1000);
 
             return;
           } catch (err) {
@@ -98,9 +96,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     restoreSession();
 
-    // 🔄 Listen for Supabase auth changes
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
-      // ✅ Ignore Supabase events if user came from Plasmic cookie
       if (authenticatedViaCookie.current) {
         console.log(`[App] ⚠️ Ignoring Supabase event (${event}) — cookie auth active`);
         return;
