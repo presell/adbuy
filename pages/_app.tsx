@@ -121,22 +121,25 @@ function MyApp({ Component, pageProps }: AppProps) {
     return () => listener?.subscription.unsubscribe();
   }, []);
 
-  // ✅ Inject highlight-gradient CSS globally for Plasmic-rendered elements
+  // ✅ Inject highlight-gradient CSS for Plasmic-rendered elements (same as old HTML embed)
   useEffect(() => {
-    if (typeof window !== "undefined" && !document.getElementById("global-highlight-style")) {
-      const style = document.createElement("style");
-      style.id = "global-highlight-style";
-      style.innerHTML = `
-        .highlight-gradient {
-          background: linear-gradient(to right, #0D6EFD, #32B7FE);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          color: transparent !important;
-          font-weight: inherit;
-        }
-      `;
-      document.head.appendChild(style);
-      console.log("[App] ✅ Injected global highlight-gradient style");
+    if (typeof window !== "undefined") {
+      const existing = document.getElementById("global-highlight-style");
+      if (!existing) {
+        const styleEl = document.createElement("style");
+        styleEl.id = "global-highlight-style";
+        styleEl.innerHTML = `
+          .highlight-gradient {
+            background: linear-gradient(to right, #0D6EFD, #32B7FE);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent !important;
+            font-weight: inherit;
+          }
+        `;
+        document.body.appendChild(styleEl);
+        console.log("[App] ✅ highlight-gradient style injected inside body scope");
+      }
     }
   }, []);
 
@@ -149,7 +152,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       />
 
       {/* ✅ 2. Global Animation / Tilt / Marquee Logic */}
-      <Script src="/js/main.js" strategy="lazyOnload" />
+      <Script src="/js/main.js" strategy="afterInteractive" />
 
       {/* ✅ 3. Attach the Geologica font variable */}
       <div className={geologica.variable}>
