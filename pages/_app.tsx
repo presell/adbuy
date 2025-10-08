@@ -11,15 +11,15 @@ import localFont from "next/font/local";
 const geologica = localFont({
   src: [
     {
-      path: "./fonts/geologica-var.ttf", // ✅ Works when _app.tsx is in /pages/
+      path: "./fonts/geologica-var.ttf", // correct since file is in /pages/fonts
       weight: "100 900",
       style: "normal",
     },
   ],
   variable: "--plasmic-font-geologica",
   display: "swap",
-  preload: true,
 });
+
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
