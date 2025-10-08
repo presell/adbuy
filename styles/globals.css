@@ -72,12 +72,12 @@ a {
 
 .geologica-text-medium {
   font-family: var(--plasmic-font-geologica), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
-  font-weight: 500 !important; /* original */
+  font-weight: 515 !important; /* original */
 }
 
 .geologica-text-less-medium {
   font-family: var(--plasmic-font-geologica), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
-  font-weight: 435 !important; /* original */
+  font-weight: 450 !important; /* original */
 }
 
 .geologica-text-regular {
