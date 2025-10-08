@@ -168,7 +168,7 @@
 
 
 (() => {
-  /* ---------- Keyword Highlighting with Fade-In ---------- */
+  /* ---------- Minimal Keyword Highlighting ---------- */
   const phrases = [
     "Done-For-You",
     "Push of a Button",
@@ -202,37 +202,14 @@
         );
       });
       el.innerHTML = html;
-
-      // Fade-in logic
-      requestAnimationFrame(() => {
-        el.classList.add("highlight-ready"); // show the full H1
-        el.querySelectorAll(".highlight-gradient").forEach((span) => {
-          span.classList.add("visible"); // fade each gradient span
-        });
-      });
     });
 
     console.log(`[Highlight] ✅ Applied to ${elements.length} element(s).`);
     return true;
   }
 
-  // Kick off after DOM content loads
+  // Run once DOM is ready — no fade logic, no delays
   document.addEventListener("DOMContentLoaded", () => {
-    const start = performance.now();
-    const poll = setInterval(() => {
-      if (highlightKeywords() || performance.now() - start > 800) {
-        clearInterval(poll);
-      }
-    }, 10);
-  });
-
-  // Safety fallback if script fails or runs too soon
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.querySelectorAll(".H1").forEach((el) =>
-        el.classList.add("highlight-ready")
-      );
-    }, 1000);
+    highlightKeywords();
   });
 })();
-
