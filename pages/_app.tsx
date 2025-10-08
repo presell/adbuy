@@ -131,7 +131,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       />
 
       {/* ✅ 2. Global Animation / Tilt / Marquee Logic */}
-      <Script src="/js/main.js" strategy="afterInteractive" />
+      <Script src="/js/main.js" strategy="lazyOnload" />
 
       {/* ✅ 3. Attach the Geologica font variable */}
       <div className={geologica.variable}>
