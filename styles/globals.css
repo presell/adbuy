@@ -497,3 +497,13 @@ a {
   from{ transform: translate3d(0,0,0); }
   to  { transform: translate3d(calc(-1 * var(--marquee-dist, 1000px)),0,0); }
 }
+
+
+/* ---------- Keyword Highlighting ---------- */
+.highlight-gradient {
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: inherit;
+}
+
