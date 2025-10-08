@@ -68,7 +68,6 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: OI86U2J16OqJ/css
 
 import LogoutSvgrepoComSvgIcon from "./icons/PlasmicIcon__LogoutSvgrepoComSvg"; // plasmic-import: DXSTQ80UnIaK/icon
-import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 import Calendar2SvgIcon from "./icons/PlasmicIcon__Calendar2Svg"; // plasmic-import: mcM0_cfK3w_Q/icon
 import TimerSvgIcon from "./icons/PlasmicIcon__TimerSvg"; // plasmic-import: d6xwAhgFuRAT/icon
 import ShoppingCart1SvgIcon from "./icons/PlasmicIcon__ShoppingCart1Svg"; // plasmic-import: IVnyUYpybly8/icon
@@ -77,6 +76,7 @@ import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBc
 import Mail1SvgIcon from "./icons/PlasmicIcon__Mail1Svg"; // plasmic-import: 41PeOaT4DtbB/icon
 import MapPinSvgIcon from "./icons/PlasmicIcon__MapPinSvg"; // plasmic-import: -SnCIoFrsIAj/icon
 import ExpandSvg2Icon from "./icons/PlasmicIcon__ExpandSvg2"; // plasmic-import: B8HifbPtEA9W/icon
+import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 
 createPlasmicElementProxy;
 
@@ -497,66 +497,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   </div>
                 </PlasmicLink__>
               </div>
-              <CursorIsolatedSvgIcon
-                className={classNames(
-                  projectcss.all,
-                  sty.svg__ddDa,
-                  "cursor-shoot"
-                )}
-                role={"img"}
-                style={{ "--delay": "0s" }}
-              />
-
-              <CursorIsolatedSvgIcon
-                className={classNames(
-                  projectcss.all,
-                  sty.svg__ip2Mv,
-                  "cursor-shoot"
-                )}
-                role={"img"}
-                style={{ "--delay": "5s" }}
-              />
-
-              <CursorIsolatedSvgIcon
-                className={classNames(
-                  projectcss.all,
-                  sty.svg___2NwKy,
-                  "cursor-shoot"
-                )}
-                role={"img"}
-                style={{ "--delay": "10s" }}
-              />
-
-              <CursorIsolatedSvgIcon
-                className={classNames(
-                  projectcss.all,
-                  sty.svg__dQxkW,
-                  "cursor-shoot"
-                )}
-                role={"img"}
-                style={{ "--delay": "20s" }}
-              />
-
-              <CursorIsolatedSvgIcon
-                className={classNames(
-                  projectcss.all,
-                  sty.svg__jyFxz,
-                  "cursor-shoot"
-                )}
-                role={"img"}
-                style={{ "--delay": "25s" }}
-              />
-
-              <CursorIsolatedSvgIcon
-                className={classNames(
-                  projectcss.all,
-                  sty.svg__nHf9Q,
-                  "cursor-shoot"
-                )}
-                role={"img"}
-                style={{ "--delay": "30s" }}
-              />
-
               <div
                 className={classNames(
                   projectcss.all,
