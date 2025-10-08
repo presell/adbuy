@@ -325,3 +325,90 @@ a {
   pointer-events: none;
   opacity: 0;
 }
+
+/* ================================
+   3D Tilt + Scroll Marquee
+   ================================ */
+:root{
+  --persp: 1000px;
+  --fromTilt: 22deg;
+  --fromY: 68px;
+  --fromScale: .965;
+
+  /* marquee knobs */
+  --tilt-marquee-gap: 24px;
+  --tilt-marquee-speed: 60; /* px per second; higher = faster */
+}
+
+/* perspective on the wrapper (Plasmic can keep Hug content sizing) */
+.tilt-wrap{
+  perspective: var(--persp);
+  perspective-origin: 50% 18%;
+}
+
+/* the animated element (CSS timeline for desktop, JS will override on mobile) */
+.card-3d{
+  display:block;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  -webkit-transform-style: preserve-3d;  /* iOS */
+  -webkit-backface-visibility: hidden;   /* iOS */
+  will-change: transform, opacity;
+}
+
+/* Desktop, no-marquee: use the same CSS animation you originally shipped */
+.card-3d.use-css-timeline{
+  animation-name: tiltNorth;
+  animation-timeline: view();
+  animation-range: entry 0% exit 100%;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+@keyframes tiltNorth{
+  from{
+    transform: translateY(var(--fromY)) rotateX(var(--fromTilt)) scale(var(--fromScale));
+    opacity: .78;
+  }
+  to{
+    /* push slightly past straight so it appears flat before exit */
+    transform: translateY(0) rotateX(-1deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (min-width:1200px){
+  :root{ --fromTilt: 24deg; --fromY: 74px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .card-3d{ animation:none !important; transform:none !important; opacity:1 !important; }
+  .scroll-tilt-track{ animation:none !important; transform:none !important; }
+}
+
+/* ───── Marquee (kept minimal and isolated) ───────────────────────── */
+.scroll-tilt{
+  position: relative;
+  overflow: hidden;               /* hides the loop seam */
+  width: 100%;
+  white-space: nowrap;
+  contain: layout paint style;    /* isolates layout to avoid odd interactions */
+}
+
+.scroll-tilt-track{
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tilt-marquee-gap);
+  white-space: nowrap;
+  will-change: transform;
+  animation: tilt-marquee var(--marquee-dur, 30s) linear infinite;
+}
+
+.scroll-tilt-track > *{
+  flex: 0 0 auto;                 /* no wrapping; items keep width */
+}
+
+@keyframes tilt-marquee{
+  from{ transform: translate3d(0,0,0); }
+  to  { transform: translate3d(calc(-1 * var(--marquee-dist, 1000px)),0,0); }
+}
