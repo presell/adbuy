@@ -46,33 +46,26 @@ a {
 }
 
 /* ---------------------------------------
-   Local Geologica Font
+   Local Geologica Font (via next/font/local)
 ---------------------------------------- */
 
-/* ✅ 1. Define @font-face to register your local file */
-@font-face {
-  font-family: "Geologica";
-  src: url("/fonts/geologica-var.ttf") format("truetype");
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-}
-
-/* ✅ 2. Bridge variable that Plasmic Studio will reference */
+/* Bridge var that Plasmic Studio references.
+   Keep a safe fallback so you never see invisible text. */
 :root {
-  /* fallback so you never get invisible text if the var isn't attached yet */
-  --plasmic-font-geologica: "Geologica", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --plasmic-font-geologica: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-/* ✅ 3. Optional utility classes for your existing text styles */
+/* Utility classes that apply the font variable.
+   Add !important so they win against Plasmic’s generated CSS. */
 .geologica-text,
 .geologica-text-medium-plus,
 .geologica-text-medium,
 .geologica-text-less-medium,
 .geologica-text-regular,
 .geologica-text-regular-lighter {
-  font-family: var(--plasmic-font-geologica);
+  font-family: var(--plasmic-font-geologica), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
 }
+
 
 /* ---------------------------------------
    Custom Global Utilities / Container Styles
