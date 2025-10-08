@@ -191,3 +191,100 @@ a {
     rgba(0,0,0,1) 85%,
     rgba(0,0,0,0) 100%);
 }
+
+/* 🧱 Container fade (white → light gray background, fading borders) */
+.container-fade {
+  position: relative;
+  overflow: hidden; /* ensures fades respect border-radius set in Plasmic */
+  
+  /* Background fade: white to page bg (#F4F4F4) */
+  background: linear-gradient(
+    to bottom, 
+    #FFFFFF 0%, 
+    rgba(255, 255, 255, 0.7) 60%, 
+    rgba(244, 244, 244, 0) 100%
+  );
+  
+  border-top: 1px solid #D3D3D3; /* solid top border */
+}
+
+/* Left + right fading borders */
+.container-fade::before,
+.container-fade::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  pointer-events: none;
+}
+
+/* Left border */
+.container-fade::before {
+  left: 0;
+  background: linear-gradient(
+    to bottom,
+    #D3D3D3 0%,
+    #D3D3D3 55%,
+    rgba(211, 211, 211, 0) 100%
+  );
+}
+
+/* Right border */
+.container-fade::after {
+  right: 0;
+  background: linear-gradient(
+    to bottom,
+    #D3D3D3 0%,
+    #D3D3D3 55%,
+    rgba(211, 211, 211, 0) 100%
+  );
+}
+
+/* ➡️ Right-side fade-only border (no top/bottom) */
+.container-right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    #D3D3D3 0%,
+    #D3D3D3 55%,
+    rgba(211, 211, 211, 0) 100%
+  );
+}
+
+/* 🌊 Float animation for subtle up-down motion */
+@keyframes floatOnly {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.LeadContainer {
+  animation: floatOnly 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ✨ Load-in animation (compatibility class) */
+.load-in-compat {
+  transform: translateY(20px); /* Start 20px below the final position */
+  animation: loadInAnimationCompat 0.8s ease-out forwards; /* One-time load-in animation */
+}
+
+@keyframes loadInAnimationCompat {
+  0% {
+    opacity: 0; /* Fully transparent */
+    transform: translateY(20px); /* Below final position */
+  }
+  100% {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Final position */
+  }
+}
