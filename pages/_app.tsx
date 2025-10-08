@@ -20,7 +20,6 @@ const geologica = localFont({
   display: "swap",
 });
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
   const authenticatedViaCookie = useRef(false);
@@ -120,6 +119,25 @@ function MyApp({ Component, pageProps }: AppProps) {
     });
 
     return () => listener?.subscription.unsubscribe();
+  }, []);
+
+  // ✅ Inject highlight-gradient CSS globally for Plasmic-rendered elements
+  useEffect(() => {
+    if (typeof window !== "undefined" && !document.getElementById("global-highlight-style")) {
+      const style = document.createElement("style");
+      style.id = "global-highlight-style";
+      style.innerHTML = `
+        .highlight-gradient {
+          background: linear-gradient(to right, #0D6EFD, #32B7FE);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent !important;
+          font-weight: inherit;
+        }
+      `;
+      document.head.appendChild(style);
+      console.log("[App] ✅ Injected global highlight-gradient style");
+    }
   }, []);
 
   return (
