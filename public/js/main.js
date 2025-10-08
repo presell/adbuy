@@ -168,7 +168,7 @@
 
 
 (() => {
-  /* ---------- Minimal Keyword Highlighting ---------- */
+  /* ---------- Keyword Highlighting ---------- */
   const phrases = [
     "Done-For-You",
     "Push of a Button",
@@ -189,7 +189,7 @@
 
   function highlightKeywords() {
     const elements = document.querySelectorAll(".H1");
-    if (elements.length === 0) return false;
+    if (!elements.length) return false;
 
     elements.forEach((el) => {
       let html = el.innerHTML;
@@ -204,12 +204,14 @@
       el.innerHTML = html;
     });
 
-    console.log(`[Highlight] ✅ Applied to ${elements.length} element(s).`);
+    console.log(`[Highlight] ✅ Applied to ${elements.length} elements.`);
     return true;
   }
 
-  // Run once DOM is ready — no fade logic, no delays
+  // Run as soon as DOM is ready
   document.addEventListener("DOMContentLoaded", () => {
-    highlightKeywords();
+    const interval = setInterval(() => {
+      if (highlightKeywords()) clearInterval(interval);
+    }, 50); // 50ms retry window for late render
   });
 })();
