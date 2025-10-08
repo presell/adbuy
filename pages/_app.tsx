@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
 import "../styles/globals.css";
 import { supabase } from "../lib/supabaseClient";
+import Script from "next/script"; // ✅ Added for external scripts
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
@@ -111,9 +112,21 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <PlasmicRootProvider user={user}>
-      <Component {...pageProps} />
-    </PlasmicRootProvider>
+    <>
+      {/* ✅ 1. Scroll Timeline Polyfill (must load first) */}
+      <Script
+        src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
+        strategy="beforeInteractive"
+      />
+
+      {/* ✅ 2. Global Animation / Tilt / Marquee Logic */}
+      <Script src="/js/main.js" strategy="afterInteractive" />
+
+      {/* ✅ 3. Your Plasmic + App logic (unchanged) */}
+      <PlasmicRootProvider user={user}>
+        <Component {...pageProps} />
+      </PlasmicRootProvider>
+    </>
   );
 }
 
