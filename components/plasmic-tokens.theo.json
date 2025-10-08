@@ -1,5 +1,16 @@
 {
-  "props": [],
+  "props": [
+    {
+      "name": "#1F7926",
+      "type": "color",
+      "value": "#1F7926",
+      "category": "color",
+      "meta": {
+        "projectId": "fKsvVS5XnenaZB1533Xwx5",
+        "id": "CtFh2MllxTKM"
+      }
+    }
+  ],
   "global": {
     "meta": {
       "source": "plasmic.app"

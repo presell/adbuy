@@ -146,6 +146,56 @@
           "id": "DXSTQ80UnIaK",
           "name": "LogoutSvgrepoComSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LogoutSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "zxoMIvW6Akl7",
+          "name": "LeadsProductSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LeadsProductSvg.tsx"
+        },
+        {
+          "id": "mcM0_cfK3w_Q",
+          "name": "Calendar2SvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__Calendar2Svg.tsx"
+        },
+        {
+          "id": "d6xwAhgFuRAT",
+          "name": "TimerSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__TimerSvg.tsx"
+        },
+        {
+          "id": "IVnyUYpybly8",
+          "name": "ShoppingCart1SvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ShoppingCart1Svg.tsx"
+        },
+        {
+          "id": "96dMKEnsbWDf",
+          "name": "PersonSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__PersonSvg.tsx"
+        },
+        {
+          "id": "eBcKEzruN5_L",
+          "name": "PhoneSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__PhoneSvg.tsx"
+        },
+        {
+          "id": "41PeOaT4DtbB",
+          "name": "Mail1SvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__Mail1Svg.tsx"
+        },
+        {
+          "id": "-SnCIoFrsIAj",
+          "name": "MapPinSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__MapPinSvg.tsx"
+        },
+        {
+          "id": "B8HifbPtEA9W",
+          "name": "ExpandSvg2Icon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ExpandSvg2.tsx"
+        },
+        {
+          "id": "Ydmyu9ZoCwig",
+          "name": "UserRoundSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__UserRoundSvg.tsx"
         }
       ],
       "images": [
