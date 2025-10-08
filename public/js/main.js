@@ -168,28 +168,27 @@
 
 (() => {
   /* ---------- Keyword Highlighting ---------- */
-  const keywordPoll = setInterval(() => {
-    const elements = document.querySelectorAll(".H1");
-    if (elements.length === 0) return;
-    clearInterval(keywordPoll);
+  const phrases = [
+    "Done-For-You",
+    "Push of a Button",
+    "High-Volume",
+    "Zero-Setup",
+    "Flat Fees",
+    "$249",
+    "Actually Work",
+    "Rubber Bumpers",
+    "Never Felt",
+    "Work Our Butts Off",
+    "Brandless Campaigns",
+    "Post-Opt-In",
+    "Without Lifting a Finger",
+    "Asked Questions",
+    "Select Industries",
+  ];
 
-    const phrases = [
-      "Done-For-You",
-      "Push of a Button",
-      "High-Volume",
-      "Zero-Setup",
-      "Flat Fees",
-      "$249",
-      "Actually Work",
-      "Rubber Bumpers",
-      "Never Felt",
-      "Work Our Butts Off",
-      "Brandless Campaigns",
-      "Post-Opt-In",
-      "Without Lifting a Finger",
-      "Asked Questions",
-      "Select Industries",
-    ];
+  function highlightKeywords() {
+    const elements = document.querySelectorAll(".H1");
+    if (elements.length === 0) return false;
 
     elements.forEach((el) => {
       let html = el.innerHTML;
@@ -202,6 +201,25 @@
         );
       });
       el.innerHTML = html;
+
+      // ✅ Fade-in effect once gradient applied
+      requestAnimationFrame(() => {
+        el.classList.add("highlight-ready");
+      });
     });
-  }, 100);
+
+    console.log(`[Highlight] ✅ Applied to ${elements.length} elements.`);
+    return true;
+  }
+
+  // Kick off as early as possible
+  document.addEventListener("DOMContentLoaded", () => {
+    const start = performance.now();
+    const poll = setInterval(() => {
+      if (highlightKeywords() || performance.now() - start > 800) {
+        // stop after success OR 800 ms to avoid infinite loop
+        clearInterval(poll);
+      }
+    }, 10); // check every 10 ms for .H1
+  });
 })();
