@@ -167,29 +167,30 @@
 })();
 
 
-(() => {
+window.reinitializeHomepageScripts = function () {
   /* ---------- Keyword Highlighting ---------- */
-  const phrases = [
-    "Done-For-You",
-    "Push of a Button",
-    "High-Volume",
-    "Zero-Setup",
-    "Flat Fees",
-    "$249",
-    "Actually Work",
-    "Rubber Bumpers",
-    "Never Felt",
-    "Work Our Butts Off",
-    "Brandless Campaigns",
-    "Post-Opt-In",
-    "Without Lifting a Finger",
-    "Asked Questions",
-    "Select Industries",
-  ];
-
-  function highlightKeywords() {
+  const keywordPoll = setInterval(() => {
     const elements = document.querySelectorAll(".H1");
-    if (!elements.length) return false;
+    if (elements.length === 0) return;
+    clearInterval(keywordPoll);
+
+    const phrases = [
+      "Done-For-You",
+      "Push of a Button",
+      "High-Volume",
+      "Zero-Setup",
+      "Flat Fees",
+      "$249",
+      "Actually Work",
+      "Rubber Bumpers",
+      "Never Felt",
+      "Work Our Butts Off",
+      "Brandless Campaigns",
+      "Post-Opt-In",
+      "Without Lifting a Finger",
+      "Asked Questions",
+      "Select Industries",
+    ];
 
     elements.forEach((el) => {
       let html = el.innerHTML;
@@ -203,15 +204,6 @@
       });
       el.innerHTML = html;
     });
+  }, 100);
+};
 
-    console.log(`[Highlight] ✅ Applied to ${elements.length} elements.`);
-    return true;
-  }
-
-  // Run as soon as DOM is ready
-  document.addEventListener("DOMContentLoaded", () => {
-    const interval = setInterval(() => {
-      if (highlightKeywords()) clearInterval(interval);
-    }, 50); // 50ms retry window for late render
-  });
-})();
