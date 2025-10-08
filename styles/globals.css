@@ -354,10 +354,11 @@ a {
   }
 }
 
-.LeadContainer {
-  animation: floatOnly 3s ease-in-out infinite;
+[class*="LeadContainer"] {
+  animation: floatOnly 3s ease-in-out infinite !important;
   will-change: transform;
 }
+
 
 /* ✨ Load-in animation (compatibility class) */
 .load-in-compat {
