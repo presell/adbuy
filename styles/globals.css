@@ -508,36 +508,34 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: inherit;
-
-  /* Start fully transparent for fade-in animation */
-  opacity: 0;
+  opacity: 0; /* start invisible for fade-in */
   transition: opacity 0.45s ease-in-out;
 }
 
-/* When JS applies the .visible class, fade in */
 .highlight-gradient.visible {
-  opacity: 1;
+  opacity: 1; /* fade in each gradient span */
 }
 
 /* ---------------------------------------
-   Smooth fade-in for H1 container itself
+   Fade-in for the headline container
 ---------------------------------------- */
 
 .H1 {
   opacity: 0;
-  transition: opacity 0.35s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 }
 
-/* Once highlighting finishes, JS adds .highlight-ready */
 .H1.highlight-ready {
-  opacity: 1;
+  opacity: 1; /* reveal headline when ready */
 }
 
 /* ---------------------------------------
-   Optional: fallback text color if gradient fails
+   Safety fallback — text is never invisible
 ---------------------------------------- */
 
-.H1,
-.highlight-gradient {
-  color: #000; /* fallback so text isn’t invisible pre-load */
+.no-gradient .H1,
+.no-gradient .highlight-gradient {
+  color: #000 !important;
+  -webkit-text-fill-color: initial !important;
+  opacity: 1 !important;
 }
