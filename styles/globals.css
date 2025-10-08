@@ -82,7 +82,7 @@ a {
 
 .geologica-text-regular {
   font-family: var(--plasmic-font-geologica), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
-  font-weight: 200 !important; /* original */
+  font-weight: 700 !important; /* original */
 }
 
 .geologica-text-regular-lighter {
