@@ -500,7 +500,7 @@ a {
 
 
 /* ---------------------------------------
-   Gradient effect for highlighted phrases
+   Minimal Working Highlight Gradient
 ---------------------------------------- */
 
 .highlight-gradient {
@@ -508,34 +508,9 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: inherit;
-  opacity: 0; /* start invisible for fade-in */
-  transition: opacity 0.45s ease-in-out;
 }
 
-.highlight-gradient.visible {
-  opacity: 1; /* fade in each gradient span */
-}
-
-/* ---------------------------------------
-   Fade-in for the headline container
----------------------------------------- */
-
+/* The headline stays visible at all times */
 .H1 {
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-}
-
-.H1.highlight-ready {
-  opacity: 1; /* reveal headline when ready */
-}
-
-/* ---------------------------------------
-   Safety fallback — text is never invisible
----------------------------------------- */
-
-.no-gradient .H1,
-.no-gradient .highlight-gradient {
-  color: #000 !important;
-  -webkit-text-fill-color: initial !important;
-  opacity: 1 !important;
+  opacity: 1;
 }
