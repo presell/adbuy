@@ -413,7 +413,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h11,
-                      "geologica-text-medium H1"
+                      " H1"
                     )}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
@@ -466,7 +466,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.h21,
-                    "geologica-text-regular"
+                    ``
                   )}
                 >
                   {
@@ -521,7 +521,6 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.mainContainer14,
                       "container-fade LeadContainer load-in-compat"
                     )}
-                    id={``}
                   >
                     <div
                       className={classNames(
