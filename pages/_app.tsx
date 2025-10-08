@@ -4,6 +4,21 @@ import { PlasmicRootProvider } from "@plasmicapp/react-web";
 import "../styles/globals.css";
 import { supabase } from "../lib/supabaseClient";
 import Script from "next/script"; // ✅ Added for external scripts
+import localFont from "next/font/local"; // ✅ Added for local font
+
+// ✅ Define Geologica variable font (placed under /pages/fonts/)
+const geologica = localFont({
+  src: [
+    {
+      path: "./fonts/geologica-var.ttf", // relative to /pages/_app.tsx
+      weight: "100 900",
+      style: "normal",
+    },
+  ],
+  variable: "--plasmic-font-geologica", // will populate the CSS var
+  display: "swap",
+  preload: true,
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
@@ -122,10 +137,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       {/* ✅ 2. Global Animation / Tilt / Marquee Logic */}
       <Script src="/js/main.js" strategy="afterInteractive" />
 
-      {/* ✅ 3. Your Plasmic + App logic (unchanged) */}
-      <PlasmicRootProvider user={user}>
-        <Component {...pageProps} />
-      </PlasmicRootProvider>
+      {/* ✅ 3. Attach the Geologica font variable */}
+      <div className={geologica.variable}>
+        <PlasmicRootProvider user={user}>
+          <Component {...pageProps} />
+        </PlasmicRootProvider>
+      </div>
     </>
   );
 }
