@@ -49,14 +49,13 @@ a {
    Local Geologica Font (via next/font/local)
 ---------------------------------------- */
 
-/* Bridge var that Plasmic Studio references.
-   Keep a safe fallback so you never see invisible text. */
+/* Bridge variable for Plasmic Studio reference */
 :root {
+  /* fallback to system fonts so text stays visible if font not yet loaded */
   --plasmic-font-geologica: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Utility classes that apply the font variable.
-   Add !important so they win against Plasmic’s generated CSS. */
+/* Classes that apply the font variable globally */
 .geologica-text,
 .geologica-text-medium-plus,
 .geologica-text-medium,
