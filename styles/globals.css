@@ -499,7 +499,7 @@ a {
 }
 
 
-/* ---------- Keyword Highlighting ---------- */
+/* Gradient effect for highlighted phrases */
 .highlight-gradient {
   background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
   -webkit-background-clip: text;
@@ -507,3 +507,13 @@ a {
   font-weight: inherit;
 }
 
+/* Initial hidden state for H1s */
+.H1 {
+  opacity: 0;
+  transition: opacity 0.35s ease-in-out; /* smooth fade */
+}
+
+/* Once highlighting finishes */
+.H1.highlight-ready {
+  opacity: 1;
+}
