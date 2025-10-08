@@ -895,7 +895,13 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__y25Y1)}>
+            <div
+              className={classNames(
+                projectcss.all,
+                sty.freeBox__y25Y1,
+                "line-fade"
+              )}
+            >
               <div className={classNames(projectcss.all, sty.freeBox__shL0U)} />
 
               <CursorIsolatedSvgIcon
