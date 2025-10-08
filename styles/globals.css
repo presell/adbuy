@@ -499,21 +499,45 @@ a {
 }
 
 
-/* Gradient effect for highlighted phrases */
+/* ---------------------------------------
+   Gradient effect for highlighted phrases
+---------------------------------------- */
+
 .highlight-gradient {
   background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: inherit;
+
+  /* Start fully transparent for fade-in animation */
+  opacity: 0;
+  transition: opacity 0.45s ease-in-out;
 }
 
-/* Initial hidden state for H1s */
+/* When JS applies the .visible class, fade in */
+.highlight-gradient.visible {
+  opacity: 1;
+}
+
+/* ---------------------------------------
+   Smooth fade-in for H1 container itself
+---------------------------------------- */
+
 .H1 {
   opacity: 0;
-  transition: opacity 0.35s ease-in-out; /* smooth fade */
+  transition: opacity 0.35s ease-in-out;
 }
 
-/* Once highlighting finishes */
+/* Once highlighting finishes, JS adds .highlight-ready */
 .H1.highlight-ready {
   opacity: 1;
+}
+
+/* ---------------------------------------
+   Optional: fallback text color if gradient fails
+---------------------------------------- */
+
+.H1,
+.highlight-gradient {
+  color: #000; /* fallback so text isn’t invisible pre-load */
 }
