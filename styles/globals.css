@@ -499,24 +499,11 @@ a {
 }
 
 
-/* ---------------------------------------
-   Bulletproof Highlight Gradient
----------------------------------------- */
+/* Highlight gradient for dynamic phrases */
 .highlight-gradient {
-  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
-  background-clip: text;
+  background: linear-gradient(to right, #0D6EFD, #32B7FE);
   -webkit-background-clip: text;
-  color: transparent;
   -webkit-text-fill-color: transparent;
-  display: inline;
+  color: transparent;
   font-weight: inherit;
-  text-shadow: none !important; /* disables text shadows that break gradients */
-}
-
-/* Ensure text always visible and not overridden by color */
-.H1,
-.H1 * {
-  color: inherit !important;
-  -webkit-text-fill-color: inherit !important;
-  text-shadow: none !important;
 }
