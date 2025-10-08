@@ -166,8 +166,9 @@
   }
 })();
 
-(() => {
+
   /* ---------- Keyword Highlighting ---------- */
+(() => {
   const phrases = [
     "Done-For-You",
     "Push of a Button",
@@ -201,25 +202,25 @@
         );
       });
       el.innerHTML = html;
-
-      // ✅ Fade-in effect once gradient applied
-      requestAnimationFrame(() => {
-        el.classList.add("highlight-ready");
-      });
     });
 
-    console.log(`[Highlight] ✅ Applied to ${elements.length} elements.`);
+    // Once inserted, trigger fade-in
+    requestAnimationFrame(() => {
+      document
+        .querySelectorAll(".highlight-gradient")
+        .forEach((span) => span.classList.add("visible"));
+    });
+
     return true;
   }
 
-  // Kick off as early as possible
+  // Kick off fast and recheck for up to 800ms
   document.addEventListener("DOMContentLoaded", () => {
     const start = performance.now();
     const poll = setInterval(() => {
       if (highlightKeywords() || performance.now() - start > 800) {
-        // stop after success OR 800 ms to avoid infinite loop
         clearInterval(poll);
       }
-    }, 10); // check every 10 ms for .H1
+    }, 10);
   });
 })();
