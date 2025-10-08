@@ -413,7 +413,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h11,
-                      " H1"
+                      " H1 geologica-text-medium"
                     )}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
@@ -466,7 +466,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.h21,
-                    ``
+                    "geologica-text-regular"
                   )}
                 >
                   {
