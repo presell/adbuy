@@ -247,17 +247,19 @@ a {
 /* 🧱 Container fade (white → light gray background, fading borders) */
 .container-fade {
   position: relative;
-  overflow: hidden; /* ensures fades respect border-radius set in Plasmic */
-  
-  /* Background fade: white to page bg (#F4F4F4) */
+  overflow: hidden;               /* keep fades inside radius */
+  z-index: 0;                     /* NEW: create stacking context */
+  isolation: isolate;             /* NEW: prevent parent bg bleed */
+
+  /* Ensure our gradient wins over Plasmic inline backgrounds */
   background: linear-gradient(
     to bottom, 
     #FFFFFF 0%, 
     rgba(255, 255, 255, 0.7) 60%, 
     rgba(244, 244, 244, 0) 100%
-  );
-  
-  border-top: 1px solid #D3D3D3; /* solid top border */
+  ) !important;                   /* NEW */
+
+  border-top: 1px solid #D3D3D3;  /* solid top border */
 }
 
 /* Left + right fading borders */
@@ -269,6 +271,7 @@ a {
   bottom: 0;
   width: 1px;
   pointer-events: none;
+  z-index: 1;                     /* NEW: draw above the gradient */
 }
 
 /* Left border */
