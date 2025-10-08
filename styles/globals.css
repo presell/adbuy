@@ -48,13 +48,23 @@ a {
 /* ---------------------------------------
    Local Geologica Font
 ---------------------------------------- */
-/* ---- Bridge var that Plasmic Studio will reference ---- */
-:root {
-  /* fallback so you never get invisible text if the var isn't attached yet */
-  --plasmic-font-geologica: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+/* ✅ 1. Define @font-face to register your local file */
+@font-face {
+  font-family: "Geologica";
+  src: url("/fonts/geologica-var.ttf") format("truetype");
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
 }
 
-/* Optional: your existing utility classes can use the var directly */
+/* ✅ 2. Bridge variable that Plasmic Studio will reference */
+:root {
+  /* fallback so you never get invisible text if the var isn't attached yet */
+  --plasmic-font-geologica: "Geologica", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* ✅ 3. Optional utility classes for your existing text styles */
 .geologica-text,
 .geologica-text-medium-plus,
 .geologica-text-medium,
