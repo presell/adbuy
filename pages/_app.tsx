@@ -6,6 +6,13 @@ import { supabase } from "../lib/supabaseClient";
 import Script from "next/script";
 import localFont from "next/font/local";
 
+// 👇 Add this just below your imports
+declare global {
+  interface Window {
+    reinitializeHomepageScripts?: () => void;
+  }
+}
+
 // ✅ Corrected Geologica variable font setup
 // Keeping the font in /pages/fonts/ is fine — just resolve the path properly.
 const geologica = localFont({
@@ -145,11 +152,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {/* ✅ 1. Scroll Timeline Polyfill (must load first) */}
-      <Script
-        src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
-        strategy="beforeInteractive"
-      />
+
+      {/* ✅ 1. Scroll Timeline Polyfill (load afterInteractive) */}
+<Script
+  src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
+  strategy="afterInteractive"
+/>
+
 
       {/* ✅ 2. Global Animation / Tilt / Marquee Logic */}
 <Script
