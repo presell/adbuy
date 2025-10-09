@@ -177,9 +177,9 @@ useEffect(() => {
     <>
 
       {/* ✅ 1. Scroll Timeline Polyfill (load afterInteractive) */}
-<Script
+<script
   src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
-  strategy="afterInteractive"
+  strategy="beforeInteractive"
 />
 
 
