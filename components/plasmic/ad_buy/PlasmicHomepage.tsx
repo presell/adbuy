@@ -413,7 +413,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h11,
-                      " H1 geologica-text-medium"
+                      " H1 geologica-h1"
                     )}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
@@ -466,7 +466,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.h21,
-                    "geologica-text-regular"
+                    "geologica-h3"
                   )}
                 >
                   {
@@ -490,7 +490,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text___9ZdVe,
-                      "geologica-text-less-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Get Started"}
@@ -559,7 +559,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__abbVf,
-                              "geologica-text-medium"
+                              "geologica-h1"
                             )}
                           >
                             {"Added"}
@@ -583,7 +583,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__eLlc,
-                              "geologica-text-medium"
+                              "geologica-h1"
                             )}
                           >
                             {"Age"}
@@ -639,7 +639,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__ykyA7,
-                              "geologica-text-medium"
+                              "geologica-h1"
                             )}
                           >
                             {"Name"}
@@ -666,7 +666,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__djpVg,
-                              "geologica-text-medium"
+                              "geologica-h1"
                             )}
                           >
                             {"Phone"}
@@ -693,7 +693,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__f3NHs,
-                              "geologica-text-medium"
+                              "geologica-h1"
                             )}
                           >
                             {"Email"}
@@ -752,7 +752,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__anE06,
-                              "geologica-text-less-medium"
+                              "geologica-h2"
                             )}
                           >
                             {"Today"}
@@ -781,7 +781,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                 projectcss.all,
                                 projectcss.__wab_text,
                                 sty.text__qDqNf,
-                                "geologica-text-regular"
+                                "geologica-h3"
                               )}
                             >
                               {"08m"}
@@ -829,7 +829,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__gok7U,
-                              "geologica-text-less-medium"
+                              "geologica-h2"
                             )}
                           >
                             {"Jane Reed"}
@@ -845,7 +845,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__bUzbk,
-                              "geologica-text-less-medium"
+                              "geologica-h2"
                             )}
                           >
                             {"704-415-1800"}
@@ -861,7 +861,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text___9QfnK,
-                              "geologica-text-less-medium"
+                              "geologica-h2"
                             )}
                           >
                             {"jane@gmail.com"}
