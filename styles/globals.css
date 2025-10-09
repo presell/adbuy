@@ -247,6 +247,36 @@ a {
   color: #000000 !important;
 }
 
+/* 🟣 Optimized dotted background */
+.dots {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  min-height: 100%;
+  
+  background-color: #F4F4F4;
+  background-image: radial-gradient(#cccccc 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-attachment: fixed; /* fixes scroll lag */
+  pointer-events: none; /* ensures scroll smoothness */
+}
+
+.dots::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(#cccccc 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.6; /* softer dots */
+  z-index: 0;
+}
+
+.dots > * {
+  position: relative;
+  z-index: 1; /* ensures child stacks are visible */
+}
+
+
 /* 🧱 Container fade (white → light gray background, fading borders) */
 .container-fade {
   position: relative;
