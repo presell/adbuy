@@ -218,5 +218,5 @@ window.reinitializeHomepageScripts = function () {
       clearInterval(poll);
       console.warn("[Highlight] ⏱ Timeout — no .H1 elements found");
     }
-  }, 100);
+  }, 10);
 };
