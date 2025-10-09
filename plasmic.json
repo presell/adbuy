@@ -216,6 +216,31 @@
           "id": "LUUpoirJOIYI",
           "name": "ChartColumnIncreasingSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ChartColumnIncreasingSvg.tsx"
+        },
+        {
+          "id": "jg0xP48M7cWa",
+          "name": "WorkflowsProductSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__WorkflowsProductSvg.tsx"
+        },
+        {
+          "id": "4F3rNj2SfV4b",
+          "name": "Sms8SvgrepoCom1SvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__Sms8SvgrepoCom1Svg.tsx"
+        },
+        {
+          "id": "bAyy2Q1Fh9Vl",
+          "name": "CallSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__CallSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "IjmbUWMwGAqS",
+          "name": "PlusSvg2Icon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__PlusSvg2.tsx"
+        },
+        {
+          "id": "3mSPGa3ElJaY",
+          "name": "MinusSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__MinusSvgrepoComSvg.tsx"
         }
       ],
       "images": [

@@ -83,6 +83,12 @@ import WorkflowsProductTiltedSvgIcon from "./icons/PlasmicIcon__WorkflowsProduct
 import AccountIconSvgIcon from "./icons/PlasmicIcon__AccountIconSvg"; // plasmic-import: t8ZrtsyJpBC1/icon
 import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-import: 8wp36EsoJArA/icon
 import ChartColumnIncreasingSvgIcon from "./icons/PlasmicIcon__ChartColumnIncreasingSvg"; // plasmic-import: LUUpoirJOIYI/icon
+import WorkflowsProductSvgIcon from "./icons/PlasmicIcon__WorkflowsProductSvg"; // plasmic-import: jg0xP48M7cWa/icon
+import Email8SvgrepoComSvgIcon from "./icons/PlasmicIcon__Email8SvgrepoComSvg"; // plasmic-import: hSJ3Nz5m06-i/icon
+import Sms8SvgrepoCom1SvgIcon from "./icons/PlasmicIcon__Sms8SvgrepoCom1Svg"; // plasmic-import: 4F3rNj2SfV4b/icon
+import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
+import PlusSvg2Icon from "./icons/PlasmicIcon__PlusSvg2"; // plasmic-import: IjmbUWMwGAqS/icon
+import MinusSvgrepoComSvgIcon from "./icons/PlasmicIcon__MinusSvgrepoComSvg"; // plasmic-import: 3mSPGa3ElJaY/icon
 
 createPlasmicElementProxy;
 
@@ -126,9 +132,8 @@ export type PlasmicHomepage__OverridesType = {
   hero2?: Flex__<"div">;
   h2182?: Flex__<"div">;
   section3Parent?: Flex__<"div">;
-  sectionInner?: Flex__<"div">;
+  section3Inner?: Flex__<"div">;
   hero3?: Flex__<"div">;
-  h2196?: Flex__<"div">;
   h112?: Flex__<"div">;
   h23?: Flex__<"div">;
   btn3?: Flex__<"a"> & Partial<LinkProps>;
@@ -158,6 +163,55 @@ export type PlasmicHomepage__OverridesType = {
   h2180?: Flex__<"div">;
   divider16?: Flex__<"div">;
   h2181?: Flex__<"div">;
+  section5Parent?: Flex__<"div">;
+  section5Inner?: Flex__<"div">;
+  hero5?: Flex__<"div">;
+  h15?: Flex__<"div">;
+  h25?: Flex__<"div">;
+  btn5?: Flex__<"a"> & Partial<LinkProps>;
+  section6Parent?: Flex__<"div">;
+  section6Inner?: Flex__<"div">;
+  tilt2?: Flex__<"div">;
+  mainContainer16?: Flex__<"div">;
+  header20?: Flex__<"div">;
+  addedHeader12?: Flex__<"div">;
+  ageHeader11?: Flex__<"div">;
+  typeHeader11?: Flex__<"div">;
+  nameHeader11?: Flex__<"div">;
+  phoneHeader11?: Flex__<"div">;
+  emailHeader11?: Flex__<"div">;
+  locationHeader11?: Flex__<"div">;
+  data8?: Flex__<"div">;
+  addedRow111?: Flex__<"div">;
+  ageRow111?: Flex__<"div">;
+  typeRow111?: Flex__<"div">;
+  nameRow111?: Flex__<"div">;
+  phoneRow111?: Flex__<"div">;
+  emailRow111?: Flex__<"div">;
+  locationRow111?: Flex__<"div">;
+  divider17?: Flex__<"div">;
+  h2183?: Flex__<"div">;
+  divider18?: Flex__<"div">;
+  h2184?: Flex__<"div">;
+  divider19?: Flex__<"div">;
+  h2185?: Flex__<"div">;
+  section7Parent?: Flex__<"div">;
+  section7Inner?: Flex__<"div">;
+  hero7?: Flex__<"div">;
+  h17?: Flex__<"div">;
+  h27?: Flex__<"div">;
+  faq13?: Flex__<"div">;
+  h1240?: Flex__<"div">;
+  h2186?: Flex__<"div">;
+  faq22?: Flex__<"div">;
+  h1241?: Flex__<"div">;
+  h2187?: Flex__<"div">;
+  faq32?: Flex__<"div">;
+  h1242?: Flex__<"div">;
+  h2188?: Flex__<"div">;
+  faq42?: Flex__<"div">;
+  h1243?: Flex__<"div">;
+  h2189?: Flex__<"div">;
   shooters?: Flex__<"div">;
   carouselSelectedItems?: Flex__<typeof Embed>;
   carouselBtnFunction?: Flex__<"div">;
@@ -215,6 +269,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 1
+      },
+      {
+        path: "faq",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -478,39 +538,21 @@ function PlasmicHomepage__RenderFunc(props: {
                     " H1 geologica-h1"
                   )}
                 >
-                  {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                    <React.Fragment>
-                      <span
-                        className={"plasmic_default__all plasmic_default__span"}
-                        style={{ color: "#000000" }}
-                      >
-                        {"Leads at the "}
-                      </span>
-                      <React.Fragment>{"\n"}</React.Fragment>
-                      <span
-                        className={"plasmic_default__all plasmic_default__span"}
-                        style={{ color: "#000000" }}
-                      >
-                        {"Push of a Button"}
-                      </span>
-                    </React.Fragment>
-                  ) : (
-                    <React.Fragment>
-                      <span
-                        className={"plasmic_default__all plasmic_default__span"}
-                        style={{ color: "#000000" }}
-                      >
-                        {"Leads at the"}
-                      </span>
-                      <React.Fragment>{"\n"}</React.Fragment>
-                      <span
-                        className={"plasmic_default__all plasmic_default__span"}
-                        style={{ color: "#000000" }}
-                      >
-                        {"Push of a Button"}
-                      </span>
-                    </React.Fragment>
-                  )}
+                  <React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "#000000" }}
+                    >
+                      {"Leads at the"}
+                    </span>
+                    <React.Fragment>{"\n"}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "#000000" }}
+                    >
+                      {"Push of a Button"}
+                    </span>
+                  </React.Fragment>
                 </div>
                 <div
                   data-plasmic-name={"h21"}
@@ -1040,9 +1082,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       "geologica-h2"
                     )}
                   >
-                    {
-                      "Closing new business takes two things:\n\nLeads and Activity.\n\nAdBuy delivers real-time leads       and follows up       until they\u2019re ready to convert.\n\nThere\u2019s zero campaign setup. Follow-up is autonomous. And it\u2019s built to scale.\n\nBecause you deserve better than marked-up, shared leads and endless hours of manual outreach."
-                    }
+                    {hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "Closing new business takes two things:\n\nLeads and Activity.\n\nAdBuy delivers real-time leads     and follows up       until they\u2019re ready to convert.\n\nThere\u2019s zero campaign setup. Follow-up is autonomous. And it\u2019s built to scale.\n\nBecause you deserve better than marked-up, shared leads and endless hours of manual outreach."
+                      : "Closing new business takes two things:\n\nLeads and Activity.\n\nAdBuy delivers real-time leads       and follows up       until they\u2019re ready to convert.\n\nThere\u2019s zero campaign setup. Follow-up is autonomous. And it\u2019s built to scale.\n\nBecause you deserve better than marked-up, shared leads and endless hours of manual outreach."}
                   </div>
                   <LeadsProductSvgIcon
                     className={classNames(projectcss.all, sty.svg__oRh0B)}
@@ -1104,11 +1146,11 @@ function PlasmicHomepage__RenderFunc(props: {
             className={classNames(projectcss.all, sty.section3Parent, ``)}
           >
             <div
-              data-plasmic-name={"sectionInner"}
-              data-plasmic-override={overrides.sectionInner}
+              data-plasmic-name={"section3Inner"}
+              data-plasmic-override={overrides.section3Inner}
               className={classNames(
                 projectcss.all,
-                sty.sectionInner,
+                sty.section3Inner,
                 "border-fade"
               )}
             >
@@ -1128,12 +1170,10 @@ function PlasmicHomepage__RenderFunc(props: {
                   />
 
                   <div
-                    data-plasmic-name={"h2196"}
-                    data-plasmic-override={overrides.h2196}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.h2196,
+                      sty.text__loKVp,
                       "geologica-text-medium"
                     )}
                   >
@@ -1156,14 +1196,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         className={"plasmic_default__all plasmic_default__span"}
                         style={{ color: "#000000" }}
                       >
-                        {"Leads at the "}
-                      </span>
-                      <React.Fragment>{"\n"}</React.Fragment>
-                      <span
-                        className={"plasmic_default__all plasmic_default__span"}
-                        style={{ color: "#000000" }}
-                      >
-                        {"Push of a Button"}
+                        {"It Starts With a Campaign"}
                       </span>
                     </React.Fragment>
                   ) : (
@@ -2054,6 +2087,1686 @@ function PlasmicHomepage__RenderFunc(props: {
             </div>
           </div>
           <div
+            data-plasmic-name={"section5Parent"}
+            data-plasmic-override={overrides.section5Parent}
+            className={classNames(projectcss.all, sty.section5Parent, ``)}
+          >
+            <div
+              data-plasmic-name={"section5Inner"}
+              data-plasmic-override={overrides.section5Inner}
+              className={classNames(
+                projectcss.all,
+                sty.section5Inner,
+                "border-fade"
+              )}
+            >
+              <div
+                data-plasmic-name={"hero5"}
+                data-plasmic-override={overrides.hero5}
+                className={classNames(
+                  projectcss.all,
+                  sty.hero5,
+                  "load-in-compat"
+                )}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__zFir8)}>
+                  <WorkflowsProductSvgIcon
+                    className={classNames(projectcss.all, sty.svg___3Skzy)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__uG4Pg,
+                      "geologica-text-medium"
+                    )}
+                  >
+                    {"AdBuy Workflows"}
+                  </div>
+                </div>
+                <div
+                  data-plasmic-name={"h15"}
+                  data-plasmic-override={overrides.h15}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.h15,
+                    " H1 geologica-h1"
+                  )}
+                >
+                  <React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "#000000" }}
+                    >
+                      {"Then Follow-Up Runs 24/7"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  data-plasmic-name={"h25"}
+                  data-plasmic-override={overrides.h25}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.h25,
+                    "geologica-h3"
+                  )}
+                >
+                  {
+                    "Automated workflows keep every lead moving forward until they\u2019re ready to convert."
+                  }
+                </div>
+                <PlasmicLink__
+                  data-plasmic-name={"btn5"}
+                  data-plasmic-override={overrides.btn5}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.a,
+                    sty.btn5,
+                    "button"
+                  )}
+                  component={Link}
+                  platform={"nextjs"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__bvE7V,
+                      "geologica-h1"
+                    )}
+                  >
+                    {"Explore Workflows"}
+                  </div>
+                </PlasmicLink__>
+              </div>
+            </div>
+          </div>
+          <div
+            data-plasmic-name={"section6Parent"}
+            data-plasmic-override={overrides.section6Parent}
+            className={classNames(projectcss.all, sty.section6Parent, ``)}
+          >
+            <div
+              data-plasmic-name={"section6Inner"}
+              data-plasmic-override={overrides.section6Inner}
+              className={classNames(
+                projectcss.all,
+                sty.section6Inner,
+                "border-fade"
+              )}
+            >
+              {false ? (
+                <div
+                  data-plasmic-name={"tilt2"}
+                  data-plasmic-override={overrides.tilt2}
+                  className={classNames(projectcss.all, sty.tilt2, "tilt-wrap")}
+                  id={``}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__oWWhS,
+                      "card-3d"
+                    )}
+                    id={``}
+                  >
+                    <div
+                      data-plasmic-name={"mainContainer16"}
+                      data-plasmic-override={overrides.mainContainer16}
+                      className={classNames(
+                        projectcss.all,
+                        sty.mainContainer16,
+                        "container-fade LeadContainer load-in-compat"
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__hYa5,
+                          "tableInner"
+                        )}
+                      >
+                        <div
+                          data-plasmic-name={"header20"}
+                          data-plasmic-override={overrides.header20}
+                          className={classNames(
+                            projectcss.all,
+                            sty.header20,
+                            "header"
+                          )}
+                        >
+                          <div
+                            data-plasmic-name={"addedHeader12"}
+                            data-plasmic-override={overrides.addedHeader12}
+                            className={classNames(
+                              projectcss.all,
+                              sty.addedHeader12
+                            )}
+                          >
+                            <Calendar2SvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__iJbon
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___3ASe,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"Added"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"ageHeader11"}
+                            data-plasmic-override={overrides.ageHeader11}
+                            className={classNames(
+                              projectcss.all,
+                              sty.ageHeader11
+                            )}
+                          >
+                            <TimerSvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__wWOg
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__uPa9G,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"Age"}
+                            </div>
+                          </div>
+                          {false ? (
+                            <div
+                              data-plasmic-name={"typeHeader11"}
+                              data-plasmic-override={overrides.typeHeader11}
+                              className={classNames(
+                                projectcss.all,
+                                sty.typeHeader11
+                              )}
+                            >
+                              <ShoppingCart1SvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__y0Trz
+                                )}
+                                role={"img"}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___8Ynz9,
+                                  "geologica-text-medium"
+                                )}
+                              >
+                                {"Type"}
+                              </div>
+                            </div>
+                          ) : null}
+                          <div
+                            data-plasmic-name={"nameHeader11"}
+                            data-plasmic-override={overrides.nameHeader11}
+                            className={classNames(
+                              projectcss.all,
+                              sty.nameHeader11
+                            )}
+                          >
+                            <UserRoundSvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__au7KD
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__j9Z4D,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"Name"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"phoneHeader11"}
+                            data-plasmic-override={overrides.phoneHeader11}
+                            className={classNames(
+                              projectcss.all,
+                              sty.phoneHeader11
+                            )}
+                          >
+                            <PhoneSvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__yut9O
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__cZT3,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"Phone"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"emailHeader11"}
+                            data-plasmic-override={overrides.emailHeader11}
+                            className={classNames(
+                              projectcss.all,
+                              sty.emailHeader11
+                            )}
+                          >
+                            <Mail1SvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__yCHu
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__w0Rs8,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"Email"}
+                            </div>
+                          </div>
+                          {false ? (
+                            <div
+                              data-plasmic-name={"locationHeader11"}
+                              data-plasmic-override={overrides.locationHeader11}
+                              className={classNames(
+                                projectcss.all,
+                                sty.locationHeader11
+                              )}
+                            >
+                              <MapPinSvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__fuy3O
+                                )}
+                                role={"img"}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__x5J8T,
+                                  "geologica-text-medium"
+                                )}
+                              >
+                                {"Location"}
+                              </div>
+                            </div>
+                          ) : null}
+                        </div>
+                        <div
+                          data-plasmic-name={"data8"}
+                          data-plasmic-override={overrides.data8}
+                          className={classNames(projectcss.all, sty.data8)}
+                        >
+                          <div
+                            data-plasmic-name={"addedRow111"}
+                            data-plasmic-override={overrides.addedRow111}
+                            className={classNames(
+                              projectcss.all,
+                              sty.addedRow111
+                            )}
+                          >
+                            <ExpandSvg2Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__aq22I
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__v98DG,
+                                "geologica-h2"
+                              )}
+                            >
+                              {"Today"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"ageRow111"}
+                            data-plasmic-override={overrides.ageRow111}
+                            className={classNames(
+                              projectcss.all,
+                              sty.ageRow111
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__wvoo9
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__isH8G
+                                )}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___4Q34U,
+                                  "geologica-h3"
+                                )}
+                              >
+                                {"08m"}
+                              </div>
+                            </div>
+                          </div>
+                          {false ? (
+                            <div
+                              data-plasmic-name={"typeRow111"}
+                              data-plasmic-override={overrides.typeRow111}
+                              className={classNames(
+                                projectcss.all,
+                                sty.typeRow111
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__nAwFi,
+                                  "geologica-text-less-medium"
+                                )}
+                              >
+                                {"Product"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__lXaBz,
+                                  "geologica-text-less-medium"
+                                )}
+                              >
+                                {""}
+                              </div>
+                            </div>
+                          ) : null}
+                          <div
+                            data-plasmic-name={"nameRow111"}
+                            data-plasmic-override={overrides.nameRow111}
+                            className={classNames(
+                              projectcss.all,
+                              sty.nameRow111
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__kYnk0,
+                                "geologica-h2"
+                              )}
+                            >
+                              {"Jane Reed"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"phoneRow111"}
+                            data-plasmic-override={overrides.phoneRow111}
+                            className={classNames(
+                              projectcss.all,
+                              sty.phoneRow111
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__vNc41,
+                                "geologica-h2"
+                              )}
+                            >
+                              {"704-415-1800"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"emailRow111"}
+                            data-plasmic-override={overrides.emailRow111}
+                            className={classNames(
+                              projectcss.all,
+                              sty.emailRow111
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___8M0Ug,
+                                "geologica-h2"
+                              )}
+                            >
+                              {"jane@gmail.com"}
+                            </div>
+                          </div>
+                          {false ? (
+                            <div
+                              data-plasmic-name={"locationRow111"}
+                              data-plasmic-override={overrides.locationRow111}
+                              className={classNames(
+                                projectcss.all,
+                                sty.locationRow111
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___3Wh98,
+                                  "geologica-text-less-medium"
+                                )}
+                              >
+                                {"Charlotte, NC"}
+                              </div>
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+              <div className={classNames(projectcss.all, sty.freeBox__yj0Mt)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___6JVhM)}
+                >
+                  <div
+                    data-plasmic-name={"divider17"}
+                    data-plasmic-override={overrides.divider17}
+                    className={classNames(
+                      projectcss.all,
+                      sty.divider17,
+                      `divider ${(() => {
+                        {
+                          {
+                            return $state.carousel === 1
+                              ? "active-item"
+                              : "inactive-item";
+                          }
+                        }
+                      })()}`
+                    )}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__orM5P,
+                      (() => {
+                        try {
+                          return (() => {
+                            {
+                              {
+                                return $state.carousel === 1
+                                  ? "active-item"
+                                  : "inactive-item";
+                              }
+                            }
+                          })();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    )}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateCarousel"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["carousel"]
+                              },
+                              operation: 0,
+                              value: 1
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateCarousel"] != null &&
+                        typeof $steps["updateCarousel"] === "object" &&
+                        typeof $steps["updateCarousel"].then === "function"
+                      ) {
+                        $steps["updateCarousel"] =
+                          await $steps["updateCarousel"];
+                      }
+                    }}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__awRw2)}
+                    >
+                      <Email8SvgrepoComSvgIcon
+                        className={classNames(projectcss.all, sty.svg__txeNx)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___8Ag7A,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Email Agent"}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"h2183"}
+                      data-plasmic-override={overrides.h2183}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h2183,
+                        "geologica-h3"
+                      )}
+                    >
+                      {
+                        "Send confirmation emails the moment a lead signs up, then follow up with sequenced messages that nurture and educate."
+                      }
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___5GIYp)}
+                >
+                  <div
+                    data-plasmic-name={"divider18"}
+                    data-plasmic-override={overrides.divider18}
+                    className={classNames(
+                      projectcss.all,
+                      sty.divider18,
+                      `divider ${(() => {
+                        {
+                          {
+                            return $state.carousel === 2
+                              ? "active-item"
+                              : "inactive-item";
+                          }
+                        }
+                      })()}`
+                    )}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__boMfd,
+                      (() => {
+                        try {
+                          return (() => {
+                            {
+                              {
+                                return $state.carousel === 2
+                                  ? "active-item"
+                                  : "inactive-item";
+                              }
+                            }
+                          })();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    )}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateCarousel"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["carousel"]
+                              },
+                              operation: 0,
+                              value: 2
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateCarousel"] != null &&
+                        typeof $steps["updateCarousel"] === "object" &&
+                        typeof $steps["updateCarousel"].then === "function"
+                      ) {
+                        $steps["updateCarousel"] =
+                          await $steps["updateCarousel"];
+                      }
+                    }}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ng8Fq)}
+                    >
+                      <Sms8SvgrepoCom1SvgIcon
+                        className={classNames(projectcss.all, sty.svg__pZ1C7)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__kmKn,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"SMS Agent"}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"h2184"}
+                      data-plasmic-override={overrides.h2184}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h2184,
+                        "geologica-h3"
+                      )}
+                    >
+                      {
+                        "Hold one-to-one personalized conversations that drive fast responses."
+                      }
+                    </div>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__vP3J7)}>
+                  <div
+                    data-plasmic-name={"divider19"}
+                    data-plasmic-override={overrides.divider19}
+                    className={classNames(
+                      projectcss.all,
+                      sty.divider19,
+                      `divider ${(() => {
+                        {
+                          {
+                            return $state.carousel === 3
+                              ? "active-item"
+                              : "inactive-item";
+                          }
+                        }
+                      })()}`
+                    )}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__n2RBh,
+                      (() => {
+                        try {
+                          return (() => {
+                            {
+                              {
+                                return $state.carousel === 3
+                                  ? "active-item"
+                                  : "inactive-item";
+                              }
+                            }
+                          })();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    )}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateCarousel"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["carousel"]
+                              },
+                              operation: 0,
+                              value: 3
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateCarousel"] != null &&
+                        typeof $steps["updateCarousel"] === "object" &&
+                        typeof $steps["updateCarousel"].then === "function"
+                      ) {
+                        $steps["updateCarousel"] =
+                          await $steps["updateCarousel"];
+                      }
+                    }}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__hUcFk)}
+                    >
+                      <CallSvgrepoComSvgIcon
+                        className={classNames(projectcss.all, sty.svg___2AYmM)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__fgnQz,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Phone Agent"}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"h2185"}
+                      data-plasmic-override={overrides.h2185}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h2185,
+                        "geologica-h3"
+                      )}
+                    >
+                      {
+                        "Drop voicemails, book appointments through AI voice agents, and route live calls directly to your team."
+                      }
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className={classNames(
+                projectcss.all,
+                sty.freeBox__iy5Ip,
+                "line-fade"
+              )}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox___2MlXn,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__xcjIv)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__xgnkv,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg___2A8J)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox___5Uo29,
+                  "line-fade"
+                )}
+              />
+            </div>
+          </div>
+          <div
+            data-plasmic-name={"section7Parent"}
+            data-plasmic-override={overrides.section7Parent}
+            className={classNames(projectcss.all, sty.section7Parent, ``)}
+          >
+            <div
+              data-plasmic-name={"section7Inner"}
+              data-plasmic-override={overrides.section7Inner}
+              className={classNames(
+                projectcss.all,
+                sty.section7Inner,
+                "border-fade grid-lines hero-glow-bg"
+              )}
+            >
+              <div
+                data-plasmic-name={"hero7"}
+                data-plasmic-override={overrides.hero7}
+                className={classNames(
+                  projectcss.all,
+                  sty.hero7,
+                  "load-in-compat"
+                )}
+              >
+                <div
+                  data-plasmic-name={"h17"}
+                  data-plasmic-override={overrides.h17}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.h17,
+                    " H1 geologica-h1"
+                  )}
+                >
+                  <React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "#000000" }}
+                    >
+                      {"Frequently "}
+                    </span>
+                    <React.Fragment>{"\n"}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ color: "#000000" }}
+                    >
+                      {"Asked Questions"}
+                    </span>
+                  </React.Fragment>
+                </div>
+                <div
+                  data-plasmic-name={"h27"}
+                  data-plasmic-override={overrides.h27}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.h27,
+                    "geologica-h3"
+                  )}
+                >
+                  {"Have questions? We're here to help."}
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__vg4Ag,
+                  "tilt-wrap"
+                )}
+                id={``}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__hmWzm,
+                    "card-3d"
+                  )}
+                  id={``}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__a3G4M,
+                      ``
+                    )}
+                  >
+                    <div
+                      data-plasmic-name={"faq13"}
+                      data-plasmic-override={overrides.faq13}
+                      className={classNames(projectcss.all, sty.faq13)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateFaq"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["faq"]
+                                },
+                                operation: 0,
+                                value: (() => {
+                                  {
+                                    {
+                                      return $state.faq === 1 ? 0 : 1;
+                                    }
+                                  }
+                                })()
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateFaq"] != null &&
+                          typeof $steps["updateFaq"] === "object" &&
+                          typeof $steps["updateFaq"].then === "function"
+                        ) {
+                          $steps["updateFaq"] = await $steps["updateFaq"];
+                        }
+                      }}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__o3Qpc
+                        )}
+                      >
+                        <div
+                          data-plasmic-name={"h1240"}
+                          data-plasmic-override={overrides.h1240}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.h1240,
+                            "geologica-h1"
+                          )}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "#000000" }}
+                            >
+                              {"Do I get to preview the ads?"}
+                            </span>
+                          </React.Fragment>
+                        </div>
+                        {(() => {
+                          try {
+                            return $state.faq == 1;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            data-plasmic-name={"h2186"}
+                            data-plasmic-override={overrides.h2186}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.h2186,
+                              "geologica-h3"
+                            )}
+                          >
+                            {
+                              "No. Campaigns are run under AdBuy\u2019s own brand assets rather than your business. For example, a weight-loss campaign might appear under an authority site like MensHealth.com. This approach boosts credibility, reduces ad costs, and allows us to introduce leads to your brand after they\u2019ve opted in."
+                            }
+                          </div>
+                        ) : null}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__dw6O
+                        )}
+                      >
+                        {(() => {
+                          try {
+                            return $state.faq != 1;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <PlusSvg2Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__epLrN
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                        {(() => {
+                          try {
+                            return $state.faq == 1;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <MinusSvgrepoComSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__kzO5
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"faq22"}
+                      data-plasmic-override={overrides.faq22}
+                      className={classNames(projectcss.all, sty.faq22)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateFaq"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["faq"]
+                                },
+                                operation: 0,
+                                value: (() => {
+                                  {
+                                    {
+                                      return $state.faq === 2 ? 0 : 2;
+                                    }
+                                  }
+                                })()
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateFaq"] != null &&
+                          typeof $steps["updateFaq"] === "object" &&
+                          typeof $steps["updateFaq"].then === "function"
+                        ) {
+                          $steps["updateFaq"] = await $steps["updateFaq"];
+                        }
+                      }}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___9I1W
+                        )}
+                      >
+                        <div
+                          data-plasmic-name={"h1241"}
+                          data-plasmic-override={overrides.h1241}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.h1241,
+                            "geologica-h1"
+                          )}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "#000000" }}
+                            >
+                              {"Where are the ads placed?"}
+                            </span>
+                          </React.Fragment>
+                        </div>
+                        {(() => {
+                          try {
+                            return $state.faq == 2;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            data-plasmic-name={"h2187"}
+                            data-plasmic-override={overrides.h2187}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.h2187,
+                              "geologica-h3"
+                            )}
+                          >
+                            {
+                              "We distribute your daily ad spend across a variety of platforms to maximize performance and route leads back to you efficiently. This includes Meta (Facebook and Instagram), Google (Search, YouTube, Display), Native networks like Taboola, direct site buys, influencer placements, and even direct mail campaigns."
+                            }
+                          </div>
+                        ) : null}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__c0OwU
+                        )}
+                      >
+                        {(() => {
+                          try {
+                            return $state.faq != 2;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <PlusSvg2Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___0BJma
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                        {(() => {
+                          try {
+                            return $state.faq == 1;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <MinusSvgrepoComSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___7QBoF
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"faq32"}
+                      data-plasmic-override={overrides.faq32}
+                      className={classNames(projectcss.all, sty.faq32)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateFaq"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["faq"]
+                                },
+                                operation: 0,
+                                value: (() => {
+                                  {
+                                    {
+                                      return $state.faq === 3 ? 0 : 3;
+                                    }
+                                  }
+                                })()
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateFaq"] != null &&
+                          typeof $steps["updateFaq"] === "object" &&
+                          typeof $steps["updateFaq"].then === "function"
+                        ) {
+                          $steps["updateFaq"] = await $steps["updateFaq"];
+                        }
+                      }}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__g12Yx
+                        )}
+                      >
+                        <div
+                          data-plasmic-name={"h1242"}
+                          data-plasmic-override={overrides.h1242}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.h1242,
+                            "geologica-h1"
+                          )}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "#000000" }}
+                            >
+                              {"Does AdBuy take a cut of my daily budget?"}
+                            </span>
+                          </React.Fragment>
+                        </div>
+                        {(() => {
+                          try {
+                            return $state.faq == 3;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            data-plasmic-name={"h2188"}
+                            data-plasmic-override={overrides.h2188}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.h2188,
+                              "geologica-h3"
+                            )}
+                          >
+                            {
+                              "AdBuy doesn\u2019t operate on a fixed cut of your daily budget. Instead, we focus on delivering leads at the going market rate. In industries like fintech, legal, and medical, lower-intent social leads typically run $15\u2013$30 each, while higher-intent search leads range from $75\u2013$150. Our goal is to deliver at or below those benchmarks, whether it requires 1% or 90% of your daily budget. The only thing that matters is generating positive ROI so you\u2019ll continue scaling with us."
+                            }
+                          </div>
+                        ) : null}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tFtW
+                        )}
+                      >
+                        {(() => {
+                          try {
+                            return $state.faq != 3;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <PlusSvg2Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___4O1J8
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                        {(() => {
+                          try {
+                            return $state.faq == 3;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <MinusSvgrepoComSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__xbGdG
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"faq42"}
+                      data-plasmic-override={overrides.faq42}
+                      className={classNames(projectcss.all, sty.faq42)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateFaq"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["faq"]
+                                },
+                                operation: 0,
+                                value: (() => {
+                                  {
+                                    {
+                                      return $state.faq === 4 ? 0 : 4;
+                                    }
+                                  }
+                                })()
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateFaq"] != null &&
+                          typeof $steps["updateFaq"] === "object" &&
+                          typeof $steps["updateFaq"].then === "function"
+                        ) {
+                          $steps["updateFaq"] = await $steps["updateFaq"];
+                        }
+                      }}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__iaG7R
+                        )}
+                      >
+                        <div
+                          data-plasmic-name={"h1243"}
+                          data-plasmic-override={overrides.h1243}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.h1243,
+                            "geologica-h1"
+                          )}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "#000000" }}
+                            >
+                              {"How are leads delivered to me?"}
+                            </span>
+                          </React.Fragment>
+                        </div>
+                        {(() => {
+                          try {
+                            return $state.faq == 4;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            data-plasmic-name={"h2189"}
+                            data-plasmic-override={overrides.h2189}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.h2189,
+                              "geologica-h3"
+                            )}
+                          >
+                            {
+                              "Leads are delivered in real time, instantly routed into your AdBuy Lead List. From there, they can be distributed round-robin style to your team or integrated into your CRM and workflows. "
+                            }
+                          </div>
+                        ) : null}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__tT2FM
+                        )}
+                      >
+                        {(() => {
+                          try {
+                            return $state.faq != 4;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <PlusSvg2Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__j283
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                        {(() => {
+                          try {
+                            return $state.faq == 4;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <MinusSvgrepoComSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__rVfp9
+                            )}
+                            role={"img"}
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className={classNames(
+                projectcss.all,
+                sty.freeBox___11Thb,
+                "line-fade"
+              )}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__cQtwA,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__oxrjm)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__hGvQy,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__tdVkm)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__wAu76,
+                  "line-fade"
+                )}
+              />
+            </div>
+          </div>
+          <div
             data-plasmic-name={"shooters"}
             data-plasmic-override={overrides.shooters}
             className={classNames(
@@ -2230,9 +3943,8 @@ const PlasmicDescendants = {
     "hero2",
     "h2182",
     "section3Parent",
-    "sectionInner",
+    "section3Inner",
     "hero3",
-    "h2196",
     "h112",
     "h23",
     "btn3",
@@ -2262,6 +3974,55 @@ const PlasmicDescendants = {
     "h2180",
     "divider16",
     "h2181",
+    "section5Parent",
+    "section5Inner",
+    "hero5",
+    "h15",
+    "h25",
+    "btn5",
+    "section6Parent",
+    "section6Inner",
+    "tilt2",
+    "mainContainer16",
+    "header20",
+    "addedHeader12",
+    "ageHeader11",
+    "typeHeader11",
+    "nameHeader11",
+    "phoneHeader11",
+    "emailHeader11",
+    "locationHeader11",
+    "data8",
+    "addedRow111",
+    "ageRow111",
+    "typeRow111",
+    "nameRow111",
+    "phoneRow111",
+    "emailRow111",
+    "locationRow111",
+    "divider17",
+    "h2183",
+    "divider18",
+    "h2184",
+    "divider19",
+    "h2185",
+    "section7Parent",
+    "section7Inner",
+    "hero7",
+    "h17",
+    "h27",
+    "faq13",
+    "h1240",
+    "h2186",
+    "faq22",
+    "h1241",
+    "h2187",
+    "faq32",
+    "h1242",
+    "h2188",
+    "faq42",
+    "h1243",
+    "h2189",
     "shooters",
     "carouselSelectedItems",
     "carouselBtnFunction"
@@ -2379,16 +4140,14 @@ const PlasmicDescendants = {
   h2182: ["h2182"],
   section3Parent: [
     "section3Parent",
-    "sectionInner",
+    "section3Inner",
     "hero3",
-    "h2196",
     "h112",
     "h23",
     "btn3"
   ],
-  sectionInner: ["sectionInner", "hero3", "h2196", "h112", "h23", "btn3"],
-  hero3: ["hero3", "h2196", "h112", "h23", "btn3"],
-  h2196: ["h2196"],
+  section3Inner: ["section3Inner", "hero3", "h112", "h23", "btn3"],
+  hero3: ["hero3", "h112", "h23", "btn3"],
   h112: ["h112"],
   h23: ["h23"],
   btn3: ["btn3"],
@@ -2526,6 +4285,205 @@ const PlasmicDescendants = {
   h2180: ["h2180"],
   divider16: ["divider16"],
   h2181: ["h2181"],
+  section5Parent: [
+    "section5Parent",
+    "section5Inner",
+    "hero5",
+    "h15",
+    "h25",
+    "btn5"
+  ],
+  section5Inner: ["section5Inner", "hero5", "h15", "h25", "btn5"],
+  hero5: ["hero5", "h15", "h25", "btn5"],
+  h15: ["h15"],
+  h25: ["h25"],
+  btn5: ["btn5"],
+  section6Parent: [
+    "section6Parent",
+    "section6Inner",
+    "tilt2",
+    "mainContainer16",
+    "header20",
+    "addedHeader12",
+    "ageHeader11",
+    "typeHeader11",
+    "nameHeader11",
+    "phoneHeader11",
+    "emailHeader11",
+    "locationHeader11",
+    "data8",
+    "addedRow111",
+    "ageRow111",
+    "typeRow111",
+    "nameRow111",
+    "phoneRow111",
+    "emailRow111",
+    "locationRow111",
+    "divider17",
+    "h2183",
+    "divider18",
+    "h2184",
+    "divider19",
+    "h2185"
+  ],
+  section6Inner: [
+    "section6Inner",
+    "tilt2",
+    "mainContainer16",
+    "header20",
+    "addedHeader12",
+    "ageHeader11",
+    "typeHeader11",
+    "nameHeader11",
+    "phoneHeader11",
+    "emailHeader11",
+    "locationHeader11",
+    "data8",
+    "addedRow111",
+    "ageRow111",
+    "typeRow111",
+    "nameRow111",
+    "phoneRow111",
+    "emailRow111",
+    "locationRow111",
+    "divider17",
+    "h2183",
+    "divider18",
+    "h2184",
+    "divider19",
+    "h2185"
+  ],
+  tilt2: [
+    "tilt2",
+    "mainContainer16",
+    "header20",
+    "addedHeader12",
+    "ageHeader11",
+    "typeHeader11",
+    "nameHeader11",
+    "phoneHeader11",
+    "emailHeader11",
+    "locationHeader11",
+    "data8",
+    "addedRow111",
+    "ageRow111",
+    "typeRow111",
+    "nameRow111",
+    "phoneRow111",
+    "emailRow111",
+    "locationRow111"
+  ],
+  mainContainer16: [
+    "mainContainer16",
+    "header20",
+    "addedHeader12",
+    "ageHeader11",
+    "typeHeader11",
+    "nameHeader11",
+    "phoneHeader11",
+    "emailHeader11",
+    "locationHeader11",
+    "data8",
+    "addedRow111",
+    "ageRow111",
+    "typeRow111",
+    "nameRow111",
+    "phoneRow111",
+    "emailRow111",
+    "locationRow111"
+  ],
+  header20: [
+    "header20",
+    "addedHeader12",
+    "ageHeader11",
+    "typeHeader11",
+    "nameHeader11",
+    "phoneHeader11",
+    "emailHeader11",
+    "locationHeader11"
+  ],
+  addedHeader12: ["addedHeader12"],
+  ageHeader11: ["ageHeader11"],
+  typeHeader11: ["typeHeader11"],
+  nameHeader11: ["nameHeader11"],
+  phoneHeader11: ["phoneHeader11"],
+  emailHeader11: ["emailHeader11"],
+  locationHeader11: ["locationHeader11"],
+  data8: [
+    "data8",
+    "addedRow111",
+    "ageRow111",
+    "typeRow111",
+    "nameRow111",
+    "phoneRow111",
+    "emailRow111",
+    "locationRow111"
+  ],
+  addedRow111: ["addedRow111"],
+  ageRow111: ["ageRow111"],
+  typeRow111: ["typeRow111"],
+  nameRow111: ["nameRow111"],
+  phoneRow111: ["phoneRow111"],
+  emailRow111: ["emailRow111"],
+  locationRow111: ["locationRow111"],
+  divider17: ["divider17"],
+  h2183: ["h2183"],
+  divider18: ["divider18"],
+  h2184: ["h2184"],
+  divider19: ["divider19"],
+  h2185: ["h2185"],
+  section7Parent: [
+    "section7Parent",
+    "section7Inner",
+    "hero7",
+    "h17",
+    "h27",
+    "faq13",
+    "h1240",
+    "h2186",
+    "faq22",
+    "h1241",
+    "h2187",
+    "faq32",
+    "h1242",
+    "h2188",
+    "faq42",
+    "h1243",
+    "h2189"
+  ],
+  section7Inner: [
+    "section7Inner",
+    "hero7",
+    "h17",
+    "h27",
+    "faq13",
+    "h1240",
+    "h2186",
+    "faq22",
+    "h1241",
+    "h2187",
+    "faq32",
+    "h1242",
+    "h2188",
+    "faq42",
+    "h1243",
+    "h2189"
+  ],
+  hero7: ["hero7", "h17", "h27"],
+  h17: ["h17"],
+  h27: ["h27"],
+  faq13: ["faq13", "h1240", "h2186"],
+  h1240: ["h1240"],
+  h2186: ["h2186"],
+  faq22: ["faq22", "h1241", "h2187"],
+  h1241: ["h1241"],
+  h2187: ["h2187"],
+  faq32: ["faq32", "h1242", "h2188"],
+  h1242: ["h1242"],
+  h2188: ["h2188"],
+  faq42: ["faq42", "h1243", "h2189"],
+  h1243: ["h1243"],
+  h2189: ["h2189"],
   shooters: ["shooters"],
   carouselSelectedItems: ["carouselSelectedItems"],
   carouselBtnFunction: ["carouselBtnFunction"]
@@ -2564,9 +4522,8 @@ type NodeDefaultElementType = {
   hero2: "div";
   h2182: "div";
   section3Parent: "div";
-  sectionInner: "div";
+  section3Inner: "div";
   hero3: "div";
-  h2196: "div";
   h112: "div";
   h23: "div";
   btn3: "a";
@@ -2596,6 +4553,55 @@ type NodeDefaultElementType = {
   h2180: "div";
   divider16: "div";
   h2181: "div";
+  section5Parent: "div";
+  section5Inner: "div";
+  hero5: "div";
+  h15: "div";
+  h25: "div";
+  btn5: "a";
+  section6Parent: "div";
+  section6Inner: "div";
+  tilt2: "div";
+  mainContainer16: "div";
+  header20: "div";
+  addedHeader12: "div";
+  ageHeader11: "div";
+  typeHeader11: "div";
+  nameHeader11: "div";
+  phoneHeader11: "div";
+  emailHeader11: "div";
+  locationHeader11: "div";
+  data8: "div";
+  addedRow111: "div";
+  ageRow111: "div";
+  typeRow111: "div";
+  nameRow111: "div";
+  phoneRow111: "div";
+  emailRow111: "div";
+  locationRow111: "div";
+  divider17: "div";
+  h2183: "div";
+  divider18: "div";
+  h2184: "div";
+  divider19: "div";
+  h2185: "div";
+  section7Parent: "div";
+  section7Inner: "div";
+  hero7: "div";
+  h17: "div";
+  h27: "div";
+  faq13: "div";
+  h1240: "div";
+  h2186: "div";
+  faq22: "div";
+  h1241: "div";
+  h2187: "div";
+  faq32: "div";
+  h1242: "div";
+  h2188: "div";
+  faq42: "div";
+  h1243: "div";
+  h2189: "div";
   shooters: "div";
   carouselSelectedItems: typeof Embed;
   carouselBtnFunction: "div";
@@ -2692,9 +4698,8 @@ export const PlasmicHomepage = Object.assign(
     hero2: makeNodeComponent("hero2"),
     h2182: makeNodeComponent("h2182"),
     section3Parent: makeNodeComponent("section3Parent"),
-    sectionInner: makeNodeComponent("sectionInner"),
+    section3Inner: makeNodeComponent("section3Inner"),
     hero3: makeNodeComponent("hero3"),
-    h2196: makeNodeComponent("h2196"),
     h112: makeNodeComponent("h112"),
     h23: makeNodeComponent("h23"),
     btn3: makeNodeComponent("btn3"),
@@ -2724,6 +4729,55 @@ export const PlasmicHomepage = Object.assign(
     h2180: makeNodeComponent("h2180"),
     divider16: makeNodeComponent("divider16"),
     h2181: makeNodeComponent("h2181"),
+    section5Parent: makeNodeComponent("section5Parent"),
+    section5Inner: makeNodeComponent("section5Inner"),
+    hero5: makeNodeComponent("hero5"),
+    h15: makeNodeComponent("h15"),
+    h25: makeNodeComponent("h25"),
+    btn5: makeNodeComponent("btn5"),
+    section6Parent: makeNodeComponent("section6Parent"),
+    section6Inner: makeNodeComponent("section6Inner"),
+    tilt2: makeNodeComponent("tilt2"),
+    mainContainer16: makeNodeComponent("mainContainer16"),
+    header20: makeNodeComponent("header20"),
+    addedHeader12: makeNodeComponent("addedHeader12"),
+    ageHeader11: makeNodeComponent("ageHeader11"),
+    typeHeader11: makeNodeComponent("typeHeader11"),
+    nameHeader11: makeNodeComponent("nameHeader11"),
+    phoneHeader11: makeNodeComponent("phoneHeader11"),
+    emailHeader11: makeNodeComponent("emailHeader11"),
+    locationHeader11: makeNodeComponent("locationHeader11"),
+    data8: makeNodeComponent("data8"),
+    addedRow111: makeNodeComponent("addedRow111"),
+    ageRow111: makeNodeComponent("ageRow111"),
+    typeRow111: makeNodeComponent("typeRow111"),
+    nameRow111: makeNodeComponent("nameRow111"),
+    phoneRow111: makeNodeComponent("phoneRow111"),
+    emailRow111: makeNodeComponent("emailRow111"),
+    locationRow111: makeNodeComponent("locationRow111"),
+    divider17: makeNodeComponent("divider17"),
+    h2183: makeNodeComponent("h2183"),
+    divider18: makeNodeComponent("divider18"),
+    h2184: makeNodeComponent("h2184"),
+    divider19: makeNodeComponent("divider19"),
+    h2185: makeNodeComponent("h2185"),
+    section7Parent: makeNodeComponent("section7Parent"),
+    section7Inner: makeNodeComponent("section7Inner"),
+    hero7: makeNodeComponent("hero7"),
+    h17: makeNodeComponent("h17"),
+    h27: makeNodeComponent("h27"),
+    faq13: makeNodeComponent("faq13"),
+    h1240: makeNodeComponent("h1240"),
+    h2186: makeNodeComponent("h2186"),
+    faq22: makeNodeComponent("faq22"),
+    h1241: makeNodeComponent("h1241"),
+    h2187: makeNodeComponent("h2187"),
+    faq32: makeNodeComponent("faq32"),
+    h1242: makeNodeComponent("h1242"),
+    h2188: makeNodeComponent("h2188"),
+    faq42: makeNodeComponent("faq42"),
+    h1243: makeNodeComponent("h1243"),
+    h2189: makeNodeComponent("h2189"),
     shooters: makeNodeComponent("shooters"),
     carouselSelectedItems: makeNodeComponent("carouselSelectedItems"),
     carouselBtnFunction: makeNodeComponent("carouselBtnFunction"),
