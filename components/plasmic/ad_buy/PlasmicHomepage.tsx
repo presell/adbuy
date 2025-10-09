@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import Footer from "../../Footer"; // plasmic-import: lkw848Ngoy7j/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
@@ -213,6 +214,7 @@ export type PlasmicHomepage__OverridesType = {
   h1243?: Flex__<"div">;
   h2189?: Flex__<"div">;
   shooters?: Flex__<"div">;
+  footer?: Flex__<typeof Footer>;
   carouselSelectedItems?: Flex__<typeof Embed>;
   carouselBtnFunction?: Flex__<"div">;
 };
@@ -3835,6 +3837,12 @@ function PlasmicHomepage__RenderFunc(props: {
               style={{ "--delay": "30s" }}
             />
           </div>
+          <Footer
+            data-plasmic-name={"footer"}
+            data-plasmic-override={overrides.footer}
+            className={classNames("__wab_instance", sty.footer)}
+          />
+
           <Embed
             data-plasmic-name={"carouselSelectedItems"}
             data-plasmic-override={overrides.carouselSelectedItems}
@@ -4024,6 +4032,7 @@ const PlasmicDescendants = {
     "h1243",
     "h2189",
     "shooters",
+    "footer",
     "carouselSelectedItems",
     "carouselBtnFunction"
   ],
@@ -4485,6 +4494,7 @@ const PlasmicDescendants = {
   h1243: ["h1243"],
   h2189: ["h2189"],
   shooters: ["shooters"],
+  footer: ["footer"],
   carouselSelectedItems: ["carouselSelectedItems"],
   carouselBtnFunction: ["carouselBtnFunction"]
 } as const;
@@ -4603,6 +4613,7 @@ type NodeDefaultElementType = {
   h1243: "div";
   h2189: "div";
   shooters: "div";
+  footer: typeof Footer;
   carouselSelectedItems: typeof Embed;
   carouselBtnFunction: "div";
 };
@@ -4779,6 +4790,7 @@ export const PlasmicHomepage = Object.assign(
     h1243: makeNodeComponent("h1243"),
     h2189: makeNodeComponent("h2189"),
     shooters: makeNodeComponent("shooters"),
+    footer: makeNodeComponent("footer"),
     carouselSelectedItems: makeNodeComponent("carouselSelectedItems"),
     carouselBtnFunction: makeNodeComponent("carouselBtnFunction"),
 

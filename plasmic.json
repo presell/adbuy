@@ -129,6 +129,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/signup"
+        },
+        {
+          "id": "lkw848Ngoy7j",
+          "name": "Footer",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicFooter.tsx",
+          "importSpec": {
+            "modulePath": "Footer.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicFooter.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -241,6 +254,16 @@
           "id": "3mSPGa3ElJaY",
           "name": "MinusSvgrepoComSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__MinusSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "w5CBTUelss3U",
+          "name": "AdBuyDarkTextSmallestCursorSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__AdBuyDarkTextSmallestCursorSvg.tsx"
+        },
+        {
+          "id": "GoDXNUB0EB6B",
+          "name": "ApiProductSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ApiProductSvg.tsx"
         }
       ],
       "images": [
@@ -248,6 +271,21 @@
           "id": "FzFAlCIY1jyC",
           "name": "AdBuy - Social Share - Aug25 - v2.png",
           "filePath": "../public/plasmic/ad_buy/images/adBuySocialShareAug25V2Png.png"
+        },
+        {
+          "id": "THkDB7xp4Ccw",
+          "name": "xDark.svg 2",
+          "filePath": "../public/plasmic/ad_buy/images/xDarkSvg2.svg"
+        },
+        {
+          "id": "D5a9znnkO4gt",
+          "name": "instagramDark.svg",
+          "filePath": "../public/plasmic/ad_buy/images/instagramDarkSvg.svg"
+        },
+        {
+          "id": "HYjZW7bPg7ka",
+          "name": "metaDark.svg",
+          "filePath": "../public/plasmic/ad_buy/images/metaDarkSvg.svg"
         }
       ],
       "indirect": false,
