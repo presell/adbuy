@@ -1177,7 +1177,7 @@
   padding-top: 60px;
   margin-bottom: 10px;
   padding-bottom: 50px;
-  background: none;
+  background: #f4f4f4;
   min-width: 0;
   border-right: 1px solid #d3d3d3;
   border-left: 1px solid #d3d3d3;
@@ -1237,7 +1237,7 @@
   margin-top: 0px;
   margin-bottom: 0px;
   text-align: left;
-  font-family: "Inter", sans-serif;
+  font-family: var(--plasmic-font-geologica);
   font-weight: 400;
   font-style: normal;
   text-transform: none;
