@@ -138,6 +138,7 @@ export type PlasmicHomepage__OverridesType = {
   h112?: Flex__<"div">;
   h23?: Flex__<"div">;
   btn3?: Flex__<"a"> & Partial<LinkProps>;
+  section3Divider?: Flex__<"div">;
   section4Parent?: Flex__<"div">;
   section4Inner?: Flex__<"div">;
   tilt?: Flex__<"div">;
@@ -170,6 +171,7 @@ export type PlasmicHomepage__OverridesType = {
   h15?: Flex__<"div">;
   h25?: Flex__<"div">;
   btn5?: Flex__<"a"> & Partial<LinkProps>;
+  section5Divider?: Flex__<"div">;
   section6Parent?: Flex__<"div">;
   section6Inner?: Flex__<"div">;
   tilt2?: Flex__<"div">;
@@ -1253,6 +1255,12 @@ function PlasmicHomepage__RenderFunc(props: {
             </div>
           </div>
           <div
+            data-plasmic-name={"section3Divider"}
+            data-plasmic-override={overrides.section3Divider}
+            className={classNames(projectcss.all, sty.section3Divider)}
+          />
+
+          <div
             data-plasmic-name={"section4Parent"}
             data-plasmic-override={overrides.section4Parent}
             className={classNames(projectcss.all, sty.section4Parent, ``)}
@@ -2188,6 +2196,12 @@ function PlasmicHomepage__RenderFunc(props: {
             </div>
           </div>
           <div
+            data-plasmic-name={"section5Divider"}
+            data-plasmic-override={overrides.section5Divider}
+            className={classNames(projectcss.all, sty.section5Divider)}
+          />
+
+          <div
             data-plasmic-name={"section6Parent"}
             data-plasmic-override={overrides.section6Parent}
             className={classNames(projectcss.all, sty.section6Parent, ``)}
@@ -3029,11 +3043,7 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"section7Inner"}
               data-plasmic-override={overrides.section7Inner}
-              className={classNames(
-                projectcss.all,
-                sty.section7Inner,
-                "border-fade grid-lines hero-glow-bg"
-              )}
+              className={classNames(projectcss.all, sty.section7Inner, ``)}
             >
               <div
                 data-plasmic-name={"hero7"}
@@ -3956,6 +3966,7 @@ const PlasmicDescendants = {
     "h112",
     "h23",
     "btn3",
+    "section3Divider",
     "section4Parent",
     "section4Inner",
     "tilt",
@@ -3988,6 +3999,7 @@ const PlasmicDescendants = {
     "h15",
     "h25",
     "btn5",
+    "section5Divider",
     "section6Parent",
     "section6Inner",
     "tilt2",
@@ -4160,6 +4172,7 @@ const PlasmicDescendants = {
   h112: ["h112"],
   h23: ["h23"],
   btn3: ["btn3"],
+  section3Divider: ["section3Divider"],
   section4Parent: [
     "section4Parent",
     "section4Inner",
@@ -4307,6 +4320,7 @@ const PlasmicDescendants = {
   h15: ["h15"],
   h25: ["h25"],
   btn5: ["btn5"],
+  section5Divider: ["section5Divider"],
   section6Parent: [
     "section6Parent",
     "section6Inner",
@@ -4537,6 +4551,7 @@ type NodeDefaultElementType = {
   h112: "div";
   h23: "div";
   btn3: "a";
+  section3Divider: "div";
   section4Parent: "div";
   section4Inner: "div";
   tilt: "div";
@@ -4569,6 +4584,7 @@ type NodeDefaultElementType = {
   h15: "div";
   h25: "div";
   btn5: "a";
+  section5Divider: "div";
   section6Parent: "div";
   section6Inner: "div";
   tilt2: "div";
@@ -4714,6 +4730,7 @@ export const PlasmicHomepage = Object.assign(
     h112: makeNodeComponent("h112"),
     h23: makeNodeComponent("h23"),
     btn3: makeNodeComponent("btn3"),
+    section3Divider: makeNodeComponent("section3Divider"),
     section4Parent: makeNodeComponent("section4Parent"),
     section4Inner: makeNodeComponent("section4Inner"),
     tilt: makeNodeComponent("tilt"),
@@ -4746,6 +4763,7 @@ export const PlasmicHomepage = Object.assign(
     h15: makeNodeComponent("h15"),
     h25: makeNodeComponent("h25"),
     btn5: makeNodeComponent("btn5"),
+    section5Divider: makeNodeComponent("section5Divider"),
     section6Parent: makeNodeComponent("section6Parent"),
     section6Inner: makeNodeComponent("section6Inner"),
     tilt2: makeNodeComponent("tilt2"),
