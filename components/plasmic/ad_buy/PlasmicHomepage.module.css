@@ -1255,12 +1255,12 @@
 .svg__oRh0B {
   object-fit: cover;
   max-width: 100%;
-  height: 30px;
+  height: 28px;
   position: absolute;
-  left: 356px;
-  top: 148px;
+  left: 354px;
+  top: 149px;
   box-shadow: none;
-  width: 30px;
+  width: 28px;
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -1277,7 +1277,7 @@
   max-width: 100%;
   height: 33px;
   position: absolute;
-  left: 125px;
+  left: 124px;
   top: 183px;
   box-shadow: none;
   width: 33px;
@@ -1301,6 +1301,7 @@
   width: 100%;
   height: auto;
   margin-bottom: 10px;
+  background: #f4f4f4;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
