@@ -254,28 +254,26 @@ a {
 
 .dots {
   position: relative;
-  z-index: 0;
+  z-index: 0; /* keeps dots behind everything */
   width: 100%;
   height: 100%;
 
-  /* Base color */
+  /* Base fill + pattern */
   background-color: #f4f4f4 !important;
-
-  /* Dots pattern */
   background-image: radial-gradient(#cccccc 1px, transparent 1px);
   background-size: 20px 20px;
   background-repeat: repeat;
   background-position: top left;
 
-  /* PERFORMANCE SAFEGUARDS */
-  background-attachment: scroll; /* avoids GPU texture sync issues */
-  will-change: opacity, transform; /* limit re-renders */
-  transform: translateZ(0); /* force GPU compositing for smooth scroll */
-  contain: paint; /* isolate background repaints */
-
-  /* OPTIONAL subtle fade at top/bottom — uses opacity instead of mask */
-  position: relative;
+  /* Performance optimizations */
+  background-attachment: scroll;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  contain: paint;
+  overflow: hidden;
 }
+
+/* ✅ subtle top/bottom fade — now BEHIND content */
 .dots::before,
 .dots::after {
   content: "";
@@ -284,11 +282,11 @@ a {
   width: 100%;
   height: 80px;
   pointer-events: none;
-  z-index: 1;
-  background: linear-gradient(to bottom, #f4f4f4, rgba(244,244,244,0));
+  z-index: -1; /* 👈 crucial: pushes fade *behind* content */
+  background: linear-gradient(to bottom, #f4f4f4, rgba(244, 244, 244, 0));
 }
+
 .dots::after {
-  top: auto;
   bottom: 0;
   transform: rotate(180deg);
 }
