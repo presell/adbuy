@@ -201,6 +201,21 @@
           "id": "URAiCb9tdkki",
           "name": "WorkflowsProductTiltedSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__WorkflowsProductTiltedSvg.tsx"
+        },
+        {
+          "id": "t8ZrtsyJpBC1",
+          "name": "AccountIconSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__AccountIconSvg.tsx"
+        },
+        {
+          "id": "8wp36EsoJArA",
+          "name": "CreditCardSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__CreditCardSvg.tsx"
+        },
+        {
+          "id": "LUUpoirJOIYI",
+          "name": "ChartColumnIncreasingSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ChartColumnIncreasingSvg.tsx"
         }
       ],
       "images": [
