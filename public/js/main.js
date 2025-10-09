@@ -1,7 +1,8 @@
 // tilt container functions
 (function () {
   const UA = navigator.userAgent || "";
-  const isIOS = /iPad|iPhone|iPod/.test(UA) ||
+  const isIOS =
+    /iPad|iPhone|iPod/.test(UA) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   const isAndroid = /Android/i.test(UA);
   const isMobile = isIOS || isAndroid || matchMedia("(pointer:coarse)").matches;
@@ -11,6 +12,10 @@
       ? window.visualViewport.height
       : window.innerHeight;
 
+  /* ----------------------------
+     ✅ Marquee Initialization
+     (Still active — harmless)
+  -----------------------------*/
   function initMarquees() {
     document.querySelectorAll(".scroll-tilt").forEach((el) => {
       if (el.__tiltMarqueeInit) return;
@@ -18,6 +23,7 @@
 
       const track = document.createElement("div");
       track.className = "scroll-tilt-track";
+
       const kids = Array.from(el.children);
       kids.forEach((n) => track.appendChild(n));
       kids.forEach((n) => track.appendChild(n.cloneNode(true)));
@@ -54,6 +60,12 @@
     });
   }
 
+  /* ----------------------------
+     ❌ Tilt Initialization Disabled
+     (Full function commented out for debugging)
+  -----------------------------*/
+
+  /*
   function initTilt() {
     const pairs = Array.from(document.querySelectorAll(".tilt-wrap"))
       .map((wrap) => ({ wrap, card: wrap.querySelector(".card-3d") }))
@@ -153,10 +165,14 @@
       }
     });
   }
+  */
 
+  /* ----------------------------
+     🚀 Start — only marquee active
+  -----------------------------*/
   function start() {
     initMarquees();
-    setTimeout(initTilt, 300);
+    // setTimeout(initTilt, 300); // ❌ Disabled tilt initialization
   }
 
   if (document.readyState === "loading") {
@@ -165,6 +181,7 @@
     start();
   }
 })();
+
 
 
 window.reinitializeHomepageScripts = function () {
