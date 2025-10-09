@@ -894,28 +894,40 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                sty.freeBox__y25Y1,
-                "line-fade"
-              )}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__shL0U)} />
+            <div className={classNames(projectcss.all, sty.freeBox__y25Y1, ``)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__shL0U,
+                  "line-fade"
+                )}
+              />
 
               <CursorIsolatedSvgIcon
                 className={classNames(projectcss.all, sty.svg__qIeI)}
                 role={"img"}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox__jZxJs)} />
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__jZxJs,
+                  "line-fade"
+                )}
+              />
 
               <CursorIsolatedSvgIcon
                 className={classNames(projectcss.all, sty.svg___1Q481)}
                 role={"img"}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox___7En0)} />
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox___7En0,
+                  "line-fade"
+                )}
+              />
             </div>
           </div>
           <div
