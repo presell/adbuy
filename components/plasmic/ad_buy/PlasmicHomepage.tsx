@@ -973,7 +973,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     )}
                   >
                     {
-                      "Closing new business takes two things:\n\nLeads and Follow-Up.\n\nAdBuy delivers real-time leads       and follows up       until they\u2019re ready to convert.\n\nThere\u2019s zero campaign setup. Follow-up is autonomous. And it\u2019s built to scale.\n\nBecause you deserve better than marked-up, shared leads and endless hours of manual follow-up."
+                      "Closing new business takes two things:\n\nLeads and Activity.\n\nAdBuy delivers real-time leads       and follows up       until they\u2019re ready to convert.\n\nThere\u2019s zero campaign setup. Follow-up is autonomous. And it\u2019s built to scale.\n\nBecause you deserve better than marked-up, shared leads and endless hours of manual outreach."
                     }
                   </div>
                   <LeadsProductSvgIcon

@@ -86,6 +86,7 @@
   margin-bottom: 0px;
   border-bottom-style: none;
   border-bottom-width: 1px;
+  background: #f4f4f4;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
 }
@@ -1163,6 +1164,7 @@
   margin-bottom: 0px;
   border-bottom-style: none;
   border-bottom-width: 1px;
+  background: #f4f4f4;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
 }
