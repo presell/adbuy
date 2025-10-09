@@ -252,44 +252,46 @@ a {
    with Plasmic background override safeguard
 ---------------------------------------- */
 
-.dots {
+body .dots {
   position: relative;
-  z-index: 0; /* keeps dots behind everything */
+  z-index: 0;
   width: 100%;
   height: 100%;
 
-  /* Base fill + pattern */
+  /* Base fill + dot pattern (forced to render above Plasmic inline bg) */
   background-color: #f4f4f4 !important;
-  background-image: radial-gradient(#cccccc 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-repeat: repeat;
-  background-position: top left;
-
-  /* Performance optimizations */
+  background-image: radial-gradient(#cccccc 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  background-repeat: repeat !important;
+  background-position: top left !important;
   background-attachment: scroll;
-  will-change: opacity, transform;
+  background-blend-mode: normal;
+
+  /* Performance & safety */
   transform: translateZ(0);
+  will-change: background-position;
   contain: paint;
   overflow: hidden;
 }
 
-/* ✅ subtle top/bottom fade — now BEHIND content */
-.dots::before,
-.dots::after {
+/* Subtle fade at top/bottom, but safely behind content */
+body .dots::before,
+body .dots::after {
   content: "";
   position: absolute;
   left: 0;
   width: 100%;
   height: 80px;
   pointer-events: none;
-  z-index: -1; /* 👈 crucial: pushes fade *behind* content */
+  z-index: -1;
   background: linear-gradient(to bottom, #f4f4f4, rgba(244, 244, 244, 0));
 }
 
-.dots::after {
+body .dots::after {
   bottom: 0;
   transform: rotate(180deg);
 }
+
 
 /* 🧱 Container fade (white → light gray background, fading borders) */
 .container-fade {
