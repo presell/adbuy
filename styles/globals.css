@@ -257,44 +257,40 @@ a {
   z-index: 0;
   width: 100%;
   height: 100%;
-  background-color: #F4F4F4 !important;
+
+  /* Base color */
+  background-color: #f4f4f4 !important;
+
+  /* Dots pattern */
   background-image: radial-gradient(#cccccc 1px, transparent 1px);
   background-size: 20px 20px;
-  background-attachment: fixed; /* prevents reflow lag */
+  background-repeat: repeat;
+  background-position: top left;
 
-  /* smooth hardware rendering without forcing new GPU layers */
-  transform: translateZ(0);
-  will-change: auto;
+  /* PERFORMANCE SAFEGUARDS */
+  background-attachment: scroll; /* avoids GPU texture sync issues */
+  will-change: opacity, transform; /* limit re-renders */
+  transform: translateZ(0); /* force GPU compositing for smooth scroll */
+  contain: paint; /* isolate background repaints */
 
-  /* replaced fade effect — no mask-image re-rasterization */
-  overflow: hidden;
+  /* OPTIONAL subtle fade at top/bottom — uses opacity instead of mask */
+  position: relative;
 }
-
-/* subtle top/bottom fade using a pseudo-element */
-.dots::before {
+.dots::before,
+.dots::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(244, 244, 244, 1) 0%,
-    rgba(244, 244, 244, 0) 15%,
-    rgba(244, 244, 244, 0) 85%,
-    rgba(244, 244, 244, 1) 100%
-  );
+  left: 0;
+  width: 100%;
+  height: 80px;
   pointer-events: none;
   z-index: 1;
-  mix-blend-mode: lighten;
-  opacity: 0.7;
+  background: linear-gradient(to bottom, #f4f4f4, rgba(244,244,244,0));
 }
-
-/* 🛡 Safeguard: prevent Plasmic inline overrides */
-.dots[data-plasmic-root-element="true"],
-[data-plasmic-component-root] .dots {
-  background-color: #F4F4F4 !important;
-  background-image: radial-gradient(#cccccc 1px, transparent 1px) !important;
-  background-size: 20px 20px !important;
-  background-attachment: fixed !important;
+.dots::after {
+  top: auto;
+  bottom: 0;
+  transform: rotate(180deg);
 }
 
 /* 🧱 Container fade (white → light gray background, fading borders) */
