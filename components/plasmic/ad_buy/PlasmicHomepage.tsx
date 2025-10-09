@@ -77,6 +77,8 @@ import Mail1SvgIcon from "./icons/PlasmicIcon__Mail1Svg"; // plasmic-import: 41P
 import MapPinSvgIcon from "./icons/PlasmicIcon__MapPinSvg"; // plasmic-import: -SnCIoFrsIAj/icon
 import ExpandSvg2Icon from "./icons/PlasmicIcon__ExpandSvg2"; // plasmic-import: B8HifbPtEA9W/icon
 import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
+import LeadsProductSvgIcon from "./icons/PlasmicIcon__LeadsProductSvg"; // plasmic-import: zxoMIvW6Akl7/icon
+import WorkflowsProductTiltedSvgIcon from "./icons/PlasmicIcon__WorkflowsProductTiltedSvg"; // plasmic-import: URAiCb9tdkki/icon
 
 createPlasmicElementProxy;
 
@@ -115,6 +117,10 @@ export type PlasmicHomepage__OverridesType = {
   phoneRow19?: Flex__<"div">;
   emailRow19?: Flex__<"div">;
   locationRow19?: Flex__<"div">;
+  section2Parent?: Flex__<"div">;
+  section2Inner?: Flex__<"div">;
+  hero2?: Flex__<"div">;
+  h2182?: Flex__<"div">;
   shooters?: Flex__<"div">;
 };
 
@@ -937,6 +943,94 @@ function PlasmicHomepage__RenderFunc(props: {
             </div>
           </div>
           <div
+            data-plasmic-name={"section2Parent"}
+            data-plasmic-override={overrides.section2Parent}
+            className={classNames(projectcss.all, sty.section2Parent, ``)}
+          >
+            <div
+              data-plasmic-name={"section2Inner"}
+              data-plasmic-override={overrides.section2Inner}
+              className={classNames(projectcss.all, sty.section2Inner, "dots")}
+            >
+              <div
+                data-plasmic-name={"hero2"}
+                data-plasmic-override={overrides.hero2}
+                className={classNames(
+                  projectcss.all,
+                  sty.hero2,
+                  "load-in-compat"
+                )}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__clkiV)}>
+                  <div
+                    data-plasmic-name={"h2182"}
+                    data-plasmic-override={overrides.h2182}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.h2182,
+                      "geologica-h2"
+                    )}
+                  >
+                    {
+                      "Closing new business takes two things:\n\nLeads and Follow-Up.\n\nAdBuy delivers real-time leads       and follows up       until they\u2019re ready to convert.\n\nThere\u2019s zero campaign setup. Follow-up is autonomous. And it\u2019s built to scale.\n\nBecause you deserve better than marked-up, shared leads and endless hours of manual follow-up."
+                    }
+                  </div>
+                  <LeadsProductSvgIcon
+                    className={classNames(projectcss.all, sty.svg__oRh0B)}
+                    role={"img"}
+                  />
+
+                  <WorkflowsProductTiltedSvgIcon
+                    className={classNames(projectcss.all, sty.svg__kazcH)}
+                    role={"img"}
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className={classNames(
+                projectcss.all,
+                sty.freeBox__l5ZCm,
+                "line-fade"
+              )}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__kSkna,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__uy3FA)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__jnXnD,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg___1QMhe)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__vvsMr,
+                  "line-fade"
+                )}
+              />
+            </div>
+          </div>
+          <div
             data-plasmic-name={"shooters"}
             data-plasmic-override={overrides.shooters}
             className={classNames(
@@ -1038,6 +1132,10 @@ const PlasmicDescendants = {
     "phoneRow19",
     "emailRow19",
     "locationRow19",
+    "section2Parent",
+    "section2Inner",
+    "hero2",
+    "h2182",
     "shooters"
   ],
   section: ["section"],
@@ -1147,6 +1245,10 @@ const PlasmicDescendants = {
   phoneRow19: ["phoneRow19"],
   emailRow19: ["emailRow19"],
   locationRow19: ["locationRow19"],
+  section2Parent: ["section2Parent", "section2Inner", "hero2", "h2182"],
+  section2Inner: ["section2Inner", "hero2", "h2182"],
+  hero2: ["hero2", "h2182"],
+  h2182: ["h2182"],
   shooters: ["shooters"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1178,6 +1280,10 @@ type NodeDefaultElementType = {
   phoneRow19: "div";
   emailRow19: "div";
   locationRow19: "div";
+  section2Parent: "div";
+  section2Inner: "div";
+  hero2: "div";
+  h2182: "div";
   shooters: "div";
 };
 
@@ -1267,6 +1373,10 @@ export const PlasmicHomepage = Object.assign(
     phoneRow19: makeNodeComponent("phoneRow19"),
     emailRow19: makeNodeComponent("emailRow19"),
     locationRow19: makeNodeComponent("locationRow19"),
+    section2Parent: makeNodeComponent("section2Parent"),
+    section2Inner: makeNodeComponent("section2Inner"),
+    hero2: makeNodeComponent("hero2"),
+    h2182: makeNodeComponent("h2182"),
     shooters: makeNodeComponent("shooters"),
 
     // Metadata about props expected for PlasmicHomepage

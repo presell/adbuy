@@ -196,6 +196,11 @@
           "id": "Ydmyu9ZoCwig",
           "name": "UserRoundSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__UserRoundSvg.tsx"
+        },
+        {
+          "id": "URAiCb9tdkki",
+          "name": "WorkflowsProductTiltedSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__WorkflowsProductTiltedSvg.tsx"
         }
       ],
       "images": [
