@@ -150,6 +150,29 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  // ✅ Re-run highlighting after client-side navigation
+useEffect(() => {
+  const handleRouteChange = () => {
+    if (window.reinitializeHomepageScripts) {
+      console.log("[App] 🔁 Re-running reinitializeHomepageScripts after route change");
+      window.reinitializeHomepageScripts();
+    }
+  };
+
+  window.addEventListener("plasmic:pageLoaded", handleRouteChange);
+  window.addEventListener("popstate", handleRouteChange); // for browser back/forward
+  window.addEventListener("pushstate", handleRouteChange);
+  window.addEventListener("replacestate", handleRouteChange);
+
+  return () => {
+    window.removeEventListener("plasmic:pageLoaded", handleRouteChange);
+    window.removeEventListener("popstate", handleRouteChange);
+    window.removeEventListener("pushstate", handleRouteChange);
+    window.removeEventListener("replacestate", handleRouteChange);
+  };
+}, []);
+
+
   return (
     <>
 
