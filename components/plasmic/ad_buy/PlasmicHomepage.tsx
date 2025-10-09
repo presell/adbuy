@@ -566,95 +566,44 @@ function PlasmicHomepage__RenderFunc(props: {
                   )}
                   id={``}
                 >
-                  <div
-                    data-plasmic-name={"mainContainer14"}
-                    data-plasmic-override={overrides.mainContainer14}
-                    className={classNames(
-                      projectcss.all,
-                      sty.mainContainer14,
-                      "container-fade LeadContainer load-in-compat"
-                    )}
-                  >
+                  {false ? (
                     <div
+                      data-plasmic-name={"mainContainer14"}
+                      data-plasmic-override={overrides.mainContainer14}
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox__u4Dd,
-                        "tableInner"
+                        sty.mainContainer14,
+                        "container-fade LeadContainer load-in-compat"
                       )}
                     >
                       <div
-                        data-plasmic-name={"header18"}
-                        data-plasmic-override={overrides.header18}
                         className={classNames(
                           projectcss.all,
-                          sty.header18,
-                          "header"
+                          sty.freeBox__u4Dd,
+                          "tableInner"
                         )}
                       >
                         <div
-                          data-plasmic-name={"addedHeader10"}
-                          data-plasmic-override={overrides.addedHeader10}
+                          data-plasmic-name={"header18"}
+                          data-plasmic-override={overrides.header18}
                           className={classNames(
                             projectcss.all,
-                            sty.addedHeader10
+                            sty.header18,
+                            "header"
                           )}
                         >
-                          <Calendar2SvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__dcfjo
-                            )}
-                            role={"img"}
-                          />
-
                           <div
+                            data-plasmic-name={"addedHeader10"}
+                            data-plasmic-override={overrides.addedHeader10}
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__abbVf,
-                              "geologica-h1"
+                              sty.addedHeader10
                             )}
                           >
-                            {"Added"}
-                          </div>
-                        </div>
-                        <div
-                          data-plasmic-name={"ageHeader9"}
-                          data-plasmic-override={overrides.ageHeader9}
-                          className={classNames(projectcss.all, sty.ageHeader9)}
-                        >
-                          <TimerSvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__ijgBf
-                            )}
-                            role={"img"}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__eLlc,
-                              "geologica-h1"
-                            )}
-                          >
-                            {"Age"}
-                          </div>
-                        </div>
-                        {false ? (
-                          <div
-                            data-plasmic-name={"typeHeader9"}
-                            data-plasmic-override={overrides.typeHeader9}
-                            className={classNames(
-                              projectcss.all,
-                              sty.typeHeader9
-                            )}
-                          >
-                            <ShoppingCart1SvgIcon
+                            <Calendar2SvgIcon
                               className={classNames(
                                 projectcss.all,
-                                sty.svg___8Zkr2
+                                sty.svg__dcfjo
                               )}
                               role={"img"}
                             />
@@ -663,108 +612,25 @@ function PlasmicHomepage__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__ojOI,
-                                "geologica-text-medium"
+                                sty.text__abbVf,
+                                "geologica-h1"
                               )}
                             >
-                              {"Type"}
+                              {"Added"}
                             </div>
                           </div>
-                        ) : null}
-                        <div
-                          data-plasmic-name={"nameHeader9"}
-                          data-plasmic-override={overrides.nameHeader9}
-                          className={classNames(
-                            projectcss.all,
-                            sty.nameHeader9
-                          )}
-                        >
-                          <UserRoundSvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__gZzb5
-                            )}
-                            role={"img"}
-                          />
-
                           <div
+                            data-plasmic-name={"ageHeader9"}
+                            data-plasmic-override={overrides.ageHeader9}
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ykyA7,
-                              "geologica-h1"
+                              sty.ageHeader9
                             )}
                           >
-                            {"Name"}
-                          </div>
-                        </div>
-                        <div
-                          data-plasmic-name={"phoneHeader9"}
-                          data-plasmic-override={overrides.phoneHeader9}
-                          className={classNames(
-                            projectcss.all,
-                            sty.phoneHeader9
-                          )}
-                        >
-                          <PhoneSvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__lB49X
-                            )}
-                            role={"img"}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__djpVg,
-                              "geologica-h1"
-                            )}
-                          >
-                            {"Phone"}
-                          </div>
-                        </div>
-                        <div
-                          data-plasmic-name={"emailHeader9"}
-                          data-plasmic-override={overrides.emailHeader9}
-                          className={classNames(
-                            projectcss.all,
-                            sty.emailHeader9
-                          )}
-                        >
-                          <Mail1SvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__bszN
-                            )}
-                            role={"img"}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__f3NHs,
-                              "geologica-h1"
-                            )}
-                          >
-                            {"Email"}
-                          </div>
-                        </div>
-                        {false ? (
-                          <div
-                            data-plasmic-name={"locationHeader9"}
-                            data-plasmic-override={overrides.locationHeader9}
-                            className={classNames(
-                              projectcss.all,
-                              sty.locationHeader9
-                            )}
-                          >
-                            <MapPinSvgIcon
+                            <TimerSvgIcon
                               className={classNames(
                                 projectcss.all,
-                                sty.svg__i3ECz
+                                sty.svg__ijgBf
                               )}
                               role={"img"}
                             />
@@ -773,177 +639,328 @@ function PlasmicHomepage__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__wQiIi,
-                                "geologica-text-medium"
+                                sty.text__eLlc,
+                                "geologica-h1"
                               )}
                             >
-                              {"Location"}
+                              {"Age"}
                             </div>
                           </div>
-                        ) : null}
-                      </div>
-                      <div
-                        data-plasmic-name={"data6"}
-                        data-plasmic-override={overrides.data6}
-                        className={classNames(projectcss.all, sty.data6)}
-                      >
-                        <div
-                          data-plasmic-name={"addedRow19"}
-                          data-plasmic-override={overrides.addedRow19}
-                          className={classNames(projectcss.all, sty.addedRow19)}
-                        >
-                          <ExpandSvg2Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__o0FDo
-                            )}
-                            role={"img"}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__anE06,
-                              "geologica-h2"
-                            )}
-                          >
-                            {"Today"}
-                          </div>
-                        </div>
-                        <div
-                          data-plasmic-name={"ageRow19"}
-                          data-plasmic-override={overrides.ageRow19}
-                          className={classNames(projectcss.all, sty.ageRow19)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__buhoC
-                            )}
-                          >
+                          {false ? (
                             <div
+                              data-plasmic-name={"typeHeader9"}
+                              data-plasmic-override={overrides.typeHeader9}
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox___0R0Gs
+                                sty.typeHeader9
                               )}
+                            >
+                              <ShoppingCart1SvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg___8Zkr2
+                                )}
+                                role={"img"}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__ojOI,
+                                  "geologica-text-medium"
+                                )}
+                              >
+                                {"Type"}
+                              </div>
+                            </div>
+                          ) : null}
+                          <div
+                            data-plasmic-name={"nameHeader9"}
+                            data-plasmic-override={overrides.nameHeader9}
+                            className={classNames(
+                              projectcss.all,
+                              sty.nameHeader9
+                            )}
+                          >
+                            <UserRoundSvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__gZzb5
+                              )}
+                              role={"img"}
                             />
 
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__qDqNf,
-                                "geologica-h3"
+                                sty.text__ykyA7,
+                                "geologica-h1"
                               )}
                             >
-                              {"08m"}
+                              {"Name"}
                             </div>
                           </div>
-                        </div>
-                        {false ? (
                           <div
-                            data-plasmic-name={"typeRow19"}
-                            data-plasmic-override={overrides.typeRow19}
+                            data-plasmic-name={"phoneHeader9"}
+                            data-plasmic-override={overrides.phoneHeader9}
                             className={classNames(
                               projectcss.all,
-                              sty.typeRow19
+                              sty.phoneHeader9
+                            )}
+                          >
+                            <PhoneSvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__lB49X
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__djpVg,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"Phone"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"emailHeader9"}
+                            data-plasmic-override={overrides.emailHeader9}
+                            className={classNames(
+                              projectcss.all,
+                              sty.emailHeader9
+                            )}
+                          >
+                            <Mail1SvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__bszN
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__f3NHs,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"Email"}
+                            </div>
+                          </div>
+                          {false ? (
+                            <div
+                              data-plasmic-name={"locationHeader9"}
+                              data-plasmic-override={overrides.locationHeader9}
+                              className={classNames(
+                                projectcss.all,
+                                sty.locationHeader9
+                              )}
+                            >
+                              <MapPinSvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__i3ECz
+                                )}
+                                role={"img"}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__wQiIi,
+                                  "geologica-text-medium"
+                                )}
+                              >
+                                {"Location"}
+                              </div>
+                            </div>
+                          ) : null}
+                        </div>
+                        <div
+                          data-plasmic-name={"data6"}
+                          data-plasmic-override={overrides.data6}
+                          className={classNames(projectcss.all, sty.data6)}
+                        >
+                          <div
+                            data-plasmic-name={"addedRow19"}
+                            data-plasmic-override={overrides.addedRow19}
+                            className={classNames(
+                              projectcss.all,
+                              sty.addedRow19
+                            )}
+                          >
+                            <ExpandSvg2Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__o0FDo
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__anE06,
+                                "geologica-h2"
+                              )}
+                            >
+                              {"Today"}
+                            </div>
+                          </div>
+                          <div
+                            data-plasmic-name={"ageRow19"}
+                            data-plasmic-override={overrides.ageRow19}
+                            className={classNames(projectcss.all, sty.ageRow19)}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__buhoC
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___0R0Gs
+                                )}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__qDqNf,
+                                  "geologica-h3"
+                                )}
+                              >
+                                {"08m"}
+                              </div>
+                            </div>
+                          </div>
+                          {false ? (
+                            <div
+                              data-plasmic-name={"typeRow19"}
+                              data-plasmic-override={overrides.typeRow19}
+                              className={classNames(
+                                projectcss.all,
+                                sty.typeRow19
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___4Dy0M,
+                                  "geologica-text-less-medium"
+                                )}
+                              >
+                                {"Product"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___2Jcsq,
+                                  "geologica-text-less-medium"
+                                )}
+                              >
+                                {""}
+                              </div>
+                            </div>
+                          ) : null}
+                          <div
+                            data-plasmic-name={"nameRow19"}
+                            data-plasmic-override={overrides.nameRow19}
+                            className={classNames(
+                              projectcss.all,
+                              sty.nameRow19
                             )}
                           >
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text___4Dy0M,
-                                "geologica-text-less-medium"
+                                sty.text__gok7U,
+                                "geologica-h2"
                               )}
                             >
-                              {"Product"}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___2Jcsq,
-                                "geologica-text-less-medium"
-                              )}
-                            >
-                              {""}
+                              {"Jane Reed"}
                             </div>
                           </div>
-                        ) : null}
-                        <div
-                          data-plasmic-name={"nameRow19"}
-                          data-plasmic-override={overrides.nameRow19}
-                          className={classNames(projectcss.all, sty.nameRow19)}
-                        >
                           <div
+                            data-plasmic-name={"phoneRow19"}
+                            data-plasmic-override={overrides.phoneRow19}
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__gok7U,
-                              "geologica-h2"
-                            )}
-                          >
-                            {"Jane Reed"}
-                          </div>
-                        </div>
-                        <div
-                          data-plasmic-name={"phoneRow19"}
-                          data-plasmic-override={overrides.phoneRow19}
-                          className={classNames(projectcss.all, sty.phoneRow19)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__bUzbk,
-                              "geologica-h2"
-                            )}
-                          >
-                            {"704-415-1800"}
-                          </div>
-                        </div>
-                        <div
-                          data-plasmic-name={"emailRow19"}
-                          data-plasmic-override={overrides.emailRow19}
-                          className={classNames(projectcss.all, sty.emailRow19)}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___9QfnK,
-                              "geologica-h2"
-                            )}
-                          >
-                            {"jane@gmail.com"}
-                          </div>
-                        </div>
-                        {false ? (
-                          <div
-                            data-plasmic-name={"locationRow19"}
-                            data-plasmic-override={overrides.locationRow19}
-                            className={classNames(
-                              projectcss.all,
-                              sty.locationRow19
+                              sty.phoneRow19
                             )}
                           >
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__jdPLi,
-                                "geologica-text-less-medium"
+                                sty.text__bUzbk,
+                                "geologica-h2"
                               )}
                             >
-                              {"Charlotte, NC"}
+                              {"704-415-1800"}
                             </div>
                           </div>
-                        ) : null}
+                          <div
+                            data-plasmic-name={"emailRow19"}
+                            data-plasmic-override={overrides.emailRow19}
+                            className={classNames(
+                              projectcss.all,
+                              sty.emailRow19
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___9QfnK,
+                                "geologica-h2"
+                              )}
+                            >
+                              {"jane@gmail.com"}
+                            </div>
+                          </div>
+                          {false ? (
+                            <div
+                              data-plasmic-name={"locationRow19"}
+                              data-plasmic-override={overrides.locationRow19}
+                              className={classNames(
+                                projectcss.all,
+                                sty.locationRow19
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__jdPLi,
+                                  "geologica-text-less-medium"
+                                )}
+                              >
+                                {"Charlotte, NC"}
+                              </div>
+                            </div>
+                          ) : null}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -997,7 +1014,11 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"section2Inner"}
               data-plasmic-override={overrides.section2Inner}
-              className={classNames(projectcss.all, sty.section2Inner, "dots")}
+              className={classNames(
+                projectcss.all,
+                sty.section2Inner,
+                "border-fade dots"
+              )}
             >
               <div
                 data-plasmic-name={"hero2"}
@@ -1088,7 +1109,7 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.sectionInner,
-                "border-fade grid-lines hero-glow-bg"
+                "border-fade"
               )}
             >
               <div
@@ -1207,7 +1228,7 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.section4Inner,
-                "border-fade grid-lines hero-glow-bg"
+                "border-fade"
               )}
             >
               {false ? (
