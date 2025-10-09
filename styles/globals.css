@@ -254,23 +254,11 @@ a {
   background-color: #F4F4F4;
   background-image: radial-gradient(#cccccc 1px, transparent 1px);
   background-size: 20px 20px;
-  overflow: hidden; /* keep the pseudo fade contained */
-}
 
-/* fade overlay (top & bottom) */
-.dots::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    #F4F4F4 0%,
-    transparent 10%,
-    transparent 90%,
-    #F4F4F4 100%
-  );
-  z-index: 1;
+  /* ✅ removed isolation/z-index/mask — known scroll offenders */
+  will-change: auto; /* hint to browser not to over-optimize */
+  transform: translateZ(0); /* forces GPU composite layer safely */
+  backface-visibility: hidden; /* prevents repaint jumps */
 }
 
 /* 🧱 Container fade (white → light gray background, fading borders) */
