@@ -156,7 +156,7 @@
 
   function start() {
     initMarquees();
-    initTilt();
+    setTimeout(initTilt, 300);
   }
 
   if (document.readyState === "loading") {
