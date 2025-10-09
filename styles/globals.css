@@ -253,29 +253,30 @@ a {
   z-index: 0;
   width: 100%;
   min-height: 100%;
-  
-  background-color: #F4F4F4;
-  background-image: radial-gradient(#cccccc 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-attachment: fixed; /* fixes scroll lag */
-  pointer-events: none; /* ensures scroll smoothness */
+  background-color: #F4F4F4 !important;
+  background-image: radial-gradient(#cccccc 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  background-attachment: fixed; /* keeps dots stable during scroll */
+
+  /* ✅ subtle edge fade using overlay instead of mask */
+  overflow: hidden;
 }
 
-.dots::before {
+.dots::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(#cccccc 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.6; /* softer dots */
-  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(244,244,244,1) 0%,
+    rgba(244,244,244,0) 10%,
+    rgba(244,244,244,0) 90%,
+    rgba(244,244,244,1) 100%
+  );
+  mix-blend-mode: lighten;
+  opacity: 0.6; /* adjust for stronger or softer fade */
 }
-
-.dots > * {
-  position: relative;
-  z-index: 1; /* ensures child stacks are visible */
-}
-
 
 /* 🧱 Container fade (white → light gray background, fading borders) */
 .container-fade {
