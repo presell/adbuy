@@ -1152,11 +1152,7 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"section3Inner"}
               data-plasmic-override={overrides.section3Inner}
-              className={classNames(
-                projectcss.all,
-                sty.section3Inner,
-                "line-fade"
-              )}
+              className={classNames(projectcss.all, sty.section3Inner, "-fade")}
             >
               <div
                 data-plasmic-name={"hero3"}
@@ -1268,11 +1264,7 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"section4Inner"}
               data-plasmic-override={overrides.section4Inner}
-              className={classNames(
-                projectcss.all,
-                sty.section4Inner,
-                "line-fade"
-              )}
+              className={classNames(projectcss.all, sty.section4Inner, ``)}
             >
               {false ? (
                 <div
@@ -2104,11 +2096,7 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"section5Inner"}
               data-plasmic-override={overrides.section5Inner}
-              className={classNames(
-                projectcss.all,
-                sty.section5Inner,
-                "line-fade"
-              )}
+              className={classNames(projectcss.all, sty.section5Inner, ``)}
             >
               <div
                 data-plasmic-name={"hero5"}
@@ -2209,11 +2197,7 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"section6Inner"}
               data-plasmic-override={overrides.section6Inner}
-              className={classNames(
-                projectcss.all,
-                sty.section6Inner,
-                "line-fade"
-              )}
+              className={classNames(projectcss.all, sty.section6Inner, ``)}
             >
               {false ? (
                 <div
