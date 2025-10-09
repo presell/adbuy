@@ -257,53 +257,50 @@ body .dots {
   z-index: 0;
   width: 100%;
   height: 100%;
-
-  /* Dotted background */
   background-color: #f4f4f4 !important;
   background-image: radial-gradient(#cccccc 1px, transparent 1px) !important;
   background-size: 20px 20px !important;
   background-repeat: repeat !important;
   background-position: top left !important;
   background-attachment: scroll;
-  background-blend-mode: normal;
-
-  /* Stability */
   transform: translateZ(0);
   will-change: background-position;
   contain: paint;
   overflow: hidden;
 }
 
-/* --- Corrected top fade overlay --- */
+/* Top fade — shallower & smoother */
 body .dots::before {
   content: "";
   position: absolute;
-  top: 0; /* ✅ anchored at top edge */
+  top: 0;
   left: 0;
   width: 100%;
-  height: 120px; /* adjust as needed for fade length */
+  height: 70px; /* was 120px — shallower fade */
   pointer-events: none;
   z-index: 1;
   background: linear-gradient(to bottom,
     #f4f4f4 0%,
-    rgba(244, 244, 244, 0.85) 40%,
-    rgba(244, 244, 244, 0) 100%
+    rgba(244, 244, 244, 0.95) 25%,  /* softer ramp */
+    rgba(244, 244, 244, 0.5) 55%,   /* gradual dissolve */
+    rgba(244, 244, 244, 0) 100%     /* fade out quicker */
   );
 }
 
-/* --- Corrected bottom fade overlay --- */
+/* Bottom fade — symmetrical to top */
 body .dots::after {
   content: "";
   position: absolute;
-  bottom: 0; /* ✅ anchored at bottom edge */
+  bottom: 0;
   left: 0;
   width: 100%;
-  height: 120px;
+  height: 70px;
   pointer-events: none;
   z-index: 1;
   background: linear-gradient(to top,
     #f4f4f4 0%,
-    rgba(244, 244, 244, 0.85) 40%,
+    rgba(244, 244, 244, 0.95) 25%,
+    rgba(244, 244, 244, 0.5) 55%,
     rgba(244, 244, 244, 0) 100%
   );
 }
