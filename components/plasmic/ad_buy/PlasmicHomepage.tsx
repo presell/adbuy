@@ -1235,6 +1235,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "button"
                   )}
                   component={Link}
+                  href={`/campaigns`}
                   platform={"nextjs"}
                 >
                   <div
@@ -2170,6 +2171,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "button"
                   )}
                   component={Link}
+                  href={`/workflows`}
                   platform={"nextjs"}
                 >
                   <div
