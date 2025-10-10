@@ -142,6 +142,19 @@
           "cssFilePath": "plasmic/ad_buy/PlasmicFooter.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "vyxiNtjjOw4g",
+          "name": "Nav",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicNav.tsx",
+          "importSpec": {
+            "modulePath": "Nav.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicNav.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -264,6 +277,66 @@
           "id": "GoDXNUB0EB6B",
           "name": "ApiProductSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ApiProductSvg.tsx"
+        },
+        {
+          "id": "1DSkTKJxHgDO",
+          "name": "ChevsUpSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ChevsUpSvg.tsx"
+        },
+        {
+          "id": "eAZZFTnJnJ5Z",
+          "name": "ChevsDownSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ChevsDownSvg.tsx"
+        },
+        {
+          "id": "RvB7o1TIMGOq",
+          "name": "BankofamericaSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__BankofamericaSvg.tsx"
+        },
+        {
+          "id": "KXn5n8L8LCYH",
+          "name": "LoanSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LoanSvg.tsx"
+        },
+        {
+          "id": "nzwRuOQUg4_S",
+          "name": "BcbsSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__BcbsSvg.tsx"
+        },
+        {
+          "id": "yio9us2wIplJ",
+          "name": "HealthSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__HealthSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "xaKgo3gcm8tm",
+          "name": "ScaleSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ScaleSvg.tsx"
+        },
+        {
+          "id": "hVG-NOES9EtU",
+          "name": "Home1SvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__Home1SvgrepoComSvg.tsx"
+        },
+        {
+          "id": "gQGY3JuwxTSf",
+          "name": "ShopifySvgrepoCom1SvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ShopifySvgrepoCom1Svg.tsx"
+        },
+        {
+          "id": "v_nPMrRo9l36",
+          "name": "LeadsIconSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LeadsIconSvg.tsx"
+        },
+        {
+          "id": "ySCbYXMYPZYM",
+          "name": "WorkflowsiconSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__WorkflowsiconSvg.tsx"
+        },
+        {
+          "id": "mjJmnHwXSh-R",
+          "name": "ApiIconSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ApiIconSvg.tsx"
         }
       ],
       "images": [

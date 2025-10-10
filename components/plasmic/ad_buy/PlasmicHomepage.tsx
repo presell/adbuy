@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import Nav from "../../Nav"; // plasmic-import: vyxiNtjjOw4g/component
 import Footer from "../../Footer"; // plasmic-import: lkw848Ngoy7j/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
@@ -105,6 +106,7 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
+  nav?: Flex__<typeof Nav>;
   section1Parent?: Flex__<"div">;
   section1Inner?: Flex__<"div">;
   hero1?: Flex__<"div">;
@@ -509,6 +511,12 @@ function PlasmicHomepage__RenderFunc(props: {
               ) : null}
             </section>
           ) : null}
+          <Nav
+            data-plasmic-name={"nav"}
+            data-plasmic-override={overrides.nav}
+            className={classNames("__wab_instance", sty.nav)}
+          />
+
           <div
             data-plasmic-name={"section1Parent"}
             data-plasmic-override={overrides.section1Parent}
@@ -1010,13 +1018,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                sty.freeBox__y25Y1,
-                "line-fade"
-              )}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__y25Y1, ``)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1102,13 +1104,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                sty.freeBox__l5ZCm,
-                "line-fade"
-              )}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__l5ZCm, ``)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -2054,13 +2050,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                sty.freeBox__v4XlW,
-                "line-fade"
-              )}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__v4XlW, ``)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -2993,13 +2983,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                sty.freeBox__iy5Ip,
-                "line-fade"
-              )}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__iy5Ip, ``)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -3741,11 +3725,7 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </div>
             <div
-              className={classNames(
-                projectcss.all,
-                sty.freeBox___11Thb,
-                "line-fade"
-              )}
+              className={classNames(projectcss.all, sty.freeBox___11Thb, ``)}
             >
               <div
                 className={classNames(
@@ -3937,6 +3917,7 @@ const PlasmicDescendants = {
   root: [
     "root",
     "section",
+    "nav",
     "section1Parent",
     "section1Inner",
     "hero1",
@@ -4053,6 +4034,7 @@ const PlasmicDescendants = {
     "carouselBtnFunction"
   ],
   section: ["section"],
+  nav: ["nav"],
   section1Parent: [
     "section1Parent",
     "section1Inner",
@@ -4522,6 +4504,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   section: "section";
+  nav: typeof Nav;
   section1Parent: "div";
   section1Inner: "div";
   hero1: "div";
@@ -4701,6 +4684,7 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
+    nav: makeNodeComponent("nav"),
     section1Parent: makeNodeComponent("section1Parent"),
     section1Inner: makeNodeComponent("section1Inner"),
     hero1: makeNodeComponent("hero1"),

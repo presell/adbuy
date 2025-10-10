@@ -73,6 +73,9 @@
   width: 40px;
   height: 40px;
 }
+.nav:global(.__wab_instance) {
+  position: relative;
+}
 .section1Parent {
   display: flex;
   flex-direction: column;
