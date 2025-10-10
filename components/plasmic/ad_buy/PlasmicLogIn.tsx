@@ -257,7 +257,21 @@ function PlasmicLogIn__RenderFunc(props: {
           name="twitter:title"
           content={PlasmicLogIn.pageMetadata.title}
         />
-
+        <meta
+          key="description"
+          name="description"
+          content={PlasmicLogIn.pageMetadata.description}
+        />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={PlasmicLogIn.pageMetadata.description}
+        />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={PlasmicLogIn.pageMetadata.description}
+        />
         <meta
           key="og:image"
           property="og:image"
@@ -1319,7 +1333,8 @@ export const PlasmicLogIn = Object.assign(
     // Page metadata
     pageMetadata: {
       title: "Log In | AdBuy",
-      description: "",
+      description:
+        "Log in to your AdBuy account to monitor performance and manage campaigns, workflows, and integrations.",
       ogImageSrc:
         "https://site-assets.plasmic.app/d1eac95f3934b1653900f60b4f2a55c6.png",
       canonical: ""

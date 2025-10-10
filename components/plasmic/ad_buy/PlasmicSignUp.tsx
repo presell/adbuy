@@ -206,7 +206,21 @@ function PlasmicSignUp__RenderFunc(props: {
           name="twitter:title"
           content={PlasmicSignUp.pageMetadata.title}
         />
-
+        <meta
+          key="description"
+          name="description"
+          content={PlasmicSignUp.pageMetadata.description}
+        />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={PlasmicSignUp.pageMetadata.description}
+        />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={PlasmicSignUp.pageMetadata.description}
+        />
         <meta
           key="og:image"
           property="og:image"
@@ -768,7 +782,8 @@ export const PlasmicSignUp = Object.assign(
     // Page metadata
     pageMetadata: {
       title: "Sign Up | AdBuy",
-      description: "",
+      description:
+        "Create your AdBuy account to generate and engage leads — zero setup required, fully autonomous, built to scale.",
       ogImageSrc:
         "https://site-assets.plasmic.app/d1eac95f3934b1653900f60b4f2a55c6.png",
       canonical: ""

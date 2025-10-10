@@ -74,7 +74,10 @@
   height: 40px;
 }
 .nav:global(.__wab_instance) {
-  position: relative;
+  position: sticky;
+  left: 0px;
+  top: 0px;
+  z-index: 100000;
 }
 .section1Parent {
   display: flex;
