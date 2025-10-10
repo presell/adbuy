@@ -1175,7 +1175,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text__loKVp,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"AdBuy Campaigns"}
@@ -2121,7 +2121,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text__uG4Pg,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"AdBuy Workflows"}
