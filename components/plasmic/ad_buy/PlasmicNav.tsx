@@ -157,6 +157,24 @@ function PlasmicNav__RenderFunc(props: {
 
   const currentUser = useCurrentUser?.() || {};
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "nav",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
@@ -178,81 +196,265 @@ function PlasmicNav__RenderFunc(props: {
       <div className={classNames(projectcss.all, sty.freeBox__bk78G, ``)}>
         <div className={classNames(projectcss.all, sty.freeBox__euw0Y)}>
           <div className={classNames(projectcss.all, sty.freeBox__ak4Pe)}>
-            <AdBuyDarkTextSmallestCursorSvgIcon
+            <PlasmicLink__
               className={classNames(
                 projectcss.all,
-                sty.svg___0Jj3,
-                "logo-text"
+                projectcss.a,
+                sty.link__muF0Q
               )}
-              role={"img"}
-            />
-
+              component={Link}
+              href={`/`}
+              platform={"nextjs"}
+            >
+              <AdBuyDarkTextSmallestCursorSvgIcon
+                className={classNames(
+                  projectcss.all,
+                  sty.svg___0Jj3,
+                  "logo-text"
+                )}
+                role={"img"}
+              />
+            </PlasmicLink__>
             {(
               hasVariant(globalVariants, "screen", "mobileOnly") ? false : true
             ) ? (
               <div className={classNames(projectcss.all, sty.freeBox___7Y50V)}>
-                <div className={classNames(projectcss.all, sty.freeBox__ta1YY)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__ta1YY)}
+                  onMouseEnter={async event => {
+                    const $steps = {};
+
+                    $steps["updateNav"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["nav"]
+                            },
+                            operation: 0,
+                            value: "product"
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateNav"] != null &&
+                      typeof $steps["updateNav"] === "object" &&
+                      typeof $steps["updateNav"].then === "function"
+                    ) {
+                      $steps["updateNav"] = await $steps["updateNav"];
+                    }
+                  }}
+                >
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text___0PCo,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Product"}
                   </div>
-                  <ChevsUpSvgIcon
-                    className={classNames(projectcss.all, sty.svg__nbVuv)}
-                    role={"img"}
-                  />
-
-                  <ChevsDownSvgIcon
-                    className={classNames(projectcss.all, sty.svg__fgQX)}
-                    role={"img"}
-                  />
+                  {(() => {
+                    try {
+                      return $state.nav == "product";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <ChevsUpSvgIcon
+                      className={classNames(projectcss.all, sty.svg__nbVuv)}
+                      role={"img"}
+                    />
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.nav != "product";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <ChevsDownSvgIcon
+                      className={classNames(projectcss.all, sty.svg__fgQX)}
+                      role={"img"}
+                    />
+                  ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__aSnYq)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__aSnYq)}
+                  onMouseEnter={async event => {
+                    const $steps = {};
+
+                    $steps["updateNav"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["nav"]
+                            },
+                            operation: 0,
+                            value: "solutions"
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateNav"] != null &&
+                      typeof $steps["updateNav"] === "object" &&
+                      typeof $steps["updateNav"].then === "function"
+                    ) {
+                      $steps["updateNav"] = await $steps["updateNav"];
+                    }
+                  }}
+                >
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text___9AE9G,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Solutions"}
                   </div>
-                  <ChevsUpSvgIcon
-                    className={classNames(projectcss.all, sty.svg__aGlBo)}
-                    role={"img"}
-                  />
-
-                  <ChevsDownSvgIcon
-                    className={classNames(projectcss.all, sty.svg__x79Me)}
-                    role={"img"}
-                  />
+                  {(() => {
+                    try {
+                      return $state.nav == "solutions";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <ChevsUpSvgIcon
+                      className={classNames(projectcss.all, sty.svg__aGlBo)}
+                      role={"img"}
+                    />
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.nav != "solutions";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <ChevsDownSvgIcon
+                      className={classNames(projectcss.all, sty.svg__x79Me)}
+                      role={"img"}
+                    />
+                  ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__kKq8)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__kKq8)}
+                  onMouseEnter={async event => {
+                    const $steps = {};
+
+                    $steps["updateNav"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["nav"]
+                            },
+                            operation: 0,
+                            value: ""
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateNav"] != null &&
+                      typeof $steps["updateNav"] === "object" &&
+                      typeof $steps["updateNav"].then === "function"
+                    ) {
+                      $steps["updateNav"] = await $steps["updateNav"];
+                    }
+                  }}
+                >
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text__yrtg9,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Resources"}
                   </div>
-                  <ChevsUpSvgIcon
-                    className={classNames(projectcss.all, sty.svg__dFsMr)}
-                    role={"img"}
-                  />
-
-                  <ChevsDownSvgIcon
-                    className={classNames(projectcss.all, sty.svg__zNqf)}
-                    role={"img"}
-                  />
+                  {false ? (
+                    <ChevsUpSvgIcon
+                      className={classNames(projectcss.all, sty.svg__dFsMr)}
+                      role={"img"}
+                    />
+                  ) : null}
+                  {false ? (
+                    <ChevsDownSvgIcon
+                      className={classNames(projectcss.all, sty.svg__zNqf)}
+                      role={"img"}
+                    />
+                  ) : null}
                 </div>
                 <PlasmicLink__
                   className={classNames(
@@ -261,6 +463,43 @@ function PlasmicNav__RenderFunc(props: {
                     sty.link___7Uwbt
                   )}
                   component={Link}
+                  onMouseEnter={async event => {
+                    const $steps = {};
+
+                    $steps["updateNav"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["nav"]
+                            },
+                            operation: 0,
+                            value: ""
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateNav"] != null &&
+                      typeof $steps["updateNav"] === "object" &&
+                      typeof $steps["updateNav"].then === "function"
+                    ) {
+                      $steps["updateNav"] = await $steps["updateNav"];
+                    }
+                  }}
                   platform={"nextjs"}
                 >
                   <div
@@ -268,7 +507,7 @@ function PlasmicNav__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text__tMc43,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Pricing"}
@@ -306,7 +545,7 @@ function PlasmicNav__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.text___1ChV,
-                    "geologica-text-less-medium"
+                    "geologica-h2"
                   )}
                 >
                   {"Log in"}
@@ -329,7 +568,7 @@ function PlasmicNav__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.text__fthr,
-                    "geologica-text-medium"
+                    "geologica-h1"
                   )}
                 >
                   {"Sign up"}
@@ -339,596 +578,669 @@ function PlasmicNav__RenderFunc(props: {
           </div>
         </div>
       </div>
-      {(hasVariant(globalVariants, "screen", "mobileOnly") ? false : true) ? (
+      {(
+        hasVariant(globalVariants, "screen", "mobileOnly")
+          ? false
+          : (() => {
+              try {
+                return $state.nav != "";
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })()
+      ) ? (
         <div className={classNames(projectcss.all, sty.freeBox__n00Jh)}>
-          <div
-            data-plasmic-name={"productNav2"}
-            data-plasmic-override={overrides.productNav2}
-            className={classNames(projectcss.all, sty.productNav2)}
-          >
+          {(() => {
+            try {
+              return $state.nav == "product";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
             <div
-              className={classNames(
-                projectcss.all,
-                sty.freeBox__jpx2E,
-                "grid-lines-full"
-              )}
+              data-plasmic-name={"productNav2"}
+              data-plasmic-override={overrides.productNav2}
+              className={classNames(projectcss.all, sty.productNav2)}
             >
-              <PlasmicLink__
+              <div
                 className={classNames(
                   projectcss.all,
-                  projectcss.a,
-                  sty.link__tmCtR
+                  sty.freeBox__jpx2E,
+                  "grid-lines-full"
                 )}
-                component={Link}
-                platform={"nextjs"}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__iS9Rr)}>
-                  <LeadsProductSvgIcon
-                    className={classNames(projectcss.all, sty.svg__iuBa3)}
-                    role={"img"}
-                  />
+                <PlasmicLink__
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.a,
+                    sty.link__tmCtR
+                  )}
+                  component={Link}
+                  platform={"nextjs"}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__iS9Rr)}
+                  >
+                    <LeadsProductSvgIcon
+                      className={classNames(projectcss.all, sty.svg__iuBa3)}
+                      role={"img"}
+                    />
 
-                  <div
-                    data-plasmic-name={"h21155"}
-                    data-plasmic-override={overrides.h21155}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.h21155,
-                      "geologica-text-medium"
-                    )}
-                  >
-                    {"AdBuy Campaigns"}
-                  </div>
-                  <div
-                    data-plasmic-name={"h21156"}
-                    data-plasmic-override={overrides.h21156}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.h21156,
-                      "geologica-text-regular"
-                    )}
-                  >
-                    {"Zero setup paid ad campaigns guaranteed to convert."}
-                  </div>
-                </div>
-              </PlasmicLink__>
-            </div>
-            <PlasmicLink__
-              className={classNames(
-                projectcss.all,
-                projectcss.a,
-                sty.link__rYigU,
-                "grid-lines-full"
-              )}
-              component={Link}
-              platform={"nextjs"}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__ubG6W)}>
-                <div className={classNames(projectcss.all, sty.freeBox__zBfe)}>
-                  <WorkflowsProductSvgIcon
-                    className={classNames(projectcss.all, sty.svg__rEFcm)}
-                    role={"img"}
-                  />
-
-                  <div
-                    data-plasmic-name={"h21157"}
-                    data-plasmic-override={overrides.h21157}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.h21157,
-                      "geologica-text-medium"
-                    )}
-                  >
-                    {"AdBuy Workflows"}
-                  </div>
-                  <div
-                    data-plasmic-name={"h21158"}
-                    data-plasmic-override={overrides.h21158}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.h21158,
-                      "geologica-text-regular"
-                    )}
-                  >
-                    {
-                      "Automated lead follow-up workflows that nurture prospects 24/7."
-                    }
-                  </div>
-                </div>
-              </div>
-            </PlasmicLink__>
-            <PlasmicLink__
-              className={classNames(
-                projectcss.all,
-                projectcss.a,
-                sty.link__uRhNl,
-                "grid-lines-full"
-              )}
-              component={Link}
-              platform={"nextjs"}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__av7Xx)}>
-                <div className={classNames(projectcss.all, sty.freeBox__vHh8F)}>
-                  <ApiProductSvgIcon
-                    className={classNames(projectcss.all, sty.svg___8Ch3O)}
-                    role={"img"}
-                  />
-
-                  <div
-                    data-plasmic-name={"h21159"}
-                    data-plasmic-override={overrides.h21159}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.h21159,
-                      "geologica-text-medium"
-                    )}
-                  >
-                    {"AdBuy API"}
-                  </div>
-                  <div
-                    data-plasmic-name={"h21160"}
-                    data-plasmic-override={overrides.h21160}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.h21160,
-                      "geologica-text-regular"
-                    )}
-                  >
-                    {
-                      "Integrate with your existing tech stack using our public API."
-                    }
-                  </div>
-                </div>
-              </div>
-            </PlasmicLink__>
-          </div>
-          <div
-            data-plasmic-name={"solutionsNav13"}
-            data-plasmic-override={overrides.solutionsNav13}
-            className={classNames(projectcss.all, sty.solutionsNav13)}
-          >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__gKmVy,
-                "geologica-text-regular"
-              )}
-            >
-              {"By use case"}
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__o6A4A)}>
-              <div className={classNames(projectcss.all, sty.freeBox__nFgXj)}>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__rxjuU,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__kNrUr)}
-                  >
-                    {false ? (
-                      <BankofamericaSvgIcon
-                        className={classNames(projectcss.all, sty.svg__lwjzs)}
-                        role={"img"}
-                      />
-                    ) : null}
-                    <LoanSvgIcon
-                      className={classNames(projectcss.all, sty.svg__rm4P)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__hThWu)}
-                  >
                     <div
+                      data-plasmic-name={"h21155"}
+                      data-plasmic-override={overrides.h21155}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__mgd47,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"Mortgage"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__zC9ZW,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"Refinance | New Home | DSCR | Reverse"}
-                    </div>
-                  </div>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__w9HfG,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xSniV)}
-                  >
-                    <BcbsSvgIcon
-                      className={classNames(projectcss.all, sty.svg__yjBaz)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__fQ9M)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wjsjR,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"Insurance"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__kyD0,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"Final Expense | IUL | Annuity"}
-                    </div>
-                  </div>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__hA4Ly,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ulwbd)}
-                  >
-                    <HealthSvgrepoComSvgIcon
-                      className={classNames(projectcss.all, sty.svg__ytUhq)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___1Vaqu)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__ppnrZ,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"Medical"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___91TiX,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"Cosmetic | Weight Loss | Plastic Surgery"}
-                    </div>
-                  </div>
-                </PlasmicLink__>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__d4Y8K)}>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__anRhs,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__sW0Wv)}
-                  >
-                    <ScaleSvgIcon
-                      className={classNames(projectcss.all, sty.svg__ou5J)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___8Oo0)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___04Rub,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"Legal"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___1JBq7,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"Personal Injury | Debt Relief"}
-                    </div>
-                  </div>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__aQ2Ww,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vcDyQ)}
-                  >
-                    <Home1SvgrepoComSvgIcon
-                      className={classNames(projectcss.all, sty.svg__pucT)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jC93C)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iiJ,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"Home"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bSwV,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"Remodel | Roof | Pest | Solar"}
-                    </div>
-                  </div>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__i0Nac,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___5H5Kv)}
-                  >
-                    <ShopifySvgrepoCom1SvgIcon
-                      className={classNames(projectcss.all, sty.svg__fsC79)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xGh67)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___45TRi,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"eCommerce"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__twtJf,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"Custom Enterprise Solution"}
-                    </div>
-                  </div>
-                </PlasmicLink__>
-              </div>
-            </div>
-          </div>
-          <div
-            data-plasmic-name={"solutionsNav14"}
-            data-plasmic-override={overrides.solutionsNav14}
-            className={classNames(projectcss.all, sty.solutionsNav14)}
-          >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___26EO9,
-                "geologica-text-regular"
-              )}
-            >
-              {"By product line"}
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__dhsmb)}>
-              <div className={classNames(projectcss.all, sty.freeBox__ql9H)}>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__a0KzM,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bXr8D)}
-                  >
-                    {false ? (
-                      <BankofamericaSvgIcon
-                        className={classNames(projectcss.all, sty.svg__g4WPs)}
-                        role={"img"}
-                      />
-                    ) : null}
-                    <LeadsIconSvgIcon
-                      className={classNames(projectcss.all, sty.svg__eaWE)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___6VcwO)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___0Mb7,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"Lead Generation"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__lkCcb,
-                        "geologica-text-regular"
+                        sty.h21155,
+                        "geologica-h1"
                       )}
                     >
                       {"AdBuy Campaigns"}
                     </div>
-                  </div>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__vHst,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__g72XA)}
-                  >
-                    <WorkflowsiconSvgIcon
-                      className={classNames(projectcss.all, sty.svg__iAh0L)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ebSga)}
-                  >
                     <div
+                      data-plasmic-name={"h21156"}
+                      data-plasmic-override={overrides.h21156}
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__kKzVd,
-                        "geologica-text-medium"
+                        sty.h21156,
+                        "geologica-h3"
                       )}
                     >
-                      {"AI SDR"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__naIko,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"AdBuy Workflows"}
-                    </div>
-                  </div>
-                </PlasmicLink__>
-                <PlasmicLink__
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.link__dPZb,
-                    "hover-black"
-                  )}
-                  component={Link}
-                  platform={"nextjs"}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__wBnFu)}
-                  >
-                    <ApiIconSvgIcon
-                      className={classNames(projectcss.all, sty.svg__rLs9L)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__chmQk)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__gjUAs,
-                        "geologica-text-medium"
-                      )}
-                    >
-                      {"Integrations"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__oZxfN,
-                        "geologica-text-regular"
-                      )}
-                    >
-                      {"AdBuy API"}
+                      {"Zero setup paid ad campaigns guaranteed to convert."}
                     </div>
                   </div>
                 </PlasmicLink__>
               </div>
+              <PlasmicLink__
+                className={classNames(
+                  projectcss.all,
+                  projectcss.a,
+                  sty.link__rYigU,
+                  "grid-lines-full"
+                )}
+                component={Link}
+                platform={"nextjs"}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__ubG6W)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zBfe)}
+                  >
+                    <WorkflowsProductSvgIcon
+                      className={classNames(projectcss.all, sty.svg__rEFcm)}
+                      role={"img"}
+                    />
+
+                    <div
+                      data-plasmic-name={"h21157"}
+                      data-plasmic-override={overrides.h21157}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h21157,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"AdBuy Workflows"}
+                    </div>
+                    <div
+                      data-plasmic-name={"h21158"}
+                      data-plasmic-override={overrides.h21158}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h21158,
+                        "geologica-h3"
+                      )}
+                    >
+                      {
+                        "Automated lead follow-up workflows that nurture prospects 24/7."
+                      }
+                    </div>
+                  </div>
+                </div>
+              </PlasmicLink__>
+              <PlasmicLink__
+                className={classNames(
+                  projectcss.all,
+                  projectcss.a,
+                  sty.link__uRhNl,
+                  "grid-lines-full"
+                )}
+                component={Link}
+                platform={"nextjs"}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__av7Xx)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__vHh8F)}
+                  >
+                    <ApiProductSvgIcon
+                      className={classNames(projectcss.all, sty.svg___8Ch3O)}
+                      role={"img"}
+                    />
+
+                    <div
+                      data-plasmic-name={"h21159"}
+                      data-plasmic-override={overrides.h21159}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h21159,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"AdBuy API"}
+                    </div>
+                    <div
+                      data-plasmic-name={"h21160"}
+                      data-plasmic-override={overrides.h21160}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h21160,
+                        "geologica-h3"
+                      )}
+                    >
+                      {
+                        "Integrate with your existing tech stack using our public API."
+                      }
+                    </div>
+                  </div>
+                </div>
+              </PlasmicLink__>
             </div>
-          </div>
+          ) : null}
+          {(() => {
+            try {
+              return $state.nav == "solutions";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <div
+              data-plasmic-name={"solutionsNav13"}
+              data-plasmic-override={overrides.solutionsNav13}
+              className={classNames(projectcss.all, sty.solutionsNav13)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__gKmVy,
+                  "geologica-h3"
+                )}
+              >
+                {"By use case"}
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__o6A4A)}>
+                <div className={classNames(projectcss.all, sty.freeBox__nFgXj)}>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__rxjuU,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__kNrUr)}
+                    >
+                      {false ? (
+                        <BankofamericaSvgIcon
+                          className={classNames(projectcss.all, sty.svg__lwjzs)}
+                          role={"img"}
+                        />
+                      ) : null}
+                      <LoanSvgIcon
+                        className={classNames(projectcss.all, sty.svg__rm4P)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__hThWu)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__mgd47,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Mortgage"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__zC9ZW,
+                          "geologica-h3"
+                        )}
+                      >
+                        {"Refinance | New Home | DSCR | Reverse"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__w9HfG,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__xSniV)}
+                    >
+                      <BcbsSvgIcon
+                        className={classNames(projectcss.all, sty.svg__yjBaz)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__fQ9M)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__wjsjR,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Insurance"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__kyD0,
+                          "geologica-h3"
+                        )}
+                      >
+                        {"Final Expense | IUL | Annuity"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__hA4Ly,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ulwbd)}
+                    >
+                      <HealthSvgrepoComSvgIcon
+                        className={classNames(projectcss.all, sty.svg__ytUhq)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___1Vaqu
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ppnrZ,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Medical"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___91TiX,
+                          "geologica-h3"
+                        )}
+                      >
+                        {"Cosmetic | Weight Loss | Plastic Surgery"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__d4Y8K)}>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__anRhs,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__sW0Wv)}
+                    >
+                      <ScaleSvgIcon
+                        className={classNames(projectcss.all, sty.svg__ou5J)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox___8Oo0)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___04Rub,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Legal"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___1JBq7,
+                          "geologica-h3"
+                        )}
+                      >
+                        {"Personal Injury | Debt Relief"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__aQ2Ww,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__vcDyQ)}
+                    >
+                      <Home1SvgrepoComSvgIcon
+                        className={classNames(projectcss.all, sty.svg__pucT)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__jC93C)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__iiJ,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Home"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__bSwV,
+                          "geologica-h3"
+                        )}
+                      >
+                        {"Remodel | Roof | Pest | Solar"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__i0Nac,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___5H5Kv
+                      )}
+                    >
+                      <ShopifySvgrepoCom1SvgIcon
+                        className={classNames(projectcss.all, sty.svg__fsC79)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__xGh67)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___45TRi,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"eCommerce"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__twtJf,
+                          "geologica-h3"
+                        )}
+                      >
+                        {"Custom Enterprise Solution"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                </div>
+              </div>
+            </div>
+          ) : null}
+          {(() => {
+            try {
+              return $state.nav == "solutions";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <div
+              data-plasmic-name={"solutionsNav14"}
+              data-plasmic-override={overrides.solutionsNav14}
+              className={classNames(projectcss.all, sty.solutionsNav14)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___26EO9,
+                  "geologica-h3"
+                )}
+              >
+                {"By product line"}
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__dhsmb)}>
+                <div className={classNames(projectcss.all, sty.freeBox__ql9H)}>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__a0KzM,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__bXr8D)}
+                    >
+                      {false ? (
+                        <BankofamericaSvgIcon
+                          className={classNames(projectcss.all, sty.svg__g4WPs)}
+                          role={"img"}
+                        />
+                      ) : null}
+                      <LeadsIconSvgIcon
+                        className={classNames(projectcss.all, sty.svg__eaWE)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___6VcwO
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___0Mb7,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Lead Generation"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__lkCcb,
+                          "geologica-text-regular"
+                        )}
+                      >
+                        {"AdBuy Campaigns"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__vHst,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__g72XA)}
+                    >
+                      <WorkflowsiconSvgIcon
+                        className={classNames(projectcss.all, sty.svg__iAh0L)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ebSga)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__kKzVd,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"AI SDR"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__naIko,
+                          "geologica-text-regular"
+                        )}
+                      >
+                        {"AdBuy Workflows"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__dPZb,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__wBnFu)}
+                    >
+                      <ApiIconSvgIcon
+                        className={classNames(projectcss.all, sty.svg__rLs9L)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__chmQk)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__gjUAs,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Integrations"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__oZxfN,
+                          "geologica-text-regular"
+                        )}
+                      >
+                        {"AdBuy API"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </div>
