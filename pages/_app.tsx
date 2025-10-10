@@ -6,10 +6,12 @@ import { supabase } from "../lib/supabaseClient";
 import Script from "next/script";
 import localFont from "next/font/local";
 
-// 👇 Add this just below your imports
+// Declare global functions injected by main.js to avoid TypeScript errors
 declare global {
   interface Window {
     reinitializeHomepageScripts?: () => void;
+    initTilt?: () => void;
+    initMarquees?: () => void;
   }
 }
 
