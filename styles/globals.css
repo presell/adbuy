@@ -117,7 +117,12 @@ a {
 .grid-lines::before {
   content: "";
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  /* 👇 NEW: keep the grid 1px away from the left border */
+  left: 1px;                /* adjust if your border-left isn’t 1px */
+  right: 0;                 /* keep right as-is so it matches your current look */
+  border-radius: inherit;   /* NEW: respect rounded corners */
   pointer-events: none;
   z-index: 0;
 
@@ -135,14 +140,13 @@ a {
     calc(var(--grid) * var(--major-multiple)) 100%,
     100% calc(var(--grid) * var(--major-multiple));
 
-  /* ✅ Shift grid pattern so no vertical line touches the left edge */
+  /* ✅ still start one grid unit in from the (now inset) left edge */
   background-position:
     var(--grid) 0,
     0 calc(var(--grid) / 2),
     calc(var(--grid) * var(--major-multiple)) 0,
     0 calc(var(--grid) / 2);
 
-  /* Subtle vertical fade — clean top and bottom */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
