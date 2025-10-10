@@ -3027,11 +3027,7 @@ function PlasmicHomepage__RenderFunc(props: {
             <div
               data-plasmic-name={"section7Inner"}
               data-plasmic-override={overrides.section7Inner}
-              className={classNames(
-                projectcss.all,
-                sty.section7Inner,
-                "line-fade"
-              )}
+              className={classNames(projectcss.all, sty.section7Inner, ``)}
             >
               <div
                 data-plasmic-name={"hero7"}
