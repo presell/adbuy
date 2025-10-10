@@ -150,7 +150,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  // ✅ Re-run highlighting after client-side navigation
+// ✅ Re-run homepage scripts after client-side navigation (optimized)
 useEffect(() => {
   const handleRouteChange = () => {
     if (window.reinitializeHomepageScripts) {
@@ -160,7 +160,7 @@ useEffect(() => {
   };
 
   window.addEventListener("plasmic:pageLoaded", handleRouteChange);
-  window.addEventListener("popstate", handleRouteChange); // for browser back/forward
+  window.addEventListener("popstate", handleRouteChange);
   window.addEventListener("pushstate", handleRouteChange);
   window.addEventListener("replacestate", handleRouteChange);
 
