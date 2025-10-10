@@ -152,29 +152,34 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  // ✅ Re-run main.js and homepage scripts after client-side navigation
+  // ✅ Re-run homepage scripts after client-side navigation (optimized + delayed)
   useEffect(() => {
     const reinitScripts = () => {
-      console.log("[App] 🔁 Re-initializing homepage scripts after route change");
-      // Run the same function your main.js defines globally
-      if (window.reinitializeHomepageScripts) {
-        window.reinitializeHomepageScripts();
-      }
-      // Force re-run of marquee/tilt logic if attached to window
-      if (window.initTilt && window.initMarquees) {
-        window.initTilt();
-        window.initMarquees();
-      }
+      setTimeout(() => {
+        if (window.reinitializeHomepageScripts) {
+          console.log("[App] 🔁 Reinitializing homepage scripts after route change");
+          window.reinitializeHomepageScripts();
+        }
+        if (window.initTilt && window.initMarquees) {
+          console.log("[App] 🔁 Re-running tilt/marquee scripts after route change");
+          window.initTilt();
+          window.initMarquees();
+        }
+      }, 25); // small delay ensures DOM is ready before animations fire
     };
 
-    // Listen for all Plasmic + browser navigation events
+    // Listen for Plasmic internal navigation events
     window.addEventListener("plasmic:pageLoaded", reinitScripts);
+    window.addEventListener("plasmic:navigation", reinitScripts);
+
+    // Also handle browser-level navigation as backup
     window.addEventListener("popstate", reinitScripts);
     window.addEventListener("pushstate", reinitScripts);
     window.addEventListener("replacestate", reinitScripts);
 
     return () => {
       window.removeEventListener("plasmic:pageLoaded", reinitScripts);
+      window.removeEventListener("plasmic:navigation", reinitScripts);
       window.removeEventListener("popstate", reinitScripts);
       window.removeEventListener("pushstate", reinitScripts);
       window.removeEventListener("replacestate", reinitScripts);
