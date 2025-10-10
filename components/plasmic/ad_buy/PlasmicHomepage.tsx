@@ -590,6 +590,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "button"
                   )}
                   component={Link}
+                  href={`/signup`}
                   platform={"nextjs"}
                 >
                   <div

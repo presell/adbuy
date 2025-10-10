@@ -538,6 +538,7 @@ function PlasmicNav__RenderFunc(props: {
                   ``
                 )}
                 component={Link}
+                href={`/login`}
                 platform={"nextjs"}
               >
                 <div
@@ -561,6 +562,7 @@ function PlasmicNav__RenderFunc(props: {
                   "button"
                 )}
                 component={Link}
+                href={`/signup`}
                 platform={"nextjs"}
               >
                 <div
@@ -595,7 +597,41 @@ function PlasmicNav__RenderFunc(props: {
               }
             })()
       ) ? (
-        <div className={classNames(projectcss.all, sty.freeBox__n00Jh)}>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__n00Jh)}
+          onMouseLeave={async event => {
+            const $steps = {};
+
+            $steps["updateNav"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["nav"]
+                    },
+                    operation: 0,
+                    value: ""
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateNav"] != null &&
+              typeof $steps["updateNav"] === "object" &&
+              typeof $steps["updateNav"].then === "function"
+            ) {
+              $steps["updateNav"] = await $steps["updateNav"];
+            }
+          }}
+        >
           {(() => {
             try {
               return $state.nav == "product";
