@@ -68,6 +68,7 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicSignUp.module.css"; // plasmic-import: AcnUZfvf143O/css
 
+import AdBuyDarkTextSmallestCursorSvgIcon from "./icons/PlasmicIcon__AdBuyDarkTextSmallestCursorSvg"; // plasmic-import: w5CBTUelss3U/icon
 import Email8SvgrepoComSvgIcon from "./icons/PlasmicIcon__Email8SvgrepoComSvg"; // plasmic-import: hSJ3Nz5m06-i/icon
 import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 
@@ -84,6 +85,8 @@ export const PlasmicSignUp__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicSignUp__OverridesType = {
   root?: Flex__<"div">;
+  section1Parent?: Flex__<"div">;
+  section1Inner?: Flex__<"div">;
   step1?: Flex__<"div">;
   h1219?: Flex__<"div">;
   h2139?: Flex__<"div">;
@@ -94,8 +97,8 @@ export type PlasmicSignUp__OverridesType = {
   text?: Flex__<"div">;
   h2146?: Flex__<"div">;
   h2145?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
   otp?: Flex__<typeof Embed>;
+  h2141?: Flex__<"div">;
 };
 
 export interface DefaultSignUpProps {}
@@ -254,378 +257,462 @@ function PlasmicSignUp__RenderFunc(props: {
             sty.root
           )}
         >
-          {(() => {
-            try {
-              return $state.emailExists == false;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
-            <div
-              data-plasmic-name={"step1"}
-              data-plasmic-override={overrides.step1}
+          <div className={classNames(projectcss.all, sty.freeBox__yOeh5)}>
+            <PlasmicLink__
               className={classNames(
                 projectcss.all,
-                sty.step1,
-                "load-in-compat"
+                projectcss.a,
+                sty.link__coBmq
+              )}
+              component={Link}
+              href={`/`}
+              platform={"nextjs"}
+            >
+              <AdBuyDarkTextSmallestCursorSvgIcon
+                className={classNames(
+                  projectcss.all,
+                  sty.svg__awTcN,
+                  "logo-text"
+                )}
+                role={"img"}
+              />
+            </PlasmicLink__>
+          </div>
+          <div
+            data-plasmic-name={"section1Parent"}
+            data-plasmic-override={overrides.section1Parent}
+            className={classNames(projectcss.all, sty.section1Parent, ``)}
+          >
+            <div
+              data-plasmic-name={"section1Inner"}
+              data-plasmic-override={overrides.section1Inner}
+              className={classNames(
+                projectcss.all,
+                sty.section1Inner,
+                "border-fade grid-lines hero-glow-bg"
               )}
             >
-              <div
-                data-plasmic-name={"h1219"}
-                data-plasmic-override={overrides.h1219}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.h1219,
-                  "geologica-text-medium H1"
-                )}
-              >
-                <React.Fragment>
-                  <span
-                    className={"plasmic_default__all plasmic_default__span"}
-                    style={{ color: "#000000" }}
+              {(() => {
+                try {
+                  return $state.emailExists == false;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <div
+                  data-plasmic-name={"step1"}
+                  data-plasmic-override={overrides.step1}
+                  className={classNames(
+                    projectcss.all,
+                    sty.step1,
+                    "load-in-compat"
+                  )}
+                >
+                  <div
+                    data-plasmic-name={"h1219"}
+                    data-plasmic-override={overrides.h1219}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.h1219,
+                      "geologica-h1"
+                    )}
                   >
-                    {"Create Your AdBuy Account"}
-                  </span>
-                </React.Fragment>
-              </div>
-              {false ? (
-                <div
-                  data-plasmic-name={"h2139"}
-                  data-plasmic-override={overrides.h2139}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.h2139,
-                    "geologica-text-regular"
-                  )}
-                >
-                  {
-                    "Put more jobs on the calendar without chasing leads or calls."
-                  }
-                </div>
-              ) : null}
-              <div
-                data-plasmic-name={"primarycta61"}
-                data-plasmic-override={overrides.primarycta61}
-                className={classNames(projectcss.all, sty.primarycta61, ``)}
-              >
-                <Email8SvgrepoComSvgIcon
-                  className={classNames(projectcss.all, sty.svg___001Zr)}
-                  role={"img"}
-                />
-
-                <input
-                  data-plasmic-name={"emailInput"}
-                  data-plasmic-override={overrides.emailInput}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.input,
-                    sty.emailInput,
-                    ``
-                  )}
-                  id={``}
-                  onChange={async (...eventArgs: any) => {
-                    (e => {
-                      generateStateOnChangeProp($state, [
-                        "emailInput",
-                        "value"
-                      ])(e.target.value);
-                    }).apply(null, eventArgs);
-                  }}
-                  placeholder={"scale@adbuy.ai"}
-                  ref={ref => {
-                    $refs["emailInput"] = ref;
-                  }}
-                  type={"text"}
-                  value={
-                    generateStateValueProp($state, ["emailInput", "value"]) ??
-                    ""
-                  }
-                />
-
-                {(() => {
-                  try {
-                    return $state.submitting == true;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <Embed
-                    data-plasmic-name={"embedHtml"}
-                    data-plasmic-override={overrides.embedHtml}
-                    className={classNames("__wab_instance", sty.embedHtml)}
-                    code={
-                      '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Centered Loading Spinner</title>\n<style>\n    /* Container with fixed height */\n    .spinner-container {\n        height: 20px; /* Fixed height */\n        display: flex; /* Use flexbox for centering */\n        justify-content: center; /* Center horizontally */\n        align-items: center; /* Center vertically */\n        background-color: transparent; /* Make background transparent */\n    }\n\n    .spinner {\n        width: 11.2px; /* Reduced size */\n        height: 11.2px;\n        position: relative;\n    }\n\n    .spinner div {\n        transform-origin: 5.6px 5.6px; /* Adjusted for size */\n        animation: spinner 1.2s linear infinite;\n    }\n\n    .spinner div:after {\n        content: " ";\n        display: block;\n        position: absolute;\n        top: 0.7px;\n        left: 4.9px;\n        width: 1.4px;\n        height: 3.5px;\n        border-radius: 20%;\n        background: #535353; /* Spinner color */\n    }\n\n    /* Spinner animation delays */\n    .spinner div:nth-child(1) { transform: rotate(0deg); animation-delay: -1.1s; }\n    .spinner div:nth-child(2) { transform: rotate(30deg); animation-delay: -1s; }\n    .spinner div:nth-child(3) { transform: rotate(60deg); animation-delay: -0.9s; }\n    .spinner div:nth-child(4) { transform: rotate(90deg); animation-delay: -0.8s; }\n    .spinner div:nth-child(5) { transform: rotate(120deg); animation-delay: -0.7s; }\n    .spinner div:nth-child(6) { transform: rotate(150deg); animation-delay: -0.6s; }\n    .spinner div:nth-child(7) { transform: rotate(180deg); animation-delay: -0.5s; }\n    .spinner div:nth-child(8) { transform: rotate(210deg); animation-delay: -0.4s; }\n    .spinner div:nth-child(9) { transform: rotate(240deg); animation-delay: -0.3s; }\n    .spinner div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }\n    .spinner div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }\n    .spinner div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }\n\n    @keyframes spinner {\n        0% { opacity: 1; }\n        100% { opacity: 0; }\n    }\n</style>\n</head>\n<body>\n\n<!-- Container to center the spinner -->\n<div class="spinner-container">\n    <div class="spinner">\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n    </div>\n</div>\n\n</body>\n</html>\n'
-                    }
-                  />
-                ) : null}
-              </div>
-              <div
-                data-plasmic-name={"primaryctaStage28"}
-                data-plasmic-override={overrides.primaryctaStage28}
-                className={classNames(
-                  projectcss.all,
-                  sty.primaryctaStage28,
-                  ``
-                )}
-                id={``}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["updateEmail"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["email"]
-                          },
-                          operation: 0,
-                          value: $state.emailInput.value
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateEmail"] != null &&
-                    typeof $steps["updateEmail"] === "object" &&
-                    typeof $steps["updateEmail"].then === "function"
-                  ) {
-                    $steps["updateEmail"] = await $steps["updateEmail"];
-                  }
-
-                  $steps["updateSubmitting"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["submitting"]
-                          },
-                          operation: 0,
-                          value: true
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateSubmitting"] != null &&
-                    typeof $steps["updateSubmitting"] === "object" &&
-                    typeof $steps["updateSubmitting"].then === "function"
-                  ) {
-                    $steps["updateSubmitting"] =
-                      await $steps["updateSubmitting"];
-                  }
-
-                  $steps["runCode"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          customFunction: async () => {
-                            return (async () => {
-                              async function submit() {
-                                try {
-                                  const payload = { email: $state.email };
-                                  console.log(
-                                    "[Account Creation] \uD83D\uDE80 Sending payload:",
-                                    payload
-                                  );
-                                  const response = await fetch(
-                                    "https://hook.us1.make.com/76n0xmqgzmrp42l8r34iy2vlxa95jsw5",
-                                    {
-                                      method: "POST",
-                                      headers: {
-                                        "Content-Type": "application/json"
-                                      },
-                                      body: JSON.stringify(payload)
-                                    }
-                                  );
-                                  const json = await response.json();
-                                  console.log(
-                                    "[Account Creation] Response:",
-                                    json
-                                  );
-                                  if (response.status === 200 && json.token) {
-                                    document.cookie = `plasmic_auth=${json.token}; Path=/; SameSite=Lax; Max-Age=2592000`;
-                                    console.log(
-                                      "[Account Creation] \uD83C\uDF6A Plasmic auth cookie set"
-                                    );
-                                    const decoded = JSON.parse(
-                                      atob(json.token.split(".")[1])
-                                    );
-                                    const plasmicUser = {
-                                      id: decoded.userId,
-                                      email: decoded.email,
-                                      isLoggedIn: true,
-                                      role: decoded.roles?.[0] || "Normal User"
-                                    };
-                                    window.__PLASMIC_USER__ = plasmicUser;
-                                    window.plasmicUser = plasmicUser;
-                                    window.dispatchEvent(
-                                      new StorageEvent("storage", {
-                                        key: "plasmicUser"
-                                      })
-                                    );
-                                    console.log(
-                                      "[Account Creation] \uD83E\uDDE0 Plasmic user context updated:",
-                                      plasmicUser
-                                    );
-                                    if (window.PlasmicRootContext) {
-                                      console.log(
-                                        "[Account Creation] \uD83D\uDD01 Forcing Plasmic re-render"
-                                      );
-                                      window.dispatchEvent(
-                                        new Event("visibilitychange")
-                                      );
-                                    }
-                                    setTimeout(() => {
-                                      window.location.href =
-                                        json.redirectURL || "/";
-                                    }, 250);
-                                  } else {
-                                    console.warn(
-                                      `[Account Creation] ⚠️ Non-200 or missing token — status ${response.status}`
-                                    );
-                                    window.location.href = "/login";
-                                  }
-                                } catch (err) {
-                                  console.error(
-                                    "[Account Creation] \uD83D\uDCA5 Submission error:",
-                                    err
-                                  );
-                                  window.location.href = "/login";
-                                }
-                              }
-                              return submit();
-                            })();
-                          }
-                        };
-                        return (({ customFunction }) => {
-                          return customFunction();
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["runCode"] != null &&
-                    typeof $steps["runCode"] === "object" &&
-                    typeof $steps["runCode"].then === "function"
-                  ) {
-                    $steps["runCode"] = await $steps["runCode"];
-                  }
-                }}
-              >
-                <div
-                  data-plasmic-name={"text"}
-                  data-plasmic-override={overrides.text}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text,
-                    "geologica-text-medium"
-                  )}
-                >
-                  {"Log In"}
-                </div>
-                {false ? (
-                  <CursorIsolatedSvgIcon
-                    className={classNames(projectcss.all, sty.svg__uVpE5, ``)}
-                    role={"img"}
-                  />
-                ) : null}
-              </div>
-              {false ? (
-                <div
-                  data-plasmic-name={"h2146"}
-                  data-plasmic-override={overrides.h2146}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.h2146,
-                    "geologica-text-regular"
-                  )}
-                >
-                  {"By proceeding, you agree to our Terms and Privacy Policy."}
-                </div>
-              ) : null}
-              <div
-                data-plasmic-name={"h2145"}
-                data-plasmic-override={overrides.h2145}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.h2145,
-                  "geologica-text-less-medium"
-                )}
-              >
-                <React.Fragment>
-                  <React.Fragment>{"Don't have an account? "}</React.Fragment>
-                  {
-                    <PlasmicLink__
-                      data-plasmic-name={"link"}
-                      data-plasmic-override={overrides.link}
+                    <React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000" }}
+                      >
+                        {"Create Your AdBuy Account"}
+                      </span>
+                    </React.Fragment>
+                  </div>
+                  {false ? (
+                    <div
+                      data-plasmic-name={"h2139"}
+                      data-plasmic-override={overrides.h2139}
                       className={classNames(
                         projectcss.all,
-                        projectcss.a,
                         projectcss.__wab_text,
-                        projectcss.plasmic_default__inline,
-                        sty.link
+                        sty.h2139,
+                        "geologica-text-regular"
                       )}
-                      component={Link}
-                      platform={"nextjs"}
                     >
+                      {
+                        "Put more jobs on the calendar without chasing leads or calls."
+                      }
+                    </div>
+                  ) : null}
+                  <div
+                    data-plasmic-name={"primarycta61"}
+                    data-plasmic-override={overrides.primarycta61}
+                    className={classNames(projectcss.all, sty.primarycta61, ``)}
+                  >
+                    <Email8SvgrepoComSvgIcon
+                      className={classNames(projectcss.all, sty.svg___001Zr)}
+                      role={"img"}
+                    />
+
+                    <input
+                      data-plasmic-name={"emailInput"}
+                      data-plasmic-override={overrides.emailInput}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.input,
+                        sty.emailInput,
+                        ``
+                      )}
+                      id={``}
+                      onChange={async (...eventArgs: any) => {
+                        (e => {
+                          generateStateOnChangeProp($state, [
+                            "emailInput",
+                            "value"
+                          ])(e.target.value);
+                        }).apply(null, eventArgs);
+                      }}
+                      placeholder={"scale@adbuy.ai"}
+                      ref={ref => {
+                        $refs["emailInput"] = ref;
+                      }}
+                      type={"text"}
+                      value={
+                        generateStateValueProp($state, [
+                          "emailInput",
+                          "value"
+                        ]) ?? ""
+                      }
+                    />
+
+                    {(() => {
+                      try {
+                        return $state.submitting == true;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Embed
+                        data-plasmic-name={"embedHtml"}
+                        data-plasmic-override={overrides.embedHtml}
+                        className={classNames("__wab_instance", sty.embedHtml)}
+                        code={
+                          '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Centered Loading Spinner</title>\n<style>\n    /* Container with fixed height */\n    .spinner-container {\n        height: 20px; /* Fixed height */\n        display: flex; /* Use flexbox for centering */\n        justify-content: center; /* Center horizontally */\n        align-items: center; /* Center vertically */\n        background-color: transparent; /* Make background transparent */\n    }\n\n    .spinner {\n        width: 11.2px; /* Reduced size */\n        height: 11.2px;\n        position: relative;\n    }\n\n    .spinner div {\n        transform-origin: 5.6px 5.6px; /* Adjusted for size */\n        animation: spinner 1.2s linear infinite;\n    }\n\n    .spinner div:after {\n        content: " ";\n        display: block;\n        position: absolute;\n        top: 0.7px;\n        left: 4.9px;\n        width: 1.4px;\n        height: 3.5px;\n        border-radius: 20%;\n        background: #535353; /* Spinner color */\n    }\n\n    /* Spinner animation delays */\n    .spinner div:nth-child(1) { transform: rotate(0deg); animation-delay: -1.1s; }\n    .spinner div:nth-child(2) { transform: rotate(30deg); animation-delay: -1s; }\n    .spinner div:nth-child(3) { transform: rotate(60deg); animation-delay: -0.9s; }\n    .spinner div:nth-child(4) { transform: rotate(90deg); animation-delay: -0.8s; }\n    .spinner div:nth-child(5) { transform: rotate(120deg); animation-delay: -0.7s; }\n    .spinner div:nth-child(6) { transform: rotate(150deg); animation-delay: -0.6s; }\n    .spinner div:nth-child(7) { transform: rotate(180deg); animation-delay: -0.5s; }\n    .spinner div:nth-child(8) { transform: rotate(210deg); animation-delay: -0.4s; }\n    .spinner div:nth-child(9) { transform: rotate(240deg); animation-delay: -0.3s; }\n    .spinner div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }\n    .spinner div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }\n    .spinner div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }\n\n    @keyframes spinner {\n        0% { opacity: 1; }\n        100% { opacity: 0; }\n    }\n</style>\n</head>\n<body>\n\n<!-- Container to center the spinner -->\n<div class="spinner-container">\n    <div class="spinner">\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n    </div>\n</div>\n\n</body>\n</html>\n'
+                        }
+                      />
+                    ) : null}
+                  </div>
+                  <div
+                    data-plasmic-name={"primaryctaStage28"}
+                    data-plasmic-override={overrides.primaryctaStage28}
+                    className={classNames(
+                      projectcss.all,
+                      sty.primaryctaStage28,
+                      ``
+                    )}
+                    id={``}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateEmail"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["email"]
+                              },
+                              operation: 0,
+                              value: $state.emailInput.value
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateEmail"] != null &&
+                        typeof $steps["updateEmail"] === "object" &&
+                        typeof $steps["updateEmail"].then === "function"
+                      ) {
+                        $steps["updateEmail"] = await $steps["updateEmail"];
+                      }
+
+                      $steps["updateSubmitting"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["submitting"]
+                              },
+                              operation: 0,
+                              value: true
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateSubmitting"] != null &&
+                        typeof $steps["updateSubmitting"] === "object" &&
+                        typeof $steps["updateSubmitting"].then === "function"
+                      ) {
+                        $steps["updateSubmitting"] =
+                          await $steps["updateSubmitting"];
+                      }
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (async () => {
+                                  async function submit() {
+                                    try {
+                                      const payload = { email: $state.email };
+                                      console.log(
+                                        "[Account Creation] \uD83D\uDE80 Sending payload:",
+                                        payload
+                                      );
+                                      const response = await fetch(
+                                        "https://hook.us1.make.com/76n0xmqgzmrp42l8r34iy2vlxa95jsw5",
+                                        {
+                                          method: "POST",
+                                          headers: {
+                                            "Content-Type": "application/json"
+                                          },
+                                          body: JSON.stringify(payload)
+                                        }
+                                      );
+                                      const json = await response.json();
+                                      console.log(
+                                        "[Account Creation] Response:",
+                                        json
+                                      );
+                                      if (
+                                        response.status === 200 &&
+                                        json.token
+                                      ) {
+                                        document.cookie = `plasmic_auth=${json.token}; Path=/; SameSite=Lax; Max-Age=2592000`;
+                                        console.log(
+                                          "[Account Creation] \uD83C\uDF6A Plasmic auth cookie set"
+                                        );
+                                        const decoded = JSON.parse(
+                                          atob(json.token.split(".")[1])
+                                        );
+                                        const plasmicUser = {
+                                          id: decoded.userId,
+                                          email: decoded.email,
+                                          isLoggedIn: true,
+                                          role:
+                                            decoded.roles?.[0] || "Normal User"
+                                        };
+                                        window.__PLASMIC_USER__ = plasmicUser;
+                                        window.plasmicUser = plasmicUser;
+                                        window.dispatchEvent(
+                                          new StorageEvent("storage", {
+                                            key: "plasmicUser"
+                                          })
+                                        );
+                                        console.log(
+                                          "[Account Creation] \uD83E\uDDE0 Plasmic user context updated:",
+                                          plasmicUser
+                                        );
+                                        if (window.PlasmicRootContext) {
+                                          console.log(
+                                            "[Account Creation] \uD83D\uDD01 Forcing Plasmic re-render"
+                                          );
+                                          window.dispatchEvent(
+                                            new Event("visibilitychange")
+                                          );
+                                        }
+                                        setTimeout(() => {
+                                          window.location.href =
+                                            json.redirectURL || "/";
+                                        }, 250);
+                                      } else {
+                                        console.warn(
+                                          `[Account Creation] ⚠️ Non-200 or missing token — status ${response.status}`
+                                        );
+                                        window.location.href = "/login";
+                                      }
+                                    } catch (err) {
+                                      console.error(
+                                        "[Account Creation] \uD83D\uDCA5 Submission error:",
+                                        err
+                                      );
+                                      window.location.href = "/login";
+                                    }
+                                  }
+                                  return submit();
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }}
+                  >
+                    <div
+                      data-plasmic-name={"text"}
+                      data-plasmic-override={overrides.text}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Log In"}
+                    </div>
+                    {false ? (
+                      <CursorIsolatedSvgIcon
+                        className={classNames(
+                          projectcss.all,
+                          sty.svg__uVpE5,
+                          ``
+                        )}
+                        role={"img"}
+                      />
+                    ) : null}
+                  </div>
+                  {false ? (
+                    <div
+                      data-plasmic-name={"h2146"}
+                      data-plasmic-override={overrides.h2146}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h2146,
+                        "geologica-text-regular"
+                      )}
+                    >
+                      {
+                        "By proceeding, you agree to our Terms and Privacy Policy."
+                      }
+                    </div>
+                  ) : null}
+                  <div
+                    data-plasmic-name={"h2145"}
+                    data-plasmic-override={overrides.h2145}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.h2145,
+                      "geologica-h3"
+                    )}
+                  >
+                    <React.Fragment>
                       <React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ fontWeight: 700 }}
-                        >
-                          {"Sign up"}
-                        </span>
+                        {"Don't have an account? "}
                       </React.Fragment>
-                    </PlasmicLink__>
-                  }
-                  <React.Fragment>{""}</React.Fragment>
-                </React.Fragment>
-              </div>
+                      {
+                        <PlasmicLink__
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link___2LxVh
+                          )}
+                          component={Link}
+                          platform={"nextjs"}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {"Sign up"}
+                            </span>
+                          </React.Fragment>
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>{""}</React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              ) : null}
             </div>
-          ) : null}
+            <div className={classNames(projectcss.all, sty.freeBox__g71Px, ``)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__fbYyX,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__roYxl)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__sZn1,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__htNhg)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__wbZt4,
+                  "line-fade"
+                )}
+              />
+            </div>
+          </div>
           <Embed
             data-plasmic-name={"otp"}
             data-plasmic-override={overrides.otp}
@@ -634,6 +721,21 @@ function PlasmicSignUp__RenderFunc(props: {
               "<style>\n  input.otp-input:focus {\n    outline: none;\n    box-shadow: none;\n  }\n</style>\n\n<script>\n(() => {\n  if (window.__otpInit) return;\n  window.__otpInit = true;\n\n  let suppressSelect = false; // flag to control auto-select\n\n  function getInputs() {\n    return Array.from(document.querySelectorAll('input.otp-input'))\n      .filter(el => el.offsetParent !== null);\n  }\n\n  function setOtpAttrs(input) {\n    input.setAttribute('maxlength', '1');\n    input.setAttribute('inputmode', 'numeric');\n    input.setAttribute('autocomplete', 'one-time-code');\n    input.setAttribute('aria-label', 'OTP digit');\n  }\n\n  function otpValue(inputs) {\n    return inputs.map(i => i.value).join('');\n  }\n\n  function distribute(str, startIdx, inputs) {\n    const chars = str.replace(/\\D/g, '').slice(0, inputs.length - startIdx).split('');\n    for (let i = 0; i < chars.length; i++) {\n      inputs[startIdx + i].value = chars[i];\n    }\n  }\n\n  function bind(inputs) {\n    if (inputs.length === 0 || inputs.__otpBound) return;\n    inputs.__otpBound = true;\n\n    inputs.forEach((input, idx) => {\n      setOtpAttrs(input);\n\n      input.addEventListener('focus', () => {\n        if (!suppressSelect) {\n          input.select(); // only select on normal focus/click\n        }\n        suppressSelect = false; // reset flag\n      });\n\n      input.addEventListener('keydown', (e) => {\n        const isChar = e.key.length === 1 && !e.metaKey && !e.ctrlKey && !e.altKey;\n\n        if (e.key === 'Backspace') {\n          if (input.value === '' && idx > 0) {\n            suppressSelect = true; // prevent auto-select when moving back\n            inputs[idx - 1].focus();\n          } else {\n            input.value = '';\n          }\n          e.preventDefault();\n          return;\n        }\n\n        if (e.key === 'ArrowLeft' && idx > 0) {\n          suppressSelect = true;\n          inputs[idx - 1].focus();\n          e.preventDefault();\n          return;\n        }\n\n        if (e.key === 'ArrowRight' && idx < inputs.length - 1) {\n          suppressSelect = true;\n          inputs[idx + 1].focus();\n          e.preventDefault();\n          return;\n        }\n\n        if (isChar) {\n          input.value = e.key.replace(/\\D/g, '');\n          if (input.value && idx < inputs.length - 1) inputs[idx + 1].focus();\n          e.preventDefault();\n        }\n      });\n\n      input.addEventListener('paste', (e) => {\n        e.preventDefault();\n        const text = (e.clipboardData || window.clipboardData).getData('text') || '';\n        distribute(text, idx, inputs);\n        const last = Math.min(\n          idx + text.replace(/\\D/g, '').length - 1,\n          inputs.length - 1\n        );\n        if (last >= idx) {\n          suppressSelect = true; // prevent selecting the last pasted digit\n          inputs[last].focus();\n        }\n      });\n\n      input.addEventListener('input', (e) => {\n        const v = e.target.value.replace(/\\D/g, '');\n        e.target.value = v.slice(0, 1);\n        if (e.target.value && idx < inputs.length - 1) inputs[idx + 1].focus();\n      });\n    });\n\n    window.getOTP = () => otpValue(inputs);\n\n    // Autofocus the first OTP input when everything is ready\n    if (inputs[0]) {\n      suppressSelect = true;\n      inputs[0].focus();\n    }\n  }\n\n  function tryBindOnce() {\n    const inputs = getInputs();\n    if (inputs.length > 0) { // \u2705 changed from 5 \u2192 0 for dynamic flexibility\n      bind(inputs);\n      return true;\n    }\n    return false;\n  }\n\n  if (!tryBindOnce()) {\n    const mo = new MutationObserver(() => {\n      if (tryBindOnce()) mo.disconnect();\n    });\n    mo.observe(document.body, { childList: true, subtree: true });\n\n    const poll = setInterval(() => {\n      if (tryBindOnce()) clearInterval(poll);\n    }, 400);\n\n    setTimeout(() => clearInterval(poll), 12000);\n  }\n})();\n</script>\n"
             }
           />
+
+          <div className={classNames(projectcss.all, sty.freeBox__fVc4S)}>
+            <div
+              data-plasmic-name={"h2141"}
+              data-plasmic-override={overrides.h2141}
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.h2141,
+                "geologica-h3"
+              )}
+            >
+              {"By continuing, you agree to our Terms and Privacy Policy."}
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>
@@ -643,6 +745,8 @@ function PlasmicSignUp__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "section1Parent",
+    "section1Inner",
     "step1",
     "h1219",
     "h2139",
@@ -653,8 +757,35 @@ const PlasmicDescendants = {
     "text",
     "h2146",
     "h2145",
-    "link",
-    "otp"
+    "otp",
+    "h2141"
+  ],
+  section1Parent: [
+    "section1Parent",
+    "section1Inner",
+    "step1",
+    "h1219",
+    "h2139",
+    "primarycta61",
+    "emailInput",
+    "embedHtml",
+    "primaryctaStage28",
+    "text",
+    "h2146",
+    "h2145"
+  ],
+  section1Inner: [
+    "section1Inner",
+    "step1",
+    "h1219",
+    "h2139",
+    "primarycta61",
+    "emailInput",
+    "embedHtml",
+    "primaryctaStage28",
+    "text",
+    "h2146",
+    "h2145"
   ],
   step1: [
     "step1",
@@ -666,8 +797,7 @@ const PlasmicDescendants = {
     "primaryctaStage28",
     "text",
     "h2146",
-    "h2145",
-    "link"
+    "h2145"
   ],
   h1219: ["h1219"],
   h2139: ["h2139"],
@@ -677,15 +807,17 @@ const PlasmicDescendants = {
   primaryctaStage28: ["primaryctaStage28", "text"],
   text: ["text"],
   h2146: ["h2146"],
-  h2145: ["h2145", "link"],
-  link: ["link"],
-  otp: ["otp"]
+  h2145: ["h2145"],
+  otp: ["otp"],
+  h2141: ["h2141"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  section1Parent: "div";
+  section1Inner: "div";
   step1: "div";
   h1219: "div";
   h2139: "div";
@@ -696,8 +828,8 @@ type NodeDefaultElementType = {
   text: "div";
   h2146: "div";
   h2145: "div";
-  link: "a";
   otp: typeof Embed;
+  h2141: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -762,6 +894,8 @@ export const PlasmicSignUp = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    section1Parent: makeNodeComponent("section1Parent"),
+    section1Inner: makeNodeComponent("section1Inner"),
     step1: makeNodeComponent("step1"),
     h1219: makeNodeComponent("h1219"),
     h2139: makeNodeComponent("h2139"),
@@ -772,8 +906,8 @@ export const PlasmicSignUp = Object.assign(
     text: makeNodeComponent("text"),
     h2146: makeNodeComponent("h2146"),
     h2145: makeNodeComponent("h2145"),
-    link: makeNodeComponent("link"),
     otp: makeNodeComponent("otp"),
+    h2141: makeNodeComponent("h2141"),
 
     // Metadata about props expected for PlasmicSignUp
     internalVariantProps: PlasmicSignUp__VariantProps,

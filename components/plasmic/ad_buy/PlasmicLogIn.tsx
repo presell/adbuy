@@ -68,6 +68,7 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicLogIn.module.css"; // plasmic-import: 34RaKgzbnkM2/css
 
+import AdBuyDarkTextSmallestCursorSvgIcon from "./icons/PlasmicIcon__AdBuyDarkTextSmallestCursorSvg"; // plasmic-import: w5CBTUelss3U/icon
 import Email8SvgrepoComSvgIcon from "./icons/PlasmicIcon__Email8SvgrepoComSvg"; // plasmic-import: hSJ3Nz5m06-i/icon
 import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 
@@ -84,9 +85,11 @@ export const PlasmicLogIn__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicLogIn__OverridesType = {
   root?: Flex__<"div">;
+  otp?: Flex__<typeof Embed>;
+  section1Parent?: Flex__<"div">;
+  section1Inner?: Flex__<"div">;
   step2?: Flex__<"div">;
   h1218?: Flex__<"div">;
-  freeBox?: Flex__<"div">;
   parentOtp17?: Flex__<"div">;
   otp1?: Flex__<"input">;
   parentOtp18?: Flex__<"div">;
@@ -110,7 +113,7 @@ export type PlasmicLogIn__OverridesType = {
   primaryctaStage28?: Flex__<"div">;
   h2146?: Flex__<"div">;
   h2145?: Flex__<"div">;
-  otp?: Flex__<typeof Embed>;
+  h2141?: Flex__<"div">;
 };
 
 export interface DefaultLogInProps {}
@@ -305,788 +308,27 @@ function PlasmicLogIn__RenderFunc(props: {
             sty.root
           )}
         >
-          {(() => {
-            try {
-              return $state.emailExists == true;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
-            <div
-              data-plasmic-name={"step2"}
-              data-plasmic-override={overrides.step2}
-              className={classNames(projectcss.all, sty.step2, ``)}
-            >
-              <div
-                data-plasmic-name={"h1218"}
-                data-plasmic-override={overrides.h1218}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.h1218,
-                  "geologica-text-medium H1"
-                )}
-              >
-                <React.Fragment>
-                  <span
-                    className={"plasmic_default__all plasmic_default__span"}
-                    style={{ color: "#000000" }}
-                  >
-                    {"Log in to AdBuy"}
-                  </span>
-                </React.Fragment>
-              </div>
-              <div
-                data-plasmic-name={"freeBox"}
-                data-plasmic-override={overrides.freeBox}
-                className={classNames(
-                  projectcss.all,
-                  sty.freeBox,
-                  "load-in-compat"
-                )}
-              >
-                <div
-                  data-plasmic-name={"parentOtp17"}
-                  data-plasmic-override={overrides.parentOtp17}
-                  className={classNames(projectcss.all, sty.parentOtp17, ``)}
-                >
-                  <input
-                    data-plasmic-name={"otp1"}
-                    data-plasmic-override={overrides.otp1}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.input,
-                      sty.otp1,
-                      "otp-input"
-                    )}
-                    id={``}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, ["otp1", "value"])(
-                          e.target.value
-                        );
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["otp1"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["otp1", "value"]) ?? ""
-                    }
-                  />
-                </div>
-                <div
-                  data-plasmic-name={"parentOtp18"}
-                  data-plasmic-override={overrides.parentOtp18}
-                  className={classNames(projectcss.all, sty.parentOtp18, ``)}
-                >
-                  <input
-                    data-plasmic-name={"otp2"}
-                    data-plasmic-override={overrides.otp2}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.input,
-                      sty.otp2,
-                      "otp-input"
-                    )}
-                    id={``}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, ["otp2", "value"])(
-                          e.target.value
-                        );
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["otp2"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["otp2", "value"]) ?? ""
-                    }
-                  />
-                </div>
-                <div
-                  data-plasmic-name={"parentOtp19"}
-                  data-plasmic-override={overrides.parentOtp19}
-                  className={classNames(projectcss.all, sty.parentOtp19, ``)}
-                >
-                  <input
-                    data-plasmic-name={"otp3"}
-                    data-plasmic-override={overrides.otp3}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.input,
-                      sty.otp3,
-                      "otp-input"
-                    )}
-                    id={``}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, ["otp3", "value"])(
-                          e.target.value
-                        );
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["otp3"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["otp3", "value"]) ?? ""
-                    }
-                  />
-                </div>
-                <div
-                  data-plasmic-name={"parentOtp110"}
-                  data-plasmic-override={overrides.parentOtp110}
-                  className={classNames(projectcss.all, sty.parentOtp110, ``)}
-                >
-                  <input
-                    data-plasmic-name={"otp4"}
-                    data-plasmic-override={overrides.otp4}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.input,
-                      sty.otp4,
-                      "otp-input"
-                    )}
-                    id={``}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, ["otp4", "value"])(
-                          e.target.value
-                        );
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["otp4"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["otp4", "value"]) ?? ""
-                    }
-                  />
-                </div>
-                <div
-                  data-plasmic-name={"parentOtp111"}
-                  data-plasmic-override={overrides.parentOtp111}
-                  className={classNames(projectcss.all, sty.parentOtp111, ``)}
-                >
-                  <input
-                    data-plasmic-name={"otp5"}
-                    data-plasmic-override={overrides.otp5}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.input,
-                      sty.otp5,
-                      "otp-input"
-                    )}
-                    id={``}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, ["otp5", "value"])(
-                          e.target.value
-                        );
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["otp5"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["otp5", "value"]) ?? ""
-                    }
-                  />
-                </div>
-                <div
-                  data-plasmic-name={"parentOtp112"}
-                  data-plasmic-override={overrides.parentOtp112}
-                  className={classNames(projectcss.all, sty.parentOtp112, ``)}
-                >
-                  <input
-                    data-plasmic-name={"otp6"}
-                    data-plasmic-override={overrides.otp6}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.input,
-                      sty.otp6,
-                      "otp-input"
-                    )}
-                    id={``}
-                    onChange={async (...eventArgs: any) => {
-                      (e => {
-                        generateStateOnChangeProp($state, ["otp6", "value"])(
-                          e.target.value
-                        );
-                      }).apply(null, eventArgs);
-                    }}
-                    ref={ref => {
-                      $refs["otp6"] = ref;
-                    }}
-                    type={"text"}
-                    value={
-                      generateStateValueProp($state, ["otp6", "value"]) ?? ""
-                    }
-                  />
-                </div>
-              </div>
-              <div
-                data-plasmic-name={"primaryctaStage27"}
-                data-plasmic-override={overrides.primaryctaStage27}
-                className={classNames(
-                  projectcss.all,
-                  sty.primaryctaStage27,
-                  "submit"
-                )}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["runCode"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          customFunction: async () => {
-                            return (async () => {
-                              if (typeof window !== "undefined") {
-                                return (async () => {
-                                  try {
-                                    console.log(
-                                      "[OTP Verification] Starting verification flow..."
-                                    );
-                                    const { createClient } = await import(
-                                      "@supabase/supabase-js"
-                                    );
-                                    const supabase = createClient(
-                                      "https://habwycahldzwxreftesz.supabase.co",
-                                      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhYnd5Y2FobGR6d3hyZWZ0ZXN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4NDY0NjcsImV4cCI6MjA3NTQyMjQ2N30.TWRXYN6942fhPEPG4fT6UDRzPeu06abxrFkbwxhEVQQ"
-                                    );
-                                    const inputs = Array.from(
-                                      document.querySelectorAll(
-                                        "input.otp-input"
-                                      )
-                                    );
-                                    const otp = inputs
-                                      .map(i => i.value || "")
-                                      .join("")
-                                      .trim();
-                                    if (!otp || otp.length < 6) {
-                                      console.warn(
-                                        "[OTP Verification] \u26A0️ Incomplete code entered."
-                                      );
-                                      $state.invalidOtp = true;
-                                      return;
-                                    }
-                                    console.log(
-                                      `[OTP Verification] Combined OTP: "${otp}"`
-                                    );
-                                    console.log(
-                                      `[OTP Verification] Using email: ${$state.email}`
-                                    );
-                                    const { data, error } =
-                                      await supabase.auth.verifyOtp({
-                                        email: $state.email,
-                                        token: otp,
-                                        type: "email"
-                                      });
-                                    if (error || !data?.session) {
-                                      console.warn(
-                                        "[OTP Verification] \u274C Invalid OTP or missing session:",
-                                        error?.message
-                                      );
-                                      $state.invalidOtp = true;
-                                      return;
-                                    }
-                                    console.log(
-                                      "[OTP Verification] \u2705 Authentication successful!"
-                                    );
-                                    console.log(
-                                      "[OTP Verification] User object:",
-                                      data.user
-                                    );
-                                    const { data: sessionData } =
-                                      await supabase.auth.getSession();
-                                    const sessionKey =
-                                      "sb-habwycahldzwxreftesz-auth-token";
-                                    localStorage.setItem(
-                                      sessionKey,
-                                      JSON.stringify(sessionData.session)
-                                    );
-                                    console.log(
-                                      `[OTP Verification] 💾 Session stored under key: ${sessionKey}`
-                                    );
-                                    window.dispatchEvent(
-                                      new StorageEvent("storage", {
-                                        key: sessionKey
-                                      })
-                                    );
-                                    const {
-                                      data: { user }
-                                    } = await supabase.auth.getUser();
-                                    if (user) {
-                                      const plasmicUser = {
-                                        id: user.id,
-                                        email: user.email,
-                                        isLoggedIn: true,
-                                        role: "authenticated"
-                                      };
-                                      window.__PLASMIC_USER__ = plasmicUser;
-                                      window.plasmicUser = plasmicUser;
-                                      window.dispatchEvent(
-                                        new StorageEvent("storage", {
-                                          key: "plasmicUser"
-                                        })
-                                      );
-                                      console.log(
-                                        "[OTP Verification] \uD83E\uDDE0 Plasmic user context updated:",
-                                        plasmicUser
-                                      );
-                                    }
-                                    $state.invalidOtp = false;
-                                    $state.emailExists = true;
-                                    console.log(
-                                      "[OTP Verification] \u2705 Login fully completed and synced with Plasmic."
-                                    );
-                                    setTimeout(() => {
-                                      console.log(
-                                        "[OTP Verification] \uD83D\uDD01 Redirecting to home '/' ..."
-                                      );
-                                      window.location.href = "/";
-                                    }, 300);
-                                  } catch (err) {
-                                    console.error(
-                                      "[OTP Verification] \uD83D\uDCA5 Unexpected error:",
-                                      err
-                                    );
-                                    $state.invalidOtp = true;
-                                  }
-                                })();
-                              }
-                            })();
-                          }
-                        };
-                        return (({ customFunction }) => {
-                          return customFunction();
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["runCode"] != null &&
-                    typeof $steps["runCode"] === "object" &&
-                    typeof $steps["runCode"].then === "function"
-                  ) {
-                    $steps["runCode"] = await $steps["runCode"];
-                  }
-                }}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___1S3Uy,
-                    "geologica-text-medium"
-                  )}
-                >
-                  {"Log In"}
-                </div>
-              </div>
-              <div
-                data-plasmic-name={"h2144"}
-                data-plasmic-override={overrides.h2144}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.h2144,
-                  "geologica-text-less-medium load-in-compat"
-                )}
-              >
-                <React.Fragment>
-                  <React.Fragment>
-                    {"We emailed you a One-Time-Passcode. "}
-                  </React.Fragment>
-                  {
-                    <PlasmicLink__
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.__wab_text,
-                        projectcss.plasmic_default__inline,
-                        sty.link__twZ7S
-                      )}
-                      component={Link}
-                      platform={"nextjs"}
-                    >
-                      <React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ fontWeight: 700 }}
-                        >
-                          {"Resend OTP"}
-                        </span>
-                      </React.Fragment>
-                    </PlasmicLink__>
-                  }
-                  <React.Fragment>{""}</React.Fragment>
-                </React.Fragment>
-              </div>
-            </div>
-          ) : null}
-          {(() => {
-            try {
-              return $state.emailExists == false;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
-            <div
-              data-plasmic-name={"step1"}
-              data-plasmic-override={overrides.step1}
+          <div className={classNames(projectcss.all, sty.freeBox__n12)}>
+            <PlasmicLink__
               className={classNames(
                 projectcss.all,
-                sty.step1,
-                "load-in-compat"
+                projectcss.a,
+                sty.link__pPa4
               )}
+              component={Link}
+              href={`/`}
+              platform={"nextjs"}
             >
-              <div
-                data-plasmic-name={"h1219"}
-                data-plasmic-override={overrides.h1219}
+              <AdBuyDarkTextSmallestCursorSvgIcon
                 className={classNames(
                   projectcss.all,
-                  projectcss.__wab_text,
-                  sty.h1219,
-                  "geologica-text-medium H1"
+                  sty.svg___6XYwF,
+                  "logo-text"
                 )}
-              >
-                <React.Fragment>
-                  <span
-                    className={"plasmic_default__all plasmic_default__span"}
-                    style={{ color: "#000000" }}
-                  >
-                    {"Log in to AdBuy"}
-                  </span>
-                </React.Fragment>
-              </div>
-              {false ? (
-                <div
-                  data-plasmic-name={"h2139"}
-                  data-plasmic-override={overrides.h2139}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.h2139,
-                    "geologica-text-regular"
-                  )}
-                >
-                  {
-                    "Put more jobs on the calendar without chasing leads or calls."
-                  }
-                </div>
-              ) : null}
-              <div
-                data-plasmic-name={"primarycta61"}
-                data-plasmic-override={overrides.primarycta61}
-                className={classNames(projectcss.all, sty.primarycta61, ``)}
-              >
-                <Email8SvgrepoComSvgIcon
-                  className={classNames(projectcss.all, sty.svg__acSz4)}
-                  role={"img"}
-                />
-
-                <input
-                  data-plasmic-name={"emailInput"}
-                  data-plasmic-override={overrides.emailInput}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.input,
-                    sty.emailInput,
-                    ``
-                  )}
-                  id={``}
-                  onChange={async (...eventArgs: any) => {
-                    (e => {
-                      generateStateOnChangeProp($state, [
-                        "emailInput",
-                        "value"
-                      ])(e.target.value);
-                    }).apply(null, eventArgs);
-                  }}
-                  placeholder={"scale@adbuy.ai"}
-                  ref={ref => {
-                    $refs["emailInput"] = ref;
-                  }}
-                  type={"text"}
-                  value={
-                    generateStateValueProp($state, ["emailInput", "value"]) ??
-                    ""
-                  }
-                />
-
-                {(() => {
-                  try {
-                    return $state.submitting == true;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <Embed
-                    data-plasmic-name={"embedHtml"}
-                    data-plasmic-override={overrides.embedHtml}
-                    className={classNames("__wab_instance", sty.embedHtml)}
-                    code={
-                      '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Centered Loading Spinner</title>\n<style>\n    /* Container with fixed height */\n    .spinner-container {\n        height: 20px; /* Fixed height */\n        display: flex; /* Use flexbox for centering */\n        justify-content: center; /* Center horizontally */\n        align-items: center; /* Center vertically */\n        background-color: transparent; /* Make background transparent */\n    }\n\n    .spinner {\n        width: 11.2px; /* Reduced size */\n        height: 11.2px;\n        position: relative;\n    }\n\n    .spinner div {\n        transform-origin: 5.6px 5.6px; /* Adjusted for size */\n        animation: spinner 1.2s linear infinite;\n    }\n\n    .spinner div:after {\n        content: " ";\n        display: block;\n        position: absolute;\n        top: 0.7px;\n        left: 4.9px;\n        width: 1.4px;\n        height: 3.5px;\n        border-radius: 20%;\n        background: #535353; /* Spinner color */\n    }\n\n    /* Spinner animation delays */\n    .spinner div:nth-child(1) { transform: rotate(0deg); animation-delay: -1.1s; }\n    .spinner div:nth-child(2) { transform: rotate(30deg); animation-delay: -1s; }\n    .spinner div:nth-child(3) { transform: rotate(60deg); animation-delay: -0.9s; }\n    .spinner div:nth-child(4) { transform: rotate(90deg); animation-delay: -0.8s; }\n    .spinner div:nth-child(5) { transform: rotate(120deg); animation-delay: -0.7s; }\n    .spinner div:nth-child(6) { transform: rotate(150deg); animation-delay: -0.6s; }\n    .spinner div:nth-child(7) { transform: rotate(180deg); animation-delay: -0.5s; }\n    .spinner div:nth-child(8) { transform: rotate(210deg); animation-delay: -0.4s; }\n    .spinner div:nth-child(9) { transform: rotate(240deg); animation-delay: -0.3s; }\n    .spinner div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }\n    .spinner div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }\n    .spinner div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }\n\n    @keyframes spinner {\n        0% { opacity: 1; }\n        100% { opacity: 0; }\n    }\n</style>\n</head>\n<body>\n\n<!-- Container to center the spinner -->\n<div class="spinner-container">\n    <div class="spinner">\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n    </div>\n</div>\n\n</body>\n</html>\n'
-                    }
-                  />
-                ) : null}
-              </div>
-              <div
-                data-plasmic-name={"primaryctaStage28"}
-                data-plasmic-override={overrides.primaryctaStage28}
-                className={classNames(
-                  projectcss.all,
-                  sty.primaryctaStage28,
-                  ``
-                )}
-                id={"emailSubmitBTN"}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["updateEmail"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["email"]
-                          },
-                          operation: 0,
-                          value: $state.emailInput.value
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateEmail"] != null &&
-                    typeof $steps["updateEmail"] === "object" &&
-                    typeof $steps["updateEmail"].then === "function"
-                  ) {
-                    $steps["updateEmail"] = await $steps["updateEmail"];
-                  }
-
-                  $steps["updateSubmitting"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["submitting"]
-                          },
-                          operation: 0,
-                          value: true
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateSubmitting"] != null &&
-                    typeof $steps["updateSubmitting"] === "object" &&
-                    typeof $steps["updateSubmitting"].then === "function"
-                  ) {
-                    $steps["updateSubmitting"] =
-                      await $steps["updateSubmitting"];
-                  }
-
-                  $steps["runCode"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          customFunction: async () => {
-                            return (async () => {
-                              function getFormData() {
-                                const formData = new FormData();
-                                formData.append("email", $state.email);
-                                return formData;
-                              }
-                              function handleSuccess() {
-                                console.log(
-                                  "\u2705 Webhook responded successfully \u2014 proceeding."
-                                );
-                                return "Success";
-                              }
-                              function handleError() {
-                                return "There was an error. Please try again.";
-                              }
-                              async function submit() {
-                                const formData = getFormData();
-                                try {
-                                  const response = await fetch(
-                                    "https://hook.us1.make.com/6w8efsdjvsw1www2lgunkfd8ofvqmt5o",
-                                    {
-                                      method: "POST",
-                                      body: formData
-                                    }
-                                  );
-                                  if (response.status === 200) {
-                                    console.log(
-                                      "Webhook responded with 200 \u2014 setting $state.emailExists = TRUE"
-                                    );
-                                    $state.emailExists = true;
-                                    return handleSuccess();
-                                  } else if (
-                                    [400, 404, 422].includes(response.status)
-                                  ) {
-                                    console.warn(
-                                      `Webhook responded with ${response.status} — setting $state.invalidEmail = TRUE`
-                                    );
-                                    $state.invalidEmail = true;
-                                    return handleError();
-                                  } else {
-                                    console.error(
-                                      `Unexpected response status: ${response.status}`
-                                    );
-                                    $state.invalidEmail = true;
-                                    return handleError();
-                                  }
-                                } catch (err) {
-                                  console.error("Submission error:", err);
-                                  $state.invalidEmail = true;
-                                  return handleError();
-                                }
-                              }
-                              return submit()
-                                .then(response => console.log(response))
-                                .catch(error => console.error(error));
-                            })();
-                          }
-                        };
-                        return (({ customFunction }) => {
-                          return customFunction();
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["runCode"] != null &&
-                    typeof $steps["runCode"] === "object" &&
-                    typeof $steps["runCode"].then === "function"
-                  ) {
-                    $steps["runCode"] = await $steps["runCode"];
-                  }
-                }}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__h39Cw,
-                    "geologica-text-medium"
-                  )}
-                >
-                  {"Log In"}
-                </div>
-                {false ? (
-                  <CursorIsolatedSvgIcon
-                    className={classNames(projectcss.all, sty.svg___0Seu, ``)}
-                    role={"img"}
-                  />
-                ) : null}
-              </div>
-              {false ? (
-                <div
-                  data-plasmic-name={"h2146"}
-                  data-plasmic-override={overrides.h2146}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.h2146,
-                    "geologica-text-regular"
-                  )}
-                >
-                  {"By proceeding, you agree to our Terms and Privacy Policy."}
-                </div>
-              ) : null}
-              <div
-                data-plasmic-name={"h2145"}
-                data-plasmic-override={overrides.h2145}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.h2145,
-                  "geologica-text-less-medium"
-                )}
-              >
-                <React.Fragment>
-                  <React.Fragment>{"Don't have an account? "}</React.Fragment>
-                  {
-                    <PlasmicLink__
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.__wab_text,
-                        projectcss.plasmic_default__inline,
-                        sty.link__sAtue
-                      )}
-                      component={Link}
-                      platform={"nextjs"}
-                    >
-                      <React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ fontWeight: 700 }}
-                        >
-                          {"Sign up"}
-                        </span>
-                      </React.Fragment>
-                    </PlasmicLink__>
-                  }
-                  <React.Fragment>{""}</React.Fragment>
-                </React.Fragment>
-              </div>
-            </div>
-          ) : null}
+                role={"img"}
+              />
+            </PlasmicLink__>
+          </div>
           <Embed
             data-plasmic-name={"otp"}
             data-plasmic-override={overrides.otp}
@@ -1095,6 +337,902 @@ function PlasmicLogIn__RenderFunc(props: {
               "<style>\n  input.otp-input:focus {\n    outline: none;\n    box-shadow: none;\n  }\n</style>\n\n<script>\n(() => {\n  if (window.__otpInit) return;\n  window.__otpInit = true;\n\n  let suppressSelect = false; // flag to control auto-select\n\n  function getInputs() {\n    return Array.from(document.querySelectorAll('input.otp-input'))\n      .filter(el => el.offsetParent !== null);\n  }\n\n  function setOtpAttrs(input) {\n    input.setAttribute('maxlength', '1');\n    input.setAttribute('inputmode', 'numeric');\n    input.setAttribute('autocomplete', 'one-time-code');\n    input.setAttribute('aria-label', 'OTP digit');\n  }\n\n  function otpValue(inputs) {\n    return inputs.map(i => i.value).join('');\n  }\n\n  function distribute(str, startIdx, inputs) {\n    const chars = str.replace(/\\D/g, '').slice(0, inputs.length - startIdx).split('');\n    for (let i = 0; i < chars.length; i++) {\n      inputs[startIdx + i].value = chars[i];\n    }\n  }\n\n  function bind(inputs) {\n    if (inputs.length === 0 || inputs.__otpBound) return;\n    inputs.__otpBound = true;\n\n    inputs.forEach((input, idx) => {\n      setOtpAttrs(input);\n\n      input.addEventListener('focus', () => {\n        if (!suppressSelect) {\n          input.select(); // only select on normal focus/click\n        }\n        suppressSelect = false; // reset flag\n      });\n\n      input.addEventListener('keydown', (e) => {\n        const isChar = e.key.length === 1 && !e.metaKey && !e.ctrlKey && !e.altKey;\n\n        if (e.key === 'Backspace') {\n          if (input.value === '' && idx > 0) {\n            suppressSelect = true; // prevent auto-select when moving back\n            inputs[idx - 1].focus();\n          } else {\n            input.value = '';\n          }\n          e.preventDefault();\n          return;\n        }\n\n        if (e.key === 'ArrowLeft' && idx > 0) {\n          suppressSelect = true;\n          inputs[idx - 1].focus();\n          e.preventDefault();\n          return;\n        }\n\n        if (e.key === 'ArrowRight' && idx < inputs.length - 1) {\n          suppressSelect = true;\n          inputs[idx + 1].focus();\n          e.preventDefault();\n          return;\n        }\n\n        if (isChar) {\n          input.value = e.key.replace(/\\D/g, '');\n          if (input.value && idx < inputs.length - 1) inputs[idx + 1].focus();\n          e.preventDefault();\n        }\n      });\n\n      input.addEventListener('paste', (e) => {\n        e.preventDefault();\n        const text = (e.clipboardData || window.clipboardData).getData('text') || '';\n        distribute(text, idx, inputs);\n        const last = Math.min(\n          idx + text.replace(/\\D/g, '').length - 1,\n          inputs.length - 1\n        );\n        if (last >= idx) {\n          suppressSelect = true; // prevent selecting the last pasted digit\n          inputs[last].focus();\n        }\n      });\n\n      input.addEventListener('input', (e) => {\n        const v = e.target.value.replace(/\\D/g, '');\n        e.target.value = v.slice(0, 1);\n        if (e.target.value && idx < inputs.length - 1) inputs[idx + 1].focus();\n      });\n    });\n\n    window.getOTP = () => otpValue(inputs);\n\n    // Autofocus the first OTP input when everything is ready\n    if (inputs[0]) {\n      suppressSelect = true;\n      inputs[0].focus();\n    }\n  }\n\n  function tryBindOnce() {\n    const inputs = getInputs();\n    if (inputs.length > 0) { // \u2705 changed from 5 \u2192 0 for dynamic flexibility\n      bind(inputs);\n      return true;\n    }\n    return false;\n  }\n\n  if (!tryBindOnce()) {\n    const mo = new MutationObserver(() => {\n      if (tryBindOnce()) mo.disconnect();\n    });\n    mo.observe(document.body, { childList: true, subtree: true });\n\n    const poll = setInterval(() => {\n      if (tryBindOnce()) clearInterval(poll);\n    }, 400);\n\n    setTimeout(() => clearInterval(poll), 12000);\n  }\n})();\n</script>\n"
             }
           />
+
+          <div
+            data-plasmic-name={"section1Parent"}
+            data-plasmic-override={overrides.section1Parent}
+            className={classNames(projectcss.all, sty.section1Parent, ``)}
+          >
+            <div
+              data-plasmic-name={"section1Inner"}
+              data-plasmic-override={overrides.section1Inner}
+              className={classNames(
+                projectcss.all,
+                sty.section1Inner,
+                "border-fade grid-lines hero-glow-bg"
+              )}
+            >
+              {(() => {
+                try {
+                  return $state.emailExists == true;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <div
+                  data-plasmic-name={"step2"}
+                  data-plasmic-override={overrides.step2}
+                  className={classNames(projectcss.all, sty.step2, ``)}
+                >
+                  <div
+                    data-plasmic-name={"h1218"}
+                    data-plasmic-override={overrides.h1218}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.h1218,
+                      "geologica-h1"
+                    )}
+                  >
+                    <React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000" }}
+                      >
+                        {"Log in to AdBuy"}
+                      </span>
+                    </React.Fragment>
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__s9QBn,
+                      "load-in-compat"
+                    )}
+                  >
+                    <div
+                      data-plasmic-name={"parentOtp17"}
+                      data-plasmic-override={overrides.parentOtp17}
+                      className={classNames(
+                        projectcss.all,
+                        sty.parentOtp17,
+                        ``
+                      )}
+                    >
+                      <input
+                        data-plasmic-name={"otp1"}
+                        data-plasmic-override={overrides.otp1}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.otp1,
+                          "otp-input"
+                        )}
+                        id={``}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "otp1",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        ref={ref => {
+                          $refs["otp1"] = ref;
+                        }}
+                        type={"text"}
+                        value={
+                          generateStateValueProp($state, ["otp1", "value"]) ??
+                          ""
+                        }
+                      />
+                    </div>
+                    <div
+                      data-plasmic-name={"parentOtp18"}
+                      data-plasmic-override={overrides.parentOtp18}
+                      className={classNames(
+                        projectcss.all,
+                        sty.parentOtp18,
+                        ``
+                      )}
+                    >
+                      <input
+                        data-plasmic-name={"otp2"}
+                        data-plasmic-override={overrides.otp2}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.otp2,
+                          "otp-input"
+                        )}
+                        id={``}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "otp2",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        ref={ref => {
+                          $refs["otp2"] = ref;
+                        }}
+                        type={"text"}
+                        value={
+                          generateStateValueProp($state, ["otp2", "value"]) ??
+                          ""
+                        }
+                      />
+                    </div>
+                    <div
+                      data-plasmic-name={"parentOtp19"}
+                      data-plasmic-override={overrides.parentOtp19}
+                      className={classNames(
+                        projectcss.all,
+                        sty.parentOtp19,
+                        ``
+                      )}
+                    >
+                      <input
+                        data-plasmic-name={"otp3"}
+                        data-plasmic-override={overrides.otp3}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.otp3,
+                          "otp-input"
+                        )}
+                        id={``}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "otp3",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        ref={ref => {
+                          $refs["otp3"] = ref;
+                        }}
+                        type={"text"}
+                        value={
+                          generateStateValueProp($state, ["otp3", "value"]) ??
+                          ""
+                        }
+                      />
+                    </div>
+                    <div
+                      data-plasmic-name={"parentOtp110"}
+                      data-plasmic-override={overrides.parentOtp110}
+                      className={classNames(
+                        projectcss.all,
+                        sty.parentOtp110,
+                        ``
+                      )}
+                    >
+                      <input
+                        data-plasmic-name={"otp4"}
+                        data-plasmic-override={overrides.otp4}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.otp4,
+                          "otp-input"
+                        )}
+                        id={``}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "otp4",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        ref={ref => {
+                          $refs["otp4"] = ref;
+                        }}
+                        type={"text"}
+                        value={
+                          generateStateValueProp($state, ["otp4", "value"]) ??
+                          ""
+                        }
+                      />
+                    </div>
+                    <div
+                      data-plasmic-name={"parentOtp111"}
+                      data-plasmic-override={overrides.parentOtp111}
+                      className={classNames(
+                        projectcss.all,
+                        sty.parentOtp111,
+                        ``
+                      )}
+                    >
+                      <input
+                        data-plasmic-name={"otp5"}
+                        data-plasmic-override={overrides.otp5}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.otp5,
+                          "otp-input"
+                        )}
+                        id={``}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "otp5",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        ref={ref => {
+                          $refs["otp5"] = ref;
+                        }}
+                        type={"text"}
+                        value={
+                          generateStateValueProp($state, ["otp5", "value"]) ??
+                          ""
+                        }
+                      />
+                    </div>
+                    <div
+                      data-plasmic-name={"parentOtp112"}
+                      data-plasmic-override={overrides.parentOtp112}
+                      className={classNames(
+                        projectcss.all,
+                        sty.parentOtp112,
+                        ``
+                      )}
+                    >
+                      <input
+                        data-plasmic-name={"otp6"}
+                        data-plasmic-override={overrides.otp6}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.otp6,
+                          "otp-input"
+                        )}
+                        id={``}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "otp6",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        ref={ref => {
+                          $refs["otp6"] = ref;
+                        }}
+                        type={"text"}
+                        value={
+                          generateStateValueProp($state, ["otp6", "value"]) ??
+                          ""
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div
+                    data-plasmic-name={"primaryctaStage27"}
+                    data-plasmic-override={overrides.primaryctaStage27}
+                    className={classNames(
+                      projectcss.all,
+                      sty.primaryctaStage27,
+                      "submit"
+                    )}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (async () => {
+                                  if (typeof window !== "undefined") {
+                                    return (async () => {
+                                      try {
+                                        console.log(
+                                          "[OTP Verification] Starting verification flow..."
+                                        );
+                                        const { createClient } = await import(
+                                          "@supabase/supabase-js"
+                                        );
+                                        const supabase = createClient(
+                                          "https://habwycahldzwxreftesz.supabase.co",
+                                          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhYnd5Y2FobGR6d3hyZWZ0ZXN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4NDY0NjcsImV4cCI6MjA3NTQyMjQ2N30.TWRXYN6942fhPEPG4fT6UDRzPeu06abxrFkbwxhEVQQ"
+                                        );
+                                        const inputs = Array.from(
+                                          document.querySelectorAll(
+                                            "input.otp-input"
+                                          )
+                                        );
+                                        const otp = inputs
+                                          .map(i => i.value || "")
+                                          .join("")
+                                          .trim();
+                                        if (!otp || otp.length < 6) {
+                                          console.warn(
+                                            "[OTP Verification] \u26A0️ Incomplete code entered."
+                                          );
+                                          $state.invalidOtp = true;
+                                          return;
+                                        }
+                                        console.log(
+                                          `[OTP Verification] Combined OTP: "${otp}"`
+                                        );
+                                        console.log(
+                                          `[OTP Verification] Using email: ${$state.email}`
+                                        );
+                                        const { data, error } =
+                                          await supabase.auth.verifyOtp({
+                                            email: $state.email,
+                                            token: otp,
+                                            type: "email"
+                                          });
+                                        if (error || !data?.session) {
+                                          console.warn(
+                                            "[OTP Verification] \u274C Invalid OTP or missing session:",
+                                            error?.message
+                                          );
+                                          $state.invalidOtp = true;
+                                          return;
+                                        }
+                                        console.log(
+                                          "[OTP Verification] \u2705 Authentication successful!"
+                                        );
+                                        console.log(
+                                          "[OTP Verification] User object:",
+                                          data.user
+                                        );
+                                        const { data: sessionData } =
+                                          await supabase.auth.getSession();
+                                        const sessionKey =
+                                          "sb-habwycahldzwxreftesz-auth-token";
+                                        localStorage.setItem(
+                                          sessionKey,
+                                          JSON.stringify(sessionData.session)
+                                        );
+                                        console.log(
+                                          `[OTP Verification] 💾 Session stored under key: ${sessionKey}`
+                                        );
+                                        window.dispatchEvent(
+                                          new StorageEvent("storage", {
+                                            key: sessionKey
+                                          })
+                                        );
+                                        const {
+                                          data: { user }
+                                        } = await supabase.auth.getUser();
+                                        if (user) {
+                                          const plasmicUser = {
+                                            id: user.id,
+                                            email: user.email,
+                                            isLoggedIn: true,
+                                            role: "authenticated"
+                                          };
+                                          window.__PLASMIC_USER__ = plasmicUser;
+                                          window.plasmicUser = plasmicUser;
+                                          window.dispatchEvent(
+                                            new StorageEvent("storage", {
+                                              key: "plasmicUser"
+                                            })
+                                          );
+                                          console.log(
+                                            "[OTP Verification] \uD83E\uDDE0 Plasmic user context updated:",
+                                            plasmicUser
+                                          );
+                                        }
+                                        $state.invalidOtp = false;
+                                        $state.emailExists = true;
+                                        console.log(
+                                          "[OTP Verification] \u2705 Login fully completed and synced with Plasmic."
+                                        );
+                                        setTimeout(() => {
+                                          console.log(
+                                            "[OTP Verification] \uD83D\uDD01 Redirecting to home '/' ..."
+                                          );
+                                          window.location.href = "/";
+                                        }, 300);
+                                      } catch (err) {
+                                        console.error(
+                                          "[OTP Verification] \uD83D\uDCA5 Unexpected error:",
+                                          err
+                                        );
+                                        $state.invalidOtp = true;
+                                      }
+                                    })();
+                                  }
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___1S3Uy,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Log In"}
+                    </div>
+                  </div>
+                  <div
+                    data-plasmic-name={"h2144"}
+                    data-plasmic-override={overrides.h2144}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.h2144,
+                      "geologica-h3"
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>
+                        {"We emailed you a One-Time-Passcode. "}
+                      </React.Fragment>
+                      {
+                        <PlasmicLink__
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link__twZ7S
+                          )}
+                          component={Link}
+                          platform={"nextjs"}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {"Resend OTP"}
+                            </span>
+                          </React.Fragment>
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>{""}</React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              ) : null}
+              {(() => {
+                try {
+                  return $state.emailExists == false;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <div
+                  data-plasmic-name={"step1"}
+                  data-plasmic-override={overrides.step1}
+                  className={classNames(
+                    projectcss.all,
+                    sty.step1,
+                    "load-in-compat"
+                  )}
+                >
+                  <div
+                    data-plasmic-name={"h1219"}
+                    data-plasmic-override={overrides.h1219}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.h1219,
+                      "geologica-h1"
+                    )}
+                  >
+                    <React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000" }}
+                      >
+                        {"Log in to AdBuy"}
+                      </span>
+                    </React.Fragment>
+                  </div>
+                  {false ? (
+                    <div
+                      data-plasmic-name={"h2139"}
+                      data-plasmic-override={overrides.h2139}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h2139,
+                        "geologica-text-regular"
+                      )}
+                    >
+                      {
+                        "Put more jobs on the calendar without chasing leads or calls."
+                      }
+                    </div>
+                  ) : null}
+                  <div
+                    data-plasmic-name={"primarycta61"}
+                    data-plasmic-override={overrides.primarycta61}
+                    className={classNames(projectcss.all, sty.primarycta61, ``)}
+                  >
+                    <Email8SvgrepoComSvgIcon
+                      className={classNames(projectcss.all, sty.svg__acSz4)}
+                      role={"img"}
+                    />
+
+                    <input
+                      data-plasmic-name={"emailInput"}
+                      data-plasmic-override={overrides.emailInput}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.input,
+                        sty.emailInput,
+                        ``
+                      )}
+                      id={``}
+                      onChange={async (...eventArgs: any) => {
+                        (e => {
+                          generateStateOnChangeProp($state, [
+                            "emailInput",
+                            "value"
+                          ])(e.target.value);
+                        }).apply(null, eventArgs);
+                      }}
+                      placeholder={"scale@adbuy.ai"}
+                      ref={ref => {
+                        $refs["emailInput"] = ref;
+                      }}
+                      type={"text"}
+                      value={
+                        generateStateValueProp($state, [
+                          "emailInput",
+                          "value"
+                        ]) ?? ""
+                      }
+                    />
+
+                    {(() => {
+                      try {
+                        return $state.submitting == true;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Embed
+                        data-plasmic-name={"embedHtml"}
+                        data-plasmic-override={overrides.embedHtml}
+                        className={classNames("__wab_instance", sty.embedHtml)}
+                        code={
+                          '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Centered Loading Spinner</title>\n<style>\n    /* Container with fixed height */\n    .spinner-container {\n        height: 20px; /* Fixed height */\n        display: flex; /* Use flexbox for centering */\n        justify-content: center; /* Center horizontally */\n        align-items: center; /* Center vertically */\n        background-color: transparent; /* Make background transparent */\n    }\n\n    .spinner {\n        width: 11.2px; /* Reduced size */\n        height: 11.2px;\n        position: relative;\n    }\n\n    .spinner div {\n        transform-origin: 5.6px 5.6px; /* Adjusted for size */\n        animation: spinner 1.2s linear infinite;\n    }\n\n    .spinner div:after {\n        content: " ";\n        display: block;\n        position: absolute;\n        top: 0.7px;\n        left: 4.9px;\n        width: 1.4px;\n        height: 3.5px;\n        border-radius: 20%;\n        background: #535353; /* Spinner color */\n    }\n\n    /* Spinner animation delays */\n    .spinner div:nth-child(1) { transform: rotate(0deg); animation-delay: -1.1s; }\n    .spinner div:nth-child(2) { transform: rotate(30deg); animation-delay: -1s; }\n    .spinner div:nth-child(3) { transform: rotate(60deg); animation-delay: -0.9s; }\n    .spinner div:nth-child(4) { transform: rotate(90deg); animation-delay: -0.8s; }\n    .spinner div:nth-child(5) { transform: rotate(120deg); animation-delay: -0.7s; }\n    .spinner div:nth-child(6) { transform: rotate(150deg); animation-delay: -0.6s; }\n    .spinner div:nth-child(7) { transform: rotate(180deg); animation-delay: -0.5s; }\n    .spinner div:nth-child(8) { transform: rotate(210deg); animation-delay: -0.4s; }\n    .spinner div:nth-child(9) { transform: rotate(240deg); animation-delay: -0.3s; }\n    .spinner div:nth-child(10) { transform: rotate(270deg); animation-delay: -0.2s; }\n    .spinner div:nth-child(11) { transform: rotate(300deg); animation-delay: -0.1s; }\n    .spinner div:nth-child(12) { transform: rotate(330deg); animation-delay: 0s; }\n\n    @keyframes spinner {\n        0% { opacity: 1; }\n        100% { opacity: 0; }\n    }\n</style>\n</head>\n<body>\n\n<!-- Container to center the spinner -->\n<div class="spinner-container">\n    <div class="spinner">\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n        <div></div>\n    </div>\n</div>\n\n</body>\n</html>\n'
+                        }
+                      />
+                    ) : null}
+                  </div>
+                  <div
+                    data-plasmic-name={"primaryctaStage28"}
+                    data-plasmic-override={overrides.primaryctaStage28}
+                    className={classNames(
+                      projectcss.all,
+                      sty.primaryctaStage28,
+                      ``
+                    )}
+                    id={"emailSubmitBTN"}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateEmail"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["email"]
+                              },
+                              operation: 0,
+                              value: $state.emailInput.value
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateEmail"] != null &&
+                        typeof $steps["updateEmail"] === "object" &&
+                        typeof $steps["updateEmail"].then === "function"
+                      ) {
+                        $steps["updateEmail"] = await $steps["updateEmail"];
+                      }
+
+                      $steps["updateSubmitting"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["submitting"]
+                              },
+                              operation: 0,
+                              value: true
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateSubmitting"] != null &&
+                        typeof $steps["updateSubmitting"] === "object" &&
+                        typeof $steps["updateSubmitting"].then === "function"
+                      ) {
+                        $steps["updateSubmitting"] =
+                          await $steps["updateSubmitting"];
+                      }
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (async () => {
+                                  function getFormData() {
+                                    const formData = new FormData();
+                                    formData.append("email", $state.email);
+                                    return formData;
+                                  }
+                                  function handleSuccess() {
+                                    console.log(
+                                      "\u2705 Webhook responded successfully \u2014 proceeding."
+                                    );
+                                    return "Success";
+                                  }
+                                  function handleError() {
+                                    return "There was an error. Please try again.";
+                                  }
+                                  async function submit() {
+                                    const formData = getFormData();
+                                    try {
+                                      const response = await fetch(
+                                        "https://hook.us1.make.com/6w8efsdjvsw1www2lgunkfd8ofvqmt5o",
+                                        {
+                                          method: "POST",
+                                          body: formData
+                                        }
+                                      );
+                                      if (response.status === 200) {
+                                        console.log(
+                                          "Webhook responded with 200 \u2014 setting $state.emailExists = TRUE"
+                                        );
+                                        $state.emailExists = true;
+                                        return handleSuccess();
+                                      } else if (
+                                        [400, 404, 422].includes(
+                                          response.status
+                                        )
+                                      ) {
+                                        console.warn(
+                                          `Webhook responded with ${response.status} — setting $state.invalidEmail = TRUE`
+                                        );
+                                        $state.invalidEmail = true;
+                                        return handleError();
+                                      } else {
+                                        console.error(
+                                          `Unexpected response status: ${response.status}`
+                                        );
+                                        $state.invalidEmail = true;
+                                        return handleError();
+                                      }
+                                    } catch (err) {
+                                      console.error("Submission error:", err);
+                                      $state.invalidEmail = true;
+                                      return handleError();
+                                    }
+                                  }
+                                  return submit()
+                                    .then(response => console.log(response))
+                                    .catch(error => console.error(error));
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__h39Cw,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Log In"}
+                    </div>
+                    {false ? (
+                      <CursorIsolatedSvgIcon
+                        className={classNames(
+                          projectcss.all,
+                          sty.svg___0Seu,
+                          ``
+                        )}
+                        role={"img"}
+                      />
+                    ) : null}
+                  </div>
+                  {false ? (
+                    <div
+                      data-plasmic-name={"h2146"}
+                      data-plasmic-override={overrides.h2146}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h2146,
+                        "geologica-text-regular"
+                      )}
+                    >
+                      {
+                        "By proceeding, you agree to our Terms and Privacy Policy."
+                      }
+                    </div>
+                  ) : null}
+                  <div
+                    data-plasmic-name={"h2145"}
+                    data-plasmic-override={overrides.h2145}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.h2145,
+                      "geologica-h3"
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>
+                        {"Don't have an account? "}
+                      </React.Fragment>
+                      {
+                        <PlasmicLink__
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link__sAtue
+                          )}
+                          component={Link}
+                          platform={"nextjs"}
+                        >
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {"Sign up"}
+                            </span>
+                          </React.Fragment>
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>{""}</React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+            <div
+              className={classNames(projectcss.all, sty.freeBox___0Iwj6, ``)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__b0Ge4,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__rlPr)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox__xv0Hp,
+                  "line-fade"
+                )}
+              />
+
+              <CursorIsolatedSvgIcon
+                className={classNames(projectcss.all, sty.svg__tWSlj)}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  sty.freeBox___6LAq,
+                  "line-fade"
+                )}
+              />
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__oVKyu)}>
+            <div
+              data-plasmic-name={"h2141"}
+              data-plasmic-override={overrides.h2141}
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.h2141,
+                "geologica-h3"
+              )}
+            >
+              {"By continuing, you agree to our Terms and Privacy Policy."}
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>
@@ -1104,9 +1242,11 @@ function PlasmicLogIn__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "otp",
+    "section1Parent",
+    "section1Inner",
     "step2",
     "h1218",
-    "freeBox",
     "parentOtp17",
     "otp1",
     "parentOtp18",
@@ -1130,12 +1270,69 @@ const PlasmicDescendants = {
     "primaryctaStage28",
     "h2146",
     "h2145",
-    "otp"
+    "h2141"
+  ],
+  otp: ["otp"],
+  section1Parent: [
+    "section1Parent",
+    "section1Inner",
+    "step2",
+    "h1218",
+    "parentOtp17",
+    "otp1",
+    "parentOtp18",
+    "otp2",
+    "parentOtp19",
+    "otp3",
+    "parentOtp110",
+    "otp4",
+    "parentOtp111",
+    "otp5",
+    "parentOtp112",
+    "otp6",
+    "primaryctaStage27",
+    "h2144",
+    "step1",
+    "h1219",
+    "h2139",
+    "primarycta61",
+    "emailInput",
+    "embedHtml",
+    "primaryctaStage28",
+    "h2146",
+    "h2145"
+  ],
+  section1Inner: [
+    "section1Inner",
+    "step2",
+    "h1218",
+    "parentOtp17",
+    "otp1",
+    "parentOtp18",
+    "otp2",
+    "parentOtp19",
+    "otp3",
+    "parentOtp110",
+    "otp4",
+    "parentOtp111",
+    "otp5",
+    "parentOtp112",
+    "otp6",
+    "primaryctaStage27",
+    "h2144",
+    "step1",
+    "h1219",
+    "h2139",
+    "primarycta61",
+    "emailInput",
+    "embedHtml",
+    "primaryctaStage28",
+    "h2146",
+    "h2145"
   ],
   step2: [
     "step2",
     "h1218",
-    "freeBox",
     "parentOtp17",
     "otp1",
     "parentOtp18",
@@ -1152,21 +1349,6 @@ const PlasmicDescendants = {
     "h2144"
   ],
   h1218: ["h1218"],
-  freeBox: [
-    "freeBox",
-    "parentOtp17",
-    "otp1",
-    "parentOtp18",
-    "otp2",
-    "parentOtp19",
-    "otp3",
-    "parentOtp110",
-    "otp4",
-    "parentOtp111",
-    "otp5",
-    "parentOtp112",
-    "otp6"
-  ],
   parentOtp17: ["parentOtp17", "otp1"],
   otp1: ["otp1"],
   parentOtp18: ["parentOtp18", "otp2"],
@@ -1200,16 +1382,18 @@ const PlasmicDescendants = {
   primaryctaStage28: ["primaryctaStage28"],
   h2146: ["h2146"],
   h2145: ["h2145"],
-  otp: ["otp"]
+  h2141: ["h2141"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  otp: typeof Embed;
+  section1Parent: "div";
+  section1Inner: "div";
   step2: "div";
   h1218: "div";
-  freeBox: "div";
   parentOtp17: "div";
   otp1: "input";
   parentOtp18: "div";
@@ -1233,7 +1417,7 @@ type NodeDefaultElementType = {
   primaryctaStage28: "div";
   h2146: "div";
   h2145: "div";
-  otp: typeof Embed;
+  h2141: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1298,9 +1482,11 @@ export const PlasmicLogIn = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    otp: makeNodeComponent("otp"),
+    section1Parent: makeNodeComponent("section1Parent"),
+    section1Inner: makeNodeComponent("section1Inner"),
     step2: makeNodeComponent("step2"),
     h1218: makeNodeComponent("h1218"),
-    freeBox: makeNodeComponent("freeBox"),
     parentOtp17: makeNodeComponent("parentOtp17"),
     otp1: makeNodeComponent("otp1"),
     parentOtp18: makeNodeComponent("parentOtp18"),
@@ -1324,7 +1510,7 @@ export const PlasmicLogIn = Object.assign(
     primaryctaStage28: makeNodeComponent("primaryctaStage28"),
     h2146: makeNodeComponent("h2146"),
     h2145: makeNodeComponent("h2145"),
-    otp: makeNodeComponent("otp"),
+    h2141: makeNodeComponent("h2141"),
 
     // Metadata about props expected for PlasmicLogIn
     internalVariantProps: PlasmicLogIn__VariantProps,
