@@ -108,14 +108,6 @@ a {
   --bg: #F4F4F4;
 }
 
-:root {
-  --grid: 80px;
-  --major-multiple: 4;
-  --line: rgba(0,0,0,.05);
-  --major-line: rgba(0,0,0,.08);
-  --bg: #F4F4F4;
-}
-
 .grid-lines {
   position: relative;
   background: none;
@@ -134,7 +126,7 @@ a {
 
   background-color: var(--bg);
 
-  /* uniform grid lines, no visible border edge */
+  /* grid pattern, no hard edge, uniform spacing */
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--line) 1px, transparent 1px),
@@ -147,14 +139,14 @@ a {
     calc(var(--grid) * var(--major-multiple)) 100%,
     100% calc(var(--grid) * var(--major-multiple));
 
-  /* ✨ shift by half a grid unit to keep uniform squares but avoid hard edge */
+  /* ✅ start full grid cell in from each side */
   background-position:
-    calc(var(--grid) / 2) 0,
+    var(--grid) 0,
     0 calc(var(--grid) / 2),
-    calc(var(--grid) / 2) 0,
+    calc(var(--grid) * var(--major-multiple)) 0,
     0 calc(var(--grid) / 2);
 
-  /* retain fade at top & bottom */
+  /* keep smooth fade at top and bottom */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
