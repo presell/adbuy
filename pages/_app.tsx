@@ -152,34 +152,36 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  // ✅ Re-run homepage scripts after client-side navigation (optimized + delayed)
+  // ✅ Re-run scripts after Plasmic or browser navigation
   useEffect(() => {
     const reinitScripts = () => {
       setTimeout(() => {
+        console.log("[App] 🔁 Reinitializing homepage scripts after route change");
+
         if (window.reinitializeHomepageScripts) {
-          console.log("[App] 🔁 Reinitializing homepage scripts after route change");
           window.reinitializeHomepageScripts();
         }
-        if (window.initTilt && window.initMarquees) {
-          console.log("[App] 🔁 Re-running tilt/marquee scripts after route change");
+        if (window.initTilt) {
           window.initTilt();
+        }
+        if (window.initMarquees) {
           window.initMarquees();
         }
-      }, 25); // small delay ensures DOM is ready before animations fire
+      }, 25); // tiny delay ensures DOM is ready
     };
 
-    // Listen for Plasmic internal navigation events
-    window.addEventListener("plasmic:pageLoaded", reinitScripts);
+    // ✅ Listen for Plasmic’s internal navigation event (critical)
     window.addEventListener("plasmic:navigation", reinitScripts);
+    window.addEventListener("plasmic:pageLoaded", reinitScripts);
 
-    // Also handle browser-level navigation as backup
+    // ✅ Backup for native browser navigations
     window.addEventListener("popstate", reinitScripts);
     window.addEventListener("pushstate", reinitScripts);
     window.addEventListener("replacestate", reinitScripts);
 
     return () => {
-      window.removeEventListener("plasmic:pageLoaded", reinitScripts);
       window.removeEventListener("plasmic:navigation", reinitScripts);
+      window.removeEventListener("plasmic:pageLoaded", reinitScripts);
       window.removeEventListener("popstate", reinitScripts);
       window.removeEventListener("pushstate", reinitScripts);
       window.removeEventListener("replacestate", reinitScripts);
