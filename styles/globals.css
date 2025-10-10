@@ -213,33 +213,48 @@ a {
   mask-size: 100% 100%;
 }
 
-/* 🧍 Vertical border fade — fades *top and bottom ends* of vertical borders only */
-.border-fade {
+/* 🧍 Vertical border fade — ONLY left/right borders, 
+   fading at their top/bottom ends; no full-width overlay */
+.border-fade{
   position: relative;
-  overflow: hidden;
+  /* If your Plasmic block already has borders, neutralize them
+     so we don't double up (the pseudo elements will be the borders). */
+  border-left: 0 !important;
+  border-right: 0 !important;
+
+  /* knobs */
+  --bf-color: #D3D3D3;   /* border color */
+  --bf-width: 1px;       /* border thickness */
+  --bf-fade: 14px;       /* how far the ends fade */
 }
 
 .border-fade::before,
-.border-fade::after {
+.border-fade::after{
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 12px;                     /* fade zone depth — tweak as needed */
+  top: 0;
+  bottom: 0;
+  width: var(--bf-width);
   pointer-events: none;
-  background: linear-gradient(to bottom, 
-    rgba(255,255,255,1) 0%, 
-    rgba(255,255,255,0) 100%);
-  z-index: 2;
+  z-index: 1;
+
+  /* The "border" itself: solid through the middle, 
+     fades to transparent near top/bottom */
+  background: linear-gradient(
+    to bottom,
+    rgba(211,211,211,0) 0%,
+    var(--bf-color) var(--bf-fade),
+    var(--bf-color) calc(100% - var(--bf-fade)),
+    rgba(211,211,211,0) 100%
+  );
 }
 
-.border-fade::after {
-  top: auto;
-  bottom: 0;
-  background: linear-gradient(to top, 
-    rgba(255,255,255,1) 0%, 
-    rgba(255,255,255,0) 100%);
-}
+/* left edge */
+.border-fade::before{ left: 0; }
+
+/* right edge */
+.border-fade::after{ right: 0; }
+
 
 
 /* 🎯 Hover and color utilities */
