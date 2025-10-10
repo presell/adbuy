@@ -703,9 +703,10 @@ function PlasmicNav__RenderFunc(props: {
                   projectcss.all,
                   projectcss.a,
                   sty.link__rYigU,
-                  "grid-lines-full"
+                  "grid-lines"
                 )}
                 component={Link}
+                href={`/workflows`}
                 platform={"nextjs"}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__ubG6W)}>
@@ -751,9 +752,10 @@ function PlasmicNav__RenderFunc(props: {
                   projectcss.all,
                   projectcss.a,
                   sty.link__uRhNl,
-                  "grid-lines-full"
+                  "grid-lines"
                 )}
                 component={Link}
+                href={`/integrations `}
                 platform={"nextjs"}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__av7Xx)}>
@@ -834,6 +836,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/mortgage`}
                     platform={"nextjs"}
                   >
                     <div
@@ -883,6 +886,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/insurance`}
                     platform={"nextjs"}
                   >
                     <div
@@ -926,6 +930,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/medical`}
                     platform={"nextjs"}
                   >
                     <div
@@ -974,6 +979,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/legal`}
                     platform={"nextjs"}
                   >
                     <div
@@ -1017,6 +1023,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/home-services`}
                     platform={"nextjs"}
                   >
                     <div
@@ -1060,6 +1067,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/ecommerce`}
                     platform={"nextjs"}
                   >
                     <div
@@ -1140,6 +1148,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/campaigns`}
                     platform={"nextjs"}
                   >
                     <div
@@ -1192,6 +1201,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/workflows`}
                     platform={"nextjs"}
                   >
                     <div
@@ -1235,6 +1245,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
+                    href={`/integrations `}
                     platform={"nextjs"}
                   >
                     <div
