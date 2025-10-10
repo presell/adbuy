@@ -126,7 +126,7 @@ a {
 
   background-color: var(--bg);
 
-  /* grid pattern, no hard edge, uniform spacing */
+  /* grid pattern, no hard edge, perfectly uniform spacing */
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--line) 1px, transparent 1px),
@@ -139,12 +139,15 @@ a {
     calc(var(--grid) * var(--major-multiple)) 100%,
     100% calc(var(--grid) * var(--major-multiple));
 
-  /* ✅ start full grid cell in from each side */
+  /* ✅ Shift pattern inward on both sides for symmetry */
   background-position:
     var(--grid) 0,
     0 calc(var(--grid) / 2),
-    calc(var(--grid) * var(--major-multiple)) 0,
+    var(--grid) 0,
     0 calc(var(--grid) / 2);
+
+  background-origin: content-box;
+  padding-right: var(--grid); /* ensures right edge spacing matches left */
 
   /* keep smooth fade at top and bottom */
   -webkit-mask-image: linear-gradient(
