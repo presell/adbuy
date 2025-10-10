@@ -583,3 +583,17 @@ body .dots::after {
   color: transparent;
   font-weight: inherit;
 }
+
+/* Nav Bar Sticky Top of Page */
+.stickyNavbar {
+  position: sticky;
+  position: -webkit-sticky; /* iOS Safari quirk */
+  top: 0;
+  z-index: 10000;
+}
+
+/* app-wide fix; put in your globals.css or equivalent was added for Nav Bar */
+html, body {
+  overflow-x: visible;   /* do NOT keep hidden on body—breaks sticky on iOS */
+  overflow-y: visible;   /* let the viewport handle vertical scrolling */
+}
