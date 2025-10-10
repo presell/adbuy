@@ -650,7 +650,7 @@ function PlasmicNav__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   sty.freeBox__jpx2E,
-                  "grid-lines-full"
+                  "grid-lines"
                 )}
               >
                 <PlasmicLink__
