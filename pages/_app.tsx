@@ -152,50 +152,50 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  // ✅ Observe DOM changes and re-run homepage scripts automatically
-  useEffect(() => {
-    let timeout: NodeJS.Timeout | null = null;
+// ✅ Global Script Reinitializer (runs after *any* Plasmic page navigation)
+useEffect(() => {
+  let timeout: NodeJS.Timeout | null = null;
 
-    const reinitScripts = () => {
-      // Only reinit if homepage-like elements are present
-      if (document.querySelector(".H1") || document.querySelector(".tilt-wrap")) {
-        console.log("[App] 🔁 Reinitializing homepage scripts after DOM change...");
+  const runAllScripts = () => {
+    console.log("[App] 🔁 Reinitializing global front-end scripts...");
 
-        // Delay slightly to ensure DOM is fully hydrated
-        setTimeout(() => {
-          if (window.reinitializeHomepageScripts) {
-            console.log("[App] ▶️ Running reinitializeHomepageScripts()");
-            window.reinitializeHomepageScripts();
-          }
-          if (window.initTilt) {
-            console.log("[App] ▶️ Running initTilt()");
-            window.initTilt();
-          }
-          if (window.initMarquees) {
-            console.log("[App] ▶️ Running initMarquees()");
-            window.initMarquees();
-          }
-        }, 75);
+    // Add any global scripts that need to re-run on navigation
+    setTimeout(() => {
+      if (window.reinitializeHomepageScripts) {
+        console.log("[App] ▶️ Running reinitializeHomepageScripts()");
+        window.reinitializeHomepageScripts();
       }
-    };
+      if (window.initTilt) {
+        console.log("[App] ▶️ Running initTilt()");
+        window.initTilt();
+      }
+      if (window.initMarquees) {
+        console.log("[App] ▶️ Running initMarquees()");
+        window.initMarquees();
+      }
 
-    // Create a MutationObserver to detect page content changes
-    const observer = new MutationObserver((mutations) => {
-      // Prevent running too many times in rapid succession
-      if (timeout) clearTimeout(timeout);
-      timeout = setTimeout(() => reinitScripts(), 150);
-    });
+      // 🔧 Optional: If you add more later, add them here
+      // if (window.initCounters) window.initCounters();
+      // if (window.initScrollAnimations) window.initScrollAnimations();
+    }, 50); // slight delay ensures DOM is hydrated
+  };
 
-    // Observe Plasmic's main render container (usually <body> or #__next)
-    const root = document.getElementById("__next") || document.body;
-    observer.observe(root, {
-      childList: true,
-      subtree: true,
-    });
+  // Observe DOM for page changes (Plasmic or any other SPA updates)
+  const observer = new MutationObserver(() => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(runAllScripts, 150);
+  });
 
-    // Cleanup observer on unmount
-    return () => observer.disconnect();
-  }, []);
+  const root = document.getElementById("__next") || document.body;
+  observer.observe(root, {
+    childList: true,
+    subtree: true,
+  });
+
+  console.log("[App] 👀 Global MutationObserver initialized for script re-runs");
+
+  return () => observer.disconnect();
+}, []);
 
   return (
     <>
