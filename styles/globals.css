@@ -119,14 +119,14 @@ a {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;                   /* no artificial inset — let grid fill full width */
+  left: 0;
   right: 0;
   pointer-events: none;
   z-index: 0;
 
   background-color: var(--bg);
 
-  /* 🧱 grid pattern, with no visible hard edge on either side */
+  /* 🧱 grid pattern with symmetrical boxes and no edge overlap */
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--line) 1px, transparent 1px),
@@ -139,14 +139,14 @@ a {
     calc(var(--grid) * var(--major-multiple)) 100%,
     100% calc(var(--grid) * var(--major-multiple));
 
-  /* ✅ start the vertical grid lines 20px in so there’s no edge overlap */
+  /* ✅ perfectly symmetrical spacing — shift half a grid cell to center pattern */
   background-position:
-    20px 0,
+    calc(var(--grid) / 2) 0,
     0 calc(var(--grid) / 2),
-    calc(20px + var(--grid) * var(--major-multiple)) 0,
+    calc(var(--grid) * var(--major-multiple) / 2) 0,
     0 calc(var(--grid) / 2);
 
-  /* 🎨 top & bottom fade remains untouched */
+  /* 🎨 top & bottom fade remains the same */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
