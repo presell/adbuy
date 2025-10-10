@@ -1155,7 +1155,7 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.section3Inner,
-                "border-fade"
+                "border-fade-top"
               )}
             >
               <div
@@ -1271,7 +1271,7 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.section4Inner,
-                "border-fade"
+                "border-fade-bottom"
               )}
             >
               {false ? (
@@ -2107,7 +2107,7 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.section5Inner,
-                "border-fade"
+                "border-fade-top"
               )}
             >
               <div
@@ -2212,7 +2212,7 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.section6Inner,
-                "border-fade"
+                "border-fade-bottom"
               )}
             >
               {false ? (
@@ -3407,7 +3407,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         ) : null}
                         {(() => {
                           try {
-                            return $state.faq == 1;
+                            return $state.faq == 2;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
