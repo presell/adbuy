@@ -112,7 +112,7 @@ a {
   position: relative;
   background: none;
   isolation: isolate;
-  overflow: hidden; /* hides any overflow from the extended pattern */
+  overflow: hidden;
 }
 
 .grid-lines::before {
@@ -121,15 +121,15 @@ a {
   top: 0;
   bottom: 0;
 
-  /* extend slightly beyond right edge for symmetry */
+  /* no vertical borders — grid begins/ends *inside* the container */
   left: 0;
-  right: calc(-1 * var(--grid));
+  right: 0;
 
   pointer-events: none;
   z-index: 0;
   background-color: var(--bg);
 
-  /* uniform grid pattern */
+  /* clean uniform grid pattern */
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--line) 1px, transparent 1px),
@@ -142,14 +142,14 @@ a {
     calc(var(--grid) * var(--major-multiple)) 100%,
     100% calc(var(--grid) * var(--major-multiple));
 
-  /* 🎯 Shift slightly (≈1px) so leftmost grid line doesn’t overlap parent border */
+  /* 🧭 start full cell width inward from each side */
   background-position:
-    calc(var(--grid) + 1px) 0,
+    var(--grid) 0,
     0 calc(var(--grid) / 2),
-    calc(var(--grid) * var(--major-multiple) + 1px) 0,
+    calc(var(--grid) * var(--major-multiple)) 0,
     0 calc(var(--grid) / 2);
 
-  /* soft vertical fade remains unchanged */
+  /* smooth vertical fade (unchanged) */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
