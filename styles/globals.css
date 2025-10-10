@@ -100,6 +100,14 @@ a {
 ---------------------------------------- */
 
 /* 🧱 Grid overlays (partial + full) */
+:root {
+  --grid: 80px;
+  --major-multiple: 4;
+  --line: rgba(0,0,0,.05);
+  --major-line: rgba(0,0,0,.08);
+  --bg: #F4F4F4;
+}
+
 .grid-lines {
   position: relative;
   background: none;
@@ -110,47 +118,45 @@ a {
 .grid-lines::before {
   content: "";
   position: absolute;
-  inset: 0;                  /* full cover */
-  box-sizing: border-box;    /* so padding behaves predictably */
-
-  /* 👉 inset one full cell on both sides for VERTICAL lines only */
-  padding-left: var(--grid);
-  padding-right: var(--grid);
-
+  inset: 0;
   pointer-events: none;
   z-index: 0;
   background-color: var(--bg);
 
-  /* order matters: [V fine, V major, H fine, H major] */
+  /* 🧱 grid pattern (verticals inset, horizontals full width) */
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),
-    linear-gradient(to right, var(--major-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--line) 1px, transparent 1px),
+    linear-gradient(to right, var(--major-line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--major-line) 1px, transparent 1px);
 
   background-size:
-    var(--grid) 100%,
-    calc(var(--grid) * var(--major-multiple)) 100%,
-    100% var(--grid),
-    100% calc(var(--grid) * var(--major-multiple));
+    var(--grid) 100%,                       /* vertical fine lines */
+    100% var(--grid),                       /* horizontal fine lines */
+    calc(var(--grid) * var(--major-multiple)) 100%, /* vertical major */
+    100% calc(var(--grid) * var(--major-multiple)); /* horizontal major */
 
-  /* align cells; start horizontals at mid-row like before */
+  /* 🚫 Shift one full cell inward on left/right so no edge overlap */
   background-position:
-    0 0,
-    0 0,
+    var(--grid) 0,
     0 calc(var(--grid) / 2),
+    calc(var(--grid) * var(--major-multiple)) 0,
     0 calc(var(--grid) / 2);
 
   background-repeat: repeat;
 
-  /* ✨ clip vertical layers to the padded content box; horizontals full-bleed */
+  /* ✨ Clip verticals so they don't render over edges */
   background-clip:
     content-box,
-    content-box,
     border-box,
+    content-box,
     border-box;
 
-  /* same top/bottom fade */
+  /* ⬅️ Inset padding clips verticals but not horizontals */
+  padding-left: var(--grid);
+  padding-right: var(--grid);
+
+  /* 🎨 Keep smooth top/bottom fade */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
@@ -162,7 +168,7 @@ a {
   );
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
-          mask-image: linear-gradient(
+  mask-image: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
     rgba(0,0,0,0.6) 10%,
