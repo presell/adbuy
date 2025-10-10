@@ -152,39 +152,40 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  // ✅ Re-run scripts after Plasmic or browser navigation
+  // ✅ Re-run all main.js homepage scripts after Plasmic page navigation
   useEffect(() => {
     const reinitScripts = () => {
-      setTimeout(() => {
-        console.log("[App] 🔁 Reinitializing homepage scripts after route change");
+      // Only run if homepage elements exist
+      if (document.querySelector(".H1") || document.querySelector(".tilt-wrap")) {
+        console.log("[App] 🔁 Re-running homepage scripts after navigation...");
 
-        if (window.reinitializeHomepageScripts) {
-          window.reinitializeHomepageScripts();
-        }
-        if (window.initTilt) {
-          window.initTilt();
-        }
-        if (window.initMarquees) {
-          window.initMarquees();
-        }
-      }, 25); // tiny delay ensures DOM is ready
+        // slight delay so new DOM is fully mounted
+        setTimeout(() => {
+          if (window.reinitializeHomepageScripts) {
+            console.log("[App] ▶️ Running reinitializeHomepageScripts()");
+            window.reinitializeHomepageScripts();
+          }
+          if (window.initTilt) {
+            console.log("[App] ▶️ Running initTilt()");
+            window.initTilt();
+          }
+          if (window.initMarquees) {
+            console.log("[App] ▶️ Running initMarquees()");
+            window.initMarquees();
+          }
+        }, 75);
+      }
     };
 
-    // ✅ Listen for Plasmic’s internal navigation event (critical)
-    window.addEventListener("plasmic:navigation", reinitScripts);
+    // Use only the reliable Plasmic event
     window.addEventListener("plasmic:pageLoaded", reinitScripts);
 
-    // ✅ Backup for native browser navigations
+    // Also handle browser navigations just in case
     window.addEventListener("popstate", reinitScripts);
-    window.addEventListener("pushstate", reinitScripts);
-    window.addEventListener("replacestate", reinitScripts);
 
     return () => {
-      window.removeEventListener("plasmic:navigation", reinitScripts);
       window.removeEventListener("plasmic:pageLoaded", reinitScripts);
       window.removeEventListener("popstate", reinitScripts);
-      window.removeEventListener("pushstate", reinitScripts);
-      window.removeEventListener("replacestate", reinitScripts);
     };
   }, []);
 
