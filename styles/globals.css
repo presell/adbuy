@@ -112,7 +112,6 @@ a {
   position: relative;
   background: none;
   isolation: isolate;
-  /* Optional: override per section, e.g. .grid-lines{ --grid-edge-gap: 24px; } */
 }
 
 .grid-lines::before {
@@ -120,15 +119,14 @@ a {
   position: absolute;
   top: 0;
   bottom: 0;
-  /* ⬇️ Symmetric insets so no grid line sits under the borders */
-  left: var(--grid-edge-gap, 20px);
-  right: var(--grid-edge-gap, 20px);
-  border-radius: inherit;
+  left: 0;                   /* no artificial inset — let grid fill full width */
+  right: 0;
   pointer-events: none;
   z-index: 0;
 
   background-color: var(--bg);
 
+  /* 🧱 grid pattern, with no visible hard edge on either side */
   background-image:
     linear-gradient(to right, var(--line) 1px, transparent 1px),
     linear-gradient(to bottom, var(--line) 1px, transparent 1px),
@@ -141,13 +139,14 @@ a {
     calc(var(--grid) * var(--major-multiple)) 100%,
     100% calc(var(--grid) * var(--major-multiple));
 
-  /* Still start one grid unit in from the (now inset) left edge */
+  /* ✅ start the vertical grid lines 20px in so there’s no edge overlap */
   background-position:
-    var(--grid) 0,
+    20px 0,
     0 calc(var(--grid) / 2),
-    calc(var(--grid) * var(--major-multiple)) 0,
+    calc(20px + var(--grid) * var(--major-multiple)) 0,
     0 calc(var(--grid) / 2);
 
+  /* 🎨 top & bottom fade remains untouched */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
