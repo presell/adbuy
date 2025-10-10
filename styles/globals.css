@@ -192,70 +192,82 @@ a {
   opacity: 0.5;
 }
 
-/* 🌫 Horizontal fade — for lines or horizontal rules */
+/* 🌫 Horizontal edge fade for lines or dividers */
 .line-fade {
   -webkit-mask-image: linear-gradient(to right,
-    rgba(0,0,0,0) 0%,         /* start transparent at far left */
-    rgba(0,0,0,1) 4%,         /* fade in quickly */
-    rgba(0,0,0,1) 96%,        /* hold solid through most of width */
-    rgba(0,0,0,0) 100%        /* fade out quickly at far right */
+    rgba(0,0,0,0) 0%,      /* fully transparent at far left */
+    rgba(0,0,0,1) 10%,     /* fade in within first ~10% */
+    rgba(0,0,0,1) 90%,     /* hold solid through center */
+    rgba(0,0,0,0) 100%     /* fade out within last ~10% */
   );
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
-  
+
   mask-image: linear-gradient(to right,
     rgba(0,0,0,0) 0%,
-    rgba(0,0,0,1) 4%,
-    rgba(0,0,0,1) 96%,
+    rgba(0,0,0,1) 10%,
+    rgba(0,0,0,1) 90%,
     rgba(0,0,0,0) 100%
   );
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }
 
-/* 🧍 Vertical border fade — ONLY left/right borders, 
-   fading at their top/bottom ends; no full-width overlay */
-.border-fade{
-  position: relative;
-  /* If your Plasmic block already has borders, neutralize them
-     so we don't double up (the pseudo elements will be the borders). */
-  border-left: 0 !important;
-  border-right: 0 !important;
-
-  /* knobs */
-  --bf-color: #D3D3D3;   /* border color */
-  --bf-width: 1px;       /* border thickness */
-  --bf-fade: 14px;       /* how far the ends fade */
-}
-
-.border-fade::before,
-.border-fade::after{
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: var(--bf-width);
-  pointer-events: none;
-  z-index: 1;
-
-  /* The "border" itself: solid through the middle, 
-     fades to transparent near top/bottom */
-  background: linear-gradient(
-    to bottom,
-    rgba(211,211,211,0) 0%,
-    var(--bf-color) var(--bf-fade),
-    var(--bf-color) calc(100% - var(--bf-fade)),
-    rgba(211,211,211,0) 100%
+/* 🧍 Full vertical border fade (original, both top + bottom) */
+.border-fade {
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,      /* fade starts invisible */
+    rgba(0,0,0,1) 10%,     /* fades in */
+    rgba(0,0,0,1) 90%,     /* solid center */
+    rgba(0,0,0,0) 100%     /* fades out at bottom */
   );
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,1) 10%,
+    rgba(0,0,0,1) 90%,
+    rgba(0,0,0,0) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
-/* left edge */
-.border-fade::before{ left: 0; }
+/* 🔝 Top-only border fade */
+.border-fade-top {
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,      /* fade in only from top */
+    rgba(0,0,0,1) 15%,     /* solid after 15% */
+    rgba(0,0,0,1) 100%     /* remain solid through bottom */
+  );
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,1) 15%,
+    rgba(0,0,0,1) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
 
-/* right edge */
-.border-fade::after{ right: 0; }
-
-
+/* ⬇️ Bottom-only border fade */
+.border-fade-bottom {
+  -webkit-mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,1) 0%,      /* solid through top */
+    rgba(0,0,0,1) 85%,     /* start fade near bottom */
+    rgba(0,0,0,0) 100%     /* fade out completely at bottom */
+  );
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) 85%,
+    rgba(0,0,0,0) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
 
 /* 🎯 Hover and color utilities */
 .no-hover-color,
