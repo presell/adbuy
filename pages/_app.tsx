@@ -150,28 +150,34 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-// ✅ Re-run homepage scripts after client-side navigation (optimized)
-useEffect(() => {
-  const handleRouteChange = () => {
-    if (window.reinitializeHomepageScripts) {
-      console.log("[App] 🔁 Re-running reinitializeHomepageScripts after route change");
-      window.reinitializeHomepageScripts();
-    }
-  };
+  // ✅ Re-run main.js and homepage scripts after client-side navigation
+  useEffect(() => {
+    const reinitScripts = () => {
+      console.log("[App] 🔁 Re-initializing homepage scripts after route change");
+      // Run the same function your main.js defines globally
+      if (window.reinitializeHomepageScripts) {
+        window.reinitializeHomepageScripts();
+      }
+      // Force re-run of marquee/tilt logic if attached to window
+      if (window.initTilt && window.initMarquees) {
+        window.initTilt();
+        window.initMarquees();
+      }
+    };
 
-  window.addEventListener("plasmic:pageLoaded", handleRouteChange);
-  window.addEventListener("popstate", handleRouteChange);
-  window.addEventListener("pushstate", handleRouteChange);
-  window.addEventListener("replacestate", handleRouteChange);
+    // Listen for all Plasmic + browser navigation events
+    window.addEventListener("plasmic:pageLoaded", reinitScripts);
+    window.addEventListener("popstate", reinitScripts);
+    window.addEventListener("pushstate", reinitScripts);
+    window.addEventListener("replacestate", reinitScripts);
 
-  return () => {
-    window.removeEventListener("plasmic:pageLoaded", handleRouteChange);
-    window.removeEventListener("popstate", handleRouteChange);
-    window.removeEventListener("pushstate", handleRouteChange);
-    window.removeEventListener("replacestate", handleRouteChange);
-  };
-}, []);
-
+    return () => {
+      window.removeEventListener("plasmic:pageLoaded", reinitScripts);
+      window.removeEventListener("popstate", reinitScripts);
+      window.removeEventListener("pushstate", reinitScripts);
+      window.removeEventListener("replacestate", reinitScripts);
+    };
+  }, []);
 
   return (
     <>
