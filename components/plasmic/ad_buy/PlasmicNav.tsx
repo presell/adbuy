@@ -664,6 +664,7 @@ function PlasmicNav__RenderFunc(props: {
                     sty.link__tmCtR
                   )}
                   component={Link}
+                  href={`/campaigns`}
                   platform={"nextjs"}
                 >
                   <div

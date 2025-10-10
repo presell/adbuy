@@ -155,6 +155,20 @@
           "cssFilePath": "plasmic/ad_buy/PlasmicNav.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "FDpmuApHNq5P",
+          "name": "Campaigns",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicCampaigns.tsx",
+          "importSpec": {
+            "modulePath": "../pages/campaigns.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicCampaigns.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/campaigns"
         }
       ],
       "icons": [
