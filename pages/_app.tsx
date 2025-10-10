@@ -152,49 +152,60 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-// ✅ Global Script Reinitializer (runs after *any* Plasmic page navigation)
+// ✅ Global Script Reinitializer (debounced + safe from recursion)
 useEffect(() => {
   let timeout: NodeJS.Timeout | null = null;
+  let observer: MutationObserver | null = null;
+  let isRunning = false;
 
   const runAllScripts = () => {
+    if (isRunning) return; // prevent overlapping runs
+    isRunning = true;
+
+    // Pause observer while scripts modify DOM
+    observer?.disconnect();
+
     console.log("[App] 🔁 Reinitializing global front-end scripts...");
 
-    // Add any global scripts that need to re-run on navigation
     setTimeout(() => {
-      if (window.reinitializeHomepageScripts) {
-        console.log("[App] ▶️ Running reinitializeHomepageScripts()");
-        window.reinitializeHomepageScripts();
-      }
-      if (window.initTilt) {
-        console.log("[App] ▶️ Running initTilt()");
-        window.initTilt();
-      }
-      if (window.initMarquees) {
-        console.log("[App] ▶️ Running initMarquees()");
-        window.initMarquees();
-      }
+      try {
+        if (window.reinitializeHomepageScripts) {
+          console.log("[App] ▶️ Running reinitializeHomepageScripts()");
+          window.reinitializeHomepageScripts();
+        }
+        if (window.initTilt) {
+          console.log("[App] ▶️ Running initTilt()");
+          window.initTilt();
+        }
+        if (window.initMarquees) {
+          console.log("[App] ▶️ Running initMarquees()");
+          window.initMarquees();
+        }
 
-      // 🔧 Optional: If you add more later, add them here
-      // if (window.initCounters) window.initCounters();
-      // if (window.initScrollAnimations) window.initScrollAnimations();
-    }, 50); // slight delay ensures DOM is hydrated
+        // 🔧 Add future global initializers here
+      } finally {
+        // Re-enable observer after scripts settle
+        setTimeout(() => {
+          const root = document.getElementById("__next") || document.body;
+          observer?.observe(root, { childList: true, subtree: true });
+          isRunning = false;
+        }, 300); // short cooldown before re-observing
+      }
+    }, 50);
   };
 
-  // Observe DOM for page changes (Plasmic or any other SPA updates)
-  const observer = new MutationObserver(() => {
+  // Create observer
+  observer = new MutationObserver(() => {
     if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(runAllScripts, 150);
+    timeout = setTimeout(runAllScripts, 200);
   });
 
   const root = document.getElementById("__next") || document.body;
-  observer.observe(root, {
-    childList: true,
-    subtree: true,
-  });
+  observer.observe(root, { childList: true, subtree: true });
 
-  console.log("[App] 👀 Global MutationObserver initialized for script re-runs");
+  console.log("[App] 👀 Global MutationObserver initialized (safe mode)");
 
-  return () => observer.disconnect();
+  return () => observer?.disconnect();
 }, []);
 
   return (
