@@ -215,318 +215,314 @@ function PlasmicNav__RenderFunc(props: {
                 role={"img"}
               />
             </PlasmicLink__>
-            {(
-              hasVariant(globalVariants, "screen", "mobileOnly") ? false : true
-            ) ? (
-              <div className={classNames(projectcss.all, sty.freeBox___7Y50V)}>
+            <div className={classNames(projectcss.all, sty.freeBox___7Y50V)}>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__ta1YY)}
+                onMouseEnter={async event => {
+                  const $steps = {};
+
+                  $steps["updateNav"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["nav"]
+                          },
+                          operation: 0,
+                          value: "product"
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateNav"] != null &&
+                    typeof $steps["updateNav"] === "object" &&
+                    typeof $steps["updateNav"].then === "function"
+                  ) {
+                    $steps["updateNav"] = await $steps["updateNav"];
+                  }
+                }}
+              >
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__ta1YY)}
-                  onMouseEnter={async event => {
-                    const $steps = {};
-
-                    $steps["updateNav"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["nav"]
-                            },
-                            operation: 0,
-                            value: "product"
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateNav"] != null &&
-                      typeof $steps["updateNav"] === "object" &&
-                      typeof $steps["updateNav"].then === "function"
-                    ) {
-                      $steps["updateNav"] = await $steps["updateNav"];
-                    }
-                  }}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___0PCo,
-                      "geologica-h1"
-                    )}
-                  >
-                    {"Product"}
-                  </div>
-                  {(() => {
-                    try {
-                      return $state.nav == "product";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <ChevsUpSvgIcon
-                      className={classNames(projectcss.all, sty.svg__nbVuv)}
-                      role={"img"}
-                    />
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.nav != "product";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <ChevsDownSvgIcon
-                      className={classNames(projectcss.all, sty.svg__fgQX)}
-                      role={"img"}
-                    />
-                  ) : null}
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__aSnYq)}
-                  onMouseEnter={async event => {
-                    const $steps = {};
-
-                    $steps["updateNav"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["nav"]
-                            },
-                            operation: 0,
-                            value: "solutions"
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateNav"] != null &&
-                      typeof $steps["updateNav"] === "object" &&
-                      typeof $steps["updateNav"].then === "function"
-                    ) {
-                      $steps["updateNav"] = await $steps["updateNav"];
-                    }
-                  }}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___9AE9G,
-                      "geologica-h1"
-                    )}
-                  >
-                    {"Solutions"}
-                  </div>
-                  {(() => {
-                    try {
-                      return $state.nav == "solutions";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <ChevsUpSvgIcon
-                      className={classNames(projectcss.all, sty.svg__aGlBo)}
-                      role={"img"}
-                    />
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.nav != "solutions";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <ChevsDownSvgIcon
-                      className={classNames(projectcss.all, sty.svg__x79Me)}
-                      role={"img"}
-                    />
-                  ) : null}
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__kKq8)}
-                  onMouseEnter={async event => {
-                    const $steps = {};
-
-                    $steps["updateNav"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["nav"]
-                            },
-                            operation: 0,
-                            value: ""
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateNav"] != null &&
-                      typeof $steps["updateNav"] === "object" &&
-                      typeof $steps["updateNav"].then === "function"
-                    ) {
-                      $steps["updateNav"] = await $steps["updateNav"];
-                    }
-                  }}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__yrtg9,
-                      "geologica-h1"
-                    )}
-                  >
-                    {"Resources"}
-                  </div>
-                  {false ? (
-                    <ChevsUpSvgIcon
-                      className={classNames(projectcss.all, sty.svg__dFsMr)}
-                      role={"img"}
-                    />
-                  ) : null}
-                  {false ? (
-                    <ChevsDownSvgIcon
-                      className={classNames(projectcss.all, sty.svg__zNqf)}
-                      role={"img"}
-                    />
-                  ) : null}
-                </div>
-                <PlasmicLink__
                   className={classNames(
                     projectcss.all,
-                    projectcss.a,
-                    sty.link___7Uwbt
+                    projectcss.__wab_text,
+                    sty.text___0PCo,
+                    "geologica-h1"
                   )}
-                  component={Link}
-                  onMouseEnter={async event => {
-                    const $steps = {};
-
-                    $steps["updateNav"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["nav"]
-                            },
-                            operation: 0,
-                            value: ""
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateNav"] != null &&
-                      typeof $steps["updateNav"] === "object" &&
-                      typeof $steps["updateNav"].then === "function"
-                    ) {
-                      $steps["updateNav"] = await $steps["updateNav"];
-                    }
-                  }}
-                  platform={"nextjs"}
                 >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__tMc43,
-                      "geologica-h1"
-                    )}
-                  >
-                    {"Pricing"}
-                  </div>
-                  {false ? (
-                    <ChevsUpSvgIcon
-                      className={classNames(projectcss.all, sty.svg__f3Bnq)}
-                      role={"img"}
-                    />
-                  ) : null}
-                  {false ? (
-                    <ChevsDownSvgIcon
-                      className={classNames(projectcss.all, sty.svg__esg9U)}
-                      role={"img"}
-                    />
-                  ) : null}
-                </PlasmicLink__>
+                  {"Product"}
+                </div>
+                {(() => {
+                  try {
+                    return $state.nav == "product";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <ChevsUpSvgIcon
+                    className={classNames(projectcss.all, sty.svg__nbVuv)}
+                    role={"img"}
+                  />
+                ) : null}
+                {(() => {
+                  try {
+                    return $state.nav != "product";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <ChevsDownSvgIcon
+                    className={classNames(projectcss.all, sty.svg__fgQX)}
+                    role={"img"}
+                  />
+                ) : null}
               </div>
-            ) : null}
+              <div
+                className={classNames(projectcss.all, sty.freeBox__aSnYq)}
+                onMouseEnter={async event => {
+                  const $steps = {};
+
+                  $steps["updateNav"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["nav"]
+                          },
+                          operation: 0,
+                          value: "solutions"
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateNav"] != null &&
+                    typeof $steps["updateNav"] === "object" &&
+                    typeof $steps["updateNav"].then === "function"
+                  ) {
+                    $steps["updateNav"] = await $steps["updateNav"];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___9AE9G,
+                    "geologica-h1"
+                  )}
+                >
+                  {"Solutions"}
+                </div>
+                {(() => {
+                  try {
+                    return $state.nav == "solutions";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <ChevsUpSvgIcon
+                    className={classNames(projectcss.all, sty.svg__aGlBo)}
+                    role={"img"}
+                  />
+                ) : null}
+                {(() => {
+                  try {
+                    return $state.nav != "solutions";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <ChevsDownSvgIcon
+                    className={classNames(projectcss.all, sty.svg__x79Me)}
+                    role={"img"}
+                  />
+                ) : null}
+              </div>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__kKq8)}
+                onMouseEnter={async event => {
+                  const $steps = {};
+
+                  $steps["updateNav"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["nav"]
+                          },
+                          operation: 0,
+                          value: ""
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateNav"] != null &&
+                    typeof $steps["updateNav"] === "object" &&
+                    typeof $steps["updateNav"].then === "function"
+                  ) {
+                    $steps["updateNav"] = await $steps["updateNav"];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__yrtg9,
+                    "geologica-h1"
+                  )}
+                >
+                  {"Resources"}
+                </div>
+                {false ? (
+                  <ChevsUpSvgIcon
+                    className={classNames(projectcss.all, sty.svg__dFsMr)}
+                    role={"img"}
+                  />
+                ) : null}
+                {false ? (
+                  <ChevsDownSvgIcon
+                    className={classNames(projectcss.all, sty.svg__zNqf)}
+                    role={"img"}
+                  />
+                ) : null}
+              </div>
+              <PlasmicLink__
+                className={classNames(
+                  projectcss.all,
+                  projectcss.a,
+                  sty.link___7Uwbt
+                )}
+                component={Link}
+                onMouseEnter={async event => {
+                  const $steps = {};
+
+                  $steps["updateNav"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["nav"]
+                          },
+                          operation: 0,
+                          value: ""
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateNav"] != null &&
+                    typeof $steps["updateNav"] === "object" &&
+                    typeof $steps["updateNav"].then === "function"
+                  ) {
+                    $steps["updateNav"] = await $steps["updateNav"];
+                  }
+                }}
+                platform={"nextjs"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tMc43,
+                    "geologica-h1"
+                  )}
+                >
+                  {"Pricing"}
+                </div>
+                {false ? (
+                  <ChevsUpSvgIcon
+                    className={classNames(projectcss.all, sty.svg__f3Bnq)}
+                    role={"img"}
+                  />
+                ) : null}
+                {false ? (
+                  <ChevsDownSvgIcon
+                    className={classNames(projectcss.all, sty.svg__esg9U)}
+                    role={"img"}
+                  />
+                ) : null}
+              </PlasmicLink__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__hnX8)}>
               <PlasmicLink__
                 data-plasmic-name={"primaryctaStage13"}

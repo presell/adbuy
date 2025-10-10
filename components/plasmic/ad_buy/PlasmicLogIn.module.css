@@ -86,11 +86,10 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .section1Inner {
-    padding-top: 28px;
-    padding-bottom: 45px;
     border-right-color: #d3d3d3;
     border-left-color: #d3d3d3;
     max-width: 85%;
+    padding: 130px 0px 120px;
   }
 }
 .step2 {

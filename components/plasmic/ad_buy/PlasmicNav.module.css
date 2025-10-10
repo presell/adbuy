@@ -77,6 +77,11 @@
   min-width: 0;
   min-height: 0;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___7Y50V {
+    display: none;
+  }
+}
 .freeBox__ta1YY {
   display: flex;
   flex-direction: row;

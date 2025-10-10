@@ -169,6 +169,118 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/campaigns"
+        },
+        {
+          "id": "P8w_dzdP8xuY",
+          "name": "Workflows",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicWorkflows.tsx",
+          "importSpec": {
+            "modulePath": "../pages/workflows.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicWorkflows.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/workflows"
+        },
+        {
+          "id": "XbV9alcbm-AF",
+          "name": "Api",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicApi.tsx",
+          "importSpec": {
+            "modulePath": "../pages/integrations .tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicApi.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/integrations "
+        },
+        {
+          "id": "8LyxWn6KeajT",
+          "name": "Medical",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicMedical.tsx",
+          "importSpec": {
+            "modulePath": "../pages/medical.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicMedical.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/medical"
+        },
+        {
+          "id": "bMPCtW3NjzMH",
+          "name": "Insurance",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicInsurance.tsx",
+          "importSpec": {
+            "modulePath": "../pages/insurance.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicInsurance.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/insurance"
+        },
+        {
+          "id": "WRtOnZcwBRfA",
+          "name": "Mortgage",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicMortgage.tsx",
+          "importSpec": {
+            "modulePath": "../pages/mortgage.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicMortgage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/mortgage"
+        },
+        {
+          "id": "zYO_FfxY-_aN",
+          "name": "Legal",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicLegal.tsx",
+          "importSpec": {
+            "modulePath": "../pages/legal.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicLegal.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/legal"
+        },
+        {
+          "id": "7ZF5tsQkPTrk",
+          "name": "HomeServices",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicHomeServices.tsx",
+          "importSpec": {
+            "modulePath": "../pages/home-services.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicHomeServices.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/home-services"
+        },
+        {
+          "id": "nQFVWtiUUUfB",
+          "name": "Ecommerce",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicEcommerce.tsx",
+          "importSpec": {
+            "modulePath": "../pages/ecommerce.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicEcommerce.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/ecommerce"
         }
       ],
       "icons": [

@@ -237,7 +237,7 @@ function PlasmicFooter__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.h21141,
-                    "geologica-text-regular"
+                    "geologica-h3"
                   )}
                 >
                   {
@@ -353,7 +353,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21120,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Product"}
@@ -365,6 +365,11 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__anpuG
                     )}
                     component={Link}
+                    href={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? `/campaigns`
+                        : `/campaigns`
+                    }
                     platform={"nextjs"}
                   >
                     <LeadsProductSvgIcon
@@ -379,7 +384,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21119,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"AdBuy Campaigns"}
@@ -392,6 +397,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__kXkOg
                     )}
                     component={Link}
+                    href={`/workflows`}
                     platform={"nextjs"}
                   >
                     <WorkflowsProductSvgIcon
@@ -406,7 +412,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21121,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"AdBuy Workflows"}
@@ -419,6 +425,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__m6Nkz
                     )}
                     component={Link}
+                    href={`/integrations `}
                     platform={"nextjs"}
                   >
                     <ApiProductSvgIcon
@@ -433,7 +440,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21132,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"AdBuy API"}
@@ -448,7 +455,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21133,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Solutions"}
@@ -460,6 +467,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__vff3Y
                     )}
                     component={Link}
+                    href={`/campaigns`}
                     platform={"nextjs"}
                   >
                     <div
@@ -469,7 +477,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21134,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Lead Generation"}
@@ -482,6 +490,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link___7Kj9M
                     )}
                     component={Link}
+                    href={`/workflows`}
                     platform={"nextjs"}
                   >
                     <div
@@ -491,7 +500,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21135,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"AI SDR"}
@@ -515,7 +524,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21185,
-                        "geologica-text-medium"
+                        "geologica-h3"
                       )}
                     >
                       {"Company"}
@@ -536,7 +545,7 @@ function PlasmicFooter__RenderFunc(props: {
                           projectcss.all,
                           projectcss.__wab_text,
                           sty.h21186,
-                          "geologica-text-regular"
+                          "geologica-h3"
                         )}
                       >
                         {"About"}
@@ -558,7 +567,7 @@ function PlasmicFooter__RenderFunc(props: {
                           projectcss.all,
                           projectcss.__wab_text,
                           sty.h21187,
-                          "geologica-text-regular"
+                          "geologica-h3"
                         )}
                       >
                         {"Pricing"}
@@ -580,7 +589,7 @@ function PlasmicFooter__RenderFunc(props: {
                           projectcss.all,
                           projectcss.__wab_text,
                           sty.h21188,
-                          "geologica-text-regular"
+                          "geologica-h3"
                         )}
                       >
                         {"Policies"}
@@ -602,7 +611,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21122,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Resources"}
@@ -624,7 +633,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21123,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Docs"}
@@ -646,7 +655,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21124,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Support"}
@@ -668,7 +677,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21142,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Blog"}
@@ -683,7 +692,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21136,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Use Cases"}
@@ -695,6 +704,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__snY3S
                     )}
                     component={Link}
+                    href={`/medical`}
                     platform={"nextjs"}
                   >
                     <div
@@ -704,7 +714,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21137,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Medical"}
@@ -717,6 +727,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__tq8It
                     )}
                     component={Link}
+                    href={`/insurance`}
                     platform={"nextjs"}
                   >
                     <div
@@ -726,7 +737,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21138,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Insurance"}
@@ -739,6 +750,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__zlvk3
                     )}
                     component={Link}
+                    href={`/mortgage`}
                     platform={"nextjs"}
                   >
                     <div
@@ -748,7 +760,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21139,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Mortgage"}
@@ -761,6 +773,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__khwpd
                     )}
                     component={Link}
+                    href={`/legal`}
                     platform={"nextjs"}
                   >
                     <div
@@ -770,7 +783,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21140,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Legal"}
@@ -783,6 +796,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__xYzUs
                     )}
                     component={Link}
+                    href={`/home-services`}
                     platform={"nextjs"}
                   >
                     <div
@@ -792,7 +806,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21147,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Home"}
@@ -805,6 +819,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__g2Qlb
                     )}
                     component={Link}
+                    href={`/ecommerce`}
                     platform={"nextjs"}
                   >
                     <div
@@ -814,7 +829,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21154,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"eCommerce"}
@@ -841,7 +856,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21125,
-                      "geologica-text-medium"
+                      "geologica-h1"
                     )}
                   >
                     {"Company"}
@@ -862,7 +877,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21126,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"About"}
@@ -884,7 +899,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21127,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Pricing"}
@@ -906,7 +921,7 @@ function PlasmicFooter__RenderFunc(props: {
                         projectcss.all,
                         projectcss.__wab_text,
                         sty.h21145,
-                        "geologica-text-regular"
+                        "geologica-h3"
                       )}
                     >
                       {"Policies"}
@@ -926,7 +941,7 @@ function PlasmicFooter__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.h21128,
-                    "geologica-text-medium"
+                    "geologica-h1"
                   )}
                 >
                   {"Compare"}
@@ -947,7 +962,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21129,
-                      "geologica-text-regular"
+                      "geologica-h3"
                     )}
                   >
                     {"Meta Ads"}
@@ -969,7 +984,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21130,
-                      "geologica-text-regular"
+                      "geologica-h3"
                     )}
                   >
                     {"Google Ads"}
@@ -991,7 +1006,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21143,
-                      "geologica-text-regular"
+                      "geologica-h3"
                     )}
                   >
                     {"Ad Agencies"}
@@ -1013,7 +1028,7 @@ function PlasmicFooter__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.h21144,
-                      "geologica-text-regular"
+                      "geologica-h3"
                     )}
                   >
                     {"Lead Vendors"}
@@ -1049,7 +1064,7 @@ function PlasmicFooter__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.h21131,
-                  "geologica-text-less-medium"
+                  "geologica-h1"
                 )}
               >
                 {"All systems operational"}
@@ -1063,7 +1078,7 @@ function PlasmicFooter__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.h21146,
-                  "geologica-text-regular"
+                  "geologica-h3"
                 )}
               >
                 {"\u00a9 2025 Presell, Inc."}
