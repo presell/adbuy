@@ -192,40 +192,55 @@ a {
   opacity: 0.5;
 }
 
-/* 🌫 Horizontal edge fade for lines or dividers */
+/* 🌫 Horizontal fade — for lines or horizontal rules */
 .line-fade {
   -webkit-mask-image: linear-gradient(to right,
-    rgba(0,0,0,0) 0%,      /* fully transparent at far left */
-    rgba(0,0,0,1) 10%,     /* fade in within first ~10% */
-    rgba(0,0,0,1) 90%,     /* hold solid through center */
-    rgba(0,0,0,0) 100%     /* fade out within last ~10% */
+    rgba(0,0,0,0) 0%,         /* start transparent at far left */
+    rgba(0,0,0,1) 4%,         /* fade in quickly */
+    rgba(0,0,0,1) 96%,        /* hold solid through most of width */
+    rgba(0,0,0,0) 100%        /* fade out quickly at far right */
   );
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   
   mask-image: linear-gradient(to right,
     rgba(0,0,0,0) 0%,
-    rgba(0,0,0,1) 10%,
-    rgba(0,0,0,1) 90%,
+    rgba(0,0,0,1) 4%,
+    rgba(0,0,0,1) 96%,
     rgba(0,0,0,0) 100%
   );
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }
 
-/* 🧍 Vertical border fade (for container edges) */
+/* 🧍 Vertical border fade — fades *top and bottom ends* of vertical borders only */
 .border-fade {
-  -webkit-mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,1) 10%,
-    rgba(0,0,0,1) 90%,
-    rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(to bottom,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,1) 10%,
-    rgba(0,0,0,1) 90%,
-    rgba(0,0,0,0) 100%);
+  position: relative;
+  overflow: hidden;
 }
+
+.border-fade::before,
+.border-fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;                     /* fade zone depth — tweak as needed */
+  pointer-events: none;
+  background: linear-gradient(to bottom, 
+    rgba(255,255,255,1) 0%, 
+    rgba(255,255,255,0) 100%);
+  z-index: 2;
+}
+
+.border-fade::after {
+  top: auto;
+  bottom: 0;
+  background: linear-gradient(to top, 
+    rgba(255,255,255,1) 0%, 
+    rgba(255,255,255,0) 100%);
+}
+
 
 /* 🎯 Hover and color utilities */
 .no-hover-color,
