@@ -164,11 +164,14 @@
   } else {
     start();
   }
-})();
 
-// ✅ Expose init functions globally so they can be re-run from _app.tsx
+  // ✅ Expose init functions globally so they can be re-run from _app.tsx
 window.initTilt = initTilt;
 window.initMarquees = initMarquees;
+  
+})();
+
+
 
 /* ---------- Keyword Highlighting ---------- */
 window.reinitializeHomepageScripts = function () {
