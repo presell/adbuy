@@ -466,7 +466,7 @@ function PlasmicWorkflows__RenderFunc(props: {
                       "geologica-h1"
                     )}
                   >
-                    {"AdBuy Campaigns"}
+                    {"AdBuy Workflows"}
                   </div>
                 </div>
                 <div

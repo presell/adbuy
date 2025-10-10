@@ -536,6 +536,7 @@ function PlasmicFooter__RenderFunc(props: {
                         sty.link__xkHjR
                       )}
                       component={Link}
+                      href={`/about`}
                       platform={"nextjs"}
                     >
                       <div
@@ -868,6 +869,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link___6OerY
                     )}
                     component={Link}
+                    href={`/about`}
                     platform={"nextjs"}
                   >
                     <div
