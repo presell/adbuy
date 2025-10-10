@@ -281,6 +281,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/ecommerce"
+        },
+        {
+          "id": "4HZWOYzIeBpo",
+          "name": "About",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAbout.tsx",
+          "importSpec": {
+            "modulePath": "../pages/about.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAbout.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/about"
         }
       ],
       "icons": [
