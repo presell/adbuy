@@ -152,14 +152,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  // ✅ Re-run all main.js homepage scripts after Plasmic page navigation
+  // ✅ Observe DOM changes and re-run homepage scripts automatically
   useEffect(() => {
-    const reinitScripts = () => {
-      // Only run if homepage elements exist
-      if (document.querySelector(".H1") || document.querySelector(".tilt-wrap")) {
-        console.log("[App] 🔁 Re-running homepage scripts after navigation...");
+    let timeout: NodeJS.Timeout | null = null;
 
-        // slight delay so new DOM is fully mounted
+    const reinitScripts = () => {
+      // Only reinit if homepage-like elements are present
+      if (document.querySelector(".H1") || document.querySelector(".tilt-wrap")) {
+        console.log("[App] 🔁 Reinitializing homepage scripts after DOM change...");
+
+        // Delay slightly to ensure DOM is fully hydrated
         setTimeout(() => {
           if (window.reinitializeHomepageScripts) {
             console.log("[App] ▶️ Running reinitializeHomepageScripts()");
@@ -177,16 +179,22 @@ function MyApp({ Component, pageProps }: AppProps) {
       }
     };
 
-    // Use only the reliable Plasmic event
-    window.addEventListener("plasmic:pageLoaded", reinitScripts);
+    // Create a MutationObserver to detect page content changes
+    const observer = new MutationObserver((mutations) => {
+      // Prevent running too many times in rapid succession
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(() => reinitScripts(), 150);
+    });
 
-    // Also handle browser navigations just in case
-    window.addEventListener("popstate", reinitScripts);
+    // Observe Plasmic's main render container (usually <body> or #__next)
+    const root = document.getElementById("__next") || document.body;
+    observer.observe(root, {
+      childList: true,
+      subtree: true,
+    });
 
-    return () => {
-      window.removeEventListener("plasmic:pageLoaded", reinitScripts);
-      window.removeEventListener("popstate", reinitScripts);
-    };
+    // Cleanup observer on unmount
+    return () => observer.disconnect();
   }, []);
 
   return (
