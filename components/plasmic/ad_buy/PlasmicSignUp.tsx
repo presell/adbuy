@@ -85,6 +85,7 @@ export const PlasmicSignUp__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicSignUp__OverridesType = {
   root?: Flex__<"div">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   section1Parent?: Flex__<"div">;
   section1Inner?: Flex__<"div">;
   step1?: Flex__<"div">;
@@ -96,7 +97,8 @@ export type PlasmicSignUp__OverridesType = {
   primaryctaStage28?: Flex__<"div">;
   text?: Flex__<"div">;
   h2146?: Flex__<"div">;
-  h2145?: Flex__<"div">;
+  h2148?: Flex__<"div">;
+  h2147?: Flex__<"a"> & Partial<LinkProps>;
   otp?: Flex__<typeof Embed>;
   h2141?: Flex__<"div">;
 };
@@ -259,11 +261,9 @@ function PlasmicSignUp__RenderFunc(props: {
         >
           <div className={classNames(projectcss.all, sty.freeBox__yOeh5)}>
             <PlasmicLink__
-              className={classNames(
-                projectcss.all,
-                projectcss.a,
-                sty.link__coBmq
-              )}
+              data-plasmic-name={"link"}
+              data-plasmic-override={overrides.link}
+              className={classNames(projectcss.all, projectcss.a, sty.link)}
               component={Link}
               href={`/`}
               platform={"nextjs"}
@@ -634,45 +634,36 @@ function PlasmicSignUp__RenderFunc(props: {
                     </div>
                   ) : null}
                   <div
-                    data-plasmic-name={"h2145"}
-                    data-plasmic-override={overrides.h2145}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.h2145,
-                      "geologica-h3"
-                    )}
+                    className={classNames(projectcss.all, sty.freeBox___5ATl)}
                   >
-                    <React.Fragment>
-                      <React.Fragment>
-                        {"Don't have an account? "}
-                      </React.Fragment>
-                      {
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.__wab_text,
-                            projectcss.plasmic_default__inline,
-                            sty.link___2LxVh
-                          )}
-                          component={Link}
-                          platform={"nextjs"}
-                        >
-                          <React.Fragment>
-                            <span
-                              className={
-                                "plasmic_default__all plasmic_default__span"
-                              }
-                              style={{ fontWeight: 700 }}
-                            >
-                              {"Sign up"}
-                            </span>
-                          </React.Fragment>
-                        </PlasmicLink__>
-                      }
-                      <React.Fragment>{""}</React.Fragment>
-                    </React.Fragment>
+                    <div
+                      data-plasmic-name={"h2148"}
+                      data-plasmic-override={overrides.h2148}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h2148,
+                        "geologica-h2"
+                      )}
+                    >
+                      {"Already have an account? "}
+                    </div>
+                    <PlasmicLink__
+                      data-plasmic-name={"h2147"}
+                      data-plasmic-override={overrides.h2147}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.__wab_text,
+                        sty.h2147,
+                        "geologica-h1"
+                      )}
+                      component={Link}
+                      href={`/login`}
+                      platform={"nextjs"}
+                    >
+                      {"Log In"}
+                    </PlasmicLink__>
                   </div>
                 </div>
               ) : null}
@@ -745,6 +736,7 @@ function PlasmicSignUp__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "link",
     "section1Parent",
     "section1Inner",
     "step1",
@@ -756,10 +748,12 @@ const PlasmicDescendants = {
     "primaryctaStage28",
     "text",
     "h2146",
-    "h2145",
+    "h2148",
+    "h2147",
     "otp",
     "h2141"
   ],
+  link: ["link"],
   section1Parent: [
     "section1Parent",
     "section1Inner",
@@ -772,7 +766,8 @@ const PlasmicDescendants = {
     "primaryctaStage28",
     "text",
     "h2146",
-    "h2145"
+    "h2148",
+    "h2147"
   ],
   section1Inner: [
     "section1Inner",
@@ -785,7 +780,8 @@ const PlasmicDescendants = {
     "primaryctaStage28",
     "text",
     "h2146",
-    "h2145"
+    "h2148",
+    "h2147"
   ],
   step1: [
     "step1",
@@ -797,7 +793,8 @@ const PlasmicDescendants = {
     "primaryctaStage28",
     "text",
     "h2146",
-    "h2145"
+    "h2148",
+    "h2147"
   ],
   h1219: ["h1219"],
   h2139: ["h2139"],
@@ -807,7 +804,8 @@ const PlasmicDescendants = {
   primaryctaStage28: ["primaryctaStage28", "text"],
   text: ["text"],
   h2146: ["h2146"],
-  h2145: ["h2145"],
+  h2148: ["h2148"],
+  h2147: ["h2147"],
   otp: ["otp"],
   h2141: ["h2141"]
 } as const;
@@ -816,6 +814,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  link: "a";
   section1Parent: "div";
   section1Inner: "div";
   step1: "div";
@@ -827,7 +826,8 @@ type NodeDefaultElementType = {
   primaryctaStage28: "div";
   text: "div";
   h2146: "div";
-  h2145: "div";
+  h2148: "div";
+  h2147: "a";
   otp: typeof Embed;
   h2141: "div";
 };
@@ -894,6 +894,7 @@ export const PlasmicSignUp = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    link: makeNodeComponent("link"),
     section1Parent: makeNodeComponent("section1Parent"),
     section1Inner: makeNodeComponent("section1Inner"),
     step1: makeNodeComponent("step1"),
@@ -905,7 +906,8 @@ export const PlasmicSignUp = Object.assign(
     primaryctaStage28: makeNodeComponent("primaryctaStage28"),
     text: makeNodeComponent("text"),
     h2146: makeNodeComponent("h2146"),
-    h2145: makeNodeComponent("h2145"),
+    h2148: makeNodeComponent("h2148"),
+    h2147: makeNodeComponent("h2147"),
     otp: makeNodeComponent("otp"),
     h2141: makeNodeComponent("h2141"),
 
