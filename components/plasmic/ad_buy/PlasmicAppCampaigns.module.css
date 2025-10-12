@@ -34,7 +34,7 @@
   overflow: hidden;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
-  padding: 15px 0px 0px;
+  padding: 8px 0px 0px;
 }
 .sidebarGroup {
   display: flex;
@@ -45,7 +45,8 @@
   width: auto;
   height: 100%;
   max-width: 100%;
-  padding-bottom: 15px;
+  padding-bottom: 8px;
+  margin-right: 8px;
 }
 .sidebarLeft {
   display: flex;
@@ -70,7 +71,6 @@
   align-items: center;
   overflow: hidden;
   background: #f4f4f4;
-  margin-right: 15px;
   margin-bottom: 0px;
   flex-shrink: 0;
   border-radius: 15px;
