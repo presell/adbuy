@@ -295,6 +295,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/integrations "
+        },
+        {
+          "id": "mTVCR0WtVqvB",
+          "name": "AppCampaigns",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppCampaigns.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/campaigns.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppCampaigns.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/campaigns"
         }
       ],
       "icons": [
