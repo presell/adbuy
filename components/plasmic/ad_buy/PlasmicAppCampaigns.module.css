@@ -58,12 +58,12 @@
   align-items: center;
   overflow: hidden;
   flex-shrink: 0;
-  padding: 30px 0px 0px;
+  padding: 20px 0px 0px;
 }
 .svg__q4P0J {
   object-fit: cover;
   max-width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: #000000;
   width: 25px;
   height: 25px;
@@ -79,7 +79,7 @@
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   flex-shrink: 0;
   border-radius: 8px;
   padding: 8px;
@@ -128,7 +128,7 @@
   margin-bottom: 0px;
   flex-shrink: 0;
   border-radius: 12px;
-  padding: 30px 16px 8px;
+  padding: 20px 16px 8px;
 }
 .text {
   position: relative;
