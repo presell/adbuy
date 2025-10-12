@@ -175,7 +175,25 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             styleTokensClassNames,
             sty.root
           )}
-        />
+        >
+          <div className={classNames(projectcss.all, sty.freeBox___3An9)}>
+            <div className={classNames(projectcss.all, sty.freeBox__oAqjB)} />
+
+            <div className={classNames(projectcss.all, sty.freeBox___74YWu)} />
+
+            <div className={classNames(projectcss.all, sty.freeBox__ymzpm)}>
+              <div className={classNames(projectcss.all, sty.freeBox__z9Rp)} />
+
+              <div className={classNames(projectcss.all, sty.freeBox__jGJrb)} />
+
+              <div className={classNames(projectcss.all, sty.freeBox__dZzq4)} />
+
+              <div
+                className={classNames(projectcss.all, sty.freeBox___4EGmk)}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;

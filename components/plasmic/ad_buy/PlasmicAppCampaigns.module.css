@@ -8,6 +8,7 @@
   justify-items: center;
   justify-content: flex-start;
   align-items: center;
+  background: #e5e5e5;
   min-width: 0;
   min-height: 0;
   grid-template-columns:
@@ -20,4 +21,121 @@
 }
 .root > * {
   grid-column: 4;
+}
+.freeBox___3An9 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+}
+.freeBox__oAqjB {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100px;
+  height: 97%;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  padding: 8px;
+}
+.freeBox___74YWu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 300px;
+  height: 97%;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  background: #f4f4f4;
+  margin-right: 15px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  padding: 8px;
+}
+.freeBox__ymzpm {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background: #ffffff;
+  overflow: auto;
+  margin-top: 30px;
+  border-radius: 15px 0px 0px;
+  padding: 16px;
+}
+.freeBox__z9Rp {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+  background: #cd9090;
+  min-width: 0;
+  flex-shrink: 0;
+  padding: 8px;
+}
+.freeBox__jGJrb {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+  background: #967474;
+  min-width: 0;
+  flex-shrink: 0;
+  padding: 8px;
+}
+.freeBox__dZzq4 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+  background: #140101;
+  min-width: 0;
+  flex-shrink: 0;
+  padding: 8px;
+}
+.freeBox___4EGmk {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+  background: #48a898;
+  min-width: 0;
+  flex-shrink: 0;
+  padding: 8px;
 }
