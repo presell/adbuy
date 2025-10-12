@@ -67,6 +67,10 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtVqvB/css
 
+import AdBuyDarkTextSmallestCursorSvgIcon from "./icons/PlasmicIcon__AdBuyDarkTextSmallestCursorSvg"; // plasmic-import: w5CBTUelss3U/icon
+import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
+import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
+
 createPlasmicElementProxy;
 
 export type PlasmicAppCampaigns__VariantMembers = {};
@@ -203,8 +207,25 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   sty.sidebarLeft,
                   "sidebar-left"
                 )}
-              />
+              >
+                <AdBuyDarkTextSmallestCursorSvgIcon
+                  className={classNames(projectcss.all, sty.svg__q4P0J)}
+                  role={"img"}
+                />
 
+                <div className={classNames(projectcss.all, sty.freeBox__a66Na)}>
+                  <LeadsIconSvgIcon
+                    className={classNames(projectcss.all, sty.svg__tqKAz)}
+                    role={"img"}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__dZGi)}>
+                  <WorkflowsiconSvgIcon
+                    className={classNames(projectcss.all, sty.svg___7C4S)}
+                    role={"img"}
+                  />
+                </div>
+              </div>
               <div
                 data-plasmic-name={"sidebarRight"}
                 data-plasmic-override={overrides.sidebarRight}
