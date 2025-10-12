@@ -137,6 +137,8 @@
   max-width: 100%;
   text-align: center;
   font-size: 18px;
+  color: #000000;
+  font-family: var(--plasmic-font-geologica);
 }
 .contentWrapper {
   display: flex;
