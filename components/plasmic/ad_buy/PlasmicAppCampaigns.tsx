@@ -80,6 +80,11 @@ export const PlasmicAppCampaigns__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAppCampaigns__OverridesType = {
   root?: Flex__<"div">;
+  appLayout?: Flex__<"div">;
+  sidebarGroup?: Flex__<"div">;
+  sidebarLeft?: Flex__<"div">;
+  sidebarRight?: Flex__<"div">;
+  contentWrapper?: Flex__<"div">;
 };
 
 export interface DefaultAppCampaignsProps {}
@@ -176,12 +181,45 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             sty.root
           )}
         >
-          <div className={classNames(projectcss.all, sty.freeBox___3An9)}>
-            <div className={classNames(projectcss.all, sty.freeBox__oAqjB)} />
+          <div
+            data-plasmic-name={"appLayout"}
+            data-plasmic-override={overrides.appLayout}
+            className={classNames(projectcss.all, sty.appLayout, "app-layout")}
+          >
+            <div
+              data-plasmic-name={"sidebarGroup"}
+              data-plasmic-override={overrides.sidebarGroup}
+              className={classNames(
+                projectcss.all,
+                sty.sidebarGroup,
+                "sidebar-group"
+              )}
+            >
+              <div
+                data-plasmic-name={"sidebarLeft"}
+                data-plasmic-override={overrides.sidebarLeft}
+                className={classNames(
+                  projectcss.all,
+                  sty.sidebarLeft,
+                  "sidebar-left"
+                )}
+              />
 
-            <div className={classNames(projectcss.all, sty.freeBox___74YWu)} />
-
-            <div className={classNames(projectcss.all, sty.freeBox__ymzpm)}>
+              <div
+                data-plasmic-name={"sidebarRight"}
+                data-plasmic-override={overrides.sidebarRight}
+                className={classNames(
+                  projectcss.all,
+                  sty.sidebarRight,
+                  "sidebar-right"
+                )}
+              />
+            </div>
+            <div
+              data-plasmic-name={"contentWrapper"}
+              data-plasmic-override={overrides.contentWrapper}
+              className={classNames(projectcss.all, sty.contentWrapper)}
+            >
               <div className={classNames(projectcss.all, sty.freeBox__z9Rp)} />
 
               <div className={classNames(projectcss.all, sty.freeBox__jGJrb)} />
@@ -200,13 +238,36 @@ function PlasmicAppCampaigns__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: [
+    "root",
+    "appLayout",
+    "sidebarGroup",
+    "sidebarLeft",
+    "sidebarRight",
+    "contentWrapper"
+  ],
+  appLayout: [
+    "appLayout",
+    "sidebarGroup",
+    "sidebarLeft",
+    "sidebarRight",
+    "contentWrapper"
+  ],
+  sidebarGroup: ["sidebarGroup", "sidebarLeft", "sidebarRight"],
+  sidebarLeft: ["sidebarLeft"],
+  sidebarRight: ["sidebarRight"],
+  contentWrapper: ["contentWrapper"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  appLayout: "div";
+  sidebarGroup: "div";
+  sidebarLeft: "div";
+  sidebarRight: "div";
+  contentWrapper: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -271,6 +332,11 @@ export const PlasmicAppCampaigns = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    appLayout: makeNodeComponent("appLayout"),
+    sidebarGroup: makeNodeComponent("sidebarGroup"),
+    sidebarLeft: makeNodeComponent("sidebarLeft"),
+    sidebarRight: makeNodeComponent("sidebarRight"),
+    contentWrapper: makeNodeComponent("contentWrapper"),
 
     // Metadata about props expected for PlasmicAppCampaigns
     internalVariantProps: PlasmicAppCampaigns__VariantProps,
