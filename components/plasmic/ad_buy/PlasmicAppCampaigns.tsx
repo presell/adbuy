@@ -67,7 +67,7 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtVqvB/css
 
-import AdBuyDarkTextSmallestCursorSvgIcon from "./icons/PlasmicIcon__AdBuyDarkTextSmallestCursorSvg"; // plasmic-import: w5CBTUelss3U/icon
+import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
 import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
 
@@ -88,6 +88,7 @@ export type PlasmicAppCampaigns__OverridesType = {
   sidebarGroup?: Flex__<"div">;
   sidebarLeft?: Flex__<"div">;
   sidebarRight?: Flex__<"div">;
+  text?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
 };
 
@@ -208,7 +209,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   "sidebar-left"
                 )}
               >
-                <AdBuyDarkTextSmallestCursorSvgIcon
+                <CursorIsolatedSvgIcon
                   className={classNames(projectcss.all, sty.svg__q4P0J)}
                   role={"img"}
                 />
@@ -234,7 +235,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   sty.sidebarRight,
                   "sidebar-right"
                 )}
-              />
+              >
+                <div
+                  data-plasmic-name={"text"}
+                  data-plasmic-override={overrides.text}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text,
+                    "geologica-h1"
+                  )}
+                >
+                  {"Campaigns"}
+                </div>
+              </div>
             </div>
             <div
               data-plasmic-name={"contentWrapper"}
@@ -265,6 +279,7 @@ const PlasmicDescendants = {
     "sidebarGroup",
     "sidebarLeft",
     "sidebarRight",
+    "text",
     "contentWrapper"
   ],
   appLayout: [
@@ -272,11 +287,13 @@ const PlasmicDescendants = {
     "sidebarGroup",
     "sidebarLeft",
     "sidebarRight",
+    "text",
     "contentWrapper"
   ],
-  sidebarGroup: ["sidebarGroup", "sidebarLeft", "sidebarRight"],
+  sidebarGroup: ["sidebarGroup", "sidebarLeft", "sidebarRight", "text"],
   sidebarLeft: ["sidebarLeft"],
-  sidebarRight: ["sidebarRight"],
+  sidebarRight: ["sidebarRight", "text"],
+  text: ["text"],
   contentWrapper: ["contentWrapper"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -288,6 +305,7 @@ type NodeDefaultElementType = {
   sidebarGroup: "div";
   sidebarLeft: "div";
   sidebarRight: "div";
+  text: "div";
   contentWrapper: "div";
 };
 
@@ -357,6 +375,7 @@ export const PlasmicAppCampaigns = Object.assign(
     sidebarGroup: makeNodeComponent("sidebarGroup"),
     sidebarLeft: makeNodeComponent("sidebarLeft"),
     sidebarRight: makeNodeComponent("sidebarRight"),
+    text: makeNodeComponent("text"),
     contentWrapper: makeNodeComponent("contentWrapper"),
 
     // Metadata about props expected for PlasmicAppCampaigns
