@@ -298,6 +298,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
               <div
                 className={classNames(projectcss.all, sty.freeBox___4EGmk)}
               />
+
+              <div className={classNames(projectcss.all, sty.freeBox__tzU4U)} />
+
+              <div className={classNames(projectcss.all, sty.freeBox__jGDt)} />
+
+              <div className={classNames(projectcss.all, sty.freeBox__nVd5E)} />
             </div>
           </div>
         </div>
