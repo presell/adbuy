@@ -451,7 +451,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "geologica-h2"
                         )}
                       >
-                        {"$50"}
+                        {"$0"}
                       </div>
                     </div>
                     <div
@@ -551,7 +551,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "geologica-h2"
                         )}
                       >
-                        {"$50"}
+                        {"0"}
                       </div>
                     </div>
                     <div
