@@ -62,7 +62,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .sidebarLeft {
-    height: 95%;
+    height: 90%;
   }
 }
 .link {
@@ -241,7 +241,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .sidebarRight {
-    height: 95%;
+    height: 100%;
   }
 }
 .freeBox__qB1ME {
@@ -257,6 +257,11 @@
   padding-right: 16px;
   min-width: 0;
   min-height: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__qB1ME {
+    height: auto;
+  }
 }
 .freeBox__mtGsk {
   display: flex;
@@ -297,6 +302,11 @@
   border-radius: 6px;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__xz2Gg {
+    margin-bottom: 9px;
+  }
+}
 .svg__a8FQp {
   object-fit: cover;
   max-width: 100%;
@@ -334,6 +344,11 @@
   border-radius: 6px;
   padding: 8px;
   margin: 0px 0px 12px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___5AE4R {
+    margin: 0px 0px 9px;
+  }
 }
 .root .freeBox___5AE4R:hover {
   background: #dadadacc;
@@ -376,6 +391,11 @@
   border-radius: 6px;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__wNdcU {
+    margin-bottom: 35px;
+  }
+}
 .root .freeBox__wNdcU:hover {
   background: #dadadacc;
 }
@@ -413,6 +433,11 @@
   line-height: 0.9;
   margin: 0px 0px 12px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___11Bxa {
+    margin: 0px 0px 9px;
+  }
+}
 .freeBox__l2Vc4 {
   display: flex;
   flex-direction: row;
@@ -428,6 +453,11 @@
   border-radius: 6px;
   padding: 8px;
   margin: 0px 0px 45px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__l2Vc4 {
+    margin-bottom: 35px;
+  }
 }
 .root .freeBox__l2Vc4:hover {
   background: #dadadacc;
@@ -466,6 +496,11 @@
   line-height: 0.9;
   margin: 0px 0px 12px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__zLz4Q {
+    margin: 0px 0px 9px;
+  }
+}
 .freeBox__mkfsR {
   display: flex;
   flex-direction: row;
@@ -481,6 +516,11 @@
   border-radius: 6px;
   padding: 8px;
   margin: 0px 0px 12px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__mkfsR {
+    margin: 0px 0px 9px;
+  }
 }
 .root .freeBox__mkfsR:hover {
   background: #dadadacc;
@@ -563,6 +603,11 @@
   min-width: 0;
   margin: 0px 0px 12px;
   border-top: 1px solid #d3d3d3;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__p7GVa {
+    margin-top: 60px;
+  }
 }
 .freeBox___7UULl {
   display: flex;
