@@ -230,44 +230,46 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     role={"img"}
                   />
                 </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__jnNtU)}
-                />
-
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___7Ek4O)}
-                >
-                  <GiftSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg___0Kyt)}
-                    role={"img"}
-                  />
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__giCo4)}>
-                  <QuestionSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg__kYeaq)}
-                    role={"img"}
-                  />
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__bya1J)}>
-                  <PlasmicImg__
-                    data-plasmic-name={"img"}
-                    data-plasmic-override={overrides.img}
-                    alt={""}
-                    className={classNames(sty.img)}
-                    displayHeight={"100%"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/ad_buy/images/dgHeadshotSmallPng.png",
-                      fullWidth: 300,
-                      fullHeight: 300,
-                      aspectRatio: undefined
-                    }}
-                  />
+                <div className={classNames(projectcss.all, sty.freeBox__jnNtU)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___7Ek4O)}
+                  >
+                    <GiftSvgrepoComSvgIcon
+                      className={classNames(projectcss.all, sty.svg___0Kyt)}
+                      role={"img"}
+                    />
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__giCo4)}
+                  >
+                    <QuestionSvgrepoComSvgIcon
+                      className={classNames(projectcss.all, sty.svg__kYeaq)}
+                      role={"img"}
+                    />
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__bya1J)}
+                  >
+                    <PlasmicImg__
+                      data-plasmic-name={"img"}
+                      data-plasmic-override={overrides.img}
+                      alt={""}
+                      className={classNames(sty.img)}
+                      displayHeight={"100%"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/ad_buy/images/dgHeadshotSmallPng.png",
+                        fullWidth: 300,
+                        fullHeight: 300,
+                        aspectRatio: undefined
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
               <div
