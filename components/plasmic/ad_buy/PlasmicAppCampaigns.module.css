@@ -265,6 +265,7 @@
   font-size: 18px;
   color: #000000;
   font-family: var(--plasmic-font-geologica);
+  user-select: none;
 }
 .freeBox__xz2Gg {
   display: flex;
@@ -478,6 +479,7 @@
   font-family: var(--plasmic-font-geologica);
   line-height: 0.9;
   margin-right: 10px;
+  user-select: none;
 }
 .svg___1IyKw {
   object-fit: cover;
@@ -529,6 +531,7 @@
   flex-shrink: 0;
   position: relative;
   line-height: 1.1;
+  user-select: none;
 }
 .freeBox__jrY0B {
   display: flex;
@@ -552,6 +555,7 @@
   line-height: 0.9;
   margin-right: 0px;
   align-self: auto;
+  user-select: none;
 }
 .freeBox__fVqZp {
   display: flex;
@@ -624,6 +628,7 @@
   flex-shrink: 0;
   position: relative;
   line-height: 1.1;
+  user-select: none;
 }
 .freeBox__amWhZ {
   display: flex;
@@ -647,6 +652,7 @@
   line-height: 0.9;
   margin-right: 0px;
   align-self: auto;
+  user-select: none;
 }
 .freeBox__gxzUb {
   display: flex;
@@ -719,6 +725,7 @@
   flex-shrink: 0;
   position: relative;
   line-height: 1.1;
+  user-select: none;
 }
 .freeBox__wze9S {
   display: flex;
@@ -742,6 +749,7 @@
   line-height: 0.9;
   margin-right: 0px;
   align-self: auto;
+  user-select: none;
 }
 .freeBox__qoWFn {
   display: flex;
@@ -877,6 +885,7 @@
   color: #000000;
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
+  user-select: none;
 }
 .freeBox__jGDt {
   display: flex;
