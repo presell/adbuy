@@ -3,14 +3,14 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   align-content: flex-start;
   justify-items: center;
   justify-content: flex-start;
   align-items: center;
   background: #e5e5e5;
-  overflow: auto;
   min-width: 0;
+  min-height: 0;
   grid-template-columns:
     var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
     min(
@@ -59,6 +59,11 @@
   overflow: hidden;
   flex-shrink: 0;
   padding: 20px 0px 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .sidebarLeft {
+    height: 95%;
+  }
 }
 .link {
   margin-bottom: 40px;
@@ -233,6 +238,11 @@
   padding-bottom: 8px;
   flex-shrink: 0;
   border-radius: 12px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .sidebarRight {
+    height: 95%;
+  }
 }
 .freeBox__qB1ME {
   display: flex;
