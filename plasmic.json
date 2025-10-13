@@ -309,6 +309,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/app/campaigns"
+        },
+        {
+          "id": "3-ESBXWrTc3V",
+          "name": "AppLayout",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppLayout.tsx",
+          "importSpec": {
+            "modulePath": "AppLayout.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppLayout.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -541,6 +554,11 @@
           "id": "Q8BUWmPptTcP",
           "name": "DocumentSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__DocumentSvg.tsx"
+        },
+        {
+          "id": "JhN1q1NZAQCI",
+          "name": "OpenPanelSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__OpenPanelSvg.tsx"
         }
       ],
       "images": [

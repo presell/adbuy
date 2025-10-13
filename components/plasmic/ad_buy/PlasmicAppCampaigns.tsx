@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -66,19 +67,6 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtVqvB/css
-
-import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
-import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
-import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
-import GiftSvgrepoComSvgIcon from "./icons/PlasmicIcon__GiftSvgrepoComSvg"; // plasmic-import: 2E5Q_54R4vQ5/icon
-import HelpSvgIcon from "./icons/PlasmicIcon__HelpSvg"; // plasmic-import: omxN7Fvt6PUz/icon
-import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
-import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
-import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
-import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-import: 8wp36EsoJArA/icon
-import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-import: Q8BUWmPptTcP/icon
-import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
-import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 
 createPlasmicElementProxy;
 
@@ -93,13 +81,7 @@ export const PlasmicAppCampaigns__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicAppCampaigns__OverridesType = {
   root?: Flex__<"div">;
-  appLayout?: Flex__<"div">;
-  sidebarGroup?: Flex__<"div">;
-  sidebarLeft?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
-  img?: Flex__<typeof PlasmicImg__>;
-  sidebarRight?: Flex__<"div">;
-  contentWrapper?: Flex__<"div">;
+  appLayout?: Flex__<typeof AppLayout>;
 };
 
 export interface DefaultAppCampaignsProps {}
@@ -196,461 +178,11 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             sty.root
           )}
         >
-          <div
+          <AppLayout
             data-plasmic-name={"appLayout"}
             data-plasmic-override={overrides.appLayout}
-            className={classNames(projectcss.all, sty.appLayout, "app-layout")}
-          >
-            <div
-              data-plasmic-name={"sidebarGroup"}
-              data-plasmic-override={overrides.sidebarGroup}
-              className={classNames(
-                projectcss.all,
-                sty.sidebarGroup,
-                "sidebar-group"
-              )}
-            >
-              <div
-                data-plasmic-name={"sidebarLeft"}
-                data-plasmic-override={overrides.sidebarLeft}
-                className={classNames(
-                  projectcss.all,
-                  sty.sidebarLeft,
-                  "sidebar-left"
-                )}
-              >
-                <PlasmicLink__
-                  data-plasmic-name={"link"}
-                  data-plasmic-override={overrides.link}
-                  className={classNames(projectcss.all, projectcss.a, sty.link)}
-                  component={Link}
-                  href={`/app/campaigns`}
-                  platform={"nextjs"}
-                >
-                  <CursorIsolatedSvgIcon
-                    className={classNames(projectcss.all, sty.svg__q4P0J)}
-                    role={"img"}
-                  />
-                </PlasmicLink__>
-                <div className={classNames(projectcss.all, sty.freeBox__a66Na)}>
-                  <LeadsIconSvgIcon
-                    className={classNames(projectcss.all, sty.svg__tqKAz)}
-                    role={"img"}
-                  />
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__dZGi)}>
-                  <WorkflowsiconSvgIcon
-                    className={classNames(projectcss.all, sty.svg___7C4S)}
-                    role={"img"}
-                  />
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__jnNtU)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___7Ek4O)}
-                  >
-                    <GiftSvgrepoComSvgIcon
-                      className={classNames(projectcss.all, sty.svg___0Kyt)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__giCo4)}
-                  >
-                    <HelpSvgIcon
-                      className={classNames(projectcss.all, sty.svg__kYeaq)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bya1J)}
-                  >
-                    <PlasmicImg__
-                      data-plasmic-name={"img"}
-                      data-plasmic-override={overrides.img}
-                      alt={""}
-                      className={classNames(sty.img)}
-                      displayHeight={"100%"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"eager"}
-                      src={{
-                        src: "/plasmic/ad_buy/images/dgHeadshotSmallPng.png",
-                        fullWidth: 300,
-                        fullHeight: 300,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                data-plasmic-name={"sidebarRight"}
-                data-plasmic-override={overrides.sidebarRight}
-                className={classNames(
-                  projectcss.all,
-                  sty.sidebarRight,
-                  "sidebar-right"
-                )}
-              >
-                <div className={classNames(projectcss.all, sty.freeBox__qB1ME)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mtGsk)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___2Zs,
-                        "geologica-h1"
-                      )}
-                    >
-                      {"Campaigns"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xz2Gg)}
-                  >
-                    <LeadsIconSvgIcon
-                      className={classNames(projectcss.all, sty.svg__a8FQp)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__jiAkQ,
-                        "geologica-h2"
-                      )}
-                    >
-                      {"Campaigns"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___5AE4R)}
-                  >
-                    <LeadAppSvgIcon
-                      className={classNames(projectcss.all, sty.svg__ik3U)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xssPn,
-                        "geologica-h2"
-                      )}
-                    >
-                      {"Leads"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__wNdcU)}
-                  >
-                    <PhoneSvgIcon
-                      className={classNames(projectcss.all, sty.svg__kCsvm)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bk83,
-                        "geologica-h2"
-                      )}
-                    >
-                      {"Calls"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___11Bxa,
-                      "geologica-h3"
-                    )}
-                  >
-                    {"Reporting"}
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__l2Vc4)}
-                  >
-                    <AnalyticsSharpSvgrepoComSvgIcon
-                      className={classNames(projectcss.all, sty.svg__dhr6S)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__k29Mp,
-                        "geologica-h2"
-                      )}
-                    >
-                      {"Analytics"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__zLz4Q,
-                      "geologica-h3"
-                    )}
-                  >
-                    {"Billing"}
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mkfsR)}
-                  >
-                    <CreditCardSvgIcon
-                      className={classNames(projectcss.all, sty.svg___5UIf)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__jb4X,
-                        "geologica-h2"
-                      )}
-                    >
-                      {"Cards"}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__kvJ0Y)}
-                  >
-                    <DocumentSvgIcon
-                      className={classNames(projectcss.all, sty.svg__lDWiX)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__rWff5,
-                        "geologica-h2"
-                      )}
-                    >
-                      {"Invoices"}
-                    </div>
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__p7GVa)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___7UULl)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__e7IFp,
-                        "geologica-h3"
-                      )}
-                    >
-                      {"Overview"}
-                    </div>
-                    <ThinChevronRightSvgIcon
-                      className={classNames(projectcss.all, sty.svg___1IyKw)}
-                      role={"img"}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ckesd)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__x2GcE)}
-                    >
-                      <CreditCardSvgIcon
-                        className={classNames(projectcss.all, sty.svg__jZmwm)}
-                        role={"img"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ilkp,
-                          "geologica-h1"
-                        )}
-                      >
-                        {"Daily Spend"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__jrY0B
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___3Wo6A,
-                          "geologica-h2"
-                        )}
-                      >
-                        {"$0"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fVqZp)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__wpDlF
-                        )}
-                      />
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__g0VWg)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cdLhl)}
-                    >
-                      <LeadAppSvgIcon
-                        className={classNames(projectcss.all, sty.svg__vcrNd)}
-                        role={"img"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ncV0J,
-                          "geologica-h1"
-                        )}
-                      >
-                        {"Leads Today"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__amWhZ
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___0FwIa,
-                          "geologica-h2"
-                        )}
-                      >
-                        {"0"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__gxzUb)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__c27NC
-                        )}
-                      />
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vuOr)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__eJ64W)}
-                    >
-                      <CallSvgrepoComSvgIcon
-                        className={classNames(projectcss.all, sty.svg__ytFpZ)}
-                        role={"img"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ylMhx,
-                          "geologica-h1"
-                        )}
-                      >
-                        {"Calls Today"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__wze9S
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___9Pw2,
-                          "geologica-h2"
-                        )}
-                      >
-                        {"0"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qoWFn)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hs8L
-                        )}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              data-plasmic-name={"contentWrapper"}
-              data-plasmic-override={overrides.contentWrapper}
-              className={classNames(projectcss.all, sty.contentWrapper)}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__z9Rp)} />
-
-              <div className={classNames(projectcss.all, sty.freeBox__jGJrb)} />
-
-              <div className={classNames(projectcss.all, sty.freeBox__dZzq4)} />
-
-              <div
-                className={classNames(projectcss.all, sty.freeBox___4EGmk)}
-              />
-
-              <div className={classNames(projectcss.all, sty.freeBox__tzU4U)}>
-                <div className={classNames(projectcss.all, sty.freeBox__z6DLs)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ctvt4,
-                      "geologica-h1"
-                    )}
-                  >
-                    {"Campaigns"}
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__jGDt)} />
-
-              <div className={classNames(projectcss.all, sty.freeBox__nVd5E)} />
-            </div>
-          </div>
+            className={classNames("__wab_instance", sty.appLayout)}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -658,44 +190,15 @@ function PlasmicAppCampaigns__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: [
-    "root",
-    "appLayout",
-    "sidebarGroup",
-    "sidebarLeft",
-    "link",
-    "img",
-    "sidebarRight",
-    "contentWrapper"
-  ],
-  appLayout: [
-    "appLayout",
-    "sidebarGroup",
-    "sidebarLeft",
-    "link",
-    "img",
-    "sidebarRight",
-    "contentWrapper"
-  ],
-  sidebarGroup: ["sidebarGroup", "sidebarLeft", "link", "img", "sidebarRight"],
-  sidebarLeft: ["sidebarLeft", "link", "img"],
-  link: ["link"],
-  img: ["img"],
-  sidebarRight: ["sidebarRight"],
-  contentWrapper: ["contentWrapper"]
+  root: ["root", "appLayout"],
+  appLayout: ["appLayout"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  appLayout: "div";
-  sidebarGroup: "div";
-  sidebarLeft: "div";
-  link: "a";
-  img: typeof PlasmicImg__;
-  sidebarRight: "div";
-  contentWrapper: "div";
+  appLayout: typeof AppLayout;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -761,12 +264,6 @@ export const PlasmicAppCampaigns = Object.assign(
   {
     // Helper components rendering sub-elements
     appLayout: makeNodeComponent("appLayout"),
-    sidebarGroup: makeNodeComponent("sidebarGroup"),
-    sidebarLeft: makeNodeComponent("sidebarLeft"),
-    link: makeNodeComponent("link"),
-    img: makeNodeComponent("img"),
-    sidebarRight: makeNodeComponent("sidebarRight"),
-    contentWrapper: makeNodeComponent("contentWrapper"),
 
     // Metadata about props expected for PlasmicAppCampaigns
     internalVariantProps: PlasmicAppCampaigns__VariantProps,
