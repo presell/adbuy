@@ -70,6 +70,8 @@ import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtV
 import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
 import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
+import GiftSvgrepoComSvgIcon from "./icons/PlasmicIcon__GiftSvgrepoComSvg"; // plasmic-import: 2E5Q_54R4vQ5/icon
+import QuestionSvgrepoComSvgIcon from "./icons/PlasmicIcon__QuestionSvgrepoComSvg"; // plasmic-import: qTyKt8q9cLe9/icon
 import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
 
@@ -89,6 +91,7 @@ export type PlasmicAppCampaigns__OverridesType = {
   appLayout?: Flex__<"div">;
   sidebarGroup?: Flex__<"div">;
   sidebarLeft?: Flex__<"div">;
+  img?: Flex__<typeof PlasmicImg__>;
   sidebarRight?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
 };
@@ -227,6 +230,45 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     role={"img"}
                   />
                 </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__jnNtU)}
+                />
+
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___7Ek4O)}
+                >
+                  <GiftSvgrepoComSvgIcon
+                    className={classNames(projectcss.all, sty.svg___0Kyt)}
+                    role={"img"}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__giCo4)}>
+                  <QuestionSvgrepoComSvgIcon
+                    className={classNames(projectcss.all, sty.svg__kYeaq)}
+                    role={"img"}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__bya1J)}>
+                  <PlasmicImg__
+                    data-plasmic-name={"img"}
+                    data-plasmic-override={overrides.img}
+                    alt={""}
+                    className={classNames(sty.img)}
+                    displayHeight={"100%"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/ad_buy/images/dgHeadshotSmallPng.png",
+                      fullWidth: 300,
+                      fullHeight: 300,
+                      aspectRatio: undefined
+                    }}
+                  />
+                </div>
               </div>
               <div
                 data-plasmic-name={"sidebarRight"}
@@ -360,6 +402,7 @@ const PlasmicDescendants = {
     "appLayout",
     "sidebarGroup",
     "sidebarLeft",
+    "img",
     "sidebarRight",
     "contentWrapper"
   ],
@@ -367,11 +410,13 @@ const PlasmicDescendants = {
     "appLayout",
     "sidebarGroup",
     "sidebarLeft",
+    "img",
     "sidebarRight",
     "contentWrapper"
   ],
-  sidebarGroup: ["sidebarGroup", "sidebarLeft", "sidebarRight"],
-  sidebarLeft: ["sidebarLeft"],
+  sidebarGroup: ["sidebarGroup", "sidebarLeft", "img", "sidebarRight"],
+  sidebarLeft: ["sidebarLeft", "img"],
+  img: ["img"],
   sidebarRight: ["sidebarRight"],
   contentWrapper: ["contentWrapper"]
 } as const;
@@ -383,6 +428,7 @@ type NodeDefaultElementType = {
   appLayout: "div";
   sidebarGroup: "div";
   sidebarLeft: "div";
+  img: typeof PlasmicImg__;
   sidebarRight: "div";
   contentWrapper: "div";
 };
@@ -452,6 +498,7 @@ export const PlasmicAppCampaigns = Object.assign(
     appLayout: makeNodeComponent("appLayout"),
     sidebarGroup: makeNodeComponent("sidebarGroup"),
     sidebarLeft: makeNodeComponent("sidebarLeft"),
+    img: makeNodeComponent("img"),
     sidebarRight: makeNodeComponent("sidebarRight"),
     contentWrapper: makeNodeComponent("contentWrapper"),
 

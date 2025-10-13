@@ -511,6 +511,16 @@
           "id": "SblPtQiKCaIH",
           "name": "AnalyticsSharpSvgrepoComSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "qTyKt8q9cLe9",
+          "name": "QuestionSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__QuestionSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "2E5Q_54R4vQ5",
+          "name": "GiftSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__GiftSvgrepoComSvg.tsx"
         }
       ],
       "images": [
@@ -533,6 +543,11 @@
           "id": "HYjZW7bPg7ka",
           "name": "metaDark.svg",
           "filePath": "../public/plasmic/ad_buy/images/metaDarkSvg.svg"
+        },
+        {
+          "id": "hc4SRtMuQyl-",
+          "name": "DG - Headshot - Small.png",
+          "filePath": "../public/plasmic/ad_buy/images/dgHeadshotSmallPng.png"
         }
       ],
       "indirect": false,
