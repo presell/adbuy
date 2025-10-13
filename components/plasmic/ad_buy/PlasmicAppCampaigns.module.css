@@ -302,6 +302,7 @@
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
   line-height: 0.9;
+  user-select: none;
 }
 .freeBox___5AE4R {
   display: flex;
@@ -342,6 +343,7 @@
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
   line-height: 0.9;
+  user-select: none;
 }
 .freeBox__wNdcU {
   display: flex;
@@ -382,6 +384,7 @@
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
   line-height: 0.9;
+  user-select: none;
 }
 .text___11Bxa {
   position: relative;
@@ -434,6 +437,7 @@
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
   line-height: 0.9;
+  user-select: none;
 }
 .freeBox__p7GVa {
   display: flex;
