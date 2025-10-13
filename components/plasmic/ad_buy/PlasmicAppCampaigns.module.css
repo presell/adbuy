@@ -63,6 +63,7 @@
 .link {
   margin-bottom: 40px;
   display: flex;
+  cursor: pointer;
 }
 .svg__q4P0J {
   object-fit: cover;
@@ -83,6 +84,7 @@
   align-items: center;
   background: #ffffff;
   margin-bottom: 12px;
+  cursor: pointer;
   flex-shrink: 0;
   border-radius: 8px;
   padding: 8px;
@@ -104,6 +106,7 @@
   align-items: center;
   background: none;
   margin-bottom: 15px;
+  cursor: pointer;
   flex-shrink: 0;
   border-radius: 8px;
   padding: 8px;
@@ -141,6 +144,7 @@
   justify-content: center;
   align-items: center;
   background: none;
+  cursor: pointer;
   flex-shrink: 0;
   border-radius: 8px;
   padding: 8px;
@@ -166,6 +170,7 @@
   justify-content: center;
   align-items: center;
   background: none;
+  cursor: pointer;
   flex-shrink: 0;
   border-radius: 8px;
   padding: 8px;
@@ -191,10 +196,11 @@
   justify-content: center;
   align-items: center;
   background: none;
+  cursor: pointer;
   flex-shrink: 0;
   border-radius: 8px;
   padding: 8px;
-  margin: 0px 0px 12px;
+  margin: 0px;
 }
 .root .freeBox__bya1J:hover {
   background: #dadadacc;
@@ -271,6 +277,7 @@
   max-width: 100%;
   background: #e8effacc;
   margin-bottom: 12px;
+  cursor: pointer;
   min-width: 0;
   border-radius: 6px;
   padding: 8px;
@@ -306,6 +313,7 @@
   height: auto;
   max-width: 100%;
   background: none;
+  cursor: pointer;
   min-width: 0;
   border-radius: 6px;
   padding: 8px;
@@ -346,6 +354,7 @@
   max-width: 100%;
   background: none;
   margin-bottom: 45px;
+  cursor: pointer;
   min-width: 0;
   border-radius: 6px;
   padding: 8px;
@@ -396,6 +405,7 @@
   height: auto;
   max-width: 100%;
   background: none;
+  cursor: pointer;
   min-width: 0;
   border-radius: 6px;
   padding: 8px;
@@ -451,6 +461,7 @@
   height: auto;
   max-width: 100%;
   margin-bottom: 20px;
+  cursor: pointer;
   min-width: 0;
 }
 .text__e7IFp {
@@ -479,6 +490,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
+  cursor: pointer;
   min-width: 0;
 }
 .freeBox__x2GcE {
@@ -495,7 +507,7 @@
 .svg__jZmwm {
   object-fit: cover;
   max-width: 100%;
-  margin-right: 5px;
+  margin-right: 10px;
   color: #535353;
   width: 13px;
   height: 13px;
@@ -573,6 +585,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
+  cursor: pointer;
   min-width: 0;
 }
 .freeBox__cdLhl {
@@ -589,11 +602,11 @@
 .svg__vcrNd {
   object-fit: cover;
   max-width: 100%;
-  margin-right: 5px;
   color: #535353;
   width: 13px;
   height: 13px;
   flex-shrink: 0;
+  margin: 0px 10px 0px 0px;
 }
 .text__ncV0J {
   width: auto;
@@ -666,7 +679,8 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 0px;
+  cursor: pointer;
   min-width: 0;
 }
 .freeBox__eJ64W {
