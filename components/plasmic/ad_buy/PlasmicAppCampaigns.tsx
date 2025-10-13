@@ -75,8 +75,9 @@ import HelpSvgIcon from "./icons/PlasmicIcon__HelpSvg"; // plasmic-import: omxN7
 import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
 import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
-import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-import: 8wp36EsoJArA/icon
+import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-import: Q8BUWmPptTcP/icon
+import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 
 createPlasmicElementProxy;
@@ -393,6 +394,54 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       )}
                     >
                       {"Analytics"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zLz4Q,
+                      "geologica-h3"
+                    )}
+                  >
+                    {"Billing"}
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__mkfsR)}
+                  >
+                    <CreditCardSvgIcon
+                      className={classNames(projectcss.all, sty.svg___5UIf)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__jb4X,
+                        "geologica-h2"
+                      )}
+                    >
+                      {"Cards"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__kvJ0Y)}
+                  >
+                    <DocumentSvgIcon
+                      className={classNames(projectcss.all, sty.svg__lDWiX)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__rWff5,
+                        "geologica-h2"
+                      )}
+                    >
+                      {"Invoices"}
                     </div>
                   </div>
                 </div>

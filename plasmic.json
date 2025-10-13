@@ -536,6 +536,11 @@
           "id": "omxN7Fvt6PUz",
           "name": "HelpSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__HelpSvg.tsx"
+        },
+        {
+          "id": "Q8BUWmPptTcP",
+          "name": "DocumentSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__DocumentSvg.tsx"
         }
       ],
       "images": [
