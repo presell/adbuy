@@ -77,6 +77,7 @@ import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBc
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-import: 8wp36EsoJArA/icon
+import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 
 createPlasmicElementProxy;
 
@@ -273,7 +274,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       displayMinHeight={"0"}
                       displayMinWidth={"0"}
                       displayWidth={"auto"}
-                      loading={"lazy"}
+                      loading={"eager"}
                       src={{
                         src: "/plasmic/ad_buy/images/dgHeadshotSmallPng.png",
                         fullWidth: 300,
@@ -470,7 +471,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__cdLhl)}
                     >
-                      <CreditCardSvgIcon
+                      <LeadAppSvgIcon
                         className={classNames(projectcss.all, sty.svg__vcrNd)}
                         role={"img"}
                       />
@@ -483,7 +484,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "geologica-h2"
                         )}
                       >
-                        {"Daily Spend"}
+                        {"Leads Today"}
                       </div>
                       <div
                         className={classNames(
@@ -500,7 +501,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "geologica-h2"
                         )}
                       >
-                        {"$50"}
+                        {"0"}
                       </div>
                     </div>
                     <div
@@ -515,13 +516,13 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__riZhW)}
+                    className={classNames(projectcss.all, sty.freeBox__vuOr)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__j27Ta)}
+                      className={classNames(projectcss.all, sty.freeBox__eJ64W)}
                     >
-                      <CreditCardSvgIcon
-                        className={classNames(projectcss.all, sty.svg__mSOz)}
+                      <CallSvgrepoComSvgIcon
+                        className={classNames(projectcss.all, sty.svg__ytFpZ)}
                         role={"img"}
                       />
 
@@ -529,16 +530,16 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__rhv2,
+                          sty.text__ylMhx,
                           "geologica-h2"
                         )}
                       >
-                        {"Daily Spend"}
+                        {"Calls Today"}
                       </div>
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__vcAbu
+                          sty.freeBox__wze9S
                         )}
                       />
 
@@ -546,7 +547,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__cN6,
+                          sty.text___9Pw2,
                           "geologica-h2"
                         )}
                       >
@@ -554,12 +555,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       </div>
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__tAFdq)}
+                      className={classNames(projectcss.all, sty.freeBox__qoWFn)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__vgy12
+                          sty.freeBox__hs8L
                         )}
                       />
                     </div>
