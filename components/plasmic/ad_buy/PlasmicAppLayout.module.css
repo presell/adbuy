@@ -24,15 +24,9 @@
   max-width: 100%;
   padding-bottom: 10px;
   margin-right: 0px;
-  transition-property: transform;
-  transition-duration: 10s;
-  transition-timing-function: ease-in-out;
   padding-top: 0px;
   background: #e5e5e5;
   z-index: 3;
-  -webkit-transition-property: transform;
-  -webkit-transition-timing-function: ease-in-out;
-  -webkit-transition-duration: 10s;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .sidebarGroup {
@@ -1062,14 +1056,8 @@
   z-index: 2;
   right: 0;
   background: #00000080;
-  transition-property: opacity;
-  transition-duration: 10s;
-  transition-timing-function: ease-in-out;
   min-width: 0;
   min-height: 0;
-  -webkit-transition-property: opacity;
-  -webkit-transition-timing-function: ease-in-out;
-  -webkit-transition-duration: 10s;
 }
 .embedHtml:global(.__wab_instance) {
   max-width: 100%;
