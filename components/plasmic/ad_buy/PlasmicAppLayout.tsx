@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -102,6 +103,7 @@ export type PlasmicAppLayout__OverridesType = {
   sidebarRight?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
   drawerOverlay?: Flex__<"div">;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultAppLayoutProps {
@@ -210,7 +212,21 @@ function PlasmicAppLayout__RenderFunc(props: {
           className={classNames(
             projectcss.all,
             sty.sidebarGroup,
-            "sidebar-group"
+            hasVariant(globalVariants, "screen", "mobileOnly")
+              ? (() => {
+                  try {
+                    return $state.drawerOpen ? "drawer open" : "drawer";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return undefined;
+                    }
+                    throw e;
+                  }
+                })()
+              : undefined
           )}
         >
           <div
@@ -634,57 +650,70 @@ function PlasmicAppLayout__RenderFunc(props: {
 
         <div className={classNames(projectcss.all, sty.freeBox__r84To)} />
       </div>
-      {(() => {
-        try {
-          return $state.drawerOpen == true;
-        } catch (e) {
-          if (
-            e instanceof TypeError ||
-            e?.plasmicType === "PlasmicUndefinedDataError"
-          ) {
-            return true;
-          }
-          throw e;
-        }
-      })() ? (
-        <div
-          data-plasmic-name={"drawerOverlay"}
-          data-plasmic-override={overrides.drawerOverlay}
-          className={classNames(projectcss.all, sty.drawerOverlay)}
-          onClick={async event => {
-            const $steps = {};
-
-            $steps["updateDrawerOpen"] = true
-              ? (() => {
-                  const actionArgs = {
-                    variable: {
-                      objRoot: $state,
-                      variablePath: ["drawerOpen"]
-                    },
-                    operation: 0,
-                    value: false
-                  };
-                  return (({ variable, value, startIndex, deleteCount }) => {
-                    if (!variable) {
-                      return;
-                    }
-                    const { objRoot, variablePath } = variable;
-
-                    $stateSet(objRoot, variablePath, value);
-                    return value;
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-            if (
-              $steps["updateDrawerOpen"] != null &&
-              typeof $steps["updateDrawerOpen"] === "object" &&
-              typeof $steps["updateDrawerOpen"].then === "function"
-            ) {
-              $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+      <div
+        data-plasmic-name={"drawerOverlay"}
+        data-plasmic-override={overrides.drawerOverlay}
+        className={classNames(
+          projectcss.all,
+          sty.drawerOverlay,
+          (() => {
+            try {
+              return $state.drawerOpen
+                ? "drawer-overlay open"
+                : "drawer-overlay";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
             }
-          }}
-        />
-      ) : null}
+          })()
+        )}
+        onClick={async event => {
+          const $steps = {};
+
+          $steps["updateDrawerOpen"] = true
+            ? (() => {
+                const actionArgs = {
+                  variable: {
+                    objRoot: $state,
+                    variablePath: ["drawerOpen"]
+                  },
+                  operation: 0,
+                  value: false
+                };
+                return (({ variable, value, startIndex, deleteCount }) => {
+                  if (!variable) {
+                    return;
+                  }
+                  const { objRoot, variablePath } = variable;
+
+                  $stateSet(objRoot, variablePath, value);
+                  return value;
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["updateDrawerOpen"] != null &&
+            typeof $steps["updateDrawerOpen"] === "object" &&
+            typeof $steps["updateDrawerOpen"].then === "function"
+          ) {
+            $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+          }
+        }}
+      />
+
+      <Embed
+        data-plasmic-name={"embedHtml"}
+        data-plasmic-override={overrides.embedHtml}
+        className={classNames("__wab_instance", sty.embedHtml)}
+        code={
+          "<style>\n\n.drawer {\n  transition: opacity 3s ease, transform 3s ease;\n  opacity: 0;\n  transform: translateX(-100%);\n  pointer-events: none; /* prevent clicks while hidden */\n}\n\n.drawer.open {\n  opacity: 1;\n  transform: translateX(0);\n  pointer-events: auto;\n}\n</style>\n\n\n<style>\n\n.drawer-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.4);\n  opacity: 0;\n  transition: opacity 0.3s ease;\n  pointer-events: none; /* prevent blocking clicks when hidden */\n}\n\n.drawer-overlay.open {\n  opacity: 1;\n  pointer-events: auto;\n}\n\n</style>"
+        }
+      />
     </div>
   ) as React.ReactElement | null;
 }
@@ -698,7 +727,8 @@ const PlasmicDescendants = {
     "img",
     "sidebarRight",
     "contentWrapper",
-    "drawerOverlay"
+    "drawerOverlay",
+    "embedHtml"
   ],
   sidebarGroup: ["sidebarGroup", "sidebarLeft", "link", "img", "sidebarRight"],
   sidebarLeft: ["sidebarLeft", "link", "img"],
@@ -706,7 +736,8 @@ const PlasmicDescendants = {
   img: ["img"],
   sidebarRight: ["sidebarRight"],
   contentWrapper: ["contentWrapper"],
-  drawerOverlay: ["drawerOverlay"]
+  drawerOverlay: ["drawerOverlay"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -720,6 +751,7 @@ type NodeDefaultElementType = {
   sidebarRight: "div";
   contentWrapper: "div";
   drawerOverlay: "div";
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -791,6 +823,7 @@ export const PlasmicAppLayout = Object.assign(
     sidebarRight: makeNodeComponent("sidebarRight"),
     contentWrapper: makeNodeComponent("contentWrapper"),
     drawerOverlay: makeNodeComponent("drawerOverlay"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicAppLayout
     internalVariantProps: PlasmicAppLayout__VariantProps,
