@@ -92,7 +92,8 @@
 .svg__tqKAz {
   object-fit: cover;
   max-width: 100%;
-  height: 1em;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
 }
 .freeBox__dZGi {
@@ -288,7 +289,7 @@
   max-width: 100%;
   margin-right: 10px;
   color: #2463eb;
-  width: 13px;
+  width: 14.5px;
   height: 13px;
   flex-shrink: 0;
 }
@@ -329,8 +330,8 @@
   max-width: 100%;
   margin-right: 10px;
   color: #535353;
-  width: 13px;
-  height: 13px;
+  width: 14.5px;
+  height: 14.5px;
   flex-shrink: 0;
 }
 .text__xssPn {
@@ -370,8 +371,8 @@
   max-width: 100%;
   margin-right: 10px;
   color: #535353;
-  width: 13px;
-  height: 13px;
+  width: 14.5px;
+  height: 14.5px;
   flex-shrink: 0;
 }
 .text__bk83 {
@@ -413,7 +414,7 @@
   min-width: 0;
   border-radius: 6px;
   padding: 8px;
-  margin: 0px 0px 12px;
+  margin: 0px 0px 45px;
 }
 .root .freeBox__l2Vc4:hover {
   background: #dadadacc;
@@ -423,8 +424,8 @@
   max-width: 100%;
   margin-right: 10px;
   color: #535353;
-  width: 13px;
-  height: 13px;
+  width: 14.5px;
+  height: 14.5px;
   flex-shrink: 0;
 }
 .text__k29Mp {
