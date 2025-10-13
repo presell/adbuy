@@ -70,7 +70,8 @@ import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtV
 import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
 import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
-import UserRoundSvgIcon from "./icons/PlasmicIcon__UserRoundSvg"; // plasmic-import: Ydmyu9ZoCwig/icon
+import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
+import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
 
 createPlasmicElementProxy;
 
@@ -268,7 +269,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                 <div
                   className={classNames(projectcss.all, sty.freeBox___5AE4R)}
                 >
-                  <UserRoundSvgIcon
+                  <LeadAppSvgIcon
                     className={classNames(projectcss.all, sty.svg__ik3U)}
                     role={"img"}
                   />
@@ -282,6 +283,33 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     )}
                   >
                     {"Leads"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___11Bxa,
+                    "geologica-h3"
+                  )}
+                >
+                  {"Reporting"}
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__l2Vc4)}>
+                  <AnalyticsSharpSvgrepoComSvgIcon
+                    className={classNames(projectcss.all, sty.svg__dhr6S)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__k29Mp,
+                      "geologica-h2"
+                    )}
+                  >
+                    {"Analytics"}
                   </div>
                 </div>
               </div>

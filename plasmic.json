@@ -491,6 +491,26 @@
           "id": "mjJmnHwXSh-R",
           "name": "ApiIconSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ApiIconSvg.tsx"
+        },
+        {
+          "id": "fjj0bXElbHRY",
+          "name": "PersonSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__PersonSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "0splylcoynac",
+          "name": "LeadAppSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LeadAppSvg.tsx"
+        },
+        {
+          "id": "Bn1q4cbhV3iX",
+          "name": "AnalyticsSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__AnalyticsSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "SblPtQiKCaIH",
+          "name": "AnalyticsSharpSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg.tsx"
         }
       ],
       "images": [

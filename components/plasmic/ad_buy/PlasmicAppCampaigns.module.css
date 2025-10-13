@@ -157,13 +157,13 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   height: auto;
   max-width: 100%;
   background: #e8effa;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   min-width: 0;
   border-radius: 6px;
   padding: 6px;
@@ -171,7 +171,7 @@
 .svg__a8FQp {
   object-fit: cover;
   max-width: 100%;
-  margin-right: 7px;
+  margin-right: 10px;
   color: #2463eb;
   width: 13px;
   height: 13px;
@@ -183,7 +183,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
-  font-size: 14px;
+  font-size: 14.5px;
   color: #2463eb;
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
@@ -193,13 +193,13 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   height: auto;
   max-width: 100%;
   background: none;
-  margin-bottom: 10px;
+  margin-bottom: 45px;
   min-width: 0;
   border-radius: 6px;
   padding: 6px;
@@ -210,7 +210,7 @@
 .svg__ik3U {
   object-fit: cover;
   max-width: 100%;
-  margin-right: 7px;
+  margin-right: 10px;
   color: #535353;
   width: 13px;
   height: 13px;
@@ -222,7 +222,58 @@
   height: auto;
   max-width: 100%;
   text-align: center;
-  font-size: 14px;
+  font-size: 14.5px;
+  color: #535353;
+  font-family: var(--plasmic-font-geologica);
+  margin-bottom: 0px;
+  line-height: 0.9;
+}
+.text___11Bxa {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-size: 14.5px;
+  color: #535353;
+  font-family: var(--plasmic-font-geologica);
+  margin-bottom: 15px;
+  line-height: 0.9;
+}
+.freeBox__l2Vc4 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: none;
+  margin-bottom: 15px;
+  min-width: 0;
+  border-radius: 6px;
+  padding: 6px;
+}
+.root .freeBox__l2Vc4:hover {
+  background: #dadada;
+}
+.svg__dhr6S {
+  object-fit: cover;
+  max-width: 100%;
+  margin-right: 10px;
+  color: #535353;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+.text__k29Mp {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-size: 14.5px;
   color: #535353;
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
