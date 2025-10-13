@@ -15,25 +15,23 @@ export function CreditCardSvgIcon(props: CreditCardSvgIconProps) {
     <svg
       xmlns={"http://www.w3.org/2000/svg"}
       fill={"none"}
-      stroke={"currentColor"}
-      strokeLinecap={"round"}
-      strokeLinejoin={"round"}
-      strokeWidth={"2"}
-      className={classNames(
-        "plasmic-default__svg",
-        className,
-        "lucide lucide-credit-card-icon lucide-credit-card"
-      )}
-      viewBox={"0 0 24 24"}
+      viewBox={"0 0 22 16"}
       height={"1em"}
+      className={classNames("plasmic-default__svg", className)}
       style={style}
       {...restProps}
     >
       {title && <title>{title}</title>}
 
-      <rect width={"20"} height={"14"} x={"2"} y={"5"} rx={"2"}></rect>
-
-      <path d={"M2 10h20"}></path>
+      <path
+        stroke={"currentColor"}
+        strokeLinecap={"round"}
+        strokeLinejoin={"round"}
+        strokeWidth={"2"}
+        d={
+          "M19 1H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M1 6h20"
+        }
+      ></path>
     </svg>
   );
 }

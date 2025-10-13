@@ -76,6 +76,7 @@ import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import:
 import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
+import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-import: 8wp36EsoJArA/icon
 
 createPlasmicElementProxy;
 
@@ -93,6 +94,7 @@ export type PlasmicAppCampaigns__OverridesType = {
   appLayout?: Flex__<"div">;
   sidebarGroup?: Flex__<"div">;
   sidebarLeft?: Flex__<"div">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   img?: Flex__<typeof PlasmicImg__>;
   sidebarRight?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
@@ -215,11 +217,19 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   "sidebar-left"
                 )}
               >
-                <CursorIsolatedSvgIcon
-                  className={classNames(projectcss.all, sty.svg__q4P0J)}
-                  role={"img"}
-                />
-
+                <PlasmicLink__
+                  data-plasmic-name={"link"}
+                  data-plasmic-override={overrides.link}
+                  className={classNames(projectcss.all, projectcss.a, sty.link)}
+                  component={Link}
+                  href={`/app/campaigns`}
+                  platform={"nextjs"}
+                >
+                  <CursorIsolatedSvgIcon
+                    className={classNames(projectcss.all, sty.svg__q4P0J)}
+                    role={"img"}
+                  />
+                </PlasmicLink__>
                 <div className={classNames(projectcss.all, sty.freeBox__a66Na)}>
                   <LeadsIconSvgIcon
                     className={classNames(projectcss.all, sty.svg__tqKAz)}
@@ -404,6 +414,156 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       role={"img"}
                     />
                   </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ckesd)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__x2GcE)}
+                    >
+                      <CreditCardSvgIcon
+                        className={classNames(projectcss.all, sty.svg__jZmwm)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ilkp,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"Daily Spend"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__jrY0B
+                        )}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___3Wo6A,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"$50"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__fVqZp)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__wpDlF
+                        )}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__g0VWg)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__cdLhl)}
+                    >
+                      <CreditCardSvgIcon
+                        className={classNames(projectcss.all, sty.svg__vcrNd)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ncV0J,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"Daily Spend"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__amWhZ
+                        )}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___0FwIa,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"$50"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__gxzUb)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__c27NC
+                        )}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__riZhW)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__j27Ta)}
+                    >
+                      <CreditCardSvgIcon
+                        className={classNames(projectcss.all, sty.svg__mSOz)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__rhv2,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"Daily Spend"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vcAbu
+                        )}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__cN6,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"$50"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__tAFdq)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vgy12
+                        )}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -453,6 +613,7 @@ const PlasmicDescendants = {
     "appLayout",
     "sidebarGroup",
     "sidebarLeft",
+    "link",
     "img",
     "sidebarRight",
     "contentWrapper"
@@ -461,12 +622,14 @@ const PlasmicDescendants = {
     "appLayout",
     "sidebarGroup",
     "sidebarLeft",
+    "link",
     "img",
     "sidebarRight",
     "contentWrapper"
   ],
-  sidebarGroup: ["sidebarGroup", "sidebarLeft", "img", "sidebarRight"],
-  sidebarLeft: ["sidebarLeft", "img"],
+  sidebarGroup: ["sidebarGroup", "sidebarLeft", "link", "img", "sidebarRight"],
+  sidebarLeft: ["sidebarLeft", "link", "img"],
+  link: ["link"],
   img: ["img"],
   sidebarRight: ["sidebarRight"],
   contentWrapper: ["contentWrapper"]
@@ -479,6 +642,7 @@ type NodeDefaultElementType = {
   appLayout: "div";
   sidebarGroup: "div";
   sidebarLeft: "div";
+  link: "a";
   img: typeof PlasmicImg__;
   sidebarRight: "div";
   contentWrapper: "div";
@@ -549,6 +713,7 @@ export const PlasmicAppCampaigns = Object.assign(
     appLayout: makeNodeComponent("appLayout"),
     sidebarGroup: makeNodeComponent("sidebarGroup"),
     sidebarLeft: makeNodeComponent("sidebarLeft"),
+    link: makeNodeComponent("link"),
     img: makeNodeComponent("img"),
     sidebarRight: makeNodeComponent("sidebarRight"),
     contentWrapper: makeNodeComponent("contentWrapper"),
