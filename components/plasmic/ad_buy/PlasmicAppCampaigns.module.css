@@ -106,7 +106,7 @@
   padding: 8px;
 }
 .root .freeBox__dZGi:hover {
-  background: #dadada;
+  background: #dadadacc;
 }
 .svg___7C4S {
   object-fit: cover;
@@ -144,7 +144,7 @@
   padding: 8px;
 }
 .root .freeBox___7Ek4O:hover {
-  background: #dadada;
+  background: #dadadacc;
 }
 .svg___0Kyt {
   object-fit: cover;
@@ -169,7 +169,7 @@
   margin: 0px 0px 15px;
 }
 .root .freeBox__giCo4:hover {
-  background: #dadada;
+  background: #dadadacc;
 }
 .svg__kYeaq {
   object-fit: cover;
@@ -194,7 +194,7 @@
   margin: 0px 0px 15px;
 }
 .root .freeBox__bya1J:hover {
-  background: #dadada;
+  background: #dadadacc;
 }
 .img {
   object-fit: cover;
@@ -266,7 +266,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  background: #e8effa;
+  background: #e8effacc;
   margin-bottom: 15px;
   min-width: 0;
   border-radius: 6px;
@@ -303,13 +303,13 @@
   height: auto;
   max-width: 100%;
   background: none;
-  margin-bottom: 45px;
+  margin-bottom: 15px;
   min-width: 0;
   border-radius: 6px;
   padding: 8px;
 }
 .root .freeBox___5AE4R:hover {
-  background: #dadada;
+  background: #dadadacc;
 }
 .svg__ik3U {
   object-fit: cover;
@@ -321,6 +321,45 @@
   flex-shrink: 0;
 }
 .text__xssPn {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-size: 14.5px;
+  color: #535353;
+  font-family: var(--plasmic-font-geologica);
+  margin-bottom: 0px;
+  line-height: 0.9;
+}
+.freeBox__wNdcU {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: none;
+  margin-bottom: 45px;
+  min-width: 0;
+  border-radius: 6px;
+  padding: 8px;
+}
+.root .freeBox__wNdcU:hover {
+  background: #dadadacc;
+}
+.svg__kCsvm {
+  object-fit: cover;
+  max-width: 100%;
+  margin-right: 10px;
+  color: #535353;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+.text__bk83 {
   position: relative;
   width: auto;
   height: auto;
@@ -360,7 +399,7 @@
   padding: 8px;
 }
 .root .freeBox__l2Vc4:hover {
-  background: #dadada;
+  background: #dadadacc;
 }
 .svg__dhr6S {
   object-fit: cover;

@@ -71,8 +71,9 @@ import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // p
 import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
 import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
 import GiftSvgrepoComSvgIcon from "./icons/PlasmicIcon__GiftSvgrepoComSvg"; // plasmic-import: 2E5Q_54R4vQ5/icon
-import QuestionSvgrepoComSvgIcon from "./icons/PlasmicIcon__QuestionSvgrepoComSvg"; // plasmic-import: qTyKt8q9cLe9/icon
+import HelpSvgIcon from "./icons/PlasmicIcon__HelpSvg"; // plasmic-import: omxN7Fvt6PUz/icon
 import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
+import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 
@@ -243,7 +244,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__giCo4)}
                   >
-                    <QuestionSvgrepoComSvgIcon
+                    <HelpSvgIcon
                       className={classNames(projectcss.all, sty.svg__kYeaq)}
                       role={"img"}
                     />
@@ -333,6 +334,25 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       )}
                     >
                       {"Leads"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__wNdcU)}
+                  >
+                    <PhoneSvgIcon
+                      className={classNames(projectcss.all, sty.svg__kCsvm)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__bk83,
+                        "geologica-h2"
+                      )}
+                    >
+                      {"Calls"}
                     </div>
                   </div>
                   <div
