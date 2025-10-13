@@ -526,6 +526,11 @@
           "id": "vb2qm85zbhWE",
           "name": "ChevronRightSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ChevronRightSvg.tsx"
+        },
+        {
+          "id": "Srne4mVNsLJU",
+          "name": "ThinChevronRightSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ThinChevronRightSvg.tsx"
         }
       ],
       "images": [

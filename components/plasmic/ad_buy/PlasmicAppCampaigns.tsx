@@ -74,7 +74,7 @@ import GiftSvgrepoComSvgIcon from "./icons/PlasmicIcon__GiftSvgrepoComSvg"; // p
 import QuestionSvgrepoComSvgIcon from "./icons/PlasmicIcon__QuestionSvgrepoComSvg"; // plasmic-import: qTyKt8q9cLe9/icon
 import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
-import ChevronRightSvgIcon from "./icons/PlasmicIcon__ChevronRightSvg"; // plasmic-import: vb2qm85zbhWE/icon
+import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 
 createPlasmicElementProxy;
 
@@ -379,7 +379,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     >
                       {"Overview"}
                     </div>
-                    <ChevronRightSvgIcon
+                    <ThinChevronRightSvgIcon
                       className={classNames(projectcss.all, sty.svg___1IyKw)}
                       role={"img"}
                     />
