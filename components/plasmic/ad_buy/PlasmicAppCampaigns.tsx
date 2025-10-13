@@ -88,7 +88,6 @@ export type PlasmicAppCampaigns__OverridesType = {
   sidebarGroup?: Flex__<"div">;
   sidebarLeft?: Flex__<"div">;
   sidebarRight?: Flex__<"div">;
-  text?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
 };
 
@@ -237,16 +236,31 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                 )}
               >
                 <div
-                  data-plasmic-name={"text"}
-                  data-plasmic-override={overrides.text}
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text,
+                    sty.text___2Zs,
                     "geologica-h1"
                   )}
                 >
                   {"Campaigns"}
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__xz2Gg)}>
+                  <LeadsIconSvgIcon
+                    className={classNames(projectcss.all, sty.svg__a8FQp)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__jiAkQ,
+                      "geologica-h3"
+                    )}
+                  >
+                    {"Campaigns"}
+                  </div>
                 </div>
               </div>
             </div>
@@ -279,7 +293,6 @@ const PlasmicDescendants = {
     "sidebarGroup",
     "sidebarLeft",
     "sidebarRight",
-    "text",
     "contentWrapper"
   ],
   appLayout: [
@@ -287,13 +300,11 @@ const PlasmicDescendants = {
     "sidebarGroup",
     "sidebarLeft",
     "sidebarRight",
-    "text",
     "contentWrapper"
   ],
-  sidebarGroup: ["sidebarGroup", "sidebarLeft", "sidebarRight", "text"],
+  sidebarGroup: ["sidebarGroup", "sidebarLeft", "sidebarRight"],
   sidebarLeft: ["sidebarLeft"],
-  sidebarRight: ["sidebarRight", "text"],
-  text: ["text"],
+  sidebarRight: ["sidebarRight"],
   contentWrapper: ["contentWrapper"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -305,7 +316,6 @@ type NodeDefaultElementType = {
   sidebarGroup: "div";
   sidebarLeft: "div";
   sidebarRight: "div";
-  text: "div";
   contentWrapper: "div";
 };
 
@@ -375,7 +385,6 @@ export const PlasmicAppCampaigns = Object.assign(
     sidebarGroup: makeNodeComponent("sidebarGroup"),
     sidebarLeft: makeNodeComponent("sidebarLeft"),
     sidebarRight: makeNodeComponent("sidebarRight"),
-    text: makeNodeComponent("text"),
     contentWrapper: makeNodeComponent("contentWrapper"),
 
     // Metadata about props expected for PlasmicAppCampaigns
