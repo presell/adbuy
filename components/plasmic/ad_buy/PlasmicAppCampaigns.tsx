@@ -431,7 +431,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           projectcss.all,
                           projectcss.__wab_text,
                           sty.text__ilkp,
-                          "geologica-h2"
+                          "geologica-h1"
                         )}
                       >
                         {"Daily Spend"}
@@ -481,7 +481,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           projectcss.all,
                           projectcss.__wab_text,
                           sty.text__ncV0J,
-                          "geologica-h2"
+                          "geologica-h1"
                         )}
                       >
                         {"Leads Today"}
@@ -531,7 +531,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           projectcss.all,
                           projectcss.__wab_text,
                           sty.text__ylMhx,
-                          "geologica-h2"
+                          "geologica-h1"
                         )}
                       >
                         {"Calls Today"}
