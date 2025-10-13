@@ -236,15 +236,17 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   "sidebar-right"
                 )}
               >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___2Zs,
-                    "geologica-h1"
-                  )}
-                >
-                  {"Campaigns"}
+                <div className={classNames(projectcss.all, sty.freeBox__mtGsk)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___2Zs,
+                      "geologica-h1"
+                    )}
+                  >
+                    {"Campaigns"}
+                  </div>
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__xz2Gg)}>
                   <LeadsIconSvgIcon
@@ -299,8 +301,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                 className={classNames(projectcss.all, sty.freeBox___4EGmk)}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox__tzU4U)} />
-
+              <div className={classNames(projectcss.all, sty.freeBox__tzU4U)}>
+                <div className={classNames(projectcss.all, sty.freeBox__z6DLs)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ctvt4,
+                      "geologica-h1"
+                    )}
+                  >
+                    {"Overview"}
+                  </div>
+                </div>
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox__jGDt)} />
 
               <div className={classNames(projectcss.all, sty.freeBox__nVd5E)} />

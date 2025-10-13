@@ -129,10 +129,22 @@
   margin-bottom: 0px;
   flex-shrink: 0;
   border-radius: 12px;
-  padding: 20px 16px 8px;
+  padding: 0px 16px 8px;
+}
+.freeBox__mtGsk {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 65px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  min-width: 0;
+  flex-shrink: 0;
 }
 .text___2Zs {
-  position: relative;
   width: auto;
   height: auto;
   max-width: 100%;
@@ -140,7 +152,6 @@
   font-size: 18px;
   color: #000000;
   font-family: var(--plasmic-font-geologica);
-  margin-bottom: 40px;
 }
 .freeBox__xz2Gg {
   display: flex;
@@ -215,7 +226,7 @@
   color: #535353;
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
-  line-height: 1;
+  line-height: 0.9;
 }
 .contentWrapper {
   display: flex;
@@ -298,11 +309,33 @@
   width: 100%;
   height: 65px;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-width: 0;
   flex-shrink: 0;
   border-bottom: 1px solid #d3d3d3;
+}
+.freeBox__z6DLs {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 93%;
+  min-width: 0;
+}
+.text__ctvt4 {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-size: 18px;
+  color: #000000;
+  font-family: var(--plasmic-font-geologica);
+  margin-bottom: 0px;
 }
 .freeBox__jGDt {
   display: flex;
