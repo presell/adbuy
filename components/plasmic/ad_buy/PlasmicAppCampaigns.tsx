@@ -74,6 +74,7 @@ import GiftSvgrepoComSvgIcon from "./icons/PlasmicIcon__GiftSvgrepoComSvg"; // p
 import QuestionSvgrepoComSvgIcon from "./icons/PlasmicIcon__QuestionSvgrepoComSvg"; // plasmic-import: qTyKt8q9cLe9/icon
 import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
+import ChevronRightSvgIcon from "./icons/PlasmicIcon__ChevronRightSvg"; // plasmic-import: vb2qm85zbhWE/icon
 
 createPlasmicElementProxy;
 
@@ -281,79 +282,107 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   "sidebar-right"
                 )}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__mtGsk)}>
+                <div className={classNames(projectcss.all, sty.freeBox__qB1ME)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__mtGsk)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___2Zs,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Campaigns"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__xz2Gg)}
+                  >
+                    <LeadsIconSvgIcon
+                      className={classNames(projectcss.all, sty.svg__a8FQp)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__jiAkQ,
+                        "geologica-h2"
+                      )}
+                    >
+                      {"Campaigns"}
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___5AE4R)}
+                  >
+                    <LeadAppSvgIcon
+                      className={classNames(projectcss.all, sty.svg__ik3U)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__xssPn,
+                        "geologica-h2"
+                      )}
+                    >
+                      {"Leads"}
+                    </div>
+                  </div>
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___2Zs,
-                      "geologica-h1"
+                      sty.text___11Bxa,
+                      "geologica-h3"
                     )}
                   >
-                    {"Campaigns"}
+                    {"Reporting"}
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__l2Vc4)}
+                  >
+                    <AnalyticsSharpSvgrepoComSvgIcon
+                      className={classNames(projectcss.all, sty.svg__dhr6S)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__k29Mp,
+                        "geologica-h2"
+                      )}
+                    >
+                      {"Analytics"}
+                    </div>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__xz2Gg)}>
-                  <LeadsIconSvgIcon
-                    className={classNames(projectcss.all, sty.svg__a8FQp)}
-                    role={"img"}
-                  />
-
+                <div className={classNames(projectcss.all, sty.freeBox__p7GVa)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jiAkQ,
-                      "geologica-h2"
-                    )}
+                    className={classNames(projectcss.all, sty.freeBox___7UULl)}
                   >
-                    {"Campaigns"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___5AE4R)}
-                >
-                  <LeadAppSvgIcon
-                    className={classNames(projectcss.all, sty.svg__ik3U)}
-                    role={"img"}
-                  />
-
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__xssPn,
-                      "geologica-h2"
-                    )}
-                  >
-                    {"Leads"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___11Bxa,
-                    "geologica-h3"
-                  )}
-                >
-                  {"Reporting"}
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__l2Vc4)}>
-                  <AnalyticsSharpSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg__dhr6S)}
-                    role={"img"}
-                  />
-
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__k29Mp,
-                      "geologica-h2"
-                    )}
-                  >
-                    {"Analytics"}
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__e7IFp,
+                        "geologica-h3"
+                      )}
+                    >
+                      {"Overview"}
+                    </div>
+                    <ChevronRightSvgIcon
+                      className={classNames(projectcss.all, sty.svg___1IyKw)}
+                      role={"img"}
+                    />
                   </div>
                 </div>
               </div>
