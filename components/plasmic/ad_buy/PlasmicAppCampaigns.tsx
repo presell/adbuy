@@ -593,7 +593,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       "geologica-h1"
                     )}
                   >
-                    {"Overview"}
+                    {"Campaigns"}
                   </div>
                 </div>
               </div>
