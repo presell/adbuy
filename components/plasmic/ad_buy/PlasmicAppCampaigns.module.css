@@ -152,6 +152,7 @@
   height: auto;
   max-width: 100%;
   background: #e8effa;
+  margin-bottom: 10px;
   min-width: 0;
   border-radius: 6px;
   padding: 6px;
@@ -161,7 +162,9 @@
   max-width: 100%;
   margin-right: 7px;
   color: #2463eb;
-  height: 1em;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
 }
 .text__jiAkQ {
   position: relative;
@@ -169,10 +172,50 @@
   height: auto;
   max-width: 100%;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: #2463eb;
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
+  line-height: 1;
+}
+.freeBox___5AE4R {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: none;
+  margin-bottom: 10px;
+  min-width: 0;
+  border-radius: 6px;
+  padding: 6px;
+}
+.root .freeBox___5AE4R:hover {
+  background: #dadada;
+}
+.svg__ik3U {
+  object-fit: cover;
+  max-width: 100%;
+  margin-right: 7px;
+  color: #535353;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+.text__xssPn {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-size: 13px;
+  color: #535353;
+  font-family: var(--plasmic-font-geologica);
+  margin-bottom: 0px;
+  line-height: 1;
 }
 .contentWrapper {
   display: flex;

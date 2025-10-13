@@ -70,6 +70,7 @@ import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtV
 import CursorIsolatedSvgIcon from "./icons/PlasmicIcon__CursorIsolatedSvg"; // plasmic-import: KuDULaM8dChm/icon
 import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
 import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
+import UserRoundSvgIcon from "./icons/PlasmicIcon__UserRoundSvg"; // plasmic-import: Ydmyu9ZoCwig/icon
 
 createPlasmicElementProxy;
 
@@ -256,10 +257,29 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       projectcss.all,
                       projectcss.__wab_text,
                       sty.text__jiAkQ,
-                      "geologica-h3"
+                      "geologica-h2"
                     )}
                   >
                     {"Campaigns"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___5AE4R)}
+                >
+                  <UserRoundSvgIcon
+                    className={classNames(projectcss.all, sty.svg__ik3U)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__xssPn,
+                      "geologica-h2"
+                    )}
+                  >
+                    {"Leads"}
                   </div>
                 </div>
               </div>
