@@ -90,9 +90,9 @@ export type PlasmicAppLayout__VariantsArgs = {};
 type VariantPropType = keyof PlasmicAppLayout__VariantsArgs;
 export const PlasmicAppLayout__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicAppLayout__ArgsType = {};
+export type PlasmicAppLayout__ArgsType = { contents2?: React.ReactNode };
 type ArgPropType = keyof PlasmicAppLayout__ArgsType;
-export const PlasmicAppLayout__ArgProps = new Array<ArgPropType>();
+export const PlasmicAppLayout__ArgProps = new Array<ArgPropType>("contents2");
 
 export type PlasmicAppLayout__OverridesType = {
   appLayout?: Flex__<"div">;
@@ -102,11 +102,13 @@ export type PlasmicAppLayout__OverridesType = {
   img?: Flex__<typeof PlasmicImg__>;
   sidebarRight?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
+  contents?: Flex__<"div">;
   drawerOverlay?: Flex__<"div">;
   embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultAppLayoutProps {
+  contents2?: React.ReactNode;
   className?: string;
 }
 
@@ -640,7 +642,16 @@ function PlasmicAppLayout__RenderFunc(props: {
         </div>
         <div className={classNames(projectcss.all, sty.freeBox__iFy6S)} />
 
-        <div className={classNames(projectcss.all, sty.freeBox__r84To)} />
+        <div
+          data-plasmic-name={"contents"}
+          data-plasmic-override={overrides.contents}
+          className={classNames(projectcss.all, sty.contents)}
+        >
+          {renderPlasmicSlot({
+            defaultContents: null,
+            value: args.contents2
+          })}
+        </div>
       </div>
       <div
         data-plasmic-name={"drawerOverlay"}
@@ -791,7 +802,7 @@ function PlasmicAppLayout__RenderFunc(props: {
         data-plasmic-override={overrides.embedHtml}
         className={classNames("__wab_instance", sty.embedHtml)}
         code={
-          "<style>\n.drawer {\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  opacity: 0;\n  transform: translateX(-100%) translateZ(0);\n  pointer-events: none;\n  will-change: opacity, transform; /* helps GPU accelerate */\n}\n\n.drawer.open {\n  opacity: 1;\n  transform: translateX(0);\n  pointer-events: auto;\n  box-shadow: 2px 0 12px rgba(0,0,0,0.15);\n}\n\n.drawer-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.4);\n  opacity: 0;\n  transition: opacity 0.3s ease-in-out;\n  pointer-events: none;\n  z-index: 2; /* make sure overlay sits above base content */\n}\n\n.drawer-overlay.open {\n  opacity: 1;\n  pointer-events: auto;\n}\n</style>\n"
+          "<style>\n\n  /* ========================= */\n/* Drawer Flicker Prevention */\n/* ========================= */\n\n/* Hide drawers & overlays before hydration */\n.drawer,\n.drawer-overlay {\n  visibility: hidden;\n}\n\n/* Show only once DOM is ready */\nbody.drawer-ready .drawer,\nbody.drawer-ready .drawer-overlay {\n  visibility: visible;\n}\n\n/* ========================= */\n/* Drawer Animations (working version) */\n/* ========================= */\n\n.drawer {\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  opacity: 0;\n  transform: translateX(-100%) translateZ(0);\n  pointer-events: none;\n  will-change: opacity, transform;\n}\n\n.drawer.open {\n  opacity: 1;\n  transform: translateX(0);\n  pointer-events: auto;\n  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);\n}\n\n.drawer-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.4);\n  opacity: 0;\n  transition: opacity 0.3s ease-in-out;\n  pointer-events: none;\n  z-index: 2;\n}\n\n.drawer-overlay.open {\n  opacity: 1;\n  pointer-events: auto;\n}\n\n\n</style>"
         }
       />
     </div>
@@ -807,6 +818,7 @@ const PlasmicDescendants = {
     "img",
     "sidebarRight",
     "contentWrapper",
+    "contents",
     "drawerOverlay",
     "embedHtml"
   ],
@@ -815,7 +827,8 @@ const PlasmicDescendants = {
   link: ["link"],
   img: ["img"],
   sidebarRight: ["sidebarRight"],
-  contentWrapper: ["contentWrapper"],
+  contentWrapper: ["contentWrapper", "contents"],
+  contents: ["contents"],
   drawerOverlay: ["drawerOverlay"],
   embedHtml: ["embedHtml"]
 } as const;
@@ -830,6 +843,7 @@ type NodeDefaultElementType = {
   img: typeof PlasmicImg__;
   sidebarRight: "div";
   contentWrapper: "div";
+  contents: "div";
   drawerOverlay: "div";
   embedHtml: typeof Embed;
 };
@@ -902,6 +916,7 @@ export const PlasmicAppLayout = Object.assign(
     img: makeNodeComponent("img"),
     sidebarRight: makeNodeComponent("sidebarRight"),
     contentWrapper: makeNodeComponent("contentWrapper"),
+    contents: makeNodeComponent("contents"),
     drawerOverlay: makeNodeComponent("drawerOverlay"),
     embedHtml: makeNodeComponent("embedHtml"),
 

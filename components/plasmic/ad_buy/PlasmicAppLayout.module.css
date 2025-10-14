@@ -1028,7 +1028,7 @@
   flex-shrink: 0;
   border-bottom: 1px none #d3d3d3;
 }
-.freeBox__r84To {
+.contents {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1039,8 +1039,6 @@
   align-items: center;
   min-width: 0;
   flex-shrink: 0;
-  border-radius: 12px;
-  border: 1px solid #d3d3d3;
 }
 .drawerOverlay {
   display: flex;
