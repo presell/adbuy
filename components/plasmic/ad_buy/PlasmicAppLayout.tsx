@@ -85,10 +85,18 @@ import PanelSvgIcon from "./icons/PlasmicIcon__PanelSvg"; // plasmic-import: eDF
 
 createPlasmicElementProxy;
 
-export type PlasmicAppLayout__VariantMembers = {};
-export type PlasmicAppLayout__VariantsArgs = {};
+export type PlasmicAppLayout__VariantMembers = {
+  page: "campaigns" | "leads" | "calls" | "analytics" | "cards" | "invoices";
+};
+export type PlasmicAppLayout__VariantsArgs = {
+  page?: SingleChoiceArg<
+    "campaigns" | "leads" | "calls" | "analytics" | "cards" | "invoices"
+  >;
+};
 type VariantPropType = keyof PlasmicAppLayout__VariantsArgs;
-export const PlasmicAppLayout__VariantProps = new Array<VariantPropType>();
+export const PlasmicAppLayout__VariantProps = new Array<VariantPropType>(
+  "page"
+);
 
 export type PlasmicAppLayout__ArgsType = { contents2?: React.ReactNode };
 type ArgPropType = keyof PlasmicAppLayout__ArgsType;
@@ -98,7 +106,6 @@ export type PlasmicAppLayout__OverridesType = {
   appLayout?: Flex__<"div">;
   sidebarGroup?: Flex__<"div">;
   sidebarLeft?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
   img?: Flex__<typeof PlasmicImg__>;
   sidebarRight?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
@@ -109,6 +116,9 @@ export type PlasmicAppLayout__OverridesType = {
 
 export interface DefaultAppLayoutProps {
   contents2?: React.ReactNode;
+  page?: SingleChoiceArg<
+    "campaigns" | "leads" | "calls" | "analytics" | "cards" | "invoices"
+  >;
   className?: string;
 }
 
@@ -162,6 +172,12 @@ function PlasmicAppLayout__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "page",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.page
       }
     ],
     [$props, $ctx, $refs]
@@ -188,7 +204,23 @@ function PlasmicAppLayout__RenderFunc(props: {
         projectcss.plasmic_mixins,
         styleTokensClassNames,
         sty.appLayout,
-        "app-layout"
+        "app-layout",
+        {
+          [sty.appLayoutpage_analytics]: hasVariant(
+            $state,
+            "page",
+            "analytics"
+          ),
+          [sty.appLayoutpage_calls]: hasVariant($state, "page", "calls"),
+          [sty.appLayoutpage_campaigns]: hasVariant(
+            $state,
+            "page",
+            "campaigns"
+          ),
+          [sty.appLayoutpage_cards]: hasVariant($state, "page", "cards"),
+          [sty.appLayoutpage_invoices]: hasVariant($state, "page", "invoices"),
+          [sty.appLayoutpage_leads]: hasVariant($state, "page", "leads")
+        }
       )}
     >
       <div
@@ -224,9 +256,11 @@ function PlasmicAppLayout__RenderFunc(props: {
           )}
         >
           <PlasmicLink__
-            data-plasmic-name={"link"}
-            data-plasmic-override={overrides.link}
-            className={classNames(projectcss.all, projectcss.a, sty.link)}
+            className={classNames(
+              projectcss.all,
+              projectcss.a,
+              sty.link___5ViL
+            )}
             component={Link}
             href={`/app/campaigns`}
             platform={"nextjs"}
@@ -343,15 +377,84 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text__pk2Dq,
-                  "geologica-h1"
+                  "geologica-h1",
+                  {
+                    [sty.textpage_leads__pk2Dq07Gtn]: hasVariant(
+                      $state,
+                      "page",
+                      "leads"
+                    )
+                  }
                 )}
               >
                 {"Campaigns"}
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__upfKh)}>
+            <PlasmicLink__
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link__upfKh,
+                {
+                  [sty.linkpage_analytics__upfKh3CU1K]: hasVariant(
+                    $state,
+                    "page",
+                    "analytics"
+                  ),
+                  [sty.linkpage_calls__upfKhxO156]: hasVariant(
+                    $state,
+                    "page",
+                    "calls"
+                  ),
+                  [sty.linkpage_cards__upfKhtk8Pz]: hasVariant(
+                    $state,
+                    "page",
+                    "cards"
+                  ),
+                  [sty.linkpage_invoices__upfKhQBuoH]: hasVariant(
+                    $state,
+                    "page",
+                    "invoices"
+                  ),
+                  [sty.linkpage_leads__upfKh07Gtn]: hasVariant(
+                    $state,
+                    "page",
+                    "leads"
+                  )
+                }
+              )}
+              component={Link}
+              href={`/campaigns`}
+              platform={"nextjs"}
+            >
               <LeadsIconSvgIcon
-                className={classNames(projectcss.all, sty.svg__vn3Nh)}
+                className={classNames(projectcss.all, sty.svg__vn3Nh, {
+                  [sty.svgpage_analytics__vn3Nh3CU1K]: hasVariant(
+                    $state,
+                    "page",
+                    "analytics"
+                  ),
+                  [sty.svgpage_calls__vn3NhxO156]: hasVariant(
+                    $state,
+                    "page",
+                    "calls"
+                  ),
+                  [sty.svgpage_cards__vn3Nhtk8Pz]: hasVariant(
+                    $state,
+                    "page",
+                    "cards"
+                  ),
+                  [sty.svgpage_invoices__vn3NhQBuoH]: hasVariant(
+                    $state,
+                    "page",
+                    "invoices"
+                  ),
+                  [sty.svgpage_leads__vn3Nh07Gtn]: hasVariant(
+                    $state,
+                    "page",
+                    "leads"
+                  )
+                })}
                 role={"img"}
               />
 
@@ -360,15 +463,79 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text___2XDL,
-                  "geologica-h2"
+                  "geologica-h2",
+                  {
+                    [sty.textpage_analytics___2XDL3CU1K]: hasVariant(
+                      $state,
+                      "page",
+                      "analytics"
+                    ),
+                    [sty.textpage_calls___2XDLxO156]: hasVariant(
+                      $state,
+                      "page",
+                      "calls"
+                    ),
+                    [sty.textpage_campaigns___2XDLpKxs6]: hasVariant(
+                      $state,
+                      "page",
+                      "campaigns"
+                    ),
+                    [sty.textpage_cards___2XDLtk8Pz]: hasVariant(
+                      $state,
+                      "page",
+                      "cards"
+                    ),
+                    [sty.textpage_invoices___2XDLQBuoH]: hasVariant(
+                      $state,
+                      "page",
+                      "invoices"
+                    ),
+                    [sty.textpage_leads___2XDL07Gtn]: hasVariant(
+                      $state,
+                      "page",
+                      "leads"
+                    )
+                  }
                 )}
               >
                 {"Campaigns"}
               </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox___5N72P)}>
+            </PlasmicLink__>
+            <PlasmicLink__
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link___5N72P,
+                {
+                  [sty.linkpage_analytics___5N72P3CU1K]: hasVariant(
+                    $state,
+                    "page",
+                    "analytics"
+                  ),
+                  [sty.linkpage_leads___5N72P07Gtn]: hasVariant(
+                    $state,
+                    "page",
+                    "leads"
+                  )
+                }
+              )}
+              component={Link}
+              href={`/app/campaigns/leads`}
+              platform={"nextjs"}
+            >
               <LeadAppSvgIcon
-                className={classNames(projectcss.all, sty.svg__bLr0N)}
+                className={classNames(projectcss.all, sty.svg__bLr0N, {
+                  [sty.svgpage_invoices__bLr0NqBuoH]: hasVariant(
+                    $state,
+                    "page",
+                    "invoices"
+                  ),
+                  [sty.svgpage_leads__bLr0N07Gtn]: hasVariant(
+                    $state,
+                    "page",
+                    "leads"
+                  )
+                })}
                 role={"img"}
               />
 
@@ -377,15 +544,49 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text__at1Em,
-                  "geologica-h2"
+                  "geologica-h2",
+                  {
+                    [sty.textpage_invoices__at1EmQBuoH]: hasVariant(
+                      $state,
+                      "page",
+                      "invoices"
+                    ),
+                    [sty.textpage_leads__at1Em07Gtn]: hasVariant(
+                      $state,
+                      "page",
+                      "leads"
+                    )
+                  }
                 )}
               >
                 {"Leads"}
               </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__rfN8P)}>
+            </PlasmicLink__>
+            <PlasmicLink__
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link__rfN8P,
+                {
+                  [sty.linkpage_calls__rfN8PxO156]: hasVariant(
+                    $state,
+                    "page",
+                    "calls"
+                  )
+                }
+              )}
+              component={Link}
+              href={`/app/campaigns/calls`}
+              platform={"nextjs"}
+            >
               <PhoneSvgIcon
-                className={classNames(projectcss.all, sty.svg__ou0Lv)}
+                className={classNames(projectcss.all, sty.svg__ou0Lv, {
+                  [sty.svgpage_calls__ou0LvxO156]: hasVariant(
+                    $state,
+                    "page",
+                    "calls"
+                  )
+                })}
                 role={"img"}
               />
 
@@ -394,12 +595,19 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text__apwZ,
-                  "geologica-h2"
+                  "geologica-h2",
+                  {
+                    [sty.textpage_calls__apwZxO156]: hasVariant(
+                      $state,
+                      "page",
+                      "calls"
+                    )
+                  }
                 )}
               >
                 {"Calls"}
               </div>
-            </div>
+            </PlasmicLink__>
             <div
               className={classNames(
                 projectcss.all,
@@ -410,9 +618,30 @@ function PlasmicAppLayout__RenderFunc(props: {
             >
               {"Reporting"}
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__svqNh)}>
+            <PlasmicLink__
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link__svqNh,
+                {
+                  [sty.linkpage_analytics__svqNh3CU1K]: hasVariant(
+                    $state,
+                    "page",
+                    "analytics"
+                  )
+                }
+              )}
+              component={Link}
+              platform={"nextjs"}
+            >
               <AnalyticsSharpSvgrepoComSvgIcon
-                className={classNames(projectcss.all, sty.svg__mcxJk)}
+                className={classNames(projectcss.all, sty.svg__mcxJk, {
+                  [sty.svgpage_analytics__mcxJk3CU1K]: hasVariant(
+                    $state,
+                    "page",
+                    "analytics"
+                  )
+                })}
                 role={"img"}
               />
 
@@ -421,12 +650,19 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text__gho3T,
-                  "geologica-h2"
+                  "geologica-h2",
+                  {
+                    [sty.textpage_analytics__gho3T3CU1K]: hasVariant(
+                      $state,
+                      "page",
+                      "analytics"
+                    )
+                  }
                 )}
               >
                 {"Analytics"}
               </div>
-            </div>
+            </PlasmicLink__>
             <div
               className={classNames(
                 projectcss.all,
@@ -437,9 +673,30 @@ function PlasmicAppLayout__RenderFunc(props: {
             >
               {"Billing"}
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__bakOx)}>
+            <PlasmicLink__
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link__bakOx,
+                {
+                  [sty.linkpage_cards__bakOxtk8Pz]: hasVariant(
+                    $state,
+                    "page",
+                    "cards"
+                  )
+                }
+              )}
+              component={Link}
+              platform={"nextjs"}
+            >
               <CreditCardSvgIcon
-                className={classNames(projectcss.all, sty.svg__tuE4E)}
+                className={classNames(projectcss.all, sty.svg__tuE4E, {
+                  [sty.svgpage_cards__tuE4Etk8Pz]: hasVariant(
+                    $state,
+                    "page",
+                    "cards"
+                  )
+                })}
                 role={"img"}
               />
 
@@ -448,15 +705,43 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text__mUmnn,
-                  "geologica-h2"
+                  "geologica-h2",
+                  {
+                    [sty.textpage_cards__mUmnNtk8Pz]: hasVariant(
+                      $state,
+                      "page",
+                      "cards"
+                    )
+                  }
                 )}
               >
                 {"Cards"}
               </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__c4Rlb)}>
+            </PlasmicLink__>
+            <PlasmicLink__
+              className={classNames(
+                projectcss.all,
+                projectcss.a,
+                sty.link__c4Rlb,
+                {
+                  [sty.linkpage_invoices__c4RlbQBuoH]: hasVariant(
+                    $state,
+                    "page",
+                    "invoices"
+                  )
+                }
+              )}
+              component={Link}
+              platform={"nextjs"}
+            >
               <DocumentSvgIcon
-                className={classNames(projectcss.all, sty.svg__a6C)}
+                className={classNames(projectcss.all, sty.svg__a6C, {
+                  [sty.svgpage_invoices__a6CqBuoH]: hasVariant(
+                    $state,
+                    "page",
+                    "invoices"
+                  )
+                })}
                 role={"img"}
               />
 
@@ -465,12 +750,19 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text__jvQgj,
-                  "geologica-h2"
+                  "geologica-h2",
+                  {
+                    [sty.textpage_invoices__jvQgjQBuoH]: hasVariant(
+                      $state,
+                      "page",
+                      "invoices"
+                    )
+                  }
                 )}
               >
                 {"Invoices"}
               </div>
-            </div>
+            </PlasmicLink__>
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__n8Ej8)}>
             <div className={classNames(projectcss.all, sty.freeBox__cgTu5)}>
@@ -660,10 +952,47 @@ function PlasmicAppLayout__RenderFunc(props: {
                 projectcss.all,
                 projectcss.__wab_text,
                 sty.text__qILiD,
-                "geologica-h1"
+                "geologica-h1",
+                {
+                  [sty.textpage_analytics__qILiD3CU1K]: hasVariant(
+                    $state,
+                    "page",
+                    "analytics"
+                  ),
+                  [sty.textpage_calls__qILiDxO156]: hasVariant(
+                    $state,
+                    "page",
+                    "calls"
+                  ),
+                  [sty.textpage_cards__qILiDtk8Pz]: hasVariant(
+                    $state,
+                    "page",
+                    "cards"
+                  ),
+                  [sty.textpage_invoices__qILiDqBuoH]: hasVariant(
+                    $state,
+                    "page",
+                    "invoices"
+                  ),
+                  [sty.textpage_leads__qILiD07Gtn]: hasVariant(
+                    $state,
+                    "page",
+                    "leads"
+                  )
+                }
               )}
             >
-              {"Campaigns"}
+              {hasVariant($state, "page", "invoices")
+                ? "Invoices"
+                : hasVariant($state, "page", "cards")
+                  ? "Cards"
+                  : hasVariant($state, "page", "analytics")
+                    ? "Analytics"
+                    : hasVariant($state, "page", "calls")
+                      ? "Calls"
+                      : hasVariant($state, "page", "leads")
+                        ? "Leads"
+                        : "Campaigns"}
             </div>
           </div>
         </div>
@@ -700,7 +1029,12 @@ function PlasmicAppLayout__RenderFunc(props: {
               }
               throw e;
             }
-          })()
+          })(),
+          {
+            [sty.drawerOverlaypage_calls]: hasVariant($state, "page", "calls"),
+            [sty.drawerOverlaypage_cards]: hasVariant($state, "page", "cards"),
+            [sty.drawerOverlaypage_leads]: hasVariant($state, "page", "leads")
+          }
         )}
         onClick={async event => {
           const $steps = {};
@@ -753,7 +1087,6 @@ const PlasmicDescendants = {
     "appLayout",
     "sidebarGroup",
     "sidebarLeft",
-    "link",
     "img",
     "sidebarRight",
     "contentWrapper",
@@ -761,9 +1094,8 @@ const PlasmicDescendants = {
     "drawerOverlay",
     "embedHtml"
   ],
-  sidebarGroup: ["sidebarGroup", "sidebarLeft", "link", "img", "sidebarRight"],
-  sidebarLeft: ["sidebarLeft", "link", "img"],
-  link: ["link"],
+  sidebarGroup: ["sidebarGroup", "sidebarLeft", "img", "sidebarRight"],
+  sidebarLeft: ["sidebarLeft", "img"],
   img: ["img"],
   sidebarRight: ["sidebarRight"],
   contentWrapper: ["contentWrapper", "contents"],
@@ -778,7 +1110,6 @@ type NodeDefaultElementType = {
   appLayout: "div";
   sidebarGroup: "div";
   sidebarLeft: "div";
-  link: "a";
   img: typeof PlasmicImg__;
   sidebarRight: "div";
   contentWrapper: "div";
@@ -851,7 +1182,6 @@ export const PlasmicAppLayout = Object.assign(
     // Helper components rendering sub-elements
     sidebarGroup: makeNodeComponent("sidebarGroup"),
     sidebarLeft: makeNodeComponent("sidebarLeft"),
-    link: makeNodeComponent("link"),
     img: makeNodeComponent("img"),
     sidebarRight: makeNodeComponent("sidebarRight"),
     contentWrapper: makeNodeComponent("contentWrapper"),

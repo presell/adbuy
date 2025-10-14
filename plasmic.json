@@ -283,20 +283,6 @@
           "path": "/about"
         },
         {
-          "id": "XbV9alcbm-AF",
-          "name": "Api",
-          "type": "managed",
-          "projectId": "fKsvVS5XnenaZB1533Xwx5",
-          "renderModuleFilePath": "plasmic/ad_buy/PlasmicApi.tsx",
-          "importSpec": {
-            "modulePath": "../pages/integrations .tsx"
-          },
-          "cssFilePath": "plasmic/ad_buy/PlasmicApi.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/integrations "
-        },
-        {
           "id": "mTVCR0WtVqvB",
           "name": "AppCampaigns",
           "type": "managed",
@@ -322,6 +308,48 @@
           "cssFilePath": "plasmic/ad_buy/PlasmicAppLayout.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "XbV9alcbm-AF",
+          "name": "Api",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicApi.tsx",
+          "importSpec": {
+            "modulePath": "../pages/integrations .tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicApi.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/integrations "
+        },
+        {
+          "id": "Jvzp_CwYp3lA",
+          "name": "AppLeads",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppLeads.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/campaigns/leads.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppLeads.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/campaigns/leads"
+        },
+        {
+          "id": "C-1uIGBhNyCF",
+          "name": "AppCalls",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppCalls.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/campaigns/calls.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppCalls.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/campaigns/calls"
         }
       ],
       "icons": [
