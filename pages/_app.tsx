@@ -152,6 +152,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  // ✅ Prevent drawer flash on initial load
+useEffect(() => {
+  if (typeof window !== "undefined") {
+    window.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("drawer-ready");
+    });
+  }
+}, []);
+
 // ✅ Global Script Reinitializer (debounced + safe from recursion)
 useEffect(() => {
   let timeout: NodeJS.Timeout | null = null;
