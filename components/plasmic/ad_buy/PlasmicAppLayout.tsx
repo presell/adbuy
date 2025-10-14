@@ -206,11 +206,7 @@ function PlasmicAppLayout__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
-                  return $state.drawerOpen
-                    ? "drawer open"
-                    : $state.drawerAnimating
-                      ? "drawer exiting"
-                      : "drawer";
+                  return $state.drawerOpen ? "drawer open" : "drawer";
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -678,65 +674,6 @@ function PlasmicAppLayout__RenderFunc(props: {
         onClick={async event => {
           const $steps = {};
 
-          $steps["updateDrawerOpen2"] = true
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["drawerAnimating"]
-                  },
-                  operation: 0,
-                  value: true
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
-
-                  $stateSet(objRoot, variablePath, value);
-                  return value;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateDrawerOpen2"] != null &&
-            typeof $steps["updateDrawerOpen2"] === "object" &&
-            typeof $steps["updateDrawerOpen2"].then === "function"
-          ) {
-            $steps["updateDrawerOpen2"] = await $steps["updateDrawerOpen2"];
-          }
-
-          $steps["updateDrawerOpen3"] = true
-            ? (() => {
-                const actionArgs = {
-                  customFunction: async () => {
-                    return (async () => {
-                      async function runDelay() {
-                        function delay(ms) {
-                          return new Promise(resolve =>
-                            setTimeout(resolve, ms)
-                          );
-                        }
-                        await delay(300);
-                      }
-                      return runDelay();
-                    })();
-                  }
-                };
-                return (({ customFunction }) => {
-                  return customFunction();
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateDrawerOpen3"] != null &&
-            typeof $steps["updateDrawerOpen3"] === "object" &&
-            typeof $steps["updateDrawerOpen3"].then === "function"
-          ) {
-            $steps["updateDrawerOpen3"] = await $steps["updateDrawerOpen3"];
-          }
-
           $steps["updateDrawerOpen"] = true
             ? (() => {
                 const actionArgs = {
@@ -764,35 +701,6 @@ function PlasmicAppLayout__RenderFunc(props: {
             typeof $steps["updateDrawerOpen"].then === "function"
           ) {
             $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
-          }
-
-          $steps["updateDrawerOpen4"] = true
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["drawerAnimating"]
-                  },
-                  operation: 0,
-                  value: false
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
-
-                  $stateSet(objRoot, variablePath, value);
-                  return value;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateDrawerOpen4"] != null &&
-            typeof $steps["updateDrawerOpen4"] === "object" &&
-            typeof $steps["updateDrawerOpen4"].then === "function"
-          ) {
-            $steps["updateDrawerOpen4"] = await $steps["updateDrawerOpen4"];
           }
         }}
       />
