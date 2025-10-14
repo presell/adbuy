@@ -559,6 +559,11 @@
           "id": "JhN1q1NZAQCI",
           "name": "OpenPanelSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__OpenPanelSvg.tsx"
+        },
+        {
+          "id": "eDFyNm28uzac",
+          "name": "PanelSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__PanelSvg.tsx"
         }
       ],
       "images": [

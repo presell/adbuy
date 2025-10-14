@@ -81,7 +81,7 @@ import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-i
 import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-import: Q8BUWmPptTcP/icon
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
-import OpenPanelSvgIcon from "./icons/PlasmicIcon__OpenPanelSvg"; // plasmic-import: JhN1q1NZAQCI/icon
+import PanelSvgIcon from "./icons/PlasmicIcon__PanelSvg"; // plasmic-import: eDFyNm28uzac/icon
 
 createPlasmicElementProxy;
 
@@ -582,7 +582,7 @@ function PlasmicAppLayout__RenderFunc(props: {
       >
         <div className={classNames(projectcss.all, sty.freeBox__mpPy)}>
           <div className={classNames(projectcss.all, sty.freeBox__t4BaE)}>
-            <OpenPanelSvgIcon
+            <PanelSvgIcon
               className={classNames(projectcss.all, sty.svg__gYz8K)}
               onClick={async event => {
                 const $steps = {};
