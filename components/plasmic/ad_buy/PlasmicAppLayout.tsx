@@ -162,12 +162,6 @@ function PlasmicAppLayout__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "drawerAnimating",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -239,6 +233,43 @@ function PlasmicAppLayout__RenderFunc(props: {
           >
             <CursorIsolatedSvgIcon
               className={classNames(projectcss.all, sty.svg__zwji8)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateDrawerOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["drawerOpen"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateDrawerOpen"] != null &&
+                  typeof $steps["updateDrawerOpen"] === "object" &&
+                  typeof $steps["updateDrawerOpen"].then === "function"
+                ) {
+                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+                }
+              }}
               role={"img"}
             />
           </PlasmicLink__>
