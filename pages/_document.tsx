@@ -5,12 +5,12 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* 🩶 Critical CSS to hide the drawer before hydration */}
           <style
             dangerouslySetInnerHTML={{
               __html: `
-                .prehydration .drawer,
-                .prehydration .drawer-overlay {
+                /* Prevent initial flash before React hydration */
+                body.prehydration .drawer,
+                body.prehydration .drawer-overlay {
                   visibility: hidden !important;
                   opacity: 0 !important;
                   transform: translateX(-100%) !important;
