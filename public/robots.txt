@@ -1,0 +1,8 @@
+# robots.txt for AdBuy
+User-agent: *
+Disallow: /app/
+Disallow: /api/
+Disallow: /fonts/
+Allow: /
+
+Sitemap: https://www.adbuy.ai/sitemap.xml
