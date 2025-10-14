@@ -155,21 +155,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 // ✅ Prevent drawer flash + ensure visibility after hydration
 useEffect(() => {
   if (typeof window !== "undefined") {
-    // Add immediately on hydration (no wait for DOMContentLoaded)
     document.body.classList.add("drawer-ready");
-
-    // Fail-safe: ensure it remains after navigation or HMR
-    const ensureReady = () => {
-      if (!document.body.classList.contains("drawer-ready")) {
-        document.body.classList.add("drawer-ready");
-      }
-    };
-    document.addEventListener("visibilitychange", ensureReady);
-    document.addEventListener("focus", ensureReady);
-    return () => {
-      document.removeEventListener("visibilitychange", ensureReady);
-      document.removeEventListener("focus", ensureReady);
-    };
   }
 }, []);
 
