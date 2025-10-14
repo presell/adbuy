@@ -974,6 +974,13 @@
   flex-shrink: 0;
   border-bottom: 1px solid #d3d3d3;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__mpPy {
+    background: #e5e5e5;
+    height: 60px;
+    flex-shrink: 0;
+  }
+}
 .freeBox__t4BaE {
   display: flex;
   flex-direction: row;
@@ -1027,6 +1034,12 @@
   min-width: 0;
   flex-shrink: 0;
   border-bottom: 1px none #d3d3d3;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__iFy6S {
+    height: 60px;
+    flex-shrink: 0;
+  }
 }
 .contents {
   display: flex;
