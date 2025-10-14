@@ -711,7 +711,7 @@ function PlasmicAppLayout__RenderFunc(props: {
         data-plasmic-override={overrides.embedHtml}
         className={classNames("__wab_instance", sty.embedHtml)}
         code={
-          "<style>\n\n.drawer {\n  transition: opacity 3s ease, transform 3s ease;\n  opacity: 0;\n  transform: translateX(-100%);\n  pointer-events: none; /* prevent clicks while hidden */\n}\n\n.drawer.open {\n  opacity: 1;\n  transform: translateX(0);\n  pointer-events: auto;\n}\n</style>\n\n\n<style>\n\n.drawer-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.4);\n  opacity: 0;\n  transition: opacity 0.3s ease;\n  pointer-events: none; /* prevent blocking clicks when hidden */\n}\n\n.drawer-overlay.open {\n  opacity: 1;\n  pointer-events: auto;\n}\n\n</style>"
+          "<style>\n.drawer {\n  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;\n  opacity: 0;\n  transform: translateX(-100%) translateZ(0);\n  pointer-events: none;\n  will-change: opacity, transform; /* helps GPU accelerate */\n}\n\n.drawer.open {\n  opacity: 1;\n  transform: translateX(0);\n  pointer-events: auto;\n  box-shadow: 2px 0 12px rgba(0,0,0,0.15);\n}\n\n.drawer-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.4);\n  opacity: 0;\n  transition: opacity 0.3s ease-in-out;\n  pointer-events: none;\n  z-index: 2; /* make sure overlay sits above base content */\n}\n\n.drawer-overlay.open {\n  opacity: 1;\n  pointer-events: auto;\n}\n</style>\n"
         }
       />
     </div>
