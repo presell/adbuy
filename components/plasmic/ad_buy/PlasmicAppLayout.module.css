@@ -977,7 +977,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__mpPy {
     background: #e5e5e5;
-    height: 60px;
+    height: 45px;
     flex-shrink: 0;
   }
 }
@@ -996,6 +996,7 @@
   .freeBox__t4BaE {
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 10px;
   }
 }
 .svg__gYz8K {
@@ -1037,7 +1038,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__iFy6S {
-    height: 60px;
+    height: 55px;
     flex-shrink: 0;
   }
 }
