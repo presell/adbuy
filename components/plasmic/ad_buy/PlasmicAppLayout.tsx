@@ -415,6 +415,7 @@ function PlasmicAppLayout__RenderFunc(props: {
               }
             )}
             component={Link}
+            href={`/app/integrations`}
             platform={"nextjs"}
           >
             <ApiIconSvgIcon

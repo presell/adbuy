@@ -133,6 +133,11 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___3MxY1 {
+    width: 82.5%;
+  }
+}
 .text__pj6I5 {
   width: auto;
   height: auto;

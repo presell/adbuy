@@ -421,7 +421,7 @@ function PlasmicAbout__RenderFunc(props: {
                     "geologica-h2"
                   )}
                 >
-                  {"Make Profitable Ads Possible."}
+                  {"Powering Real Conversations That Close."}
                 </div>
                 <div
                   className={classNames(
@@ -432,7 +432,7 @@ function PlasmicAbout__RenderFunc(props: {
                   )}
                 >
                   {
-                    "Traditional ad agencies charge thousands up front\u2014even when you\u2019re only spending $50 to $100 a day.\n\nIt just doesn\u2019t make sense.\n\nAdBuy takes all the risk off your plate.\n\nWe don\u2019t charge a monthly retainer.\n\nThink of AdBuy as an ad platform like Facebook or Google, but without having to actually setup and run the campaigns yourself.\n\nWe\u2019ve built proprietary technology that allows you to simply define your industry, product, location, and budget\u2014then real-time leads flow directly to you with zero learning curve."
+                    "AdBuy was built for businesses that rely on quality, responsive leads \u2014 the kind that actually pick up the phone and expect the call.\n\nWe believe you shouldn\u2019t have to buy lists, hire an expensive agency, or learn ads just to source these leads.\n\nThat\u2019s why AdBuy delivers exclusive, real-time inbound leads \u2014 never shared, never recycled \u2014 and gives you the tools to follow up and convert without all the manual work.\n\nLaunching a campaign on AdBuy takes seconds and requires zero learning curve, so you can focus on what matters most: getting in touch and closing deals.\n\nBecause the only thing standing between you and your next sale is the right conversation \u2014 and AdBuy makes sure it happens."
                   }
                 </div>
               </div>

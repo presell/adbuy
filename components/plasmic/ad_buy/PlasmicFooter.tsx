@@ -218,17 +218,27 @@ function PlasmicFooter__RenderFunc(props: {
               data-plasmic-override={overrides.logoDescriptionSocials}
               className={classNames(projectcss.all, sty.logoDescriptionSocials)}
             >
-              <AdBuyDarkTextSmallestCursorSvgIcon
-                data-plasmic-name={"logoFooter13"}
-                data-plasmic-override={overrides.logoFooter13}
+              <PlasmicLink__
                 className={classNames(
                   projectcss.all,
-                  sty.logoFooter13,
-                  "logo-text"
+                  projectcss.a,
+                  sty.link__aQlHf
                 )}
-                role={"img"}
-              />
-
+                component={Link}
+                href={`/`}
+                platform={"nextjs"}
+              >
+                <AdBuyDarkTextSmallestCursorSvgIcon
+                  data-plasmic-name={"logoFooter13"}
+                  data-plasmic-override={overrides.logoFooter13}
+                  className={classNames(
+                    projectcss.all,
+                    sty.logoFooter13,
+                    "logo-text"
+                  )}
+                  role={"img"}
+                />
+              </PlasmicLink__>
               <div className={classNames(projectcss.all, sty.freeBox__hRkqx)}>
                 <div
                   data-plasmic-name={"h21141"}
