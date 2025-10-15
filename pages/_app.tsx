@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import { supabase } from "../lib/supabaseClient";
 import Script from "next/script";
 import localFont from "next/font/local";
+import useRouter from "next/router"; // ✅ FIXED: default import ensures router type inference works in Next.js 14+
 
 // Declare global functions injected by main.js to avoid TypeScript errors
 declare global {
@@ -16,7 +17,6 @@ declare global {
 }
 
 // ✅ Corrected Geologica variable font setup
-// Keeping the font in /pages/fonts/ is fine — just resolve the path properly.
 const geologica = localFont({
   src: [
     {
@@ -33,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
   const authenticatedViaCookie = useRef(false);
   const suppressLogoutRef = useRef(false);
+  const router = useRouter(); // ✅ router initialized cleanly
 
   const syncPlasmicUser = (u: any) => {
     if (typeof window === "undefined") return;
@@ -130,7 +131,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     return () => listener?.subscription.unsubscribe();
   }, []);
 
-  // ✅ Inject highlight-gradient CSS for Plasmic-rendered elements (same as old HTML embed)
+  // ✅ Inject highlight-gradient CSS for Plasmic-rendered elements
   useEffect(() => {
     if (typeof window !== "undefined") {
       const existing = document.getElementById("global-highlight-style");
@@ -153,14 +154,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   // ✅ Redirect unauthenticated users away from /app/* pages
-  const router = useRouter();
-
   useEffect(() => {
     const checkAuth = async () => {
       if (typeof window === "undefined") return;
 
-      // Only protect routes under /app/*
-      if (router.pathname.startsWith("/app")) {
+      if (router?.pathname?.startsWith?.("/app")) {
         console.log("[AuthGuard] Checking user authentication...");
 
         const { data } = await supabase.auth.getSession();
@@ -178,163 +176,142 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
 
     checkAuth();
-  }, [router.pathname]);
+  }, [router]); // ✅ fixed dependency warning
 
+  // ✅ Global Script Reinitializer
+  useEffect(() => {
+    let timeout: NodeJS.Timeout | null = null;
+    let observer: MutationObserver | null = null;
+    let isRunning = false;
 
-  
-// ✅ Global Script Reinitializer (debounced + safe from recursion)
-useEffect(() => {
-  let timeout: NodeJS.Timeout | null = null;
-  let observer: MutationObserver | null = null;
-  let isRunning = false;
+    const runAllScripts = () => {
+      if (isRunning) return;
+      isRunning = true;
+      observer?.disconnect();
+      console.log("[App] 🔁 Reinitializing global front-end scripts...");
 
-  const runAllScripts = () => {
-    if (isRunning) return; // prevent overlapping runs
-    isRunning = true;
-
-    // Pause observer while scripts modify DOM
-    observer?.disconnect();
-
-    console.log("[App] 🔁 Reinitializing global front-end scripts...");
-
-    setTimeout(() => {
-      try {
-        if (window.reinitializeHomepageScripts) {
-          console.log("[App] ▶️ Running reinitializeHomepageScripts()");
-          window.reinitializeHomepageScripts();
+      setTimeout(() => {
+        try {
+          if (window.reinitializeHomepageScripts) window.reinitializeHomepageScripts();
+          if (window.initTilt) window.initTilt();
+          if (window.initMarquees) window.initMarquees();
+        } finally {
+          setTimeout(() => {
+            const root = document.getElementById("__next") || document.body;
+            observer?.observe(root, { childList: true, subtree: true });
+            isRunning = false;
+          }, 300);
         }
-        if (window.initTilt) {
-          console.log("[App] ▶️ Running initTilt()");
-          window.initTilt();
-        }
-        if (window.initMarquees) {
-          console.log("[App] ▶️ Running initMarquees()");
-          window.initMarquees();
-        }
+      }, 50);
+    };
 
-        // 🔧 Add future global initializers here
-      } finally {
-        // Re-enable observer after scripts settle
-        setTimeout(() => {
-          const root = document.getElementById("__next") || document.body;
-          observer?.observe(root, { childList: true, subtree: true });
-          isRunning = false;
-        }, 300); // short cooldown before re-observing
-      }
-    }, 50);
-  };
+    observer = new MutationObserver(() => {
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(runAllScripts, 200);
+    });
 
-  // Create observer
-  observer = new MutationObserver(() => {
-    if (timeout) clearTimeout(timeout);
-    timeout = setTimeout(runAllScripts, 200);
-  });
+    const root = document.getElementById("__next") || document.body;
+    observer.observe(root, { childList: true, subtree: true });
 
-  const root = document.getElementById("__next") || document.body;
-  observer.observe(root, { childList: true, subtree: true });
+    console.log("[App] 👀 Global MutationObserver initialized (safe mode)");
 
-  console.log("[App] 👀 Global MutationObserver initialized (safe mode)");
-
-  return () => observer?.disconnect();
-}, []);
+    return () => observer?.disconnect();
+  }, []);
 
   return (
     <>
-
-
-    {/* ✅ 1. Google Analytics */}
-    <Script
-      strategy="afterInteractive"
-      src="https://www.googletagmanager.com/gtag/js?id=G-SW67MBB5HR"
-    />
-    <Script id="google-analytics" strategy="afterInteractive">
-      {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-SW67MBB5HR');
-      `}
-    </Script>
-
-    {/* ✅ 2. Meta Pixel */}
-    <Script id="facebook-pixel" strategy="afterInteractive">
-      {`
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1258231451566673');
-        fbq('track', 'PageView');
-      `}
-    </Script>
-    <noscript>
-      <img
-        height="1"
-        width="1"
-        style={{ display: "none" }}
-        src="https://www.facebook.com/tr?id=1258231451566673&ev=PageView&noscript=1"
+      {/* ✅ 1. Google Analytics */}
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-SW67MBB5HR"
       />
-    </noscript>
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-SW67MBB5HR');
+        `}
+      </Script>
 
-    {/* ✅ 3. ReB2B Script */}
-    <Script id="reb2b" strategy="afterInteractive">
-      {`
-        !function () {
-          var reb2b = window.reb2b = window.reb2b || [];
-          if (reb2b.invoked) return;
-          reb2b.invoked = true;
-          reb2b.methods = ["identify", "collect"];
-          reb2b.factory = function (method) {
-            return function () {
-              var args = Array.prototype.slice.call(arguments);
-              args.unshift(method);
-              reb2b.push(args);
-              return reb2b;
+      {/* ✅ 2. Meta Pixel */}
+      <Script id="facebook-pixel" strategy="afterInteractive">
+        {`
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1258231451566673');
+          fbq('track', 'PageView');
+        `}
+      </Script>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          src="https://www.facebook.com/tr?id=1258231451566673&ev=PageView&noscript=1"
+          alt=""
+        />
+      </noscript>
+
+      {/* ✅ 3. ReB2B Script */}
+      <Script id="reb2b" strategy="afterInteractive">
+        {`
+          !function () {
+            var reb2b = window.reb2b = window.reb2b || [];
+            if (reb2b.invoked) return;
+            reb2b.invoked = true;
+            reb2b.methods = ["identify", "collect"];
+            reb2b.factory = function (method) {
+              return function () {
+                var args = Array.prototype.slice.call(arguments);
+                args.unshift(method);
+                reb2b.push(args);
+                return reb2b;
+              };
             };
-          };
-          for (var i = 0; i < reb2b.methods.length; i++) {
-            var key = reb2b.methods[i];
-            reb2b[key] = reb2b.factory(key);
+            for (var i = 0; i < reb2b.methods.length; i++) {
+              var key = reb2b.methods[i];
+              reb2b[key] = reb2b.factory(key);
+            }
+            reb2b.load = function (key) {
+              var script = document.createElement("script");
+              script.type = "text/javascript";
+              script.async = true;
+              script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/5NRP9HQX9GO1.js.gz";
+              var first = document.getElementsByTagName("script")[0];
+              first.parentNode.insertBefore(script, first);
+            };
+            reb2b.SNIPPET_VERSION = "1.0.1";
+            reb2b.load("5NRP9HQX9GO1");
+          }();
+        `}
+      </Script>
+
+      {/* ✅ 4. Scroll Timeline Polyfill */}
+      <Script
+        src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
+        strategy="afterInteractive"
+      />
+
+      {/* ✅ 5. Global Animation / Tilt / Marquee Logic */}
+      <Script
+        src="/js/main.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          if (window.reinitializeHomepageScripts) {
+            console.log("[App] 🧠 Running reinitializeHomepageScripts()");
+            window.reinitializeHomepageScripts();
           }
-          reb2b.load = function (key) {
-            var script = document.createElement("script");
-            script.type = "text/javascript";
-            script.async = true;
-            script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/5NRP9HQX9GO1.js.gz";
-            var first = document.getElementsByTagName("script")[0];
-            first.parentNode.insertBefore(script, first);
-          };
-          reb2b.SNIPPET_VERSION = "1.0.1";
-          reb2b.load("5NRP9HQX9GO1");
-        }();
-      `}
-    </Script>
+        }}
+      />
 
-      
-      {/* ✅ 1. Scroll Timeline Polyfill (load afterInteractive) */}
-<Script
-  src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
-  strategy="afterInteractive"
-/>
-
-
-      {/* ✅ 2. Global Animation / Tilt / Marquee Logic */}
-<Script
-  src="/js/main.js"
-  strategy="afterInteractive"
-  onLoad={() => {
-    if (window.reinitializeHomepageScripts) {
-      console.log("[App] 🧠 Running reinitializeHomepageScripts()");
-      window.reinitializeHomepageScripts();
-    }
-  }}
-/>
-
-      {/* ✅ 3. Attach the Geologica font variable */}
+      {/* ✅ 6. Attach Geologica font variable + render app */}
       <div className={geologica.variable}>
         <PlasmicRootProvider user={user}>
           <Component {...pageProps} />
