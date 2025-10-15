@@ -424,7 +424,7 @@ function PlasmicAppLayout__RenderFunc(props: {
                 }
               )}
               component={Link}
-              href={`/campaigns`}
+              href={`/app/campaigns`}
               platform={"nextjs"}
             >
               <LeadsIconSvgIcon
@@ -764,7 +764,39 @@ function PlasmicAppLayout__RenderFunc(props: {
               </div>
             </PlasmicLink__>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__n8Ej8)}>
+          <div
+            className={classNames(projectcss.all, sty.freeBox__n8Ej8)}
+            onClick={async event => {
+              const $steps = {};
+
+              $steps["goToAppAnalytics"] = true
+                ? (() => {
+                    const actionArgs = {
+                      destination: `/app/campaigns/analytics`
+                    };
+                    return (({ destination }) => {
+                      if (
+                        typeof destination === "string" &&
+                        destination.startsWith("#")
+                      ) {
+                        document
+                          .getElementById(destination.substr(1))
+                          .scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        __nextRouter?.push(destination);
+                      }
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["goToAppAnalytics"] != null &&
+                typeof $steps["goToAppAnalytics"] === "object" &&
+                typeof $steps["goToAppAnalytics"].then === "function"
+              ) {
+                $steps["goToAppAnalytics"] = await $steps["goToAppAnalytics"];
+              }
+            }}
+          >
             <div className={classNames(projectcss.all, sty.freeBox__cgTu5)}>
               <div
                 className={classNames(

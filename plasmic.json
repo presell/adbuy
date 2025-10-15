@@ -350,6 +350,48 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/app/campaigns/calls"
+        },
+        {
+          "id": "-F6KTATRxFF2",
+          "name": "AppCards",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppCards.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/campaigns/cards.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppCards.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/campaigns/cards"
+        },
+        {
+          "id": "mGnsohGAM3V9",
+          "name": "AppAnalytics",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppAnalytics.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/campaigns/analytics.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppAnalytics.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/campaigns/analytics"
+        },
+        {
+          "id": "rvKSPrj2EOME",
+          "name": "AppInvoices",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppInvoices.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/campaigns/invoices.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppInvoices.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/campaigns/invoices"
         }
       ],
       "icons": [
