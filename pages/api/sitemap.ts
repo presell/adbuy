@@ -3,50 +3,61 @@ import path from "path";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.adbuy.ai";
+  const baseUrl = "https://www.adbuy.ai";
   const pagesDir = path.join(process.cwd(), "pages");
 
-  // Recursively get all static pages (excluding app/api/fonts)
-  function getPages(dir: string): string[] {
+  // Recursively read pages
+  const getPages = (dir: string): string[] => {
     const files = fs.readdirSync(dir);
-    let urls: string[] = [];
+    let routes: string[] = [];
 
     for (const file of files) {
-      const fullPath = path.join(dir, file);
-      const stat = fs.statSync(fullPath);
+      const filePath = path.join(dir, file);
+      const stat = fs.statSync(filePath);
+
+      // Ignore Next.js internals and API/app folders
+      if (
+        file === "api" ||
+        file === "app" ||
+        file.startsWith("_") ||
+        file.startsWith(".") ||
+        file === "fonts"
+      ) {
+        continue;
+      }
 
       if (stat.isDirectory()) {
-        if (["api", "app", "fonts"].includes(file)) continue;
-        urls = urls.concat(getPages(fullPath));
-      } else if (file.endsWith(".tsx") && !file.startsWith("_")) {
-        const relativePath = path.relative(pagesDir, fullPath);
-        let route = relativePath
-          .replace(/\.tsx$/, "")
-          .replace(/index$/, "")
-          .replace(/\\/g, "/");
+        routes = routes.concat(getPages(filePath));
+      } else if (/\.(tsx|ts|js|jsx)$/.test(file)) {
+        const route = filePath
+          .replace(pagesDir, "")
+          .replace(/index\.(tsx|ts|js|jsx)$/, "")
+          .replace(/\.(tsx|ts|js|jsx)$/, "");
 
-        urls.push(`${baseUrl}/${route}`.replace(/\/$/, ""));
+        routes.push(route);
       }
     }
-    return urls;
-  }
 
-  const allPages = getPages(pagesDir);
+    return routes;
+  };
+
+  const pages = getPages(pagesDir);
+  const urls = pages.map((route) => {
+    const loc = `${baseUrl}${route || "/"}`;
+    return `
+      <url>
+        <loc>${loc}</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>
+    `;
+  });
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    ${allPages
-      .map(
-        (url) => `
-      <url>
-        <loc>${url}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>${url === baseUrl ? "1.0" : "0.8"}</priority>
-      </url>`
-      )
-      .join("")}
-  </urlset>`;
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${urls.join("\n")}
+    </urlset>`;
 
   res.setHeader("Content-Type", "application/xml");
   res.status(200).send(sitemap);
