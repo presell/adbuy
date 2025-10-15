@@ -211,20 +211,20 @@ useEffect(() => {
   return (
     <>
 
-          {/* ✅ Redirect unauthenticated users away from /app/* pages */}
+// ✅ Redirect unauthenticated users away from /app/* pages
+import { useRouter } from "next/router";
 
-      function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
     const checkAuth = async () => {
       if (typeof window === "undefined") return;
 
-      // 🛑 Only protect routes under /app
+      // Only protect routes under /app/*
       if (router.pathname.startsWith("/app")) {
         console.log("[AuthGuard] Checking user authentication...");
 
-        // Check Supabase session or Plasmic user context
         const { data } = await supabase.auth.getSession();
         const session = data?.session;
         const plasmicUser = (window as any).__PLASMIC_USER__;
@@ -232,9 +232,8 @@ useEffect(() => {
         const isLoggedIn =
           !!session?.user || !!plasmicUser?.isLoggedIn || !!plasmicUser?.email;
 
-        // If NOT logged in, redirect to /login
         if (!isLoggedIn) {
-          console.warn("[AuthGuard] ❌ Unauthorized access — redirecting to /login");
+          console.warn("[AuthGuard] 🚫 Unauthorized — redirecting to /login");
           router.replace("/login");
         }
       }
@@ -244,14 +243,11 @@ useEffect(() => {
   }, [router.pathname]);
 
   return (
-    <>
-      {/* Keep your existing scripts and providers below */}
-      <div className={geologica.variable}>
-        <PlasmicRootProvider user={user}>
-          <Component {...pageProps} />
-        </PlasmicRootProvider>
-      </div>
-    </>
+    <div className={geologica.variable}>
+      <PlasmicRootProvider user={user}>
+        <Component {...pageProps} />
+      </PlasmicRootProvider>
+    </div>
   );
 }
 
