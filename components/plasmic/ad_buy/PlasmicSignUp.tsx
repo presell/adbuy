@@ -701,6 +701,42 @@ function PlasmicSignUp__RenderFunc(props: {
                         $steps["updateSubmitting2"] =
                           await $steps["updateSubmitting2"];
                       }
+
+                      $steps["updateEmailInputValue"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["emailInput", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateEmailInputValue"] != null &&
+                        typeof $steps["updateEmailInputValue"] === "object" &&
+                        typeof $steps["updateEmailInputValue"].then ===
+                          "function"
+                      ) {
+                        $steps["updateEmailInputValue"] =
+                          await $steps["updateEmailInputValue"];
+                      }
                     }}
                   >
                     <div
@@ -766,7 +802,7 @@ function PlasmicSignUp__RenderFunc(props: {
                           "geologica-h2"
                         )}
                       >
-                        {"Invalid email detected."}
+                        {"Invalid email detected. Try again."}
                       </div>
                     </div>
                   ) : null}
