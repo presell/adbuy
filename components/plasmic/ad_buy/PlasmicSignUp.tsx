@@ -101,18 +101,19 @@ export type PlasmicSignUp__OverridesType = {
   step3?: Flex__<"div">;
   h1220?: Flex__<"div">;
   parentOtp113?: Flex__<"div">;
-  otp12?: Flex__<"input">;
+  otp1?: Flex__<"input">;
   parentOtp114?: Flex__<"div">;
-  otp22?: Flex__<"input">;
+  otp2?: Flex__<"input">;
   parentOtp115?: Flex__<"div">;
-  otp32?: Flex__<"input">;
+  otp3?: Flex__<"input">;
   parentOtp116?: Flex__<"div">;
-  otp42?: Flex__<"input">;
+  otp4?: Flex__<"input">;
   parentOtp117?: Flex__<"div">;
-  otp52?: Flex__<"input">;
+  otp5?: Flex__<"input">;
   parentOtp118?: Flex__<"div">;
-  otp62?: Flex__<"input">;
+  otp6?: Flex__<"input">;
   primaryctaStage210?: Flex__<"div">;
+  h2151?: Flex__<"div">;
   h2149?: Flex__<"div">;
   otp?: Flex__<typeof Embed>;
   h2141?: Flex__<"div">;
@@ -200,37 +201,37 @@ function PlasmicSignUp__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "otp12.value",
+        path: "otp1.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "otp22.value",
+        path: "otp2.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "otp32.value",
+        path: "otp3.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "otp42.value",
+        path: "otp4.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "otp52.value",
+        path: "otp5.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "otp62.value",
+        path: "otp6.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -894,29 +895,29 @@ function PlasmicSignUp__RenderFunc(props: {
                       )}
                     >
                       <input
-                        data-plasmic-name={"otp12"}
-                        data-plasmic-override={overrides.otp12}
+                        data-plasmic-name={"otp1"}
+                        data-plasmic-override={overrides.otp1}
                         className={classNames(
                           projectcss.all,
                           projectcss.input,
-                          sty.otp12,
+                          sty.otp1,
                           "otp-input"
                         )}
                         id={``}
                         onChange={async (...eventArgs: any) => {
                           (e => {
                             generateStateOnChangeProp($state, [
-                              "otp12",
+                              "otp1",
                               "value"
                             ])(e.target.value);
                           }).apply(null, eventArgs);
                         }}
                         ref={ref => {
-                          $refs["otp12"] = ref;
+                          $refs["otp1"] = ref;
                         }}
                         type={"text"}
                         value={
-                          generateStateValueProp($state, ["otp12", "value"]) ??
+                          generateStateValueProp($state, ["otp1", "value"]) ??
                           ""
                         }
                       />
@@ -931,29 +932,29 @@ function PlasmicSignUp__RenderFunc(props: {
                       )}
                     >
                       <input
-                        data-plasmic-name={"otp22"}
-                        data-plasmic-override={overrides.otp22}
+                        data-plasmic-name={"otp2"}
+                        data-plasmic-override={overrides.otp2}
                         className={classNames(
                           projectcss.all,
                           projectcss.input,
-                          sty.otp22,
+                          sty.otp2,
                           "otp-input"
                         )}
                         id={``}
                         onChange={async (...eventArgs: any) => {
                           (e => {
                             generateStateOnChangeProp($state, [
-                              "otp22",
+                              "otp2",
                               "value"
                             ])(e.target.value);
                           }).apply(null, eventArgs);
                         }}
                         ref={ref => {
-                          $refs["otp22"] = ref;
+                          $refs["otp2"] = ref;
                         }}
                         type={"text"}
                         value={
-                          generateStateValueProp($state, ["otp22", "value"]) ??
+                          generateStateValueProp($state, ["otp2", "value"]) ??
                           ""
                         }
                       />
@@ -968,29 +969,29 @@ function PlasmicSignUp__RenderFunc(props: {
                       )}
                     >
                       <input
-                        data-plasmic-name={"otp32"}
-                        data-plasmic-override={overrides.otp32}
+                        data-plasmic-name={"otp3"}
+                        data-plasmic-override={overrides.otp3}
                         className={classNames(
                           projectcss.all,
                           projectcss.input,
-                          sty.otp32,
+                          sty.otp3,
                           "otp-input"
                         )}
                         id={``}
                         onChange={async (...eventArgs: any) => {
                           (e => {
                             generateStateOnChangeProp($state, [
-                              "otp32",
+                              "otp3",
                               "value"
                             ])(e.target.value);
                           }).apply(null, eventArgs);
                         }}
                         ref={ref => {
-                          $refs["otp32"] = ref;
+                          $refs["otp3"] = ref;
                         }}
                         type={"text"}
                         value={
-                          generateStateValueProp($state, ["otp32", "value"]) ??
+                          generateStateValueProp($state, ["otp3", "value"]) ??
                           ""
                         }
                       />
@@ -1005,29 +1006,29 @@ function PlasmicSignUp__RenderFunc(props: {
                       )}
                     >
                       <input
-                        data-plasmic-name={"otp42"}
-                        data-plasmic-override={overrides.otp42}
+                        data-plasmic-name={"otp4"}
+                        data-plasmic-override={overrides.otp4}
                         className={classNames(
                           projectcss.all,
                           projectcss.input,
-                          sty.otp42,
+                          sty.otp4,
                           "otp-input"
                         )}
                         id={``}
                         onChange={async (...eventArgs: any) => {
                           (e => {
                             generateStateOnChangeProp($state, [
-                              "otp42",
+                              "otp4",
                               "value"
                             ])(e.target.value);
                           }).apply(null, eventArgs);
                         }}
                         ref={ref => {
-                          $refs["otp42"] = ref;
+                          $refs["otp4"] = ref;
                         }}
                         type={"text"}
                         value={
-                          generateStateValueProp($state, ["otp42", "value"]) ??
+                          generateStateValueProp($state, ["otp4", "value"]) ??
                           ""
                         }
                       />
@@ -1042,29 +1043,29 @@ function PlasmicSignUp__RenderFunc(props: {
                       )}
                     >
                       <input
-                        data-plasmic-name={"otp52"}
-                        data-plasmic-override={overrides.otp52}
+                        data-plasmic-name={"otp5"}
+                        data-plasmic-override={overrides.otp5}
                         className={classNames(
                           projectcss.all,
                           projectcss.input,
-                          sty.otp52,
+                          sty.otp5,
                           "otp-input"
                         )}
                         id={``}
                         onChange={async (...eventArgs: any) => {
                           (e => {
                             generateStateOnChangeProp($state, [
-                              "otp52",
+                              "otp5",
                               "value"
                             ])(e.target.value);
                           }).apply(null, eventArgs);
                         }}
                         ref={ref => {
-                          $refs["otp52"] = ref;
+                          $refs["otp5"] = ref;
                         }}
                         type={"text"}
                         value={
-                          generateStateValueProp($state, ["otp52", "value"]) ??
+                          generateStateValueProp($state, ["otp5", "value"]) ??
                           ""
                         }
                       />
@@ -1079,29 +1080,29 @@ function PlasmicSignUp__RenderFunc(props: {
                       )}
                     >
                       <input
-                        data-plasmic-name={"otp62"}
-                        data-plasmic-override={overrides.otp62}
+                        data-plasmic-name={"otp6"}
+                        data-plasmic-override={overrides.otp6}
                         className={classNames(
                           projectcss.all,
                           projectcss.input,
-                          sty.otp62,
+                          sty.otp6,
                           "otp-input"
                         )}
                         id={``}
                         onChange={async (...eventArgs: any) => {
                           (e => {
                             generateStateOnChangeProp($state, [
-                              "otp62",
+                              "otp6",
                               "value"
                             ])(e.target.value);
                           }).apply(null, eventArgs);
                         }}
                         ref={ref => {
-                          $refs["otp62"] = ref;
+                          $refs["otp6"] = ref;
                         }}
                         type={"text"}
                         value={
-                          generateStateValueProp($state, ["otp62", "value"]) ??
+                          generateStateValueProp($state, ["otp6", "value"]) ??
                           ""
                         }
                       />
@@ -1253,6 +1254,216 @@ function PlasmicSignUp__RenderFunc(props: {
                       ) {
                         $steps["runCode"] = await $steps["runCode"];
                       }
+
+                      $steps["updateOtp1Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp1", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp1Value"] != null &&
+                        typeof $steps["updateOtp1Value"] === "object" &&
+                        typeof $steps["updateOtp1Value"].then === "function"
+                      ) {
+                        $steps["updateOtp1Value"] =
+                          await $steps["updateOtp1Value"];
+                      }
+
+                      $steps["updateOtp2Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp2", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp2Value"] != null &&
+                        typeof $steps["updateOtp2Value"] === "object" &&
+                        typeof $steps["updateOtp2Value"].then === "function"
+                      ) {
+                        $steps["updateOtp2Value"] =
+                          await $steps["updateOtp2Value"];
+                      }
+
+                      $steps["updateOtp3Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp3", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp3Value"] != null &&
+                        typeof $steps["updateOtp3Value"] === "object" &&
+                        typeof $steps["updateOtp3Value"].then === "function"
+                      ) {
+                        $steps["updateOtp3Value"] =
+                          await $steps["updateOtp3Value"];
+                      }
+
+                      $steps["updateOtp4Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp4", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp4Value"] != null &&
+                        typeof $steps["updateOtp4Value"] === "object" &&
+                        typeof $steps["updateOtp4Value"].then === "function"
+                      ) {
+                        $steps["updateOtp4Value"] =
+                          await $steps["updateOtp4Value"];
+                      }
+
+                      $steps["updateOtp5Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp5", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp5Value"] != null &&
+                        typeof $steps["updateOtp5Value"] === "object" &&
+                        typeof $steps["updateOtp5Value"].then === "function"
+                      ) {
+                        $steps["updateOtp5Value"] =
+                          await $steps["updateOtp5Value"];
+                      }
+
+                      $steps["updateOtp6Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp6", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp6Value"] != null &&
+                        typeof $steps["updateOtp6Value"] === "object" &&
+                        typeof $steps["updateOtp6Value"].then === "function"
+                      ) {
+                        $steps["updateOtp6Value"] =
+                          await $steps["updateOtp6Value"];
+                      }
                     }}
                   >
                     <div
@@ -1266,6 +1477,36 @@ function PlasmicSignUp__RenderFunc(props: {
                       {"Log In"}
                     </div>
                   </div>
+                  {(() => {
+                    try {
+                      return $state.invalidOtp == true;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ql4I)}
+                    >
+                      <div
+                        data-plasmic-name={"h2151"}
+                        data-plasmic-override={overrides.h2151}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.h2151,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"Invalid OTP. Try again."}
+                      </div>
+                    </div>
+                  ) : null}
                   <div
                     data-plasmic-name={"h2149"}
                     data-plasmic-override={overrides.h2149}
@@ -1394,18 +1635,19 @@ const PlasmicDescendants = {
     "step3",
     "h1220",
     "parentOtp113",
-    "otp12",
+    "otp1",
     "parentOtp114",
-    "otp22",
+    "otp2",
     "parentOtp115",
-    "otp32",
+    "otp3",
     "parentOtp116",
-    "otp42",
+    "otp4",
     "parentOtp117",
-    "otp52",
+    "otp5",
     "parentOtp118",
-    "otp62",
+    "otp6",
     "primaryctaStage210",
+    "h2151",
     "h2149",
     "otp",
     "h2141"
@@ -1427,18 +1669,19 @@ const PlasmicDescendants = {
     "step3",
     "h1220",
     "parentOtp113",
-    "otp12",
+    "otp1",
     "parentOtp114",
-    "otp22",
+    "otp2",
     "parentOtp115",
-    "otp32",
+    "otp3",
     "parentOtp116",
-    "otp42",
+    "otp4",
     "parentOtp117",
-    "otp52",
+    "otp5",
     "parentOtp118",
-    "otp62",
+    "otp6",
     "primaryctaStage210",
+    "h2151",
     "h2149"
   ],
   section1Inner: [
@@ -1457,18 +1700,19 @@ const PlasmicDescendants = {
     "step3",
     "h1220",
     "parentOtp113",
-    "otp12",
+    "otp1",
     "parentOtp114",
-    "otp22",
+    "otp2",
     "parentOtp115",
-    "otp32",
+    "otp3",
     "parentOtp116",
-    "otp42",
+    "otp4",
     "parentOtp117",
-    "otp52",
+    "otp5",
     "parentOtp118",
-    "otp62",
+    "otp6",
     "primaryctaStage210",
+    "h2151",
     "h2149"
   ],
   step1: [
@@ -1498,34 +1742,36 @@ const PlasmicDescendants = {
     "step3",
     "h1220",
     "parentOtp113",
-    "otp12",
+    "otp1",
     "parentOtp114",
-    "otp22",
+    "otp2",
     "parentOtp115",
-    "otp32",
+    "otp3",
     "parentOtp116",
-    "otp42",
+    "otp4",
     "parentOtp117",
-    "otp52",
+    "otp5",
     "parentOtp118",
-    "otp62",
+    "otp6",
     "primaryctaStage210",
+    "h2151",
     "h2149"
   ],
   h1220: ["h1220"],
-  parentOtp113: ["parentOtp113", "otp12"],
-  otp12: ["otp12"],
-  parentOtp114: ["parentOtp114", "otp22"],
-  otp22: ["otp22"],
-  parentOtp115: ["parentOtp115", "otp32"],
-  otp32: ["otp32"],
-  parentOtp116: ["parentOtp116", "otp42"],
-  otp42: ["otp42"],
-  parentOtp117: ["parentOtp117", "otp52"],
-  otp52: ["otp52"],
-  parentOtp118: ["parentOtp118", "otp62"],
-  otp62: ["otp62"],
+  parentOtp113: ["parentOtp113", "otp1"],
+  otp1: ["otp1"],
+  parentOtp114: ["parentOtp114", "otp2"],
+  otp2: ["otp2"],
+  parentOtp115: ["parentOtp115", "otp3"],
+  otp3: ["otp3"],
+  parentOtp116: ["parentOtp116", "otp4"],
+  otp4: ["otp4"],
+  parentOtp117: ["parentOtp117", "otp5"],
+  otp5: ["otp5"],
+  parentOtp118: ["parentOtp118", "otp6"],
+  otp6: ["otp6"],
   primaryctaStage210: ["primaryctaStage210"],
+  h2151: ["h2151"],
   h2149: ["h2149"],
   otp: ["otp"],
   h2141: ["h2141"]
@@ -1551,18 +1797,19 @@ type NodeDefaultElementType = {
   step3: "div";
   h1220: "div";
   parentOtp113: "div";
-  otp12: "input";
+  otp1: "input";
   parentOtp114: "div";
-  otp22: "input";
+  otp2: "input";
   parentOtp115: "div";
-  otp32: "input";
+  otp3: "input";
   parentOtp116: "div";
-  otp42: "input";
+  otp4: "input";
   parentOtp117: "div";
-  otp52: "input";
+  otp5: "input";
   parentOtp118: "div";
-  otp62: "input";
+  otp6: "input";
   primaryctaStage210: "div";
+  h2151: "div";
   h2149: "div";
   otp: typeof Embed;
   h2141: "div";
@@ -1646,18 +1893,19 @@ export const PlasmicSignUp = Object.assign(
     step3: makeNodeComponent("step3"),
     h1220: makeNodeComponent("h1220"),
     parentOtp113: makeNodeComponent("parentOtp113"),
-    otp12: makeNodeComponent("otp12"),
+    otp1: makeNodeComponent("otp1"),
     parentOtp114: makeNodeComponent("parentOtp114"),
-    otp22: makeNodeComponent("otp22"),
+    otp2: makeNodeComponent("otp2"),
     parentOtp115: makeNodeComponent("parentOtp115"),
-    otp32: makeNodeComponent("otp32"),
+    otp3: makeNodeComponent("otp3"),
     parentOtp116: makeNodeComponent("parentOtp116"),
-    otp42: makeNodeComponent("otp42"),
+    otp4: makeNodeComponent("otp4"),
     parentOtp117: makeNodeComponent("parentOtp117"),
-    otp52: makeNodeComponent("otp52"),
+    otp5: makeNodeComponent("otp5"),
     parentOtp118: makeNodeComponent("parentOtp118"),
-    otp62: makeNodeComponent("otp62"),
+    otp6: makeNodeComponent("otp6"),
     primaryctaStage210: makeNodeComponent("primaryctaStage210"),
+    h2151: makeNodeComponent("h2151"),
     h2149: makeNodeComponent("h2149"),
     otp: makeNodeComponent("otp"),
     h2141: makeNodeComponent("h2141"),

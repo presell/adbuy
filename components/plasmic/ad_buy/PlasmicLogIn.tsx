@@ -103,6 +103,7 @@ export type PlasmicLogIn__OverridesType = {
   parentOtp112?: Flex__<"div">;
   otp6?: Flex__<"input">;
   primaryctaStage27?: Flex__<"div">;
+  h2152?: Flex__<"div">;
   h2144?: Flex__<"div">;
   step1?: Flex__<"div">;
   h1219?: Flex__<"div">;
@@ -112,6 +113,7 @@ export type PlasmicLogIn__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   primaryctaStage28?: Flex__<"div">;
   h2146?: Flex__<"div">;
+  h2151?: Flex__<"div">;
   h2145?: Flex__<"div">;
   h2147?: Flex__<"a"> & Partial<LinkProps>;
   h2141?: Flex__<"div">;
@@ -766,6 +768,216 @@ function PlasmicLogIn__RenderFunc(props: {
                       ) {
                         $steps["runCode"] = await $steps["runCode"];
                       }
+
+                      $steps["updateOtp1Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp1", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp1Value"] != null &&
+                        typeof $steps["updateOtp1Value"] === "object" &&
+                        typeof $steps["updateOtp1Value"].then === "function"
+                      ) {
+                        $steps["updateOtp1Value"] =
+                          await $steps["updateOtp1Value"];
+                      }
+
+                      $steps["updateOtp1Value2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp2", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp1Value2"] != null &&
+                        typeof $steps["updateOtp1Value2"] === "object" &&
+                        typeof $steps["updateOtp1Value2"].then === "function"
+                      ) {
+                        $steps["updateOtp1Value2"] =
+                          await $steps["updateOtp1Value2"];
+                      }
+
+                      $steps["updateOtp1Value3"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp3", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp1Value3"] != null &&
+                        typeof $steps["updateOtp1Value3"] === "object" &&
+                        typeof $steps["updateOtp1Value3"].then === "function"
+                      ) {
+                        $steps["updateOtp1Value3"] =
+                          await $steps["updateOtp1Value3"];
+                      }
+
+                      $steps["updateOtp1Value4"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp4", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp1Value4"] != null &&
+                        typeof $steps["updateOtp1Value4"] === "object" &&
+                        typeof $steps["updateOtp1Value4"].then === "function"
+                      ) {
+                        $steps["updateOtp1Value4"] =
+                          await $steps["updateOtp1Value4"];
+                      }
+
+                      $steps["updateOtp1Value5"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp5", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp1Value5"] != null &&
+                        typeof $steps["updateOtp1Value5"] === "object" &&
+                        typeof $steps["updateOtp1Value5"].then === "function"
+                      ) {
+                        $steps["updateOtp1Value5"] =
+                          await $steps["updateOtp1Value5"];
+                      }
+
+                      $steps["updateOtp1Value6"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["otp6", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateOtp1Value6"] != null &&
+                        typeof $steps["updateOtp1Value6"] === "object" &&
+                        typeof $steps["updateOtp1Value6"].then === "function"
+                      ) {
+                        $steps["updateOtp1Value6"] =
+                          await $steps["updateOtp1Value6"];
+                      }
                     }}
                   >
                     <div
@@ -779,6 +991,39 @@ function PlasmicLogIn__RenderFunc(props: {
                       {"Log In"}
                     </div>
                   </div>
+                  {(() => {
+                    try {
+                      return $state.invalidOtp == true;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___9U5A0
+                      )}
+                    >
+                      <div
+                        data-plasmic-name={"h2152"}
+                        data-plasmic-override={overrides.h2152}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.h2152,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"Invalid OTP. Try again."}
+                      </div>
+                    </div>
+                  ) : null}
                   <div
                     data-plasmic-name={"h2144"}
                     data-plasmic-override={overrides.h2144}
@@ -1100,6 +1345,42 @@ function PlasmicLogIn__RenderFunc(props: {
                       ) {
                         $steps["runCode"] = await $steps["runCode"];
                       }
+
+                      $steps["updateEmailInputValue"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["emailInput", "value"]
+                              },
+                              operation: 0,
+                              value: ""
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateEmailInputValue"] != null &&
+                        typeof $steps["updateEmailInputValue"] === "object" &&
+                        typeof $steps["updateEmailInputValue"].then ===
+                          "function"
+                      ) {
+                        $steps["updateEmailInputValue"] =
+                          await $steps["updateEmailInputValue"];
+                      }
                     }}
                   >
                     <div
@@ -1137,6 +1418,36 @@ function PlasmicLogIn__RenderFunc(props: {
                       {
                         "By proceeding, you agree to our Terms and Privacy Policy."
                       }
+                    </div>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.invalidEmail == true;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox___0KSd)}
+                    >
+                      <div
+                        data-plasmic-name={"h2151"}
+                        data-plasmic-override={overrides.h2151}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.h2151,
+                          "geologica-h2"
+                        )}
+                      >
+                        {"Account not found. Try again."}
+                      </div>
                     </div>
                   ) : null}
                   <div
@@ -1253,6 +1564,7 @@ const PlasmicDescendants = {
     "parentOtp112",
     "otp6",
     "primaryctaStage27",
+    "h2152",
     "h2144",
     "step1",
     "h1219",
@@ -1262,6 +1574,7 @@ const PlasmicDescendants = {
     "embedHtml",
     "primaryctaStage28",
     "h2146",
+    "h2151",
     "h2145",
     "h2147",
     "h2141"
@@ -1285,6 +1598,7 @@ const PlasmicDescendants = {
     "parentOtp112",
     "otp6",
     "primaryctaStage27",
+    "h2152",
     "h2144",
     "step1",
     "h1219",
@@ -1294,6 +1608,7 @@ const PlasmicDescendants = {
     "embedHtml",
     "primaryctaStage28",
     "h2146",
+    "h2151",
     "h2145",
     "h2147"
   ],
@@ -1314,6 +1629,7 @@ const PlasmicDescendants = {
     "parentOtp112",
     "otp6",
     "primaryctaStage27",
+    "h2152",
     "h2144",
     "step1",
     "h1219",
@@ -1323,6 +1639,7 @@ const PlasmicDescendants = {
     "embedHtml",
     "primaryctaStage28",
     "h2146",
+    "h2151",
     "h2145",
     "h2147"
   ],
@@ -1342,6 +1659,7 @@ const PlasmicDescendants = {
     "parentOtp112",
     "otp6",
     "primaryctaStage27",
+    "h2152",
     "h2144"
   ],
   h1218: ["h1218"],
@@ -1358,6 +1676,7 @@ const PlasmicDescendants = {
   parentOtp112: ["parentOtp112", "otp6"],
   otp6: ["otp6"],
   primaryctaStage27: ["primaryctaStage27"],
+  h2152: ["h2152"],
   h2144: ["h2144"],
   step1: [
     "step1",
@@ -1368,6 +1687,7 @@ const PlasmicDescendants = {
     "embedHtml",
     "primaryctaStage28",
     "h2146",
+    "h2151",
     "h2145",
     "h2147"
   ],
@@ -1378,6 +1698,7 @@ const PlasmicDescendants = {
   embedHtml: ["embedHtml"],
   primaryctaStage28: ["primaryctaStage28"],
   h2146: ["h2146"],
+  h2151: ["h2151"],
   h2145: ["h2145"],
   h2147: ["h2147"],
   h2141: ["h2141"]
@@ -1405,6 +1726,7 @@ type NodeDefaultElementType = {
   parentOtp112: "div";
   otp6: "input";
   primaryctaStage27: "div";
+  h2152: "div";
   h2144: "div";
   step1: "div";
   h1219: "div";
@@ -1414,6 +1736,7 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   primaryctaStage28: "div";
   h2146: "div";
+  h2151: "div";
   h2145: "div";
   h2147: "a";
   h2141: "div";
@@ -1499,6 +1822,7 @@ export const PlasmicLogIn = Object.assign(
     parentOtp112: makeNodeComponent("parentOtp112"),
     otp6: makeNodeComponent("otp6"),
     primaryctaStage27: makeNodeComponent("primaryctaStage27"),
+    h2152: makeNodeComponent("h2152"),
     h2144: makeNodeComponent("h2144"),
     step1: makeNodeComponent("step1"),
     h1219: makeNodeComponent("h1219"),
@@ -1508,6 +1832,7 @@ export const PlasmicLogIn = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     primaryctaStage28: makeNodeComponent("primaryctaStage28"),
     h2146: makeNodeComponent("h2146"),
+    h2151: makeNodeComponent("h2151"),
     h2145: makeNodeComponent("h2145"),
     h2147: makeNodeComponent("h2147"),
     h2141: makeNodeComponent("h2141"),
