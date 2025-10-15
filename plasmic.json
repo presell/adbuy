@@ -392,6 +392,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/app/campaigns/invoices"
+        },
+        {
+          "id": "e261Hkwgc1uT",
+          "name": "AppWorkflows",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppWorkflows.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/workflows.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppWorkflows.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/workflows"
         }
       ],
       "icons": [
