@@ -406,6 +406,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/app/workflows"
+        },
+        {
+          "id": "hasT-1YOyBbQ",
+          "name": "AppIntegrations",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppIntegrations.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/integrations.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppIntegrations.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/integrations"
         }
       ],
       "icons": [
