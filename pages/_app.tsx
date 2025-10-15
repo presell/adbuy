@@ -211,39 +211,49 @@ useEffect(() => {
   return (
     <>
 
-      // ✅ Redirect unauthenticated users away from /app/* pages
-import { useRouter } from "next/router";
+          {/* ✅ Redirect unauthenticated users away from /app/* pages */}
 
-// ... inside MyApp()
-const router = useRouter();
+      function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
 
-useEffect(() => {
-  const checkAuth = async () => {
-    if (typeof window === "undefined") return;
+  useEffect(() => {
+    const checkAuth = async () => {
+      if (typeof window === "undefined") return;
 
-    // 1️⃣ Only protect routes under /app/
-    if (router.pathname.startsWith("/app")) {
-      console.log("[AuthGuard] Checking user authentication...");
+      // 🛑 Only protect routes under /app
+      if (router.pathname.startsWith("/app")) {
+        console.log("[AuthGuard] Checking user authentication...");
 
-      // Check Supabase session or Plasmic user context
-      const { data } = await supabase.auth.getSession();
-      const session = data?.session;
-      const plasmicUser = (window as any).__PLASMIC_USER__;
+        // Check Supabase session or Plasmic user context
+        const { data } = await supabase.auth.getSession();
+        const session = data?.session;
+        const plasmicUser = (window as any).__PLASMIC_USER__;
 
-      const isLoggedIn =
-        !!session?.user || !!plasmicUser?.isLoggedIn || !!plasmicUser?.email;
+        const isLoggedIn =
+          !!session?.user || !!plasmicUser?.isLoggedIn || !!plasmicUser?.email;
 
-      // 2️⃣ If NOT logged in, redirect to /login
-      if (!isLoggedIn) {
-        console.warn("[AuthGuard] 🚫 Unauthorized access — redirecting to /login");
-        router.replace("/login");
+        // If NOT logged in, redirect to /login
+        if (!isLoggedIn) {
+          console.warn("[AuthGuard] ❌ Unauthorized access — redirecting to /login");
+          router.replace("/login");
+        }
       }
-    }
-  };
+    };
 
-  checkAuth();
-}, [router.pathname]);
+    checkAuth();
+  }, [router.pathname]);
 
+  return (
+    <>
+      {/* Keep your existing scripts and providers below */}
+      <div className={geologica.variable}>
+        <PlasmicRootProvider user={user}>
+          <Component {...pageProps} />
+        </PlasmicRootProvider>
+      </div>
+    </>
+  );
+}
 
     {/* ✅ 1. Google Analytics */}
     <Script
