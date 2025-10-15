@@ -71,6 +71,7 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: OI86U2J16OqJ/css
 
 import LogoutSvgrepoComSvgIcon from "./icons/PlasmicIcon__LogoutSvgrepoComSvg"; // plasmic-import: DXSTQ80UnIaK/icon
+import ChevronRightSvgIcon from "./icons/PlasmicIcon__ChevronRightSvg"; // plasmic-import: vb2qm85zbhWE/icon
 import Calendar2SvgIcon from "./icons/PlasmicIcon__Calendar2Svg"; // plasmic-import: mcM0_cfK3w_Q/icon
 import TimerSvgIcon from "./icons/PlasmicIcon__TimerSvg"; // plasmic-import: d6xwAhgFuRAT/icon
 import ShoppingCart1SvgIcon from "./icons/PlasmicIcon__ShoppingCart1Svg"; // plasmic-import: IVnyUYpybly8/icon
@@ -113,6 +114,7 @@ export type PlasmicHomepage__OverridesType = {
   h11?: Flex__<"div">;
   h21?: Flex__<"div">;
   btn1?: Flex__<"a"> & Partial<LinkProps>;
+  btn12?: Flex__<"a"> & Partial<LinkProps>;
   mainContainer14?: Flex__<"div">;
   header18?: Flex__<"div">;
   addedHeader10?: Flex__<"div">;
@@ -580,30 +582,86 @@ function PlasmicHomepage__RenderFunc(props: {
                     "AdBuy is the all-in-one advertising platform for lead generation and automated engagement."
                   }
                 </div>
-                <PlasmicLink__
-                  data-plasmic-name={"btn1"}
-                  data-plasmic-override={overrides.btn1}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    sty.btn1,
-                    "button"
-                  )}
-                  component={Link}
-                  href={`/signup`}
-                  platform={"nextjs"}
-                >
-                  <div
+                {(() => {
+                  try {
+                    return currentUser?.isLoggedIn == false;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <PlasmicLink__
+                    data-plasmic-name={"btn1"}
+                    data-plasmic-override={overrides.btn1}
                     className={classNames(
                       projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___9ZdVe,
-                      "geologica-h1"
+                      projectcss.a,
+                      sty.btn1,
+                      "button"
                     )}
+                    component={Link}
+                    href={`/signup`}
+                    platform={"nextjs"}
                   >
-                    {"Get Started"}
-                  </div>
-                </PlasmicLink__>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___9ZdVe,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Get Started"}
+                    </div>
+                  </PlasmicLink__>
+                ) : null}
+                {(() => {
+                  try {
+                    return currentUser?.isLoggedIn == true;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <PlasmicLink__
+                    data-plasmic-name={"btn12"}
+                    data-plasmic-override={overrides.btn12}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.btn12,
+                      "button"
+                    )}
+                    component={Link}
+                    href={`/app/campaigns`}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__hi87A,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Go to App"}
+                    </div>
+                    <ChevronRightSvgIcon
+                      className={classNames(projectcss.all, sty.svg__hyvXv, ``)}
+                      role={"img"}
+                    />
+                  </PlasmicLink__>
+                ) : null}
               </div>
               <div
                 className={classNames(
@@ -3927,6 +3985,7 @@ const PlasmicDescendants = {
     "h11",
     "h21",
     "btn1",
+    "btn12",
     "mainContainer14",
     "header18",
     "addedHeader10",
@@ -4045,6 +4104,7 @@ const PlasmicDescendants = {
     "h11",
     "h21",
     "btn1",
+    "btn12",
     "mainContainer14",
     "header18",
     "addedHeader10",
@@ -4069,6 +4129,7 @@ const PlasmicDescendants = {
     "h11",
     "h21",
     "btn1",
+    "btn12",
     "mainContainer14",
     "header18",
     "addedHeader10",
@@ -4087,10 +4148,11 @@ const PlasmicDescendants = {
     "emailRow19",
     "locationRow19"
   ],
-  hero1: ["hero1", "h11", "h21", "btn1"],
+  hero1: ["hero1", "h11", "h21", "btn1", "btn12"],
   h11: ["h11"],
   h21: ["h21"],
   btn1: ["btn1"],
+  btn12: ["btn12"],
   mainContainer14: [
     "mainContainer14",
     "header18",
@@ -4514,6 +4576,7 @@ type NodeDefaultElementType = {
   h11: "div";
   h21: "div";
   btn1: "a";
+  btn12: "a";
   mainContainer14: "div";
   header18: "div";
   addedHeader10: "div";
@@ -4694,6 +4757,7 @@ export const PlasmicHomepage = Object.assign(
     h11: makeNodeComponent("h11"),
     h21: makeNodeComponent("h21"),
     btn1: makeNodeComponent("btn1"),
+    btn12: makeNodeComponent("btn12"),
     mainContainer14: makeNodeComponent("mainContainer14"),
     header18: makeNodeComponent("header18"),
     addedHeader10: makeNodeComponent("addedHeader10"),

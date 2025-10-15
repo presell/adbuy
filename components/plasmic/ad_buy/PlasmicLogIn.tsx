@@ -737,9 +737,10 @@ function PlasmicLogIn__RenderFunc(props: {
                                         );
                                         setTimeout(() => {
                                           console.log(
-                                            "[OTP Verification] \uD83D\uDD01 Redirecting to home '/' ..."
+                                            "[OTP Verification] \uD83D\uDD01 Redirecting to app '/app' ..."
                                           );
-                                          window.location.href = "/";
+                                          window.location.href =
+                                            "/app/campaigns";
                                         }, 300);
                                       } catch (err) {
                                         console.error(
