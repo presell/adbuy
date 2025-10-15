@@ -385,6 +385,53 @@
     font-size: 12px;
   }
 }
+.primaryctaStage23 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: #000000;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 4px 9px;
+  border: 1px solid #f0f0f0;
+}
+.text___1TNuk {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 400;
+  margin-right: 5px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___1TNuk {
+    font-size: 12px;
+  }
+}
+.svg__n55Ba {
+  object-fit: cover;
+  max-width: 100%;
+  color: #ffffff;
+  height: 12px;
+}
 .freeBox__n00Jh {
   display: flex;
   flex-direction: row;

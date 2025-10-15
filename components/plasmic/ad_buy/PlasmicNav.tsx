@@ -70,6 +70,7 @@ import sty from "./PlasmicNav.module.css"; // plasmic-import: vyxiNtjjOw4g/css
 import AdBuyDarkTextSmallestCursorSvgIcon from "./icons/PlasmicIcon__AdBuyDarkTextSmallestCursorSvg"; // plasmic-import: w5CBTUelss3U/icon
 import ChevsUpSvgIcon from "./icons/PlasmicIcon__ChevsUpSvg"; // plasmic-import: 1DSkTKJxHgDO/icon
 import ChevsDownSvgIcon from "./icons/PlasmicIcon__ChevsDownSvg"; // plasmic-import: eAZZFTnJnJ5Z/icon
+import ChevronRightSvgIcon from "./icons/PlasmicIcon__ChevronRightSvg"; // plasmic-import: vb2qm85zbhWE/icon
 import LeadsProductSvgIcon from "./icons/PlasmicIcon__LeadsProductSvg"; // plasmic-import: zxoMIvW6Akl7/icon
 import WorkflowsProductSvgIcon from "./icons/PlasmicIcon__WorkflowsProductSvg"; // plasmic-import: jg0xP48M7cWa/icon
 import ApiProductSvgIcon from "./icons/PlasmicIcon__ApiProductSvg"; // plasmic-import: GoDXNUB0EB6B/icon
@@ -99,6 +100,7 @@ export type PlasmicNav__OverridesType = {
   root?: Flex__<"div">;
   primaryctaStage13?: Flex__<"a"> & Partial<LinkProps>;
   primaryctaStage22?: Flex__<"a"> & Partial<LinkProps>;
+  primaryctaStage23?: Flex__<"a"> & Partial<LinkProps>;
   productNav2?: Flex__<"div">;
   h21155?: Flex__<"div">;
   h21156?: Flex__<"div">;
@@ -524,54 +526,124 @@ function PlasmicNav__RenderFunc(props: {
               </PlasmicLink__>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__hnX8)}>
-              <PlasmicLink__
-                data-plasmic-name={"primaryctaStage13"}
-                data-plasmic-override={overrides.primaryctaStage13}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.a,
-                  sty.primaryctaStage13,
-                  ``
-                )}
-                component={Link}
-                href={`/login`}
-                platform={"nextjs"}
-              >
-                <div
+              {(() => {
+                try {
+                  return currentUser?.isLoggedIn == false;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <PlasmicLink__
+                  data-plasmic-name={"primaryctaStage13"}
+                  data-plasmic-override={overrides.primaryctaStage13}
                   className={classNames(
                     projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___1ChV,
-                    "geologica-h2"
+                    projectcss.a,
+                    sty.primaryctaStage13,
+                    ``
                   )}
+                  component={Link}
+                  href={`/login`}
+                  platform={"nextjs"}
                 >
-                  {"Log in"}
-                </div>
-              </PlasmicLink__>
-              <PlasmicLink__
-                data-plasmic-name={"primaryctaStage22"}
-                data-plasmic-override={overrides.primaryctaStage22}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.a,
-                  sty.primaryctaStage22,
-                  "button"
-                )}
-                component={Link}
-                href={`/signup`}
-                platform={"nextjs"}
-              >
-                <div
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___1ChV,
+                      "geologica-h2"
+                    )}
+                  >
+                    {"Log in"}
+                  </div>
+                </PlasmicLink__>
+              ) : null}
+              {(() => {
+                try {
+                  return currentUser?.isLoggedIn == false;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <PlasmicLink__
+                  data-plasmic-name={"primaryctaStage22"}
+                  data-plasmic-override={overrides.primaryctaStage22}
                   className={classNames(
                     projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__fthr,
-                    "geologica-h1"
+                    projectcss.a,
+                    sty.primaryctaStage22,
+                    "button"
                   )}
+                  component={Link}
+                  href={`/signup`}
+                  platform={"nextjs"}
                 >
-                  {"Sign up"}
-                </div>
-              </PlasmicLink__>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__fthr,
+                      "geologica-h1"
+                    )}
+                  >
+                    {"Sign up"}
+                  </div>
+                </PlasmicLink__>
+              ) : null}
+              {(() => {
+                try {
+                  return currentUser?.isLoggedIn == true;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <PlasmicLink__
+                  data-plasmic-name={"primaryctaStage23"}
+                  data-plasmic-override={overrides.primaryctaStage23}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.a,
+                    sty.primaryctaStage23,
+                    "button"
+                  )}
+                  component={Link}
+                  href={`/app/campaigns`}
+                  platform={"nextjs"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___1TNuk,
+                      "geologica-h1"
+                    )}
+                  >
+                    {"Go to App"}
+                  </div>
+                  <ChevronRightSvgIcon
+                    className={classNames(projectcss.all, sty.svg__n55Ba, ``)}
+                    role={"img"}
+                  />
+                </PlasmicLink__>
+              ) : null}
             </div>
           </div>
         </div>
@@ -1296,6 +1368,7 @@ const PlasmicDescendants = {
     "root",
     "primaryctaStage13",
     "primaryctaStage22",
+    "primaryctaStage23",
     "productNav2",
     "h21155",
     "h21156",
@@ -1308,6 +1381,7 @@ const PlasmicDescendants = {
   ],
   primaryctaStage13: ["primaryctaStage13"],
   primaryctaStage22: ["primaryctaStage22"],
+  primaryctaStage23: ["primaryctaStage23"],
   productNav2: [
     "productNav2",
     "h21155",
@@ -1333,6 +1407,7 @@ type NodeDefaultElementType = {
   root: "div";
   primaryctaStage13: "a";
   primaryctaStage22: "a";
+  primaryctaStage23: "a";
   productNav2: "div";
   h21155: "div";
   h21156: "div";
@@ -1408,6 +1483,7 @@ export const PlasmicNav = Object.assign(
     // Helper components rendering sub-elements
     primaryctaStage13: makeNodeComponent("primaryctaStage13"),
     primaryctaStage22: makeNodeComponent("primaryctaStage22"),
+    primaryctaStage23: makeNodeComponent("primaryctaStage23"),
     productNav2: makeNodeComponent("productNav2"),
     h21155: makeNodeComponent("h21155"),
     h21156: makeNodeComponent("h21156"),
