@@ -453,7 +453,7 @@
   height: auto;
   max-width: 100%;
   margin-top: 30px;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
   margin-right: 0px;
   min-width: 0;
 }
@@ -701,7 +701,7 @@
   border-width: 1px;
   border-style: none;
 }
-.primaryctaStage29 {
+.primaryctaStage210 {
   animation: none;
   display: flex;
   flex-direction: row;
@@ -712,18 +712,18 @@
   max-width: 100%;
   background: #000000;
   cursor: pointer;
-  margin-top: 15px;
+  margin-top: 0px;
   flex-shrink: 0;
   border-radius: 6px;
   padding: 4px 24px;
   border: 1px solid #f0f0f0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .primaryctaStage29 {
+  .primaryctaStage210 {
     animation: none;
   }
 }
-.text__j3LE7 {
+.text__qEq6J {
   animation: none;
   position: relative;
   width: auto;
@@ -745,7 +745,7 @@
   text-overflow: clip;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .text__j3LE7 {
+  .text__qEq6J {
     animation: none;
     font-size: 13px;
   }

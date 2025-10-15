@@ -112,7 +112,7 @@ export type PlasmicSignUp__OverridesType = {
   otp52?: Flex__<"input">;
   parentOtp118?: Flex__<"div">;
   otp62?: Flex__<"input">;
-  primaryctaStage29?: Flex__<"div">;
+  primaryctaStage210?: Flex__<"div">;
   h2149?: Flex__<"div">;
   otp?: Flex__<typeof Embed>;
   h2141?: Flex__<"div">;
@@ -1108,11 +1108,11 @@ function PlasmicSignUp__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    data-plasmic-name={"primaryctaStage29"}
-                    data-plasmic-override={overrides.primaryctaStage29}
+                    data-plasmic-name={"primaryctaStage210"}
+                    data-plasmic-override={overrides.primaryctaStage210}
                     className={classNames(
                       projectcss.all,
-                      sty.primaryctaStage29,
+                      sty.primaryctaStage210,
                       "submit"
                     )}
                     onClick={async event => {
@@ -1259,7 +1259,7 @@ function PlasmicSignUp__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__j3LE7,
+                        sty.text__qEq6J,
                         "geologica-h1"
                       )}
                     >
@@ -1405,7 +1405,7 @@ const PlasmicDescendants = {
     "otp52",
     "parentOtp118",
     "otp62",
-    "primaryctaStage29",
+    "primaryctaStage210",
     "h2149",
     "otp",
     "h2141"
@@ -1438,7 +1438,7 @@ const PlasmicDescendants = {
     "otp52",
     "parentOtp118",
     "otp62",
-    "primaryctaStage29",
+    "primaryctaStage210",
     "h2149"
   ],
   section1Inner: [
@@ -1468,7 +1468,7 @@ const PlasmicDescendants = {
     "otp52",
     "parentOtp118",
     "otp62",
-    "primaryctaStage29",
+    "primaryctaStage210",
     "h2149"
   ],
   step1: [
@@ -1509,7 +1509,7 @@ const PlasmicDescendants = {
     "otp52",
     "parentOtp118",
     "otp62",
-    "primaryctaStage29",
+    "primaryctaStage210",
     "h2149"
   ],
   h1220: ["h1220"],
@@ -1525,7 +1525,7 @@ const PlasmicDescendants = {
   otp52: ["otp52"],
   parentOtp118: ["parentOtp118", "otp62"],
   otp62: ["otp62"],
-  primaryctaStage29: ["primaryctaStage29"],
+  primaryctaStage210: ["primaryctaStage210"],
   h2149: ["h2149"],
   otp: ["otp"],
   h2141: ["h2141"]
@@ -1562,7 +1562,7 @@ type NodeDefaultElementType = {
   otp52: "input";
   parentOtp118: "div";
   otp62: "input";
-  primaryctaStage29: "div";
+  primaryctaStage210: "div";
   h2149: "div";
   otp: typeof Embed;
   h2141: "div";
@@ -1657,7 +1657,7 @@ export const PlasmicSignUp = Object.assign(
     otp52: makeNodeComponent("otp52"),
     parentOtp118: makeNodeComponent("parentOtp118"),
     otp62: makeNodeComponent("otp62"),
-    primaryctaStage29: makeNodeComponent("primaryctaStage29"),
+    primaryctaStage210: makeNodeComponent("primaryctaStage210"),
     h2149: makeNodeComponent("h2149"),
     otp: makeNodeComponent("otp"),
     h2141: makeNodeComponent("h2141"),
