@@ -338,7 +338,88 @@ function PlasmicAppLayout__RenderFunc(props: {
                 role={"img"}
               />
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__xjXdy)}>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__xjXdy)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (async () => {
+                            return (async () => {
+                              try {
+                                console.log("[Logout] Starting logout...");
+                                const { createClient } = await import(
+                                  "@supabase/supabase-js"
+                                );
+                                const supabase = createClient(
+                                  "https://habwycahldzwxreftesz.supabase.co",
+                                  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhYnd5Y2FobGR6d3hyZWZ0ZXN6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4NDY0NjcsImV4cCI6MjA3NTQyMjQ2N30.TWRXYN6942fhPEPG4fT6UDRzPeu06abxrFkbwxhEVQQ"
+                                );
+                                const { error } = await supabase.auth.signOut();
+                                if (error) {
+                                  console.error(
+                                    "[Logout] Error signing out:",
+                                    error.message
+                                  );
+                                } else {
+                                  console.log(
+                                    "[Logout] \u2705 Supabase session cleared"
+                                  );
+                                }
+                                localStorage.removeItem(
+                                  "sb-habwycahldzwxreftesz-auth-token"
+                                );
+                                document.cookie =
+                                  "plasmic_auth=; Max-Age=0; Path=/;";
+                                console.log(
+                                  "[Logout] \uD83C\uDF6A Plasmic Auth cookie cleared"
+                                );
+                                const clearedUser = {
+                                  id: null,
+                                  email: null,
+                                  isLoggedIn: false,
+                                  role: "anonymous"
+                                };
+                                window.__PLASMIC_USER__ = clearedUser;
+                                window.plasmicUser = clearedUser;
+                                window.dispatchEvent(
+                                  new StorageEvent("storage", {
+                                    key: "plasmicUser"
+                                  })
+                                );
+                                console.log(
+                                  "[Logout] \uD83E\uDDF9 User context fully cleared"
+                                );
+                                setTimeout(() => {
+                                  window.location.href = "/";
+                                }, 300);
+                              } catch (err) {
+                                console.error(
+                                  "[Logout] \uD83D\uDCA5 Unexpected error:",
+                                  err
+                                );
+                              }
+                            })();
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+              }}
+            >
               <PlasmicImg__
                 data-plasmic-name={"img"}
                 data-plasmic-override={overrides.img}
