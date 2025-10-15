@@ -632,6 +632,7 @@ function PlasmicAppLayout__RenderFunc(props: {
                 }
               )}
               component={Link}
+              href={`/app/campaigns/analytics`}
               platform={"nextjs"}
             >
               <AnalyticsSharpSvgrepoComSvgIcon
@@ -687,6 +688,7 @@ function PlasmicAppLayout__RenderFunc(props: {
                 }
               )}
               component={Link}
+              href={`/app/campaigns/cards`}
               platform={"nextjs"}
             >
               <CreditCardSvgIcon
@@ -732,6 +734,7 @@ function PlasmicAppLayout__RenderFunc(props: {
                 }
               )}
               component={Link}
+              href={`/app/campaigns/invoices`}
               platform={"nextjs"}
             >
               <DocumentSvgIcon

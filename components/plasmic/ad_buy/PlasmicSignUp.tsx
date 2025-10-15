@@ -560,7 +560,8 @@ function PlasmicSignUp__RenderFunc(props: {
                                         }
                                         setTimeout(() => {
                                           window.location.href =
-                                            json.redirectURL || "/";
+                                            json.redirectURL ||
+                                            "/app/campaigns";
                                         }, 250);
                                       } else {
                                         console.warn(
