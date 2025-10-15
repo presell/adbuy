@@ -5,7 +5,7 @@ import "../styles/globals.css";
 import { supabase } from "../lib/supabaseClient";
 import Script from "next/script";
 import localFont from "next/font/local";
-import useRouter from "next/router"; // ✅ FIXED: default import ensures router type inference works in Next.js 14+
+import { useRouter } from "next/router"; // ✅ Correct named import
 
 // Declare global functions injected by main.js to avoid TypeScript errors
 declare global {
@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [user, setUser] = useState<any>(null);
   const authenticatedViaCookie = useRef(false);
   const suppressLogoutRef = useRef(false);
-  const router = useRouter(); // ✅ router initialized cleanly
+  const router = useRouter(); // ✅ useRouter hook ready for use
 
   const syncPlasmicUser = (u: any) => {
     if (typeof window === "undefined") return;
@@ -158,7 +158,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const checkAuth = async () => {
       if (typeof window === "undefined") return;
 
-      if (router?.pathname?.startsWith?.("/app")) {
+      if (router.pathname.startsWith("/app")) {
         console.log("[AuthGuard] Checking user authentication...");
 
         const { data } = await supabase.auth.getSession();
