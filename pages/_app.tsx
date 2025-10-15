@@ -211,6 +211,80 @@ useEffect(() => {
   return (
     <>
 
+
+    {/* ✅ 1. Google Analytics */}
+    <Script
+      strategy="afterInteractive"
+      src="https://www.googletagmanager.com/gtag/js?id=G-SW67MBB5HR"
+    />
+    <Script id="google-analytics" strategy="afterInteractive">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SW67MBB5HR');
+      `}
+    </Script>
+
+    {/* ✅ 2. Meta Pixel */}
+    <Script id="facebook-pixel" strategy="afterInteractive">
+      {`
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1258231451566673');
+        fbq('track', 'PageView');
+      `}
+    </Script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style={{ display: "none" }}
+        src="https://www.facebook.com/tr?id=1258231451566673&ev=PageView&noscript=1"
+      />
+    </noscript>
+
+    {/* ✅ 3. ReB2B Script */}
+    <Script id="reb2b" strategy="afterInteractive">
+      {`
+        !function () {
+          var reb2b = window.reb2b = window.reb2b || [];
+          if (reb2b.invoked) return;
+          reb2b.invoked = true;
+          reb2b.methods = ["identify", "collect"];
+          reb2b.factory = function (method) {
+            return function () {
+              var args = Array.prototype.slice.call(arguments);
+              args.unshift(method);
+              reb2b.push(args);
+              return reb2b;
+            };
+          };
+          for (var i = 0; i < reb2b.methods.length; i++) {
+            var key = reb2b.methods[i];
+            reb2b[key] = reb2b.factory(key);
+          }
+          reb2b.load = function (key) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.async = true;
+            script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/5NRP9HQX9GO1.js.gz";
+            var first = document.getElementsByTagName("script")[0];
+            first.parentNode.insertBefore(script, first);
+          };
+          reb2b.SNIPPET_VERSION = "1.0.1";
+          reb2b.load("5NRP9HQX9GO1");
+        }();
+      `}
+    </Script>
+
+      
       {/* ✅ 1. Scroll Timeline Polyfill (load afterInteractive) */}
 <Script
   src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
