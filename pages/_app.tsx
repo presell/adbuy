@@ -152,6 +152,36 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
+  // ✅ Redirect unauthenticated users away from /app/* pages
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      if (typeof window === "undefined") return;
+
+      // Only protect routes under /app/*
+      if (router.pathname.startsWith("/app")) {
+        console.log("[AuthGuard] Checking user authentication...");
+
+        const { data } = await supabase.auth.getSession();
+        const session = data?.session;
+        const plasmicUser = (window as any).__PLASMIC_USER__;
+
+        const isLoggedIn =
+          !!session?.user || !!plasmicUser?.isLoggedIn || !!plasmicUser?.email;
+
+        if (!isLoggedIn) {
+          console.warn("[AuthGuard] 🚫 Unauthorized — redirecting to /login");
+          router.replace("/login");
+        }
+      }
+    };
+
+    checkAuth();
+  }, [router.pathname]);
+
+
+  
 // ✅ Global Script Reinitializer (debounced + safe from recursion)
 useEffect(() => {
   let timeout: NodeJS.Timeout | null = null;
@@ -211,45 +241,6 @@ useEffect(() => {
   return (
     <>
 
-// ✅ Redirect unauthenticated users away from /app/* pages
-import { useRouter } from "next/router";
-
-function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      if (typeof window === "undefined") return;
-
-      // Only protect routes under /app/*
-      if (router.pathname.startsWith("/app")) {
-        console.log("[AuthGuard] Checking user authentication...");
-
-        const { data } = await supabase.auth.getSession();
-        const session = data?.session;
-        const plasmicUser = (window as any).__PLASMIC_USER__;
-
-        const isLoggedIn =
-          !!session?.user || !!plasmicUser?.isLoggedIn || !!plasmicUser?.email;
-
-        if (!isLoggedIn) {
-          console.warn("[AuthGuard] 🚫 Unauthorized — redirecting to /login");
-          router.replace("/login");
-        }
-      }
-    };
-
-    checkAuth();
-  }, [router.pathname]);
-
-  return (
-    <div className={geologica.variable}>
-      <PlasmicRootProvider user={user}>
-        <Component {...pageProps} />
-      </PlasmicRootProvider>
-    </div>
-  );
-}
 
     {/* ✅ 1. Google Analytics */}
     <Script
