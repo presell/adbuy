@@ -8,7 +8,7 @@ const PLASMIC_SECRET =
   "6deTnq42dNIImRBzotdmaBCtt6qw1gjuqWXJw88c3YRFTYYwb1rrnv73a4nhVdvjUJrwY3kxCSy5jdjBWnMA";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { email, userId, redirectURL = "/" } = req.body;
+  const { email, userId, redirectURL = "/app/campaign" } = req.body;
 
   // 🚨 Basic validation
   if (!email || !userId) {
