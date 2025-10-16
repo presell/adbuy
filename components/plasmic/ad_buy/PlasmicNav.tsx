@@ -392,8 +392,14 @@ function PlasmicNav__RenderFunc(props: {
                   />
                 ) : null}
               </div>
-              <div
-                className={classNames(projectcss.all, sty.freeBox__kKq8)}
+              <PlasmicLink__
+                className={classNames(
+                  projectcss.all,
+                  projectcss.a,
+                  sty.link__kKq8
+                )}
+                component={Link}
+                href={`/blog`}
                 onMouseEnter={async event => {
                   const $steps = {};
 
@@ -431,6 +437,7 @@ function PlasmicNav__RenderFunc(props: {
                     $steps["updateNav"] = await $steps["updateNav"];
                   }
                 }}
+                platform={"nextjs"}
               >
                 <div
                   className={classNames(
@@ -454,7 +461,7 @@ function PlasmicNav__RenderFunc(props: {
                     role={"img"}
                   />
                 ) : null}
-              </div>
+              </PlasmicLink__>
               <PlasmicLink__
                 className={classNames(
                   projectcss.all,
@@ -462,6 +469,7 @@ function PlasmicNav__RenderFunc(props: {
                   sty.link___7Uwbt
                 )}
                 component={Link}
+                href={`/pricing`}
                 onMouseEnter={async event => {
                   const $steps = {};
 

@@ -569,6 +569,7 @@ function PlasmicFooter__RenderFunc(props: {
                         sty.link__bMEwx
                       )}
                       component={Link}
+                      href={`/pricing`}
                       platform={"nextjs"}
                     >
                       <div
@@ -634,7 +635,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__wfxoa
                     )}
                     component={Link}
-                    href={""}
+                    href={`/`}
                     platform={"nextjs"}
                   >
                     <div
@@ -679,6 +680,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link___7OP0I
                     )}
                     component={Link}
+                    href={`/blog`}
                     platform={"nextjs"}
                   >
                     <div
@@ -902,6 +904,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__rmyQ
                     )}
                     component={Link}
+                    href={`/pricing`}
                     platform={"nextjs"}
                   >
                     <div
