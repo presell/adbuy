@@ -9,6 +9,16 @@
         "projectId": "fKsvVS5XnenaZB1533Xwx5",
         "id": "CtFh2MllxTKM"
       }
+    },
+    {
+      "name": "System: Border Secondary",
+      "type": "color",
+      "value": "var(--antd-colorBorderSecondary)",
+      "category": "color",
+      "meta": {
+        "projectId": "fKsvVS5XnenaZB1533Xwx5",
+        "id": "_6YQUKUQbwQw"
+      }
     }
   ],
   "global": {

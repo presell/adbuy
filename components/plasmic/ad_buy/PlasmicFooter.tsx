@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -132,6 +133,7 @@ export type PlasmicFooter__OverridesType = {
   flowDot7?: Flex__<"div">;
   h21131?: Flex__<"div">;
   h21146?: Flex__<"div">;
+  statusPulse?: Flex__<typeof Embed>;
 };
 
 export interface DefaultFooterProps {
@@ -592,6 +594,7 @@ function PlasmicFooter__RenderFunc(props: {
                         sty.link___6BguG
                       )}
                       component={Link}
+                      href={`/terms`}
                       platform={"nextjs"}
                     >
                       <div
@@ -635,7 +638,11 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__wfxoa
                     )}
                     component={Link}
-                    href={`/`}
+                    href={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? `/docs`
+                        : `/`
+                    }
                     platform={"nextjs"}
                   >
                     <div
@@ -658,6 +665,11 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__pvJu5
                     )}
                     component={Link}
+                    href={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? `/support`
+                        : undefined
+                    }
                     platform={"nextjs"}
                   >
                     <div
@@ -927,6 +939,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link___1Eh2C
                     )}
                     component={Link}
+                    href={`/terms`}
                     platform={"nextjs"}
                   >
                     <div
@@ -968,6 +981,7 @@ function PlasmicFooter__RenderFunc(props: {
                     sty.link__tdYrU
                   )}
                   component={Link}
+                  href={`/compare/meta-ads`}
                   platform={"nextjs"}
                 >
                   <div
@@ -990,6 +1004,7 @@ function PlasmicFooter__RenderFunc(props: {
                     sty.link__yiRW
                   )}
                   component={Link}
+                  href={`/compare/google-ads`}
                   platform={"nextjs"}
                 >
                   <div
@@ -1012,6 +1027,7 @@ function PlasmicFooter__RenderFunc(props: {
                     sty.link__tDZzd
                   )}
                   component={Link}
+                  href={`/compare/agency`}
                   platform={"nextjs"}
                 >
                   <div
@@ -1034,6 +1050,7 @@ function PlasmicFooter__RenderFunc(props: {
                     sty.link__lufB9
                   )}
                   component={Link}
+                  href={`/compare/lead-vendors`}
                   platform={"nextjs"}
                 >
                   <div
@@ -1061,11 +1078,7 @@ function PlasmicFooter__RenderFunc(props: {
               <div
                 data-plasmic-name={"flowDot7"}
                 data-plasmic-override={overrides.flowDot7}
-                className={classNames(
-                  projectcss.all,
-                  sty.flowDot7,
-                  "flow-dot "
-                )}
+                className={classNames(projectcss.all, sty.flowDot7, "pulse")}
                 id={``}
               >
                 <div
@@ -1102,6 +1115,14 @@ function PlasmicFooter__RenderFunc(props: {
           </div>
         </div>
       </div>
+      <Embed
+        data-plasmic-name={"statusPulse"}
+        data-plasmic-override={overrides.statusPulse}
+        className={classNames("__wab_instance", sty.statusPulse)}
+        code={
+          '<style>\n.pulse {\n  position: relative;\n}\n\n.pulse::before {\n  content: "";\n  position: absolute;\n  inset: 0;\n  border-radius: 50%;\n  background: #1f7926;\n  opacity: 0.5;\n  animation: pulseRing 2s ease-out infinite;\n  z-index: 0;\n}\n\n@keyframes pulseRing {\n  0% {\n    transform: scale(1);\n    opacity: 0.5;\n  }\n  70% {\n    transform: scale(2.2);\n    opacity: 0;\n  }\n  100% {\n    transform: scale(2.2);\n    opacity: 0;\n  }\n}\n\n</style>'
+        }
+      />
     </div>
   ) as React.ReactElement | null;
 }
@@ -1155,7 +1176,8 @@ const PlasmicDescendants = {
     "systemsCopyright",
     "flowDot7",
     "h21131",
-    "h21146"
+    "h21146",
+    "statusPulse"
   ],
   vParent80: [
     "vParent80",
@@ -1372,7 +1394,8 @@ const PlasmicDescendants = {
   systemsCopyright: ["systemsCopyright", "flowDot7", "h21131", "h21146"],
   flowDot7: ["flowDot7"],
   h21131: ["h21131"],
-  h21146: ["h21146"]
+  h21146: ["h21146"],
+  statusPulse: ["statusPulse"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1426,6 +1449,7 @@ type NodeDefaultElementType = {
   flowDot7: "div";
   h21131: "div";
   h21146: "div";
+  statusPulse: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1537,6 +1561,7 @@ export const PlasmicFooter = Object.assign(
     flowDot7: makeNodeComponent("flowDot7"),
     h21131: makeNodeComponent("h21131"),
     h21146: makeNodeComponent("h21146"),
+    statusPulse: makeNodeComponent("statusPulse"),
 
     // Metadata about props expected for PlasmicFooter
     internalVariantProps: PlasmicFooter__VariantProps,

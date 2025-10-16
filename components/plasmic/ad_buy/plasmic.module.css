@@ -3,6 +3,8 @@
 .plasmic_tokens {
   --token-CtFh2MllxTKM: #1f7926;
   --plasmic-token-1-f-7926: var(--token-CtFh2MllxTKM);
+  --token-_6YQUKUQbwQw: var(--antd-colorBorderSecondary);
+  --plasmic-token-system-border-secondary: var(--token-_6YQUKUQbwQw);
 }
 
 .plasmic_tokens {

@@ -448,6 +448,104 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/blog"
+        },
+        {
+          "id": "yajdKF_D85hV",
+          "name": "CompareMeta",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicCompareMeta.tsx",
+          "importSpec": {
+            "modulePath": "../pages/compare/meta-ads.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicCompareMeta.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/compare/meta-ads"
+        },
+        {
+          "id": "Ei3dj2clYi8m",
+          "name": "CompareGoogle",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicCompareGoogle.tsx",
+          "importSpec": {
+            "modulePath": "../pages/compare/google-ads.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicCompareGoogle.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/compare/google-ads"
+        },
+        {
+          "id": "99p42zKvFBCc",
+          "name": "CompareAgency",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicCompareAgency.tsx",
+          "importSpec": {
+            "modulePath": "../pages/compare/agency.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicCompareAgency.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/compare/agency"
+        },
+        {
+          "id": "7hcpxa7fUsQr",
+          "name": "CompareVendors",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicCompareVendors.tsx",
+          "importSpec": {
+            "modulePath": "../pages/compare/lead-vendors.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicCompareVendors.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/compare/lead-vendors"
+        },
+        {
+          "id": "lqEi2PPEGNsC",
+          "name": "Docs",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicDocs.tsx",
+          "importSpec": {
+            "modulePath": "../pages/docs.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicDocs.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/docs"
+        },
+        {
+          "id": "tT8ubOCYxEi6",
+          "name": "Support",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicSupport.tsx",
+          "importSpec": {
+            "modulePath": "../pages/support.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicSupport.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/support"
+        },
+        {
+          "id": "aOMyLm5fPsLZ",
+          "name": "Terms",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicTerms.tsx",
+          "importSpec": {
+            "modulePath": "../pages/terms.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicTerms.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/terms"
         }
       ],
       "icons": [
