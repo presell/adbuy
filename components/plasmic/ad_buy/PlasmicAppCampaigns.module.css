@@ -148,8 +148,8 @@
   height: auto;
   max-width: 100%;
   border-radius: 5px;
-  padding: 3px 4px;
-  margin: 4px 0px 0px 8px;
+  padding: 3px 6px;
+  margin: 4px 0px 0px 6px;
 }
 .root .freeBox__tBuSw:hover {
   background: #f5f5f5;
