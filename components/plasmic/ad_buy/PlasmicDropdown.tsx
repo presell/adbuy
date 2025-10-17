@@ -260,6 +260,38 @@ function PlasmicDropdown__RenderFunc(props: {
           [sty.dropdownwidth__200]: hasVariant($state, "width", "_200")
         }
       )}
+      onMouseLeave={async event => {
+        const $steps = {};
+
+        $steps["updateMenuOpen"] = true
+          ? (() => {
+              const actionArgs = {
+                variable: {
+                  objRoot: $state,
+                  variablePath: ["menuOpen"]
+                },
+                operation: 0,
+                value: false
+              };
+              return (({ variable, value, startIndex, deleteCount }) => {
+                if (!variable) {
+                  return;
+                }
+                const { objRoot, variablePath } = variable;
+
+                $stateSet(objRoot, variablePath, value);
+                return value;
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["updateMenuOpen"] != null &&
+          typeof $steps["updateMenuOpen"] === "object" &&
+          typeof $steps["updateMenuOpen"].then === "function"
+        ) {
+          $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
+        }
+      }}
     >
       <div
         data-plasmic-name={"dropdownTrigger"}

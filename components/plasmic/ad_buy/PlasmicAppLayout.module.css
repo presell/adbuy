@@ -2257,7 +2257,7 @@
   max-width: 100%;
   cursor: pointer;
   min-width: 0;
-  border-radius: 5px;
+  border-radius: 6px;
   padding: 4px 8px;
 }
 .appLayout .freeBox__alWe:hover {
@@ -2284,8 +2284,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   max-width: 100%;
   justify-content: center;
   align-items: center;
