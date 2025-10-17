@@ -68,6 +68,7 @@ import {
 
 import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
 import Dropdown from "../../Dropdown"; // plasmic-import: 7Tx4ikCz5Jfw/component
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -98,6 +99,7 @@ export type PlasmicAppCampaigns__OverridesType = {
   dropdown4?: Flex__<typeof Dropdown>;
   svg?: Flex__<"svg">;
   textbox?: Flex__<"input">;
+  focusPage?: Flex__<typeof Embed>;
 };
 
 export interface DefaultAppCampaignsProps {}
@@ -325,7 +327,8 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            sty.root
+            sty.root,
+            "page-root"
           )}
           onKeyPress={async event => {
             const $steps = {};
@@ -939,6 +942,13 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             page={"campaigns"}
             popOpen={generateStateValueProp($state, ["appLayout", "popOpen"])}
           />
+
+          <Embed
+            data-plasmic-name={"focusPage"}
+            data-plasmic-override={overrides.focusPage}
+            className={classNames("__wab_instance", sty.focusPage)}
+            code={""}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -954,7 +964,8 @@ const PlasmicDescendants = {
     "dropdown3",
     "dropdown4",
     "svg",
-    "textbox"
+    "textbox",
+    "focusPage"
   ],
   appLayout: [
     "appLayout",
@@ -970,7 +981,8 @@ const PlasmicDescendants = {
   dropdown3: ["dropdown3"],
   dropdown4: ["dropdown4"],
   svg: ["svg"],
-  textbox: ["textbox"]
+  textbox: ["textbox"],
+  focusPage: ["focusPage"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -984,6 +996,7 @@ type NodeDefaultElementType = {
   dropdown4: typeof Dropdown;
   svg: "svg";
   textbox: "input";
+  focusPage: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1055,6 +1068,7 @@ export const PlasmicAppCampaigns = Object.assign(
     dropdown4: makeNodeComponent("dropdown4"),
     svg: makeNodeComponent("svg"),
     textbox: makeNodeComponent("textbox"),
+    focusPage: makeNodeComponent("focusPage"),
 
     // Metadata about props expected for PlasmicAppCampaigns
     internalVariantProps: PlasmicAppCampaigns__VariantProps,

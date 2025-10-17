@@ -213,3 +213,7 @@
   flex-shrink: 0;
   padding: 8px 12px;
 }
+.focusPage:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}

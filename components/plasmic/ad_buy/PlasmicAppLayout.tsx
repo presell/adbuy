@@ -2497,13 +2497,13 @@ function PlasmicAppLayout__RenderFunc(props: {
               onKeyPress={async event => {
                 const $steps = {};
 
-                $steps["updateDrawerOpen"] =
+                $steps["updatePopOpen"] =
                   event.which === 13 && !event.shiftKey
                     ? (() => {
                         const actionArgs = {
                           variable: {
                             objRoot: $state,
-                            variablePath: ["drawerOpen"]
+                            variablePath: ["popOpen"]
                           },
                           operation: 0,
                           value: false
@@ -2525,11 +2525,11 @@ function PlasmicAppLayout__RenderFunc(props: {
                       })()
                     : undefined;
                 if (
-                  $steps["updateDrawerOpen"] != null &&
-                  typeof $steps["updateDrawerOpen"] === "object" &&
-                  typeof $steps["updateDrawerOpen"].then === "function"
+                  $steps["updatePopOpen"] != null &&
+                  typeof $steps["updatePopOpen"] === "object" &&
+                  typeof $steps["updatePopOpen"].then === "function"
                 ) {
-                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+                  $steps["updatePopOpen"] = await $steps["updatePopOpen"];
                 }
               }}
             >
