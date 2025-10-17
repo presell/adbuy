@@ -76,7 +76,7 @@
 }
 .dropdownLabelSelected {
   position: relative;
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 100%;
   margin-bottom: 0px;
@@ -84,6 +84,7 @@
   color: #000000;
   font-size: 14.5px;
   font-family: var(--plasmic-font-geologica);
+  min-width: 0;
 }
 .dropdownChevron {
   object-fit: cover;

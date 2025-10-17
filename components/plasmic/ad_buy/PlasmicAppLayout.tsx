@@ -2494,6 +2494,43 @@ function PlasmicAppLayout__RenderFunc(props: {
               data-plasmic-name={"btn1"}
               data-plasmic-override={overrides.btn1}
               className={classNames(projectcss.all, sty.btn1, "button")}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updatePopOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["popOpen"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updatePopOpen"] != null &&
+                  typeof $steps["updatePopOpen"] === "object" &&
+                  typeof $steps["updatePopOpen"].then === "function"
+                ) {
+                  $steps["updatePopOpen"] = await $steps["updatePopOpen"];
+                }
+              }}
               onKeyPress={async event => {
                 const $steps = {};
 
