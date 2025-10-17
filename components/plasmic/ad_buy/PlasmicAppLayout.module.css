@@ -2142,6 +2142,7 @@
   background: #ffffff;
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
   min-width: 500px;
+  z-index: 1;
   border-radius: 30px;
   border-width: 1px;
   border-style: solid;
@@ -2167,7 +2168,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  align-items: stretch;
+  align-items: center;
   justify-content: flex-start;
   width: 100%;
   height: auto;
@@ -2189,10 +2190,42 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  font-size: 14.5px;
+  font-size: 12.5px;
+  color: #000000;
+  margin-right: 10px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__px297 {
+    animation: none;
+  }
+}
+.svg__yd9Re {
+  object-fit: cover;
+  max-width: 100%;
+  height: 9px;
+  color: #959595;
+  margin-right: 10px;
+  width: 6px;
+  flex-shrink: 0;
+}
+.svg__syCdn {
+  object-fit: cover;
+  max-width: 100%;
+  height: 13px;
+  color: #959595;
+  margin-right: 5px;
+}
+.text__ze6Xp {
+  animation: none;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 12.5px;
+  color: #000000;
+  margin-right: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ze6Xp {
     animation: none;
   }
 }
@@ -2211,19 +2244,62 @@
   flex-shrink: 0;
   flex-grow: 0;
 }
+.freeBox__alWe {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  border-radius: 5px;
+  padding: 4px 8px;
+}
+.appLayout .freeBox__alWe:hover {
+  background: #f5f5f5;
+}
+.svg__rdMbr {
+  object-fit: cover;
+  max-width: 100%;
+  height: 12px;
+  width: 12px;
+  color: #959595;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
 .text__yAy7O {
   animation: none;
   width: auto;
   height: auto;
   max-width: 100%;
-  font-size: 14.5px;
+  font-size: 12.5px;
+  color: #959595;
+}
+.freeBox__xzMg {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 50px;
+  border-radius: 50px;
+  padding: 8px;
+}
+.appLayout .freeBox__xzMg:hover {
+  background: #f5f5f5;
 }
 .svg__pcni4 {
   animation: none;
   object-fit: cover;
   max-width: 100%;
-  height: 10px;
-  margin-left: 20px;
+  height: 12px;
+  width: 12px;
+  flex-shrink: 0;
 }
 .body {
   display: flex;

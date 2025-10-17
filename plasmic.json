@@ -811,6 +811,11 @@
           "id": "x8a8y30xjfZo",
           "name": "EnterSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__EnterSvg.tsx"
+        },
+        {
+          "id": "NNXbqel-2EgC",
+          "name": "CircleCheckSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__CircleCheckSvg.tsx"
         }
       ],
       "images": [

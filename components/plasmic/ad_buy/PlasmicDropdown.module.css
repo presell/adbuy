@@ -109,6 +109,8 @@
   box-shadow: none;
   left: 0px;
   top: 34px;
+  background: #ffffff;
+  z-index: 10;
   min-width: 0;
   border-radius: 6px;
   border: 1px solid #d3d3d3;

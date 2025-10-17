@@ -82,6 +82,8 @@ import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-impor
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 import PanelSvgIcon from "./icons/PlasmicIcon__PanelSvg"; // plasmic-import: eDFyNm28uzac/icon
+import LeadsProductSvgIcon from "./icons/PlasmicIcon__LeadsProductSvg"; // plasmic-import: zxoMIvW6Akl7/icon
+import CircleCheckSvgIcon from "./icons/PlasmicIcon__CircleCheckSvg"; // plasmic-import: NNXbqel-2EgC/icon
 import ExitSvgIcon from "./icons/PlasmicIcon__ExitSvg"; // plasmic-import: -NxJuZEYMUri/icon
 import EnterSvgIcon from "./icons/PlasmicIcon__EnterSvg"; // plasmic-import: x8a8y30xjfZo/icon
 
@@ -2215,30 +2217,57 @@ function PlasmicAppLayout__RenderFunc(props: {
             )
           }
         )}
+      />
+
+      <div
+        data-plasmic-name={"createContainer"}
+        data-plasmic-override={overrides.createContainer}
+        className={classNames(projectcss.all, sty.createContainer)}
       >
         <div
-          data-plasmic-name={"createContainer"}
-          data-plasmic-override={overrides.createContainer}
-          className={classNames(projectcss.all, sty.createContainer)}
+          data-plasmic-name={"top"}
+          data-plasmic-override={overrides.top}
+          className={classNames(projectcss.all, sty.top)}
         >
-          <div
-            data-plasmic-name={"top"}
-            data-plasmic-override={overrides.top}
-            className={classNames(projectcss.all, sty.top)}
-          >
-            <div className={classNames(projectcss.all, sty.freeBox__vrnFu)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__px297,
-                  "geologica-h1"
-                )}
-              >
-                {"Create > New Campaign"}
-              </div>
+          <div className={classNames(projectcss.all, sty.freeBox__vrnFu)}>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__px297,
+                "geologica-h1"
+              )}
+            >
+              {"Create"}
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__lt7Ca)}>
+            <ThinChevronRightSvgIcon
+              className={classNames(projectcss.all, sty.svg__yd9Re)}
+              role={"img"}
+            />
+
+            <LeadsProductSvgIcon
+              className={classNames(projectcss.all, sty.svg__syCdn)}
+              role={"img"}
+            />
+
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__ze6Xp,
+                "geologica-h1"
+              )}
+            >
+              {"New Campaign"}
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__lt7Ca)}>
+            <div className={classNames(projectcss.all, sty.freeBox__alWe)}>
+              <CircleCheckSvgIcon
+                className={classNames(projectcss.all, sty.svg__rdMbr)}
+                role={"img"}
+              />
+
               <div
                 className={classNames(
                   projectcss.all,
@@ -2249,48 +2278,50 @@ function PlasmicAppLayout__RenderFunc(props: {
               >
                 {"Draft Saved"}
               </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__xzMg)}>
               <ExitSvgIcon
                 className={classNames(projectcss.all, sty.svg__pcni4)}
                 role={"img"}
               />
             </div>
           </div>
+        </div>
+        <div
+          data-plasmic-name={"body"}
+          data-plasmic-override={overrides.body}
+          className={classNames(projectcss.all, sty.body)}
+        >
+          {renderPlasmicSlot({
+            defaultContents: null,
+            value: args.body2
+          })}
+        </div>
+        <div
+          data-plasmic-name={"footer"}
+          data-plasmic-override={overrides.footer}
+          className={classNames(projectcss.all, sty.footer)}
+        >
           <div
-            data-plasmic-name={"body"}
-            data-plasmic-override={overrides.body}
-            className={classNames(projectcss.all, sty.body)}
-          >
-            {renderPlasmicSlot({
-              defaultContents: null,
-              value: args.body2
-            })}
-          </div>
-          <div
-            data-plasmic-name={"footer"}
-            data-plasmic-override={overrides.footer}
-            className={classNames(projectcss.all, sty.footer)}
+            data-plasmic-name={"btn1"}
+            data-plasmic-override={overrides.btn1}
+            className={classNames(projectcss.all, sty.btn1, "button")}
           >
             <div
-              data-plasmic-name={"btn1"}
-              data-plasmic-override={overrides.btn1}
-              className={classNames(projectcss.all, sty.btn1, "button")}
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__axDqU,
+                "geologica-h1"
+              )}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__axDqU,
-                  "geologica-h1"
-                )}
-              >
-                {"Create"}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__ffu89)}>
-                <EnterSvgIcon
-                  className={classNames(projectcss.all, sty.svg__wqN2)}
-                  role={"img"}
-                />
-              </div>
+              {"Create"}
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__ffu89)}>
+              <EnterSvgIcon
+                className={classNames(projectcss.all, sty.svg__wqN2)}
+                role={"img"}
+              />
             </div>
           </div>
         </div>
@@ -2350,14 +2381,7 @@ const PlasmicDescendants = {
   contentWrapper: ["contentWrapper", "contents"],
   contents: ["contents"],
   drawerOverlay: ["drawerOverlay"],
-  createBackground: [
-    "createBackground",
-    "createContainer",
-    "top",
-    "body",
-    "footer",
-    "btn1"
-  ],
+  createBackground: ["createBackground"],
   createContainer: ["createContainer", "top", "body", "footer", "btn1"],
   top: ["top"],
   body: ["body"],

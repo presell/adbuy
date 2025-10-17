@@ -868,7 +868,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         ref={ref => {
                           $refs["textbox"] = ref;
                         }}
-                        type={"number"}
+                        type={"text"}
                         value={
                           generateStateValueProp($state, [
                             "textbox",
