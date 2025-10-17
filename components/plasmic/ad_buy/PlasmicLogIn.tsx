@@ -1381,6 +1381,41 @@ function PlasmicLogIn__RenderFunc(props: {
                         $steps["updateEmailInputValue"] =
                           await $steps["updateEmailInputValue"];
                       }
+
+                      $steps["updateSubmitting2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["submitting"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateSubmitting2"] != null &&
+                        typeof $steps["updateSubmitting2"] === "object" &&
+                        typeof $steps["updateSubmitting2"].then === "function"
+                      ) {
+                        $steps["updateSubmitting2"] =
+                          await $steps["updateSubmitting2"];
+                      }
                     }}
                   >
                     <div

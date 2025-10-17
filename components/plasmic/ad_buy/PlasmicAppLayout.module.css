@@ -2235,7 +2235,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 40px;
+  padding: 0px 40px 40px;
 }
 .footer {
   display: flex;
@@ -2309,8 +2309,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   max-width: 100%;
   justify-content: center;
   align-items: center;
@@ -2324,8 +2324,8 @@
   object-fit: cover;
   max-width: 100%;
   color: #ffffff;
-  height: 14px;
-  width: 14px;
+  height: 12px;
+  width: 12px;
   flex-shrink: 0;
 }
 .embedHtml__aVjq4:global(.__wab_instance) {
