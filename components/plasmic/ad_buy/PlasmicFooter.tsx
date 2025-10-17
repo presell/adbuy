@@ -668,7 +668,7 @@ function PlasmicFooter__RenderFunc(props: {
                     href={
                       hasVariant(globalVariants, "screen", "mobileOnly")
                         ? `/support`
-                        : undefined
+                        : `/support`
                     }
                     platform={"nextjs"}
                   >

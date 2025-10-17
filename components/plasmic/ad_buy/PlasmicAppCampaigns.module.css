@@ -25,3 +25,180 @@
 .appLayout:global(.__wab_instance) {
   position: relative;
 }
+.freeBox__qnqdv {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0px 0px 30px;
+}
+.text__ju8Ms {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 10px;
+  font-size: 14.5px;
+}
+.freeBox___8Qw2D {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.dropdown:global(.__wab_instance) {
+  position: relative;
+  margin-right: 0px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .dropdown:global(.__wab_instance) {
+    flex-shrink: 0;
+  }
+}
+.dropdown2:global(.__wab_instance) {
+  position: relative;
+  margin-right: 0px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .dropdown2:global(.__wab_instance) {
+    flex-shrink: 0;
+  }
+}
+.freeBox__yJ0R {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin: 0px;
+}
+.freeBox__fYjPg {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.text__dxJUu {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 14.5px;
+  margin: 0px 0px 10px;
+}
+.freeBox___61YPk {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.dropdown3:global(.__wab_instance) {
+  position: relative;
+  margin-right: 0px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .dropdown3:global(.__wab_instance) {
+    flex-shrink: 0;
+  }
+}
+.dropdown4:global(.__wab_instance) {
+  position: relative;
+  margin-right: 0px;
+  flex-shrink: 0;
+  display: none;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .dropdown4:global(.__wab_instance) {
+    flex-shrink: 0;
+  }
+}
+.freeBox__tBuSw {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin: 5px 0px 0px 12px;
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  height: 12px;
+  margin-right: 5px;
+}
+.text__iXnak {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+}
+.freeBox__k3Qdx {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.text__etofs {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: 14.5px;
+  margin: 0px 0px 10px;
+}
+.freeBox__oxBxZ {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.textbox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 150px;
+  height: 39.9px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  flex-shrink: 0;
+  padding: 8px 12px;
+}

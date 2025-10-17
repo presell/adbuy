@@ -59,7 +59,15 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
+import {
+  executePlasmicDataOp,
+  usePlasmicDataOp,
+  usePlasmicInvalidate
+} from "@plasmicapp/react-web/lib/data-sources";
+
 import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
+import Dropdown from "../../Dropdown"; // plasmic-import: 7Tx4ikCz5Jfw/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -67,6 +75,8 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtVqvB/css
+
+import MapPinSvgIcon from "./icons/PlasmicIcon__MapPinSvg"; // plasmic-import: -SnCIoFrsIAj/icon
 
 createPlasmicElementProxy;
 
@@ -82,6 +92,12 @@ export const PlasmicAppCampaigns__ArgProps = new Array<ArgPropType>();
 export type PlasmicAppCampaigns__OverridesType = {
   root?: Flex__<"div">;
   appLayout?: Flex__<typeof AppLayout>;
+  dropdown?: Flex__<typeof Dropdown>;
+  dropdown2?: Flex__<typeof Dropdown>;
+  dropdown3?: Flex__<typeof Dropdown>;
+  dropdown4?: Flex__<typeof Dropdown>;
+  svg?: Flex__<"svg">;
+  textbox?: Flex__<"input">;
 };
 
 export interface DefaultAppCampaignsProps {}
@@ -126,6 +142,134 @@ function PlasmicAppCampaigns__RenderFunc(props: {
   const $refs = refsRef.current;
 
   const currentUser = useCurrentUser?.() || {};
+
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "dropdown.options",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          { label: "Outstanding", icon: "\u26a0\ufe0f", value: "outstanding" },
+          { label: "Test", icon: "\u26a0\ufe0f", value: "test" }
+        ]
+      },
+      {
+        path: "dropdown.selectedLabel",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dropdown.placeholder",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "Select Industry"
+      },
+      {
+        path: "dropdown.selectedValue",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dropdown2.options",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          { label: "Outstanding", icon: "\u26a0\ufe0f", value: "outstanding" },
+          { label: "Test", icon: "\u26a0\ufe0f", value: "test" }
+        ]
+      },
+      {
+        path: "dropdown2.selectedLabel",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dropdown2.placeholder",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "Select Product"
+      },
+      {
+        path: "dropdown2.selectedValue",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dropdown3.options",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          { label: "Outstanding", icon: "\u26a0\ufe0f", value: "outstanding" },
+          { label: "Test", icon: "\u26a0\ufe0f", value: "test" }
+        ]
+      },
+      {
+        path: "dropdown3.selectedLabel",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dropdown3.placeholder",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "Select State"
+      },
+      {
+        path: "dropdown3.selectedValue",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dropdown4.options",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          { label: "Outstanding", icon: "\u26a0\ufe0f", value: "outstanding" },
+          { label: "Test", icon: "\u26a0\ufe0f", value: "test" }
+        ]
+      },
+      {
+        path: "dropdown4.selectedLabel",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dropdown4.placeholder",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "Enter Zip"
+      },
+      {
+        path: "dropdown4.selectedValue",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "textbox.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+  const dataSourcesCtx = usePlasmicDataSourceContext();
+  const plasmicInvalidate = usePlasmicInvalidate();
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -181,7 +325,564 @@ function PlasmicAppCampaigns__RenderFunc(props: {
           <AppLayout
             data-plasmic-name={"appLayout"}
             data-plasmic-override={overrides.appLayout}
+            body2={
+              <React.Fragment>
+                <div className={classNames(projectcss.all, sty.freeBox__qnqdv)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ju8Ms,
+                      "geologica-h1"
+                    )}
+                  >
+                    {"Campaign Type"}
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___8Qw2D)}
+                  >
+                    <Dropdown
+                      data-plasmic-name={"dropdown"}
+                      data-plasmic-override={overrides.dropdown}
+                      className={classNames("__wab_instance", sty.dropdown)}
+                      onOptionsChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown",
+                          "options"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      onPlaceholderChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown",
+                          "placeholder"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      onSelectedLabelChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown",
+                          "selectedLabel"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      onSelectedValueChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown",
+                          "selectedValue"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+
+                        (async val => {
+                          const $steps = {};
+
+                          $steps["useIntegration"] = false
+                            ? (() => {
+                                const actionArgs = {};
+                                return (async ({ dataOp, continueOnError }) => {
+                                  try {
+                                    const response = await executePlasmicDataOp(
+                                      dataOp,
+                                      {
+                                        userAuthToken:
+                                          dataSourcesCtx?.userAuthToken,
+                                        user: dataSourcesCtx?.user
+                                      }
+                                    );
+                                    await plasmicInvalidate(
+                                      dataOp.invalidatedKeys
+                                    );
+                                    return response;
+                                  } catch (e) {
+                                    if (!continueOnError) {
+                                      throw e;
+                                    }
+                                    return e;
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["useIntegration"] != null &&
+                            typeof $steps["useIntegration"] === "object" &&
+                            typeof $steps["useIntegration"].then === "function"
+                          ) {
+                            $steps["useIntegration"] =
+                              await $steps["useIntegration"];
+                          }
+                        }).apply(null, eventArgs);
+                      }}
+                      options={generateStateValueProp($state, [
+                        "dropdown",
+                        "options"
+                      ])}
+                      placeholder={generateStateValueProp($state, [
+                        "dropdown",
+                        "placeholder"
+                      ])}
+                      radius={"rightZero"}
+                      width={"_200"}
+                    />
+
+                    <Dropdown
+                      data-plasmic-name={"dropdown2"}
+                      data-plasmic-override={overrides.dropdown2}
+                      className={classNames("__wab_instance", sty.dropdown2)}
+                      onOptionsChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown2",
+                          "options"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      onPlaceholderChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown2",
+                          "placeholder"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      onSelectedLabelChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown2",
+                          "selectedLabel"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      onSelectedValueChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dropdown2",
+                          "selectedValue"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+
+                        (async val => {
+                          const $steps = {};
+
+                          $steps["useIntegration"] = false
+                            ? (() => {
+                                const actionArgs = {};
+                                return (async ({ dataOp, continueOnError }) => {
+                                  try {
+                                    const response = await executePlasmicDataOp(
+                                      dataOp,
+                                      {
+                                        userAuthToken:
+                                          dataSourcesCtx?.userAuthToken,
+                                        user: dataSourcesCtx?.user
+                                      }
+                                    );
+                                    await plasmicInvalidate(
+                                      dataOp.invalidatedKeys
+                                    );
+                                    return response;
+                                  } catch (e) {
+                                    if (!continueOnError) {
+                                      throw e;
+                                    }
+                                    return e;
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["useIntegration"] != null &&
+                            typeof $steps["useIntegration"] === "object" &&
+                            typeof $steps["useIntegration"].then === "function"
+                          ) {
+                            $steps["useIntegration"] =
+                              await $steps["useIntegration"];
+                          }
+                        }).apply(null, eventArgs);
+                      }}
+                      options={generateStateValueProp($state, [
+                        "dropdown2",
+                        "options"
+                      ])}
+                      placeholder={generateStateValueProp($state, [
+                        "dropdown2",
+                        "placeholder"
+                      ])}
+                      radius={"leftZero"}
+                      width={"_200"}
+                    />
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__yJ0R)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__fYjPg)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__dxJUu,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Targeting"}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___61YPk
+                      )}
+                    >
+                      <Dropdown
+                        data-plasmic-name={"dropdown3"}
+                        data-plasmic-override={overrides.dropdown3}
+                        className={classNames("__wab_instance", sty.dropdown3)}
+                        onOptionsChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown3",
+                            "options"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onPlaceholderChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown3",
+                            "placeholder"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedLabelChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown3",
+                            "selectedLabel"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedValueChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown3",
+                            "selectedValue"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+
+                          (async val => {
+                            const $steps = {};
+
+                            $steps["useIntegration"] = false
+                              ? (() => {
+                                  const actionArgs = {};
+                                  return (async ({
+                                    dataOp,
+                                    continueOnError
+                                  }) => {
+                                    try {
+                                      const response =
+                                        await executePlasmicDataOp(dataOp, {
+                                          userAuthToken:
+                                            dataSourcesCtx?.userAuthToken,
+                                          user: dataSourcesCtx?.user
+                                        });
+                                      await plasmicInvalidate(
+                                        dataOp.invalidatedKeys
+                                      );
+                                      return response;
+                                    } catch (e) {
+                                      if (!continueOnError) {
+                                        throw e;
+                                      }
+                                      return e;
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["useIntegration"] != null &&
+                              typeof $steps["useIntegration"] === "object" &&
+                              typeof $steps["useIntegration"].then ===
+                                "function"
+                            ) {
+                              $steps["useIntegration"] =
+                                await $steps["useIntegration"];
+                            }
+                          }).apply(null, eventArgs);
+                        }}
+                        options={generateStateValueProp($state, [
+                          "dropdown3",
+                          "options"
+                        ])}
+                        placeholder={generateStateValueProp($state, [
+                          "dropdown3",
+                          "placeholder"
+                        ])}
+                        radius={"rightZero"}
+                        width={"_150"}
+                      />
+
+                      <Dropdown
+                        data-plasmic-name={"dropdown4"}
+                        data-plasmic-override={overrides.dropdown4}
+                        className={classNames("__wab_instance", sty.dropdown4)}
+                        onOptionsChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown4",
+                            "options"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onPlaceholderChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown4",
+                            "placeholder"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedLabelChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown4",
+                            "selectedLabel"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedValueChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown4",
+                            "selectedValue"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+
+                          (async val => {
+                            const $steps = {};
+
+                            $steps["useIntegration"] = false
+                              ? (() => {
+                                  const actionArgs = {};
+                                  return (async ({
+                                    dataOp,
+                                    continueOnError
+                                  }) => {
+                                    try {
+                                      const response =
+                                        await executePlasmicDataOp(dataOp, {
+                                          userAuthToken:
+                                            dataSourcesCtx?.userAuthToken,
+                                          user: dataSourcesCtx?.user
+                                        });
+                                      await plasmicInvalidate(
+                                        dataOp.invalidatedKeys
+                                      );
+                                      return response;
+                                    } catch (e) {
+                                      if (!continueOnError) {
+                                        throw e;
+                                      }
+                                      return e;
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["useIntegration"] != null &&
+                              typeof $steps["useIntegration"] === "object" &&
+                              typeof $steps["useIntegration"].then ===
+                                "function"
+                            ) {
+                              $steps["useIntegration"] =
+                                await $steps["useIntegration"];
+                            }
+                          }).apply(null, eventArgs);
+                        }}
+                        options={generateStateValueProp($state, [
+                          "dropdown4",
+                          "options"
+                        ])}
+                        placeholder={generateStateValueProp($state, [
+                          "dropdown4",
+                          "placeholder"
+                        ])}
+                        radius={"leftZero"}
+                        width={"_150"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__tBuSw)}
+                    >
+                      <MapPinSvgIcon
+                        data-plasmic-name={"svg"}
+                        data-plasmic-override={overrides.svg}
+                        className={classNames(projectcss.all, sty.svg)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__iXnak,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Select Zip"}
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__k3Qdx)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__etofs,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Daily Budget"}
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__oxBxZ)}
+                    >
+                      <input
+                        data-plasmic-name={"textbox"}
+                        data-plasmic-override={overrides.textbox}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.textbox
+                        )}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "textbox",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        placeholder={"$"}
+                        ref={ref => {
+                          $refs["textbox"] = ref;
+                        }}
+                        type={"number"}
+                        value={
+                          generateStateValueProp($state, [
+                            "textbox",
+                            "value"
+                          ]) ?? ""
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+              </React.Fragment>
+            }
             className={classNames("__wab_instance", sty.appLayout)}
+            contents2={null}
             page={"campaigns"}
           />
         </div>
@@ -191,8 +892,31 @@ function PlasmicAppCampaigns__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "appLayout"],
-  appLayout: ["appLayout"]
+  root: [
+    "root",
+    "appLayout",
+    "dropdown",
+    "dropdown2",
+    "dropdown3",
+    "dropdown4",
+    "svg",
+    "textbox"
+  ],
+  appLayout: [
+    "appLayout",
+    "dropdown",
+    "dropdown2",
+    "dropdown3",
+    "dropdown4",
+    "svg",
+    "textbox"
+  ],
+  dropdown: ["dropdown"],
+  dropdown2: ["dropdown2"],
+  dropdown3: ["dropdown3"],
+  dropdown4: ["dropdown4"],
+  svg: ["svg"],
+  textbox: ["textbox"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -200,6 +924,12 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   appLayout: typeof AppLayout;
+  dropdown: typeof Dropdown;
+  dropdown2: typeof Dropdown;
+  dropdown3: typeof Dropdown;
+  dropdown4: typeof Dropdown;
+  svg: "svg";
+  textbox: "input";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -265,6 +995,12 @@ export const PlasmicAppCampaigns = Object.assign(
   {
     // Helper components rendering sub-elements
     appLayout: makeNodeComponent("appLayout"),
+    dropdown: makeNodeComponent("dropdown"),
+    dropdown2: makeNodeComponent("dropdown2"),
+    dropdown3: makeNodeComponent("dropdown3"),
+    dropdown4: makeNodeComponent("dropdown4"),
+    svg: makeNodeComponent("svg"),
+    textbox: makeNodeComponent("textbox"),
 
     // Metadata about props expected for PlasmicAppCampaigns
     internalVariantProps: PlasmicAppCampaigns__VariantProps,

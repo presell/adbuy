@@ -82,6 +82,8 @@ import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-impor
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 import PanelSvgIcon from "./icons/PlasmicIcon__PanelSvg"; // plasmic-import: eDFyNm28uzac/icon
+import ExitSvgIcon from "./icons/PlasmicIcon__ExitSvg"; // plasmic-import: -NxJuZEYMUri/icon
+import EnterSvgIcon from "./icons/PlasmicIcon__EnterSvg"; // plasmic-import: x8a8y30xjfZo/icon
 
 createPlasmicElementProxy;
 
@@ -113,9 +115,15 @@ export const PlasmicAppLayout__VariantProps = new Array<VariantPropType>(
   "page"
 );
 
-export type PlasmicAppLayout__ArgsType = { contents2?: React.ReactNode };
+export type PlasmicAppLayout__ArgsType = {
+  contents2?: React.ReactNode;
+  body2?: React.ReactNode;
+};
 type ArgPropType = keyof PlasmicAppLayout__ArgsType;
-export const PlasmicAppLayout__ArgProps = new Array<ArgPropType>("contents2");
+export const PlasmicAppLayout__ArgProps = new Array<ArgPropType>(
+  "contents2",
+  "body2"
+);
 
 export type PlasmicAppLayout__OverridesType = {
   appLayout?: Flex__<"div">;
@@ -129,11 +137,17 @@ export type PlasmicAppLayout__OverridesType = {
   contentWrapper?: Flex__<"div">;
   contents?: Flex__<"div">;
   drawerOverlay?: Flex__<"div">;
-  embedHtml?: Flex__<typeof Embed>;
+  createBackground?: Flex__<"div">;
+  createContainer?: Flex__<"div">;
+  top?: Flex__<"div">;
+  body?: Flex__<"div">;
+  footer?: Flex__<"div">;
+  btn1?: Flex__<"div">;
 };
 
 export interface DefaultAppLayoutProps {
   contents2?: React.ReactNode;
+  body2?: React.ReactNode;
   page?: SingleChoiceArg<
     | "campaigns"
     | "leads"
@@ -2176,12 +2190,122 @@ function PlasmicAppLayout__RenderFunc(props: {
         }}
       />
 
+      <div
+        data-plasmic-name={"createBackground"}
+        data-plasmic-override={overrides.createBackground}
+        className={classNames(
+          projectcss.all,
+          sty.createBackground,
+          "blur-overlay",
+          {
+            [sty.createBackgroundpage_calls]: hasVariant(
+              $state,
+              "page",
+              "calls"
+            ),
+            [sty.createBackgroundpage_cards]: hasVariant(
+              $state,
+              "page",
+              "cards"
+            ),
+            [sty.createBackgroundpage_leads]: hasVariant(
+              $state,
+              "page",
+              "leads"
+            )
+          }
+        )}
+      >
+        <div
+          data-plasmic-name={"createContainer"}
+          data-plasmic-override={overrides.createContainer}
+          className={classNames(projectcss.all, sty.createContainer)}
+        >
+          <div
+            data-plasmic-name={"top"}
+            data-plasmic-override={overrides.top}
+            className={classNames(projectcss.all, sty.top)}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__vrnFu)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__px297,
+                  "geologica-h1"
+                )}
+              >
+                {"Create > New Campaign"}
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__lt7Ca)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__yAy7O,
+                  "geologica-h1"
+                )}
+              >
+                {"Draft Saved"}
+              </div>
+              <ExitSvgIcon
+                className={classNames(projectcss.all, sty.svg__pcni4)}
+                role={"img"}
+              />
+            </div>
+          </div>
+          <div
+            data-plasmic-name={"body"}
+            data-plasmic-override={overrides.body}
+            className={classNames(projectcss.all, sty.body)}
+          >
+            {renderPlasmicSlot({
+              defaultContents: null,
+              value: args.body2
+            })}
+          </div>
+          <div
+            data-plasmic-name={"footer"}
+            data-plasmic-override={overrides.footer}
+            className={classNames(projectcss.all, sty.footer)}
+          >
+            <div
+              data-plasmic-name={"btn1"}
+              data-plasmic-override={overrides.btn1}
+              className={classNames(projectcss.all, sty.btn1, "button")}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__axDqU,
+                  "geologica-h1"
+                )}
+              >
+                {"Create"}
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__ffu89)}>
+                <EnterSvgIcon
+                  className={classNames(projectcss.all, sty.svg__wqN2)}
+                  role={"img"}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Embed
-        data-plasmic-name={"embedHtml"}
-        data-plasmic-override={overrides.embedHtml}
-        className={classNames("__wab_instance", sty.embedHtml)}
+        className={classNames("__wab_instance", sty.embedHtml__aVjq4)}
         code={
           "<style> .drawer { transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; opacity: 0; transform: translateX(-100%) translateZ(0); pointer-events: none; will-change: opacity, transform; /* helps GPU accelerate */ } .drawer.open { opacity: 1; transform: translateX(0); pointer-events: auto; box-shadow: 2px 0 12px rgba(0,0,0,0.15); } .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none; z-index: 2; /* make sure overlay sits above base content */ } .drawer-overlay.open { opacity: 1; pointer-events: auto; } </style>"
+        }
+      />
+
+      <Embed
+        className={classNames("__wab_instance", sty.embedHtml__fiPgb)}
+        code={
+          "<style>\n.blur-overlay {\n  backdrop-filter: blur(8px);\n  background: rgba(255, 255, 255, 0.6);\n}\n</style>"
         }
       />
     </div>
@@ -2201,7 +2325,12 @@ const PlasmicDescendants = {
     "contentWrapper",
     "contents",
     "drawerOverlay",
-    "embedHtml"
+    "createBackground",
+    "createContainer",
+    "top",
+    "body",
+    "footer",
+    "btn1"
   ],
   sidebarGroup: [
     "sidebarGroup",
@@ -2221,7 +2350,19 @@ const PlasmicDescendants = {
   contentWrapper: ["contentWrapper", "contents"],
   contents: ["contents"],
   drawerOverlay: ["drawerOverlay"],
-  embedHtml: ["embedHtml"]
+  createBackground: [
+    "createBackground",
+    "createContainer",
+    "top",
+    "body",
+    "footer",
+    "btn1"
+  ],
+  createContainer: ["createContainer", "top", "body", "footer", "btn1"],
+  top: ["top"],
+  body: ["body"],
+  footer: ["footer", "btn1"],
+  btn1: ["btn1"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2238,7 +2379,12 @@ type NodeDefaultElementType = {
   contentWrapper: "div";
   contents: "div";
   drawerOverlay: "div";
-  embedHtml: typeof Embed;
+  createBackground: "div";
+  createContainer: "div";
+  top: "div";
+  body: "div";
+  footer: "div";
+  btn1: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2313,7 +2459,12 @@ export const PlasmicAppLayout = Object.assign(
     contentWrapper: makeNodeComponent("contentWrapper"),
     contents: makeNodeComponent("contents"),
     drawerOverlay: makeNodeComponent("drawerOverlay"),
-    embedHtml: makeNodeComponent("embedHtml"),
+    createBackground: makeNodeComponent("createBackground"),
+    createContainer: makeNodeComponent("createContainer"),
+    top: makeNodeComponent("top"),
+    body: makeNodeComponent("body"),
+    footer: makeNodeComponent("footer"),
+    btn1: makeNodeComponent("btn1"),
 
     // Metadata about props expected for PlasmicAppLayout
     internalVariantProps: PlasmicAppLayout__VariantProps,

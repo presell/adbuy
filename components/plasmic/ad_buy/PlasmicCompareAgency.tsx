@@ -479,7 +479,7 @@ function PlasmicCompareAgency__RenderFunc(props: {
                     " H1 geologica-h1"
                   )}
                 >
-                  {"No Retainers. No Waiting. Just Results."}
+                  {"No Retainers. Just Results."}
                 </div>
                 <div
                   data-plasmic-name={"h21"}

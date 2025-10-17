@@ -546,6 +546,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/terms"
+        },
+        {
+          "id": "7Tx4ikCz5Jfw",
+          "name": "Dropdown",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicDropdown.tsx",
+          "importSpec": {
+            "modulePath": "Dropdown.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicDropdown.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -788,6 +801,16 @@
           "id": "eDFyNm28uzac",
           "name": "PanelSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__PanelSvg.tsx"
+        },
+        {
+          "id": "-NxJuZEYMUri",
+          "name": "ExitSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ExitSvg.tsx"
+        },
+        {
+          "id": "x8a8y30xjfZo",
+          "name": "EnterSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__EnterSvg.tsx"
         }
       ],
       "images": [

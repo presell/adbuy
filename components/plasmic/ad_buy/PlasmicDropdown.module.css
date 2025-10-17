@@ -1,0 +1,144 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 250px;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  justify-self: flex-start;
+}
+.dropdownwidth__200 {
+  width: 200px;
+}
+.dropdownwidth__175 {
+  width: 175px;
+}
+.dropdownwidth__150 {
+  width: 150px;
+}
+.dropdownwidth__125 {
+  width: 125px;
+}
+.dropdownTrigger {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  border-radius: 6px;
+  border: 1px solid #d3d3d3;
+}
+.dropdownTriggerradius_rightZero {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.dropdownTriggerradius_leftZero {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.dropdownSelected {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 12px;
+}
+.dropdownIcon {
+  object-fit: cover;
+  max-width: 100%;
+  margin-right: 5px;
+  height: 1em;
+  display: none;
+}
+.dropdownLabelPlaceholder {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  color: #535353;
+  font-size: 14.5px;
+  font-family: var(--plasmic-font-geologica);
+  min-width: 0;
+}
+.dropdownLabelSelected {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 0px;
+  margin-right: 40px;
+  color: #000000;
+  font-size: 14.5px;
+  font-family: var(--plasmic-font-geologica);
+}
+.dropdownChevron {
+  object-fit: cover;
+  max-width: 100%;
+  margin-left: 0px;
+  left: auto;
+  top: auto;
+  z-index: 1;
+  position: relative;
+  right: auto;
+  bottom: auto;
+  height: 1em;
+}
+.dropdownMenu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+  box-shadow: none;
+  min-width: 0;
+  border-radius: 6px;
+  border: 1px solid #d3d3d3;
+}
+.dropdownItem {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px 12px;
+}
+.dropdown .dropdownItem:hover {
+  background: #dadada;
+}
+.itemIcon {
+  object-fit: cover;
+  max-width: 100%;
+  margin-right: 5px;
+  height: 1em;
+  display: none;
+}
+.itemLabel {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 0px;
+  font-size: 14.5px;
+  font-family: var(--plasmic-font-geologica);
+}
