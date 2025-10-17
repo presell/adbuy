@@ -82,10 +82,10 @@ import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-impor
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 import PanelSvgIcon from "./icons/PlasmicIcon__PanelSvg"; // plasmic-import: eDFyNm28uzac/icon
+import EnterSvgIcon from "./icons/PlasmicIcon__EnterSvg"; // plasmic-import: x8a8y30xjfZo/icon
 import LeadsProductSvgIcon from "./icons/PlasmicIcon__LeadsProductSvg"; // plasmic-import: zxoMIvW6Akl7/icon
 import CircleCheckSvgIcon from "./icons/PlasmicIcon__CircleCheckSvg"; // plasmic-import: NNXbqel-2EgC/icon
 import ExitSvgIcon from "./icons/PlasmicIcon__ExitSvg"; // plasmic-import: -NxJuZEYMUri/icon
-import EnterSvgIcon from "./icons/PlasmicIcon__EnterSvg"; // plasmic-import: x8a8y30xjfZo/icon
 
 createPlasmicElementProxy;
 
@@ -118,11 +118,15 @@ export const PlasmicAppLayout__VariantProps = new Array<VariantPropType>(
 );
 
 export type PlasmicAppLayout__ArgsType = {
+  popOpen?: boolean;
+  onPopOpenChange?: (val: string) => void;
   contents2?: React.ReactNode;
   body2?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicAppLayout__ArgsType;
 export const PlasmicAppLayout__ArgProps = new Array<ArgPropType>(
+  "popOpen",
+  "onPopOpenChange",
   "contents2",
   "body2"
 );
@@ -137,6 +141,7 @@ export type PlasmicAppLayout__OverridesType = {
   apiMenu?: Flex__<"div">;
   workflowsMenu?: Flex__<"div">;
   contentWrapper?: Flex__<"div">;
+  btn12?: Flex__<"div">;
   contents?: Flex__<"div">;
   drawerOverlay?: Flex__<"div">;
   createBackground?: Flex__<"div">;
@@ -148,6 +153,8 @@ export type PlasmicAppLayout__OverridesType = {
 };
 
 export interface DefaultAppLayoutProps {
+  popOpen?: boolean;
+  onPopOpenChange?: (val: string) => void;
   contents2?: React.ReactNode;
   body2?: React.ReactNode;
   page?: SingleChoiceArg<
@@ -219,6 +226,14 @@ function PlasmicAppLayout__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.page
+      },
+      {
+        path: "popOpen",
+        type: "writable",
+        variableType: "boolean",
+
+        valueProp: "popOpen",
+        onChangeProp: "onPopOpenChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -2116,6 +2131,77 @@ function PlasmicAppLayout__RenderFunc(props: {
                             ? "Leads"
                             : "Campaigns"}
             </div>
+            <div
+              data-plasmic-name={"btn12"}
+              data-plasmic-override={overrides.btn12}
+              className={classNames(projectcss.all, sty.btn12, "button")}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updatePopOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["popOpen"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updatePopOpen"] != null &&
+                  typeof $steps["updatePopOpen"] === "object" &&
+                  typeof $steps["updatePopOpen"].then === "function"
+                ) {
+                  $steps["updatePopOpen"] = await $steps["updatePopOpen"];
+                }
+              }}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__vkzNl,
+                  "geologica-h1"
+                )}
+              >
+                {"Create"}
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__qCdhf)}>
+                {false ? (
+                  <EnterSvgIcon
+                    className={classNames(projectcss.all, sty.svg___5UrAb)}
+                    role={"img"}
+                  />
+                ) : null}
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__eaSAr,
+                    "geologica-h1"
+                  )}
+                >
+                  {"C"}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className={classNames(projectcss.all, sty.freeBox__iFy6S)} />
@@ -2192,79 +2278,124 @@ function PlasmicAppLayout__RenderFunc(props: {
         }}
       />
 
-      <div
-        data-plasmic-name={"createBackground"}
-        data-plasmic-override={overrides.createBackground}
-        className={classNames(
-          projectcss.all,
-          sty.createBackground,
-          "blur-overlay",
-          {
-            [sty.createBackgroundpage_calls]: hasVariant(
-              $state,
-              "page",
-              "calls"
-            ),
-            [sty.createBackgroundpage_cards]: hasVariant(
-              $state,
-              "page",
-              "cards"
-            ),
-            [sty.createBackgroundpage_leads]: hasVariant(
-              $state,
-              "page",
-              "leads"
-            )
+      {(() => {
+        try {
+          return $state.popOpen == true;
+        } catch (e) {
+          if (
+            e instanceof TypeError ||
+            e?.plasmicType === "PlasmicUndefinedDataError"
+          ) {
+            return true;
           }
-        )}
-      />
-
-      <div
-        data-plasmic-name={"createContainer"}
-        data-plasmic-override={overrides.createContainer}
-        className={classNames(projectcss.all, sty.createContainer)}
-      >
+          throw e;
+        }
+      })() ? (
         <div
-          data-plasmic-name={"top"}
-          data-plasmic-override={overrides.top}
-          className={classNames(projectcss.all, sty.top)}
+          data-plasmic-name={"createBackground"}
+          data-plasmic-override={overrides.createBackground}
+          className={classNames(
+            projectcss.all,
+            sty.createBackground,
+            "blur-overlay",
+            {
+              [sty.createBackgroundpage_calls]: hasVariant(
+                $state,
+                "page",
+                "calls"
+              ),
+              [sty.createBackgroundpage_campaigns]: hasVariant(
+                $state,
+                "page",
+                "campaigns"
+              ),
+              [sty.createBackgroundpage_cards]: hasVariant(
+                $state,
+                "page",
+                "cards"
+              ),
+              [sty.createBackgroundpage_leads]: hasVariant(
+                $state,
+                "page",
+                "leads"
+              )
+            }
+          )}
+          onClick={async event => {
+            const $steps = {};
+
+            $steps["updatePopOpen"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["popOpen"]
+                    },
+                    operation: 0,
+                    value: false
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updatePopOpen"] != null &&
+              typeof $steps["updatePopOpen"] === "object" &&
+              typeof $steps["updatePopOpen"].then === "function"
+            ) {
+              $steps["updatePopOpen"] = await $steps["updatePopOpen"];
+            }
+          }}
+        />
+      ) : null}
+      {(() => {
+        try {
+          return $state.popOpen == true;
+        } catch (e) {
+          if (
+            e instanceof TypeError ||
+            e?.plasmicType === "PlasmicUndefinedDataError"
+          ) {
+            return true;
+          }
+          throw e;
+        }
+      })() ? (
+        <div
+          data-plasmic-name={"createContainer"}
+          data-plasmic-override={overrides.createContainer}
+          className={classNames(projectcss.all, sty.createContainer)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__vrnFu)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__px297,
-                "geologica-h1"
-              )}
-            >
-              {"Create"}
-            </div>
-            <ThinChevronRightSvgIcon
-              className={classNames(projectcss.all, sty.svg__yd9Re)}
-              role={"img"}
-            />
+          <div
+            data-plasmic-name={"top"}
+            data-plasmic-override={overrides.top}
+            className={classNames(projectcss.all, sty.top)}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__vrnFu)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__px297,
+                  "geologica-h1"
+                )}
+              >
+                {"Create"}
+              </div>
+              <ThinChevronRightSvgIcon
+                className={classNames(projectcss.all, sty.svg__yd9Re)}
+                role={"img"}
+              />
 
-            <LeadsProductSvgIcon
-              className={classNames(projectcss.all, sty.svg__syCdn)}
-              role={"img"}
-            />
-
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__ze6Xp,
-                "geologica-h1"
-              )}
-            >
-              {"New Campaign"}
-            </div>
-          </div>
-          <div className={classNames(projectcss.all, sty.freeBox__lt7Ca)}>
-            <div className={classNames(projectcss.all, sty.freeBox__alWe)}>
-              <CircleCheckSvgIcon
-                className={classNames(projectcss.all, sty.svg__rdMbr)}
+              <LeadsProductSvgIcon
+                className={classNames(projectcss.all, sty.svg__syCdn)}
                 role={"img"}
               />
 
@@ -2272,60 +2403,156 @@ function PlasmicAppLayout__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text__yAy7O,
+                  sty.text__ze6Xp,
                   "geologica-h1"
                 )}
               >
-                {"Draft Saved"}
+                {"New Campaign"}
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__xzMg)}>
-              <ExitSvgIcon
-                className={classNames(projectcss.all, sty.svg__pcni4)}
-                role={"img"}
-              />
+            <div className={classNames(projectcss.all, sty.freeBox__lt7Ca)}>
+              <div className={classNames(projectcss.all, sty.freeBox__alWe)}>
+                <CircleCheckSvgIcon
+                  className={classNames(projectcss.all, sty.svg__rdMbr)}
+                  role={"img"}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__yAy7O,
+                    "geologica-h1"
+                  )}
+                >
+                  {"Draft Saved"}
+                </div>
+              </div>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__xzMg)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updatePopOpen"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["popOpen"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updatePopOpen"] != null &&
+                    typeof $steps["updatePopOpen"] === "object" &&
+                    typeof $steps["updatePopOpen"].then === "function"
+                  ) {
+                    $steps["updatePopOpen"] = await $steps["updatePopOpen"];
+                  }
+                }}
+              >
+                <ExitSvgIcon
+                  className={classNames(projectcss.all, sty.svg__pcni4)}
+                  role={"img"}
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          data-plasmic-name={"body"}
-          data-plasmic-override={overrides.body}
-          className={classNames(projectcss.all, sty.body)}
-        >
-          {renderPlasmicSlot({
-            defaultContents: null,
-            value: args.body2
-          })}
-        </div>
-        <div
-          data-plasmic-name={"footer"}
-          data-plasmic-override={overrides.footer}
-          className={classNames(projectcss.all, sty.footer)}
-        >
           <div
-            data-plasmic-name={"btn1"}
-            data-plasmic-override={overrides.btn1}
-            className={classNames(projectcss.all, sty.btn1, "button")}
+            data-plasmic-name={"body"}
+            data-plasmic-override={overrides.body}
+            className={classNames(projectcss.all, sty.body)}
+          >
+            {renderPlasmicSlot({
+              defaultContents: null,
+              value: args.body2
+            })}
+          </div>
+          <div
+            data-plasmic-name={"footer"}
+            data-plasmic-override={overrides.footer}
+            className={classNames(projectcss.all, sty.footer)}
           >
             <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__axDqU,
-                "geologica-h1"
-              )}
+              data-plasmic-name={"btn1"}
+              data-plasmic-override={overrides.btn1}
+              className={classNames(projectcss.all, sty.btn1, "button")}
+              onKeyPress={async event => {
+                const $steps = {};
+
+                $steps["updateDrawerOpen"] =
+                  event.which === 13 && !event.shiftKey
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["drawerOpen"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateDrawerOpen"] != null &&
+                  typeof $steps["updateDrawerOpen"] === "object" &&
+                  typeof $steps["updateDrawerOpen"].then === "function"
+                ) {
+                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+                }
+              }}
             >
-              {"Create"}
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__ffu89)}>
-              <EnterSvgIcon
-                className={classNames(projectcss.all, sty.svg__wqN2)}
-                role={"img"}
-              />
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__axDqU,
+                  "geologica-h1"
+                )}
+              >
+                {"Create"}
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__ffu89)}>
+                <EnterSvgIcon
+                  className={classNames(projectcss.all, sty.svg__wqN2)}
+                  role={"img"}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : null}
       <Embed
         className={classNames("__wab_instance", sty.embedHtml__aVjq4)}
         code={
@@ -2354,6 +2581,7 @@ const PlasmicDescendants = {
     "apiMenu",
     "workflowsMenu",
     "contentWrapper",
+    "btn12",
     "contents",
     "drawerOverlay",
     "createBackground",
@@ -2378,7 +2606,8 @@ const PlasmicDescendants = {
   campaignsMenu: ["campaignsMenu"],
   apiMenu: ["apiMenu"],
   workflowsMenu: ["workflowsMenu"],
-  contentWrapper: ["contentWrapper", "contents"],
+  contentWrapper: ["contentWrapper", "btn12", "contents"],
+  btn12: ["btn12"],
   contents: ["contents"],
   drawerOverlay: ["drawerOverlay"],
   createBackground: ["createBackground"],
@@ -2401,6 +2630,7 @@ type NodeDefaultElementType = {
   apiMenu: "div";
   workflowsMenu: "div";
   contentWrapper: "div";
+  btn12: "div";
   contents: "div";
   drawerOverlay: "div";
   createBackground: "div";
@@ -2481,6 +2711,7 @@ export const PlasmicAppLayout = Object.assign(
     apiMenu: makeNodeComponent("apiMenu"),
     workflowsMenu: makeNodeComponent("workflowsMenu"),
     contentWrapper: makeNodeComponent("contentWrapper"),
+    btn12: makeNodeComponent("btn12"),
     contents: makeNodeComponent("contents"),
     drawerOverlay: makeNodeComponent("drawerOverlay"),
     createBackground: makeNodeComponent("createBackground"),

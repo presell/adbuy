@@ -2053,18 +2053,121 @@
 }
 .text__qILiD {
   position: relative;
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 100%;
-  text-align: center;
+  text-align: left;
   font-size: 18px;
   color: #000000;
   font-family: var(--plasmic-font-geologica);
   margin-bottom: 0px;
   user-select: none;
+  min-width: 0;
 }
 .textpage_workflows__qILiD9A3R {
   padding-top: 0px;
+}
+.btn12 {
+  animation: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  background: #000000;
+  cursor: pointer;
+  margin-top: 0px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  padding: 4px 16px;
+  border: 1px solid #f0f0f0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .btn12 {
+    animation: none;
+  }
+}
+.text__vkzNl {
+  animation: none;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 400;
+  margin-right: 8px;
+  font-family: var(--plasmic-font-geologica);
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__vkzNl {
+    animation: none;
+    font-size: 13px;
+  }
+}
+.freeBox__qCdhf {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 22px;
+  height: 22px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: #404040;
+  flex-shrink: 0;
+  border-radius: 3px;
+  padding: 3px;
+  border-width: 1px;
+  border-style: solid;
+}
+.svg___5UrAb {
+  object-fit: cover;
+  max-width: 100%;
+  color: #ffffff;
+  height: 12px;
+  width: 12px;
+  flex-shrink: 0;
+}
+.text__eaSAr {
+  animation: none;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  color: #a2a2a2;
+  font-size: 14.5px;
+  font-weight: 400;
+  margin-right: 0px;
+  font-family: var(--plasmic-font-geologica);
+  font-style: normal;
+  text-align: center;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__eaSAr {
+    animation: none;
+    font-size: 13px;
+  }
 }
 .freeBox__iFy6S {
   display: flex;
@@ -2126,7 +2229,7 @@
   left: 0px;
   top: 0px;
   z-index: 4;
-  background: #fffffff2;
+  background: none;
   min-width: 0;
   min-height: 0;
 }

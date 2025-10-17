@@ -128,6 +128,24 @@ function PlasmicAppIntegrations__RenderFunc(props: {
 
   const currentUser = useCurrentUser?.() || {};
 
+  const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
+    () => [
+      {
+        path: "appLayout.popOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      }
+    ],
+    [$props, $ctx, $refs]
+  );
+  const $state = useDollarState(stateSpecs, {
+    $props,
+    $ctx,
+    $queries: {},
+    $refs
+  });
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
@@ -183,7 +201,22 @@ function PlasmicAppIntegrations__RenderFunc(props: {
             data-plasmic-name={"appLayout"}
             data-plasmic-override={overrides.appLayout}
             className={classNames("__wab_instance", sty.appLayout)}
+            onPopOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["appLayout", "popOpen"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
             page={"api"}
+            popOpen={generateStateValueProp($state, ["appLayout", "popOpen"])}
           />
         </div>
       </div>

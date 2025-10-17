@@ -258,6 +258,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "appLayout.popOpen",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -321,6 +327,39 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             styleTokensClassNames,
             sty.root
           )}
+          onKeyPress={async event => {
+            const $steps = {};
+
+            $steps["updateAppLayoutPopOpen"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["appLayout", "popOpen"]
+                    },
+                    operation: 0,
+                    value: true
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateAppLayoutPopOpen"] != null &&
+              typeof $steps["updateAppLayoutPopOpen"] === "object" &&
+              typeof $steps["updateAppLayoutPopOpen"].then === "function"
+            ) {
+              $steps["updateAppLayoutPopOpen"] =
+                await $steps["updateAppLayoutPopOpen"];
+            }
+          }}
         >
           <AppLayout
             data-plasmic-name={"appLayout"}
@@ -883,7 +922,22 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             }
             className={classNames("__wab_instance", sty.appLayout)}
             contents2={null}
+            onPopOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["appLayout", "popOpen"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
             page={"campaigns"}
+            popOpen={generateStateValueProp($state, ["appLayout", "popOpen"])}
           />
         </div>
       </div>
