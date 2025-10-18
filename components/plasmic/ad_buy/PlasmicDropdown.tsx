@@ -74,15 +74,18 @@ createPlasmicElementProxy;
 export type PlasmicDropdown__VariantMembers = {
   radius: "rightZero" | "leftZero";
   width: "_200" | "_175" | "_150" | "_125";
+  filterable: "filterable";
 };
 export type PlasmicDropdown__VariantsArgs = {
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
   width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
+  filterable?: SingleBooleanChoiceArg<"filterable">;
 };
 type VariantPropType = keyof PlasmicDropdown__VariantsArgs;
 export const PlasmicDropdown__VariantProps = new Array<VariantPropType>(
   "radius",
-  "width"
+  "width",
+  "filterable"
 );
 
 export type PlasmicDropdown__ArgsType = {
@@ -109,6 +112,7 @@ export type PlasmicDropdown__OverridesType = {
   dropdownSelected?: Flex__<"div">;
   dropdownIcon?: Flex__<"svg">;
   dropdownLabelPlaceholder?: Flex__<"div">;
+  filter?: Flex__<"input">;
   dropdownLabelSelected?: Flex__<"div">;
   dropdownChevron?: Flex__<"svg">;
   dropdownMenu?: Flex__<"div">;
@@ -126,6 +130,7 @@ export interface DefaultDropdownProps {
   onSelectedValueChange?: (val: string) => void;
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
   width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
+  filterable?: SingleBooleanChoiceArg<"filterable">;
   className?: string;
 }
 
@@ -221,6 +226,18 @@ function PlasmicDropdown__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.width
+      },
+      {
+        path: "filter.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "filterable",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.filterable
       }
     ],
     [$props, $ctx, $refs]
@@ -323,6 +340,11 @@ function PlasmicDropdown__RenderFunc(props: {
             sty.dropdownSelected,
             "dropdown-selected",
             {
+              [sty.dropdownSelectedfilterable]: hasVariant(
+                $state,
+                "filterable",
+                "filterable"
+              ),
               [sty.dropdownSelectedradius_leftZero]: hasVariant(
                 $state,
                 "radius",
@@ -357,19 +379,23 @@ function PlasmicDropdown__RenderFunc(props: {
             role={"img"}
           />
 
-          {(() => {
-            try {
-              return !$state.selectedLabel;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
+          {(
+            hasVariant($state, "filterable", "filterable")
+              ? false
+              : (() => {
+                  try {
+                    return !$state.selectedLabel;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })()
+          ) ? (
             <div
               data-plasmic-name={"dropdownLabelPlaceholder"}
               data-plasmic-override={overrides.dropdownLabelPlaceholder}
@@ -377,7 +403,14 @@ function PlasmicDropdown__RenderFunc(props: {
                 projectcss.all,
                 projectcss.__wab_text,
                 sty.dropdownLabelPlaceholder,
-                "dropdown-label geologica-h2 "
+                "dropdown-label geologica-h2 ",
+                {
+                  [sty.dropdownLabelPlaceholderfilterable]: hasVariant(
+                    $state,
+                    "filterable",
+                    "filterable"
+                  )
+                }
               )}
             >
               <React.Fragment>
@@ -396,6 +429,66 @@ function PlasmicDropdown__RenderFunc(props: {
                 })()}
               </React.Fragment>
             </div>
+          ) : null}
+          {(
+            hasVariant($state, "filterable", "filterable")
+              ? (() => {
+                  try {
+                    return !$state.selectedLabel;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })()
+              : false
+          ) ? (
+            <input
+              data-plasmic-name={"filter"}
+              data-plasmic-override={overrides.filter}
+              className={classNames(
+                projectcss.all,
+                projectcss.input,
+                sty.filter,
+                "geologica-h2",
+                {
+                  [sty.filterfilterable]: hasVariant(
+                    $state,
+                    "filterable",
+                    "filterable"
+                  )
+                }
+              )}
+              onChange={async (...eventArgs: any) => {
+                (e => {
+                  generateStateOnChangeProp($state, ["filter", "value"])(
+                    e.target.value
+                  );
+                }).apply(null, eventArgs);
+              }}
+              placeholder={(() => {
+                try {
+                  return $state.placeholder;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              ref={ref => {
+                $refs["filter"] = ref;
+              }}
+              type={"text"}
+              value={generateStateValueProp($state, ["filter", "value"]) ?? ""}
+            />
           ) : null}
           {(() => {
             try {
@@ -506,7 +599,14 @@ function PlasmicDropdown__RenderFunc(props: {
           {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
             (() => {
               try {
-                return $state.options;
+                return $state.options.filter(opt => {
+                  const q = ($state.filter?.value || "").toLowerCase();
+                  return (
+                    !q ||
+                    opt.label.toLowerCase().includes(q) ||
+                    opt.value.toLowerCase().includes(q)
+                  );
+                });
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -691,6 +791,7 @@ const PlasmicDescendants = {
     "dropdownSelected",
     "dropdownIcon",
     "dropdownLabelPlaceholder",
+    "filter",
     "dropdownLabelSelected",
     "dropdownChevron",
     "dropdownMenu",
@@ -703,6 +804,7 @@ const PlasmicDescendants = {
     "dropdownSelected",
     "dropdownIcon",
     "dropdownLabelPlaceholder",
+    "filter",
     "dropdownLabelSelected",
     "dropdownChevron"
   ],
@@ -710,11 +812,13 @@ const PlasmicDescendants = {
     "dropdownSelected",
     "dropdownIcon",
     "dropdownLabelPlaceholder",
+    "filter",
     "dropdownLabelSelected",
     "dropdownChevron"
   ],
   dropdownIcon: ["dropdownIcon"],
   dropdownLabelPlaceholder: ["dropdownLabelPlaceholder"],
+  filter: ["filter"],
   dropdownLabelSelected: ["dropdownLabelSelected"],
   dropdownChevron: ["dropdownChevron"],
   dropdownMenu: ["dropdownMenu", "dropdownItem", "itemIcon", "itemLabel"],
@@ -731,6 +835,7 @@ type NodeDefaultElementType = {
   dropdownSelected: "div";
   dropdownIcon: "svg";
   dropdownLabelPlaceholder: "div";
+  filter: "input";
   dropdownLabelSelected: "div";
   dropdownChevron: "svg";
   dropdownMenu: "div";
@@ -805,6 +910,7 @@ export const PlasmicDropdown = Object.assign(
     dropdownSelected: makeNodeComponent("dropdownSelected"),
     dropdownIcon: makeNodeComponent("dropdownIcon"),
     dropdownLabelPlaceholder: makeNodeComponent("dropdownLabelPlaceholder"),
+    filter: makeNodeComponent("filter"),
     dropdownLabelSelected: makeNodeComponent("dropdownLabelSelected"),
     dropdownChevron: makeNodeComponent("dropdownChevron"),
     dropdownMenu: makeNodeComponent("dropdownMenu"),

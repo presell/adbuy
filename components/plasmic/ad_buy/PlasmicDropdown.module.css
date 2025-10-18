@@ -69,10 +69,30 @@
   max-width: 100%;
   margin-bottom: 0px;
   margin-right: 0px;
-  color: #535353;
+  color: #757575;
   font-size: 14.5px;
   font-family: var(--plasmic-font-geologica);
   min-width: 0;
+}
+.filter {
+  animation: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 22px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14.5px;
+  font-family: var(--plasmic-font-geologica);
+  min-width: 0;
+  border-width: 1px;
+  border-style: none;
+}
+.filterfilterable {
+  display: flex;
 }
 .dropdownLabelSelected {
   position: relative;
@@ -113,6 +133,7 @@
   top: 34px;
   background: #ffffff;
   z-index: 10;
+  overflow: auto;
   min-width: 0;
   border-radius: 6px;
   border: 1px solid #d3d3d3;
