@@ -274,7 +274,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "stateDrop.placeholder",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "Select State"
+        initFunc: ({ $props, $state, $queries, $ctx }) => "Select States"
       },
       {
         path: "stateDrop.selectedValue",
@@ -451,6 +451,54 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "industryDrop.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "productDropEmpty.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "productDropInsurance.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "productDropMortgage.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "productDropLegal.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "productDropMedical.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "stateDrop.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dropdown4.multi",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -572,6 +620,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       data-plasmic-name={"industryDrop"}
                       data-plasmic-override={overrides.industryDrop}
                       className={classNames("__wab_instance", sty.industryDrop)}
+                      multi={generateStateValueProp($state, [
+                        "industryDrop",
+                        "multi"
+                      ])}
+                      onMultiChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "industryDrop",
+                          "multi"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
                       onOptionsChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "industryDrop",
@@ -631,68 +697,68 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         (async val => {
                           const $steps = {};
 
-                          $steps["updateProduct"] = $state.industryDrop
-                            .options[0]
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["product"]
-                                  },
-                                  operation: 0,
-                                  value: "mortgage"
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
+                          $steps["mortgage"] =
+                            $state.industryDrop.selectedValue == "mortgage"
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["product"]
+                                    },
+                                    operation: 0,
+                                    value: "mortgage"
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
 
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
                           if (
-                            $steps["updateProduct"] != null &&
-                            typeof $steps["updateProduct"] === "object" &&
-                            typeof $steps["updateProduct"].then === "function"
+                            $steps["mortgage"] != null &&
+                            typeof $steps["mortgage"] === "object" &&
+                            typeof $steps["mortgage"].then === "function"
                           ) {
-                            $steps["updateProduct"] =
-                              await $steps["updateProduct"];
+                            $steps["mortgage"] = await $steps["mortgage"];
                           }
 
-                          $steps["insurace"] = $state.industryDrop.options[1]
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["product"]
-                                  },
-                                  operation: 0,
-                                  value: "insurance"
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
+                          $steps["insurace"] =
+                            $state.industryDrop.selectedValue == "insurance"
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["product"]
+                                    },
+                                    operation: 0,
+                                    value: "insurance"
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
 
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
                           if (
                             $steps["insurace"] != null &&
                             typeof $steps["insurace"] === "object" &&
@@ -701,32 +767,33 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             $steps["insurace"] = await $steps["insurace"];
                           }
 
-                          $steps["legal"] = $state.industryDrop.options[2]
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["product"]
-                                  },
-                                  operation: 0,
-                                  value: "legal"
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
+                          $steps["legal"] =
+                            $state.industryDrop.selectedValue == "legal"
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["product"]
+                                    },
+                                    operation: 0,
+                                    value: "legal"
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
 
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
                           if (
                             $steps["legal"] != null &&
                             typeof $steps["legal"] === "object" &&
@@ -735,33 +802,33 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             $steps["legal"] = await $steps["legal"];
                           }
 
-                          $steps["updateProduct2"] = $state.industryDrop
-                            .options[3]
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["product"]
-                                  },
-                                  operation: 0,
-                                  value: "medical"
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
+                          $steps["updateProduct2"] =
+                            $state.industryDrop.selectedValue == "medical"
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["product"]
+                                    },
+                                    operation: 0,
+                                    value: "medical"
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
 
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
                           if (
                             $steps["updateProduct2"] != null &&
                             typeof $steps["updateProduct2"] === "object" &&
@@ -804,6 +871,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "__wab_instance",
                           sty.productDropEmpty
                         )}
+                        multi={generateStateValueProp($state, [
+                          "productDropEmpty",
+                          "multi"
+                        ])}
+                        onMultiChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropEmpty",
+                            "multi"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onOptionsChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropEmpty",
@@ -933,6 +1018,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "__wab_instance",
                           sty.productDropInsurance
                         )}
+                        multi={generateStateValueProp($state, [
+                          "productDropInsurance",
+                          "multi"
+                        ])}
+                        onMultiChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropInsurance",
+                            "multi"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onOptionsChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropInsurance",
@@ -1062,6 +1165,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "__wab_instance",
                           sty.productDropMortgage
                         )}
+                        multi={generateStateValueProp($state, [
+                          "productDropMortgage",
+                          "multi"
+                        ])}
+                        onMultiChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropMortgage",
+                            "multi"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onOptionsChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropMortgage",
@@ -1191,6 +1312,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "__wab_instance",
                           sty.productDropLegal
                         )}
+                        multi={generateStateValueProp($state, [
+                          "productDropLegal",
+                          "multi"
+                        ])}
+                        onMultiChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropLegal",
+                            "multi"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onOptionsChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropLegal",
@@ -1320,6 +1459,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "__wab_instance",
                           sty.productDropMedical
                         )}
+                        multi={generateStateValueProp($state, [
+                          "productDropMedical",
+                          "multi"
+                        ])}
+                        onMultiChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropMedical",
+                            "multi"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onOptionsChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropMedical",
@@ -1455,7 +1612,25 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         data-plasmic-name={"stateDrop"}
                         data-plasmic-override={overrides.stateDrop}
                         className={classNames("__wab_instance", sty.stateDrop)}
-                        filterable={true}
+                        multi={generateStateValueProp($state, [
+                          "stateDrop",
+                          "multi"
+                        ])}
+                        multiFilter={true}
+                        onMultiChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "stateDrop",
+                            "multi"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onOptionsChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "stateDrop",
@@ -1469,6 +1644,47 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           ) {
                             return;
                           }
+
+                          (async val => {
+                            const $steps = {};
+
+                            $steps["updateStateDropMulti"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["stateDrop", "multi"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateStateDropMulti"] != null &&
+                              typeof $steps["updateStateDropMulti"] ===
+                                "object" &&
+                              typeof $steps["updateStateDropMulti"].then ===
+                                "function"
+                            ) {
+                              $steps["updateStateDropMulti"] =
+                                await $steps["updateStateDropMulti"];
+                            }
+                          }).apply(null, eventArgs);
                         }}
                         onPlaceholderChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
@@ -1511,47 +1727,6 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           ) {
                             return;
                           }
-
-                          (async val => {
-                            const $steps = {};
-
-                            $steps["useIntegration"] = false
-                              ? (() => {
-                                  const actionArgs = {};
-                                  return (async ({
-                                    dataOp,
-                                    continueOnError
-                                  }) => {
-                                    try {
-                                      const response =
-                                        await executePlasmicDataOp(dataOp, {
-                                          userAuthToken:
-                                            dataSourcesCtx?.userAuthToken,
-                                          user: dataSourcesCtx?.user
-                                        });
-                                      await plasmicInvalidate(
-                                        dataOp.invalidatedKeys
-                                      );
-                                      return response;
-                                    } catch (e) {
-                                      if (!continueOnError) {
-                                        throw e;
-                                      }
-                                      return e;
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["useIntegration"] != null &&
-                              typeof $steps["useIntegration"] === "object" &&
-                              typeof $steps["useIntegration"].then ===
-                                "function"
-                            ) {
-                              $steps["useIntegration"] =
-                                await $steps["useIntegration"];
-                            }
-                          }).apply(null, eventArgs);
                         }}
                         options={generateStateValueProp($state, [
                           "stateDrop",
@@ -1562,13 +1737,30 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "placeholder"
                         ])}
                         radius={"rightZero"}
-                        width={"_150"}
                       />
 
                       <Dropdown
                         data-plasmic-name={"dropdown4"}
                         data-plasmic-override={overrides.dropdown4}
                         className={classNames("__wab_instance", sty.dropdown4)}
+                        multi={generateStateValueProp($state, [
+                          "dropdown4",
+                          "multi"
+                        ])}
+                        onMultiChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dropdown4",
+                            "multi"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onOptionsChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "dropdown4",
@@ -1696,7 +1888,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "geologica-h1"
                         )}
                       >
-                        {"Select Zip"}
+                        {"Select Zips"}
                       </div>
                     </div>
                   </div>

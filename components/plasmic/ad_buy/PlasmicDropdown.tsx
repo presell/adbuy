@@ -75,17 +75,20 @@ export type PlasmicDropdown__VariantMembers = {
   radius: "rightZero" | "leftZero";
   width: "_200" | "_175" | "_150" | "_125";
   filterable: "filterable";
+  multiFilter: "multiFilter";
 };
 export type PlasmicDropdown__VariantsArgs = {
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
   width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
   filterable?: SingleBooleanChoiceArg<"filterable">;
+  multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
 };
 type VariantPropType = keyof PlasmicDropdown__VariantsArgs;
 export const PlasmicDropdown__VariantProps = new Array<VariantPropType>(
   "radius",
   "width",
-  "filterable"
+  "filterable",
+  "multiFilter"
 );
 
 export type PlasmicDropdown__ArgsType = {
@@ -95,6 +98,8 @@ export type PlasmicDropdown__ArgsType = {
   placeholder?: string;
   onPlaceholderChange?: (val: string) => void;
   onSelectedValueChange?: (val: string) => void;
+  multi?: boolean;
+  onMultiChange?: (val: string) => void;
 };
 type ArgPropType = keyof PlasmicDropdown__ArgsType;
 export const PlasmicDropdown__ArgProps = new Array<ArgPropType>(
@@ -103,7 +108,9 @@ export const PlasmicDropdown__ArgProps = new Array<ArgPropType>(
   "onSelectedLabelChange",
   "placeholder",
   "onPlaceholderChange",
-  "onSelectedValueChange"
+  "onSelectedValueChange",
+  "multi",
+  "onMultiChange"
 );
 
 export type PlasmicDropdown__OverridesType = {
@@ -112,6 +119,9 @@ export type PlasmicDropdown__OverridesType = {
   dropdownSelected?: Flex__<"div">;
   dropdownIcon?: Flex__<"svg">;
   dropdownLabelPlaceholder?: Flex__<"div">;
+  freeBox?: Flex__<"div">;
+  multiContainer?: Flex__<"div">;
+  multiValue?: Flex__<"div">;
   filter?: Flex__<"input">;
   dropdownLabelSelected?: Flex__<"div">;
   dropdownChevron?: Flex__<"svg">;
@@ -128,9 +138,12 @@ export interface DefaultDropdownProps {
   placeholder?: string;
   onPlaceholderChange?: (val: string) => void;
   onSelectedValueChange?: (val: string) => void;
+  multi?: boolean;
+  onMultiChange?: (val: string) => void;
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
   width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
   filterable?: SingleBooleanChoiceArg<"filterable">;
+  multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
   className?: string;
 }
 
@@ -238,6 +251,26 @@ function PlasmicDropdown__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.filterable
+      },
+      {
+        path: "selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "multiFilter",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.multiFilter
+      },
+      {
+        path: "multi",
+        type: "writable",
+        variableType: "boolean",
+
+        valueProp: "multi",
+        onChangeProp: "onMultiChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -345,6 +378,11 @@ function PlasmicDropdown__RenderFunc(props: {
                 "filterable",
                 "filterable"
               ),
+              [sty.dropdownSelectedmultiFilter]: hasVariant(
+                $state,
+                "multiFilter",
+                "multiFilter"
+              ),
               [sty.dropdownSelectedradius_leftZero]: hasVariant(
                 $state,
                 "radius",
@@ -380,21 +418,23 @@ function PlasmicDropdown__RenderFunc(props: {
           />
 
           {(
-            hasVariant($state, "filterable", "filterable")
+            hasVariant($state, "multiFilter", "multiFilter")
               ? false
-              : (() => {
-                  try {
-                    return !$state.selectedLabel;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
+              : hasVariant($state, "filterable", "filterable")
+                ? false
+                : (() => {
+                    try {
+                      return !$state.selectedLabel;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()
+                  })()
           ) ? (
             <div
               data-plasmic-name={"dropdownLabelPlaceholder"}
@@ -409,6 +449,11 @@ function PlasmicDropdown__RenderFunc(props: {
                     $state,
                     "filterable",
                     "filterable"
+                  ),
+                  [sty.dropdownLabelPlaceholdermultiFilter]: hasVariant(
+                    $state,
+                    "multiFilter",
+                    "multiFilter"
                   )
                 }
               )}
@@ -430,22 +475,160 @@ function PlasmicDropdown__RenderFunc(props: {
               </React.Fragment>
             </div>
           ) : null}
-          {(
-            hasVariant($state, "filterable", "filterable")
-              ? (() => {
-                  try {
-                    return !$state.selectedLabel;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
+          <div
+            data-plasmic-name={"freeBox"}
+            data-plasmic-override={overrides.freeBox}
+            className={classNames(projectcss.all, sty.freeBox, {
+              [sty.freeBoxmultiFilter]: hasVariant(
+                $state,
+                "multiFilter",
+                "multiFilter"
+              )
+            })}
+          >
+            {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+              (() => {
+                try {
+                  return $state?.selectedObject;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
                   }
-                })()
-              : false
+                  throw e;
+                }
+              })()
+            ).map((__plasmic_item_0, __plasmic_idx_0) => {
+              const currentItem = __plasmic_item_0;
+              const currentIndex = __plasmic_idx_0;
+              return (
+                <div
+                  data-plasmic-name={"multiContainer"}
+                  data-plasmic-override={overrides.multiContainer}
+                  className={classNames(projectcss.all, sty.multiContainer, {
+                    [sty.multiContainerfilterable]: hasVariant(
+                      $state,
+                      "filterable",
+                      "filterable"
+                    ),
+                    [sty.multiContainermultiFilter]: hasVariant(
+                      $state,
+                      "multiFilter",
+                      "multiFilter"
+                    )
+                  })}
+                  key={currentIndex}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                const curr = Array.isArray(
+                                  $state.selectedObject
+                                )
+                                  ? [...$state.selectedObject]
+                                  : [];
+                                const next = curr.filter(
+                                  o => o.value !== currentItem.value
+                                );
+                                $state.selectedObject = next;
+                                if (next.length > 0) {
+                                  const last = next[next.length - 1];
+                                  $state.selectedLabel = last.label;
+                                  $state.selectedValue = last.value;
+                                } else {
+                                  $state.selectedLabel = "";
+                                  $state.selectedValue = "";
+                                }
+                                return ($state.menuOpen = next.length > 0);
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                >
+                  {(
+                    hasVariant($state, "filterable", "filterable")
+                      ? false
+                      : true
+                  ) ? (
+                    <div
+                      data-plasmic-name={"multiValue"}
+                      data-plasmic-override={overrides.multiValue}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.multiValue,
+                        "dropdown-label geologica-h2 ",
+                        {
+                          [sty.multiValuefilterable]: hasVariant(
+                            $state,
+                            "filterable",
+                            "filterable"
+                          ),
+                          [sty.multiValuemultiFilter]: hasVariant(
+                            $state,
+                            "multiFilter",
+                            "multiFilter"
+                          )
+                        }
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return currentItem.value;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "Select Industry";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+          {(
+            hasVariant($state, "multiFilter", "multiFilter")
+              ? true
+              : hasVariant($state, "filterable", "filterable")
+                ? (() => {
+                    try {
+                      return !$state.selectedLabel;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })()
+                : true
           ) ? (
             <input
               data-plasmic-name={"filter"}
@@ -460,6 +643,11 @@ function PlasmicDropdown__RenderFunc(props: {
                     $state,
                     "filterable",
                     "filterable"
+                  ),
+                  [sty.filtermultiFilter]: hasVariant(
+                    $state,
+                    "multiFilter",
+                    "multiFilter"
                   )
                 }
               )}
@@ -490,19 +678,23 @@ function PlasmicDropdown__RenderFunc(props: {
               value={generateStateValueProp($state, ["filter", "value"]) ?? ""}
             />
           ) : null}
-          {(() => {
-            try {
-              return !!$state.selectedLabel;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
+          {(
+            hasVariant($state, "multiFilter", "multiFilter")
+              ? true
+              : (() => {
+                  try {
+                    return !!$state.selectedLabel;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })()
+          ) ? (
             <div
               data-plasmic-name={"dropdownLabelSelected"}
               data-plasmic-override={overrides.dropdownLabelSelected}
@@ -510,7 +702,14 @@ function PlasmicDropdown__RenderFunc(props: {
                 projectcss.all,
                 projectcss.__wab_text,
                 sty.dropdownLabelSelected,
-                "dropdown-label geologica-h2 "
+                "dropdown-label geologica-h2 ",
+                {
+                  [sty.dropdownLabelSelectedmultiFilter]: hasVariant(
+                    $state,
+                    "multiFilter",
+                    "multiFilter"
+                  )
+                }
               )}
             >
               <React.Fragment>
@@ -633,15 +832,47 @@ function PlasmicDropdown__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updateSelectedLabel"] = true
+                  $steps["updateMenuOpen2"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              const curr = $state.selectedObject || [];
+                              const exists = curr.some(
+                                o => o.value === option.value
+                              );
+                              const next = exists
+                                ? curr.filter(o => o.value !== option.value)
+                                : [...curr, option];
+
+                              $state.selectedObject = next;
+                              $state.selectedLabel = option.label;
+                              return ($state.selectedValue = option.value);
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateMenuOpen2"] != null &&
+                    typeof $steps["updateMenuOpen2"] === "object" &&
+                    typeof $steps["updateMenuOpen2"].then === "function"
+                  ) {
+                    $steps["updateMenuOpen2"] = await $steps["updateMenuOpen2"];
+                  }
+
+                  $steps["updateMenuOpen3"] = true
                     ? (() => {
                         const actionArgs = {
                           variable: {
                             objRoot: $state,
-                            variablePath: ["selectedLabel"]
+                            variablePath: ["placeholder"]
                           },
                           operation: 0,
-                          value: option.label
+                          value: ""
                         };
                         return (({
                           variable,
@@ -660,23 +891,22 @@ function PlasmicDropdown__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["updateSelectedLabel"] != null &&
-                    typeof $steps["updateSelectedLabel"] === "object" &&
-                    typeof $steps["updateSelectedLabel"].then === "function"
+                    $steps["updateMenuOpen3"] != null &&
+                    typeof $steps["updateMenuOpen3"] === "object" &&
+                    typeof $steps["updateMenuOpen3"].then === "function"
                   ) {
-                    $steps["updateSelectedLabel"] =
-                      await $steps["updateSelectedLabel"];
+                    $steps["updateMenuOpen3"] = await $steps["updateMenuOpen3"];
                   }
 
-                  $steps["updateSelectedValue"] = true
+                  $steps["updateMenuOpen4"] = true
                     ? (() => {
                         const actionArgs = {
                           variable: {
                             objRoot: $state,
-                            variablePath: ["selectedValue"]
+                            variablePath: ["filter", "value"]
                           },
                           operation: 0,
-                          value: option.value
+                          value: ""
                         };
                         return (({
                           variable,
@@ -695,46 +925,11 @@ function PlasmicDropdown__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["updateSelectedValue"] != null &&
-                    typeof $steps["updateSelectedValue"] === "object" &&
-                    typeof $steps["updateSelectedValue"].then === "function"
+                    $steps["updateMenuOpen4"] != null &&
+                    typeof $steps["updateMenuOpen4"] === "object" &&
+                    typeof $steps["updateMenuOpen4"].then === "function"
                   ) {
-                    $steps["updateSelectedValue"] =
-                      await $steps["updateSelectedValue"];
-                  }
-
-                  $steps["updateMenuOpen"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["menuOpen"]
-                          },
-                          operation: 4
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          const oldValue = $stateGet(objRoot, variablePath);
-                          $stateSet(objRoot, variablePath, !oldValue);
-                          return !oldValue;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateMenuOpen"] != null &&
-                    typeof $steps["updateMenuOpen"] === "object" &&
-                    typeof $steps["updateMenuOpen"].then === "function"
-                  ) {
-                    $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
+                    $steps["updateMenuOpen4"] = await $steps["updateMenuOpen4"];
                   }
                 }}
               >
@@ -791,6 +986,9 @@ const PlasmicDescendants = {
     "dropdownSelected",
     "dropdownIcon",
     "dropdownLabelPlaceholder",
+    "freeBox",
+    "multiContainer",
+    "multiValue",
     "filter",
     "dropdownLabelSelected",
     "dropdownChevron",
@@ -804,6 +1002,9 @@ const PlasmicDescendants = {
     "dropdownSelected",
     "dropdownIcon",
     "dropdownLabelPlaceholder",
+    "freeBox",
+    "multiContainer",
+    "multiValue",
     "filter",
     "dropdownLabelSelected",
     "dropdownChevron"
@@ -812,12 +1013,18 @@ const PlasmicDescendants = {
     "dropdownSelected",
     "dropdownIcon",
     "dropdownLabelPlaceholder",
+    "freeBox",
+    "multiContainer",
+    "multiValue",
     "filter",
     "dropdownLabelSelected",
     "dropdownChevron"
   ],
   dropdownIcon: ["dropdownIcon"],
   dropdownLabelPlaceholder: ["dropdownLabelPlaceholder"],
+  freeBox: ["freeBox", "multiContainer", "multiValue"],
+  multiContainer: ["multiContainer", "multiValue"],
+  multiValue: ["multiValue"],
   filter: ["filter"],
   dropdownLabelSelected: ["dropdownLabelSelected"],
   dropdownChevron: ["dropdownChevron"],
@@ -835,6 +1042,9 @@ type NodeDefaultElementType = {
   dropdownSelected: "div";
   dropdownIcon: "svg";
   dropdownLabelPlaceholder: "div";
+  freeBox: "div";
+  multiContainer: "div";
+  multiValue: "div";
   filter: "input";
   dropdownLabelSelected: "div";
   dropdownChevron: "svg";
@@ -910,6 +1120,9 @@ export const PlasmicDropdown = Object.assign(
     dropdownSelected: makeNodeComponent("dropdownSelected"),
     dropdownIcon: makeNodeComponent("dropdownIcon"),
     dropdownLabelPlaceholder: makeNodeComponent("dropdownLabelPlaceholder"),
+    freeBox: makeNodeComponent("freeBox"),
+    multiContainer: makeNodeComponent("multiContainer"),
+    multiValue: makeNodeComponent("multiValue"),
     filter: makeNodeComponent("filter"),
     dropdownLabelSelected: makeNodeComponent("dropdownLabelSelected"),
     dropdownChevron: makeNodeComponent("dropdownChevron"),
