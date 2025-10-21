@@ -75,6 +75,9 @@
   user-select: none;
   min-width: 0;
 }
+.dropdownLabelPlaceholderzip {
+  display: none;
+}
 .freeBox {
   flex-direction: row;
   position: relative;
@@ -89,6 +92,9 @@
   display: none;
 }
 .freeBoxmultiFilter {
+  display: flex;
+}
+.freeBoxzip {
   display: flex;
 }
 .multiContainer {
@@ -145,6 +151,35 @@
   flex-grow: 0;
   display: flex;
 }
+.enter {
+  animation: none;
+  flex-direction: column;
+  position: relative;
+  height: 22px;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14.5px;
+  font-family: var(--plasmic-font-geologica);
+  flex-shrink: 1;
+  user-select: none;
+  min-width: 0;
+  display: none;
+  border-width: 1px;
+  border-style: none;
+}
+.enterfilterable {
+  display: flex;
+}
+.entermultiFilter {
+  flex-shrink: 1;
+  flex-grow: 0;
+  display: none;
+}
+.enterzip {
+  display: flex;
+}
 .dropdownLabelSelected {
   position: relative;
   width: 100%;
@@ -198,6 +233,9 @@
   min-width: 0;
   border-radius: 6px;
   border: 1px solid #d3d3d3;
+}
+.dropdownMenuzip {
+  display: none;
 }
 .dropdownItem {
   display: flex;

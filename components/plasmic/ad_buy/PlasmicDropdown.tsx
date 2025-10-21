@@ -76,19 +76,22 @@ export type PlasmicDropdown__VariantMembers = {
   width: "_200" | "_175" | "_150" | "_125";
   filterable: "filterable";
   multiFilter: "multiFilter";
+  zip: "zip";
 };
 export type PlasmicDropdown__VariantsArgs = {
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
   width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
   filterable?: SingleBooleanChoiceArg<"filterable">;
   multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
+  zip?: SingleBooleanChoiceArg<"zip">;
 };
 type VariantPropType = keyof PlasmicDropdown__VariantsArgs;
 export const PlasmicDropdown__VariantProps = new Array<VariantPropType>(
   "radius",
   "width",
   "filterable",
-  "multiFilter"
+  "multiFilter",
+  "zip"
 );
 
 export type PlasmicDropdown__ArgsType = {
@@ -123,6 +126,7 @@ export type PlasmicDropdown__OverridesType = {
   multiContainer?: Flex__<"div">;
   multiValue?: Flex__<"div">;
   filter?: Flex__<"input">;
+  enter?: Flex__<"input">;
   dropdownLabelSelected?: Flex__<"div">;
   dropdownChevron?: Flex__<"svg">;
   dropdownMenu?: Flex__<"div">;
@@ -144,6 +148,7 @@ export interface DefaultDropdownProps {
   width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
   filterable?: SingleBooleanChoiceArg<"filterable">;
   multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
+  zip?: SingleBooleanChoiceArg<"zip">;
   className?: string;
 }
 
@@ -271,6 +276,39 @@ function PlasmicDropdown__RenderFunc(props: {
 
         valueProp: "multi",
         onChangeProp: "onMultiChange"
+      },
+      {
+        path: "enter.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "zip", "zip")
+            ? (() => {
+                try {
+                  return $state.inputEnter;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()
+            : undefined
+      },
+      {
+        path: "inputEnter",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "zip",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.zip
       }
     ],
     [$props, $ctx, $refs]
@@ -402,7 +440,8 @@ function PlasmicDropdown__RenderFunc(props: {
                 $state,
                 "width",
                 "_200"
-              )
+              ),
+              [sty.dropdownSelectedzip]: hasVariant($state, "zip", "zip")
             }
           )}
         >
@@ -418,23 +457,25 @@ function PlasmicDropdown__RenderFunc(props: {
           />
 
           {(
-            hasVariant($state, "multiFilter", "multiFilter")
-              ? false
-              : hasVariant($state, "filterable", "filterable")
+            hasVariant($state, "zip", "zip")
+              ? true
+              : hasVariant($state, "multiFilter", "multiFilter")
                 ? false
-                : (() => {
-                    try {
-                      return !$state.selectedLabel;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
+                : hasVariant($state, "filterable", "filterable")
+                  ? false
+                  : (() => {
+                      try {
+                        return !$state.selectedLabel;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
                       }
-                      throw e;
-                    }
-                  })()
+                    })()
           ) ? (
             <div
               data-plasmic-name={"dropdownLabelPlaceholder"}
@@ -454,6 +495,11 @@ function PlasmicDropdown__RenderFunc(props: {
                     $state,
                     "multiFilter",
                     "multiFilter"
+                  ),
+                  [sty.dropdownLabelPlaceholderzip]: hasVariant(
+                    $state,
+                    "zip",
+                    "zip"
                   )
                 }
               )}
@@ -483,7 +529,8 @@ function PlasmicDropdown__RenderFunc(props: {
                 $state,
                 "multiFilter",
                 "multiFilter"
-              )
+              ),
+              [sty.freeBoxzip]: hasVariant($state, "zip", "zip")
             })}
           >
             {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -517,7 +564,8 @@ function PlasmicDropdown__RenderFunc(props: {
                       $state,
                       "multiFilter",
                       "multiFilter"
-                    )
+                    ),
+                    [sty.multiContainerzip]: hasVariant($state, "zip", "zip")
                   })}
                   key={currentIndex}
                   onClick={async event => {
@@ -586,7 +634,8 @@ function PlasmicDropdown__RenderFunc(props: {
                             $state,
                             "multiFilter",
                             "multiFilter"
-                          )
+                          ),
+                          [sty.multiValuezip]: hasVariant($state, "zip", "zip")
                         }
                       )}
                     >
@@ -648,7 +697,8 @@ function PlasmicDropdown__RenderFunc(props: {
                     $state,
                     "multiFilter",
                     "multiFilter"
-                  )
+                  ),
+                  [sty.filterzip]: hasVariant($state, "zip", "zip")
                 }
               )}
               onChange={async (...eventArgs: any) => {
@@ -676,6 +726,182 @@ function PlasmicDropdown__RenderFunc(props: {
               }}
               type={"text"}
               value={generateStateValueProp($state, ["filter", "value"]) ?? ""}
+            />
+          ) : null}
+          {(
+            hasVariant($state, "zip", "zip")
+              ? true
+              : hasVariant($state, "multiFilter", "multiFilter")
+                ? true
+                : hasVariant($state, "filterable", "filterable")
+                  ? (() => {
+                      try {
+                        return !$state.selectedLabel;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : true
+          ) ? (
+            <input
+              data-plasmic-name={"enter"}
+              data-plasmic-override={overrides.enter}
+              className={classNames(
+                projectcss.all,
+                projectcss.input,
+                sty.enter,
+                "geologica-h2",
+                {
+                  [sty.enterfilterable]: hasVariant(
+                    $state,
+                    "filterable",
+                    "filterable"
+                  ),
+                  [sty.entermultiFilter]: hasVariant(
+                    $state,
+                    "multiFilter",
+                    "multiFilter"
+                  ),
+                  [sty.enterzip]: hasVariant($state, "zip", "zip")
+                }
+              )}
+              onChange={async (...eventArgs: any) => {
+                (e => {
+                  generateStateOnChangeProp($state, ["enter", "value"])(
+                    e.target.value
+                  );
+                }).apply(null, eventArgs);
+
+                (async event => {
+                  const $steps = {};
+
+                  $steps["updateInputEnter"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["inputEnter"]
+                          },
+                          operation: 0,
+                          value: $state.enter.value
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateInputEnter"] != null &&
+                    typeof $steps["updateInputEnter"] === "object" &&
+                    typeof $steps["updateInputEnter"].then === "function"
+                  ) {
+                    $steps["updateInputEnter"] =
+                      await $steps["updateInputEnter"];
+                  }
+                }).apply(null, eventArgs);
+              }}
+              onKeyPress={async event => {
+                const $steps = {};
+
+                $steps["runCode"] =
+                  event.which === 13 && !event.shiftKey
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              if (event.key === "Enter") {
+                                const rawInput = (
+                                  $state.inputEnter || ""
+                                ).trim();
+                                if (!rawInput) return;
+                                const entries = rawInput
+                                  .split(",")
+                                  .map(v => v.trim())
+                                  .filter(Boolean);
+                                const validZips = entries.filter(v =>
+                                  /^\d{5}$/.test(v)
+                                );
+                                if (validZips.length === 0) {
+                                  $state.inputEnter = "";
+                                  return;
+                                }
+                                const curr = Array.isArray(
+                                  $state.selectedObject
+                                )
+                                  ? [...$state.selectedObject]
+                                  : [];
+                                const currValues = curr.map(o =>
+                                  o.value.toLowerCase()
+                                );
+                                const newEntries = validZips
+                                  .filter(
+                                    v => !currValues.includes(v.toLowerCase())
+                                  )
+                                  .map(v => ({
+                                    label: v,
+                                    value: v,
+                                    icon: ""
+                                  }));
+                                if (newEntries.length > 0) {
+                                  $state.selectedObject = [
+                                    ...curr,
+                                    ...newEntries
+                                  ];
+                                }
+                                $state.inputEnter = "";
+                                return ($state.menuOpen = true);
+                              }
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+              }}
+              placeholder={(() => {
+                try {
+                  return $state.placeholder;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
+              ref={ref => {
+                $refs["enter"] = ref;
+              }}
+              type={"text"}
+              value={generateStateValueProp($state, ["enter", "value"]) ?? ""}
             />
           ) : null}
           {(
@@ -735,32 +961,38 @@ function PlasmicDropdown__RenderFunc(props: {
             className={classNames(
               projectcss.all,
               sty.dropdownChevron,
-              "dropdown-chevron"
+              "dropdown-chevron",
+              { [sty.dropdownChevronzip]: hasVariant($state, "zip", "zip") }
             )}
             role={"img"}
           />
         </div>
       </div>
-      {(() => {
-        try {
-          return $state.menuOpen == true;
-        } catch (e) {
-          if (
-            e instanceof TypeError ||
-            e?.plasmicType === "PlasmicUndefinedDataError"
-          ) {
-            return true;
-          }
-          throw e;
-        }
-      })() ? (
+      {(
+        hasVariant($state, "zip", "zip")
+          ? true
+          : (() => {
+              try {
+                return $state.menuOpen == true;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })()
+      ) ? (
         <div
           data-plasmic-name={"dropdownMenu"}
           data-plasmic-override={overrides.dropdownMenu}
           className={classNames(
             projectcss.all,
             sty.dropdownMenu,
-            "dropdown-menu"
+            "dropdown-menu",
+            { [sty.dropdownMenuzip]: hasVariant($state, "zip", "zip") }
           )}
           onMouseLeave={async event => {
             const $steps = {};
@@ -990,6 +1222,7 @@ const PlasmicDescendants = {
     "multiContainer",
     "multiValue",
     "filter",
+    "enter",
     "dropdownLabelSelected",
     "dropdownChevron",
     "dropdownMenu",
@@ -1006,6 +1239,7 @@ const PlasmicDescendants = {
     "multiContainer",
     "multiValue",
     "filter",
+    "enter",
     "dropdownLabelSelected",
     "dropdownChevron"
   ],
@@ -1017,6 +1251,7 @@ const PlasmicDescendants = {
     "multiContainer",
     "multiValue",
     "filter",
+    "enter",
     "dropdownLabelSelected",
     "dropdownChevron"
   ],
@@ -1026,6 +1261,7 @@ const PlasmicDescendants = {
   multiContainer: ["multiContainer", "multiValue"],
   multiValue: ["multiValue"],
   filter: ["filter"],
+  enter: ["enter"],
   dropdownLabelSelected: ["dropdownLabelSelected"],
   dropdownChevron: ["dropdownChevron"],
   dropdownMenu: ["dropdownMenu", "dropdownItem", "itemIcon", "itemLabel"],
@@ -1046,6 +1282,7 @@ type NodeDefaultElementType = {
   multiContainer: "div";
   multiValue: "div";
   filter: "input";
+  enter: "input";
   dropdownLabelSelected: "div";
   dropdownChevron: "svg";
   dropdownMenu: "div";
@@ -1124,6 +1361,7 @@ export const PlasmicDropdown = Object.assign(
     multiContainer: makeNodeComponent("multiContainer"),
     multiValue: makeNodeComponent("multiValue"),
     filter: makeNodeComponent("filter"),
+    enter: makeNodeComponent("enter"),
     dropdownLabelSelected: makeNodeComponent("dropdownLabelSelected"),
     dropdownChevron: makeNodeComponent("dropdownChevron"),
     dropdownMenu: makeNodeComponent("dropdownMenu"),
