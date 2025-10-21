@@ -2151,6 +2151,15 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__oxBxZ)}
                     >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ttd7H
+                        )}
+                      >
+                        {"$"}
+                      </div>
                       <input
                         data-plasmic-name={"budgetInput"}
                         data-plasmic-override={overrides.budgetInput}
@@ -2167,7 +2176,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             ])(e.target.value);
                           }).apply(null, eventArgs);
                         }}
-                        placeholder={"$"}
+                        placeholder={``}
                         ref={ref => {
                           $refs["budgetInput"] = ref;
                         }}

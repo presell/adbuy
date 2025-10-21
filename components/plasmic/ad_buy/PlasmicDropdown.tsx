@@ -401,6 +401,39 @@ function PlasmicDropdown__RenderFunc(props: {
           ) {
             $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
           }
+
+          $steps["updateMenuOpen2"] = true
+            ? (() => {
+                const actionArgs = {
+                  customFunction: async () => {
+                    return (() => {
+                      return setTimeout(() => {
+                        const dropdown =
+                          document.querySelector(".dropdown-trigger");
+                        if (!dropdown) return;
+                        const inputs = dropdown
+                          .closest(".dropdown")
+                          ?.querySelectorAll("input");
+                        const visible = Array.from(inputs).find(
+                          el => el.offsetParent !== null && !el.disabled
+                        );
+                        if (visible) visible.focus();
+                      }, 50);
+                    })();
+                  }
+                };
+                return (({ customFunction }) => {
+                  return customFunction();
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["updateMenuOpen2"] != null &&
+            typeof $steps["updateMenuOpen2"] === "object" &&
+            typeof $steps["updateMenuOpen2"].then === "function"
+          ) {
+            $steps["updateMenuOpen2"] = await $steps["updateMenuOpen2"];
+          }
         }}
       >
         <div
