@@ -186,7 +186,7 @@
   height: auto;
   max-width: 100%;
   margin-bottom: 0px;
-  margin-right: 40px;
+  margin-right: 0px;
   color: #000000;
   font-size: 14.5px;
   font-family: var(--plasmic-font-geologica);
@@ -194,6 +194,7 @@
   white-space: pre;
   text-overflow: clip;
   overflow: hidden;
+  flex-shrink: 1;
   min-width: 0;
 }
 .dropdownLabelSelectedmultiFilter {

@@ -554,7 +554,7 @@ function PlasmicDropdown__RenderFunc(props: {
                   ? false
                   : (() => {
                       try {
-                        return !$state.selectedLabel;
+                        return $state.selectedLabel == "";
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1116,7 +1116,7 @@ function PlasmicDropdown__RenderFunc(props: {
                 ? true
                 : (() => {
                     try {
-                      return !!$state.selectedLabel;
+                      return $state.selectedLabel != "";
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
