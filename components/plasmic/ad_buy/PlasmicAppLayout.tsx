@@ -146,10 +146,14 @@ export type PlasmicAppLayout__OverridesType = {
   drawerOverlay?: Flex__<"div">;
   createBackground?: Flex__<"div">;
   createContainer?: Flex__<"div">;
+  grab?: Flex__<"div">;
   top?: Flex__<"div">;
   body?: Flex__<"div">;
   footer?: Flex__<"div">;
   btn1?: Flex__<"div">;
+  drawerFunctionMobile?: Flex__<typeof Embed>;
+  blurOverlayPopUp?: Flex__<typeof Embed>;
+  grabFunction?: Flex__<typeof Embed>;
 };
 
 export interface DefaultAppLayoutProps {
@@ -2374,6 +2378,18 @@ function PlasmicAppLayout__RenderFunc(props: {
           className={classNames(projectcss.all, sty.createContainer)}
         >
           <div
+            data-plasmic-name={"grab"}
+            data-plasmic-override={overrides.grab}
+            className={classNames(
+              projectcss.all,
+              sty.grab,
+              hasVariant(globalVariants, "screen", "mobileOnly")
+                ? "grab"
+                : undefined
+            )}
+          />
+
+          <div
             data-plasmic-name={"top"}
             data-plasmic-override={overrides.top}
             className={classNames(projectcss.all, sty.top)}
@@ -2591,16 +2607,29 @@ function PlasmicAppLayout__RenderFunc(props: {
         </div>
       ) : null}
       <Embed
-        className={classNames("__wab_instance", sty.embedHtml__aVjq4)}
+        data-plasmic-name={"drawerFunctionMobile"}
+        data-plasmic-override={overrides.drawerFunctionMobile}
+        className={classNames("__wab_instance", sty.drawerFunctionMobile)}
         code={
           "<style> .drawer { transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; opacity: 0; transform: translateX(-100%) translateZ(0); pointer-events: none; will-change: opacity, transform; /* helps GPU accelerate */ } .drawer.open { opacity: 1; transform: translateX(0); pointer-events: auto; box-shadow: 2px 0 12px rgba(0,0,0,0.15); } .drawer-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); opacity: 0; transition: opacity 0.3s ease-in-out; pointer-events: none; z-index: 2; /* make sure overlay sits above base content */ } .drawer-overlay.open { opacity: 1; pointer-events: auto; } </style>"
         }
       />
 
       <Embed
-        className={classNames("__wab_instance", sty.embedHtml__fiPgb)}
+        data-plasmic-name={"blurOverlayPopUp"}
+        data-plasmic-override={overrides.blurOverlayPopUp}
+        className={classNames("__wab_instance", sty.blurOverlayPopUp)}
         code={
           "<style>\n.blur-overlay {\n  backdrop-filter: blur(8px);\n  background: rgba(255, 255, 255, 0.6);\n}\n</style>"
+        }
+      />
+
+      <Embed
+        data-plasmic-name={"grabFunction"}
+        data-plasmic-override={overrides.grabFunction}
+        className={classNames("__wab_instance", sty.grabFunction)}
+        code={
+          '<script>\n  document.addEventListener("DOMContentLoaded", function () {\n    const grab = document.querySelector(".grab");\n    if (!grab) return;\n\n    let startY = 0;\n    let endY = 0;\n\n    grab.addEventListener("touchstart", (e) => {\n      startY = e.touches[0].clientY;\n    });\n\n    grab.addEventListener("touchend", (e) => {\n      endY = e.changedTouches[0].clientY;\n      const deltaY = endY - startY;\n\n      // If user swiped down 80px or more\n      if (deltaY > 80) {\n        // Close the popup by setting your Plasmic state to false\n        if (window.$plasmic) {\n          window.$plasmic.updateStateValue({\n            path: ["popOpen"],\n            value: false\n          });\n        } else {\n          // fallback: hide container manually if needed\n          const popup = document.querySelector(".create-container");\n          if (popup) popup.style.display = "none";\n        }\n      }\n    });\n  });\n</script>\n\n\n<style>\n.grab {\n  touch-action: none; /* prevents scrolling conflict */\n}\n</style>'
         }
       />
     </div>
@@ -2623,10 +2652,14 @@ const PlasmicDescendants = {
     "drawerOverlay",
     "createBackground",
     "createContainer",
+    "grab",
     "top",
     "body",
     "footer",
-    "btn1"
+    "btn1",
+    "drawerFunctionMobile",
+    "blurOverlayPopUp",
+    "grabFunction"
   ],
   sidebarGroup: [
     "sidebarGroup",
@@ -2648,11 +2681,15 @@ const PlasmicDescendants = {
   contents: ["contents"],
   drawerOverlay: ["drawerOverlay"],
   createBackground: ["createBackground"],
-  createContainer: ["createContainer", "top", "body", "footer", "btn1"],
+  createContainer: ["createContainer", "grab", "top", "body", "footer", "btn1"],
+  grab: ["grab"],
   top: ["top"],
   body: ["body"],
   footer: ["footer", "btn1"],
-  btn1: ["btn1"]
+  btn1: ["btn1"],
+  drawerFunctionMobile: ["drawerFunctionMobile"],
+  blurOverlayPopUp: ["blurOverlayPopUp"],
+  grabFunction: ["grabFunction"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2672,10 +2709,14 @@ type NodeDefaultElementType = {
   drawerOverlay: "div";
   createBackground: "div";
   createContainer: "div";
+  grab: "div";
   top: "div";
   body: "div";
   footer: "div";
   btn1: "div";
+  drawerFunctionMobile: typeof Embed;
+  blurOverlayPopUp: typeof Embed;
+  grabFunction: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2753,10 +2794,14 @@ export const PlasmicAppLayout = Object.assign(
     drawerOverlay: makeNodeComponent("drawerOverlay"),
     createBackground: makeNodeComponent("createBackground"),
     createContainer: makeNodeComponent("createContainer"),
+    grab: makeNodeComponent("grab"),
     top: makeNodeComponent("top"),
     body: makeNodeComponent("body"),
     footer: makeNodeComponent("footer"),
     btn1: makeNodeComponent("btn1"),
+    drawerFunctionMobile: makeNodeComponent("drawerFunctionMobile"),
+    blurOverlayPopUp: makeNodeComponent("blurOverlayPopUp"),
+    grabFunction: makeNodeComponent("grabFunction"),
 
     // Metadata about props expected for PlasmicAppLayout
     internalVariantProps: PlasmicAppLayout__VariantProps,
