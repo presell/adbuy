@@ -102,7 +102,6 @@ export type PlasmicAppCampaigns__OverridesType = {
   stateDrop?: Flex__<typeof Dropdown>;
   zipDrop?: Flex__<typeof Dropdown>;
   dropdown4?: Flex__<typeof Dropdown>;
-  svg?: Flex__<"svg">;
   budgetInput?: Flex__<"input">;
   focusPage?: Flex__<typeof Embed>;
 };
@@ -1986,64 +1985,155 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         width={"_150"}
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__tBuSw)}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["updateZips"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["zips"]
-                                },
-                                operation: 0,
-                                value: true
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
+                    {(() => {
+                      try {
+                        return $state.zips == false;
+                      } catch (e) {
                         if (
-                          $steps["updateZips"] != null &&
-                          typeof $steps["updateZips"] === "object" &&
-                          typeof $steps["updateZips"].then === "function"
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
                         ) {
-                          $steps["updateZips"] = await $steps["updateZips"];
+                          return true;
                         }
-                      }}
-                    >
-                      <MapPinSvgIcon
-                        data-plasmic-name={"svg"}
-                        data-plasmic-override={overrides.svg}
-                        className={classNames(projectcss.all, sty.svg)}
-                        role={"img"}
-                      />
-
+                        throw e;
+                      }
+                    })() ? (
                       <div
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__iXnak,
-                          "geologica-h1"
+                          sty.freeBox__tBuSw
                         )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateZips"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["zips"]
+                                  },
+                                  operation: 0,
+                                  value: true
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateZips"] != null &&
+                            typeof $steps["updateZips"] === "object" &&
+                            typeof $steps["updateZips"].then === "function"
+                          ) {
+                            $steps["updateZips"] = await $steps["updateZips"];
+                          }
+                        }}
                       >
-                        {"Select Zips"}
+                        <MapPinSvgIcon
+                          className={classNames(projectcss.all, sty.svg__t6NrE)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__iXnak,
+                            "geologica-h1"
+                          )}
+                        >
+                          {"Select Zips"}
+                        </div>
                       </div>
-                    </div>
+                    ) : null}
+                    {(() => {
+                      try {
+                        return $state.zips == true;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__a0Nky
+                        )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateZips"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["zips"]
+                                  },
+                                  operation: 0,
+                                  value: false
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateZips"] != null &&
+                            typeof $steps["updateZips"] === "object" &&
+                            typeof $steps["updateZips"].then === "function"
+                          ) {
+                            $steps["updateZips"] = await $steps["updateZips"];
+                          }
+                        }}
+                      >
+                        <MapPinSvgIcon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___66Wmg
+                          )}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__qBfVg,
+                            "geologica-h1"
+                          )}
+                        >
+                          {"Select States"}
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__k3Qdx)}
@@ -2139,7 +2229,6 @@ const PlasmicDescendants = {
     "stateDrop",
     "zipDrop",
     "dropdown4",
-    "svg",
     "budgetInput",
     "focusPage"
   ],
@@ -2154,7 +2243,6 @@ const PlasmicDescendants = {
     "stateDrop",
     "zipDrop",
     "dropdown4",
-    "svg",
     "budgetInput"
   ],
   industryDrop: ["industryDrop"],
@@ -2166,7 +2254,6 @@ const PlasmicDescendants = {
   stateDrop: ["stateDrop"],
   zipDrop: ["zipDrop"],
   dropdown4: ["dropdown4"],
-  svg: ["svg"],
   budgetInput: ["budgetInput"],
   focusPage: ["focusPage"]
 } as const;
@@ -2185,7 +2272,6 @@ type NodeDefaultElementType = {
   stateDrop: typeof Dropdown;
   zipDrop: typeof Dropdown;
   dropdown4: typeof Dropdown;
-  svg: "svg";
   budgetInput: "input";
   focusPage: typeof Embed;
 };
@@ -2262,7 +2348,6 @@ export const PlasmicAppCampaigns = Object.assign(
     stateDrop: makeNodeComponent("stateDrop"),
     zipDrop: makeNodeComponent("zipDrop"),
     dropdown4: makeNodeComponent("dropdown4"),
-    svg: makeNodeComponent("svg"),
     budgetInput: makeNodeComponent("budgetInput"),
     focusPage: makeNodeComponent("focusPage"),
 
