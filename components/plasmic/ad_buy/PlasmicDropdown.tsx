@@ -785,6 +785,159 @@ function PlasmicDropdown__RenderFunc(props: {
                     e.target.value
                   );
                 }).apply(null, eventArgs);
+
+                (async event => {
+                  const $steps = {};
+
+                  $steps["updateMenuOpen"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["menuOpen"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateMenuOpen"] != null &&
+                    typeof $steps["updateMenuOpen"] === "object" &&
+                    typeof $steps["updateMenuOpen"].then === "function"
+                  ) {
+                    $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
+                  }
+                }).apply(null, eventArgs);
+              }}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateMenuOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["menuOpen"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateMenuOpen"] != null &&
+                  typeof $steps["updateMenuOpen"] === "object" &&
+                  typeof $steps["updateMenuOpen"].then === "function"
+                ) {
+                  $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
+                }
+              }}
+              onKeyDown={async event => {
+                const $steps = {};
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            const key = event.key;
+                            const isEnter = key === "Enter";
+                            const isBackspace = key === "Backspace";
+                            const isDelete = key === "Delete";
+                            if (
+                              (isBackspace || isDelete) &&
+                              (!$state.filter?.value ||
+                                $state.filter.value.trim() === "")
+                            ) {
+                              const curr = Array.isArray($state.selectedObject)
+                                ? [...$state.selectedObject]
+                                : [];
+                              if (curr.length > 0) {
+                                const removeCount = event.shiftKey
+                                  ? Math.min(3, curr.length)
+                                  : 1;
+                                const next = curr.slice(0, -removeCount);
+                                $state.selectedObject = next;
+                                const last = next[next.length - 1];
+                                $state.selectedLabel = last ? last.label : "";
+                                $state.selectedValue = last ? last.value : "";
+                              }
+                              $state.menuOpen = true;
+                              return;
+                            }
+                            if (!isEnter) return;
+                            const opts = Array.isArray($state.options)
+                              ? $state.options
+                              : [];
+                            const query = ($state.filter?.value || "")
+                              .trim()
+                              .toLowerCase();
+                            const filtered = opts.filter(opt => {
+                              const label = opt.label?.toLowerCase() || "";
+                              const value = opt.value?.toLowerCase() || "";
+                              return (
+                                label.includes(query) || value.includes(query)
+                              );
+                            });
+                            if (filtered.length !== 1) return;
+                            const option = filtered[0];
+                            const curr = $state.selectedObject || [];
+                            const exists = curr.some(
+                              o => o.value === option.value
+                            );
+                            const next = exists
+                              ? curr.filter(o => o.value !== option.value)
+                              : [...curr, option];
+
+                            $state.selectedObject = next;
+                            $state.selectedLabel = option.label;
+                            $state.selectedValue = option.value;
+                            $state.menuOpen = true;
+                            return ($state.filter.value = "");
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
               }}
               placeholder={(() => {
                 try {
