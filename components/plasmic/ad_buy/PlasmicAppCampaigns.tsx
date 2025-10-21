@@ -2029,15 +2029,29 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__oxBxZ)}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__ttd7H
-                        )}
-                      >
-                        {"$"}
-                      </div>
+                      {(() => {
+                        try {
+                          return $state.budgetInput.value == undefined;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ttd7H
+                          )}
+                        >
+                          {"$"}
+                        </div>
+                      ) : null}
                       {(() => {
                         try {
                           return $state.budgetInput.value != undefined;

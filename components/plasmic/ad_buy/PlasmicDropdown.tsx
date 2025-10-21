@@ -1311,40 +1311,6 @@ function PlasmicDropdown__RenderFunc(props: {
                     $steps["updateMenuOpen2"] = await $steps["updateMenuOpen2"];
                   }
 
-                  $steps["updateMenuOpen3"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["placeholder"]
-                          },
-                          operation: 0,
-                          value: ""
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateMenuOpen3"] != null &&
-                    typeof $steps["updateMenuOpen3"] === "object" &&
-                    typeof $steps["updateMenuOpen3"].then === "function"
-                  ) {
-                    $steps["updateMenuOpen3"] = await $steps["updateMenuOpen3"];
-                  }
-
                   $steps["updateMenuOpen4"] = true
                     ? (() => {
                         const actionArgs = {
