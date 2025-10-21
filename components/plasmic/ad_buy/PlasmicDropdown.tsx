@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -77,6 +78,7 @@ export type PlasmicDropdown__VariantMembers = {
   filterable: "filterable";
   multiFilter: "multiFilter";
   zip: "zip";
+  hidden: "hidden";
 };
 export type PlasmicDropdown__VariantsArgs = {
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
@@ -84,6 +86,7 @@ export type PlasmicDropdown__VariantsArgs = {
   filterable?: SingleBooleanChoiceArg<"filterable">;
   multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
   zip?: SingleBooleanChoiceArg<"zip">;
+  hidden?: SingleBooleanChoiceArg<"hidden">;
 };
 type VariantPropType = keyof PlasmicDropdown__VariantsArgs;
 export const PlasmicDropdown__VariantProps = new Array<VariantPropType>(
@@ -91,7 +94,8 @@ export const PlasmicDropdown__VariantProps = new Array<VariantPropType>(
   "width",
   "filterable",
   "multiFilter",
-  "zip"
+  "zip",
+  "hidden"
 );
 
 export type PlasmicDropdown__ArgsType = {
@@ -133,6 +137,7 @@ export type PlasmicDropdown__OverridesType = {
   dropdownItem?: Flex__<"div">;
   itemIcon?: Flex__<"svg">;
   itemLabel?: Flex__<"div">;
+  hiddenFunction?: Flex__<typeof Embed>;
 };
 
 export interface DefaultDropdownProps {
@@ -149,6 +154,7 @@ export interface DefaultDropdownProps {
   filterable?: SingleBooleanChoiceArg<"filterable">;
   multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
   zip?: SingleBooleanChoiceArg<"zip">;
+  hidden?: SingleBooleanChoiceArg<"hidden">;
   className?: string;
 }
 
@@ -309,6 +315,12 @@ function PlasmicDropdown__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.zip
+      },
+      {
+        path: "hidden",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hidden
       }
     ],
     [$props, $ctx, $refs]
@@ -335,8 +347,11 @@ function PlasmicDropdown__RenderFunc(props: {
         projectcss.plasmic_mixins,
         styleTokensClassNames,
         sty.dropdown,
-        "dropdown",
+        hasVariant($state, "hidden", "hidden")
+          ? "dropdown hide-dropdown"
+          : "dropdown",
         {
+          [sty.dropdownhidden]: hasVariant($state, "hidden", "hidden"),
           [sty.dropdownradius_rightZero]: hasVariant(
             $state,
             "radius",
@@ -1448,6 +1463,14 @@ function PlasmicDropdown__RenderFunc(props: {
           })}
         </div>
       ) : null}
+      <Embed
+        data-plasmic-name={"hiddenFunction"}
+        data-plasmic-override={overrides.hiddenFunction}
+        className={classNames("__wab_instance", sty.hiddenFunction)}
+        code={
+          "<style>\n.dropdown.hide-dropdown {\n  opacity: 0;\n  pointer-events: none;\n  height: 0 !important;\n  min-height: 0 !important;\n  width: 0 !important;        /* collapse horizontally */\n  min-width: 0 !important;\n  margin: 0 !important;\n  padding: 0 !important;\n  overflow: hidden !important;\n  flex: 0 0 0 !important;     /* tell flex parents not to reserve space */\n  grid-column: 1 / 1 !important; /* collapse in grid layouts too */\n  transition: opacity 0.15s ease;\n  position: absolute !important; /* remove from normal flow entirely */\n  left: -9999px !important;      /* safely off-canvas if needed */\n  z-index: -1000 !important;     /* avoid hover/focus shadows leaking */\n}\n\n/* Hide all internal content */\n.dropdown.hide-dropdown * {\n  display: none !important;\n}\n</style>"
+        }
+      />
     </div>
   ) as React.ReactElement | null;
 }
@@ -1469,7 +1492,8 @@ const PlasmicDescendants = {
     "dropdownMenu",
     "dropdownItem",
     "itemIcon",
-    "itemLabel"
+    "itemLabel",
+    "hiddenFunction"
   ],
   dropdownTrigger: [
     "dropdownTrigger",
@@ -1508,7 +1532,8 @@ const PlasmicDescendants = {
   dropdownMenu: ["dropdownMenu", "dropdownItem", "itemIcon", "itemLabel"],
   dropdownItem: ["dropdownItem", "itemIcon", "itemLabel"],
   itemIcon: ["itemIcon"],
-  itemLabel: ["itemLabel"]
+  itemLabel: ["itemLabel"],
+  hiddenFunction: ["hiddenFunction"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1530,6 +1555,7 @@ type NodeDefaultElementType = {
   dropdownItem: "div";
   itemIcon: "svg";
   itemLabel: "div";
+  hiddenFunction: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1609,6 +1635,7 @@ export const PlasmicDropdown = Object.assign(
     dropdownItem: makeNodeComponent("dropdownItem"),
     itemIcon: makeNodeComponent("itemIcon"),
     itemLabel: makeNodeComponent("itemLabel"),
+    hiddenFunction: makeNodeComponent("hiddenFunction"),
 
     // Metadata about props expected for PlasmicDropdown
     internalVariantProps: PlasmicDropdown__VariantProps,

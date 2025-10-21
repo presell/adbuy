@@ -179,17 +179,6 @@
     flex-shrink: 0;
   }
 }
-.dropdown4:global(.__wab_instance) {
-  position: relative;
-  margin-right: 0px;
-  flex-shrink: 0;
-  display: none;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .dropdown4:global(.__wab_instance) {
-    flex-shrink: 0;
-  }
-}
 .freeBox__tBuSw {
   display: flex;
   flex-direction: row;
