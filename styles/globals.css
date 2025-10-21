@@ -605,3 +605,24 @@ html, body {
   overflow-x: visible;   /* do NOT keep hidden on body—breaks sticky on iOS */
   overflow-y: visible;   /* let the viewport handle vertical scrolling */
 }
+
+/* Remove all visible borders and outlines from input fields */
+input {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Ensure focus/active states don't add back browser defaults */
+input:focus,
+input:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Optional: prevent Safari's blue glow */
+input::-webkit-focus-ring {
+  outline: none !important;
+  box-shadow: none !important;
+}
