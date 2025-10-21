@@ -2044,7 +2044,10 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     >
                       {(() => {
                         try {
-                          return $state.budgetInput.value == undefined;
+                          return (
+                            $state.budgetInput.value == undefined ||
+                            $state.budgetInput.value == ""
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -2067,7 +2070,10 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       ) : null}
                       {(() => {
                         try {
-                          return $state.budgetInput.value != undefined;
+                          return (
+                            $state.budgetInput.value != undefined &&
+                            $state.budgetInput.value != ""
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||

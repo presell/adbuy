@@ -559,6 +559,20 @@
           "cssFilePath": "plasmic/ad_buy/PlasmicDropdown.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "c6l1zJVqzUP7",
+          "name": "Gtm",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicGtm.tsx",
+          "importSpec": {
+            "modulePath": "../pages/gtm.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicGtm.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/gtm"
         }
       ],
       "icons": [
@@ -816,6 +830,11 @@
           "id": "NNXbqel-2EgC",
           "name": "CircleCheckSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__CircleCheckSvg.tsx"
+        },
+        {
+          "id": "CDNSUt2kYFWr",
+          "name": "TestTubeSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__TestTubeSvg.tsx"
         }
       ],
       "images": [

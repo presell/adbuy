@@ -80,7 +80,7 @@ import BcbsSvgIcon from "./icons/PlasmicIcon__BcbsSvg"; // plasmic-import: nzwRu
 import HealthSvgrepoComSvgIcon from "./icons/PlasmicIcon__HealthSvgrepoComSvg"; // plasmic-import: yio9us2wIplJ/icon
 import ScaleSvgIcon from "./icons/PlasmicIcon__ScaleSvg"; // plasmic-import: xaKgo3gcm8tm/icon
 import Home1SvgrepoComSvgIcon from "./icons/PlasmicIcon__Home1SvgrepoComSvg"; // plasmic-import: hVG-NOES9EtU/icon
-import ShopifySvgrepoCom1SvgIcon from "./icons/PlasmicIcon__ShopifySvgrepoCom1Svg"; // plasmic-import: gQGY3JuwxTSf/icon
+import TestTubeSvgIcon from "./icons/PlasmicIcon__TestTubeSvg"; // plasmic-import: CDNSUt2kYFWr/icon
 import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
 import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
 import ApiIconSvgIcon from "./icons/PlasmicIcon__ApiIconSvg"; // plasmic-import: mjJmnHwXSh-R/icon
@@ -1147,7 +1147,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
-                    href={`/ecommerce`}
+                    href={`/gtm`}
                     platform={"nextjs"}
                   >
                     <div
@@ -1156,7 +1156,7 @@ function PlasmicNav__RenderFunc(props: {
                         sty.freeBox___5H5Kv
                       )}
                     >
-                      <ShopifySvgrepoCom1SvgIcon
+                      <TestTubeSvgIcon
                         className={classNames(projectcss.all, sty.svg__fsC79)}
                         role={"img"}
                       />
@@ -1172,7 +1172,7 @@ function PlasmicNav__RenderFunc(props: {
                           "geologica-h1"
                         )}
                       >
-                        {"eCommerce"}
+                        {"GTM"}
                       </div>
                       <div
                         className={classNames(
