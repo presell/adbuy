@@ -501,6 +501,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "variable",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -2032,6 +2038,29 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       >
                         {"$"}
                       </div>
+                      {(() => {
+                        try {
+                          return $state.budgetInput.value != undefined;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__gto4S
+                          )}
+                        >
+                          {"$"}
+                        </div>
+                      ) : null}
                       <input
                         data-plasmic-name={"budgetInput"}
                         data-plasmic-override={overrides.budgetInput}

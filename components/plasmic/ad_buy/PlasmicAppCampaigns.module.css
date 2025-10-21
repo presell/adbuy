@@ -286,6 +286,16 @@
   color: #757575;
   padding-left: 12px;
 }
+.text__gto4S {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  align-self: center;
+  margin-right: 0px;
+  color: #757575;
+  padding-left: 12px;
+}
 .budgetInput {
   display: flex;
   flex-direction: column;
@@ -299,6 +309,7 @@
   cursor: pointer;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
+  color: #000000;
   min-width: 0;
   min-height: 0;
   padding: 8px 12px 8px 2px;
