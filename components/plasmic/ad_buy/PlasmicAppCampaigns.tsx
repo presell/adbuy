@@ -879,6 +879,19 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "__wab_instance",
                           sty.productDropEmpty
                         )}
+                        locked={(() => {
+                          try {
+                            return $state.product == "";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "locked";
+                            }
+                            throw e;
+                          }
+                        })()}
                         multi={generateStateValueProp($state, [
                           "productDropEmpty",
                           "multi"

@@ -21,6 +21,9 @@
 .dropdownwidth__125 {
   width: 125px;
 }
+.dropdownlocked {
+  cursor: not-allowed;
+}
 .dropdownTrigger {
   display: flex;
   flex-direction: column;
@@ -277,6 +280,10 @@
   user-select: none;
 }
 .hiddenFunction:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.lockFunction:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
