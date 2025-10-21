@@ -1988,6 +1988,43 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__tBuSw)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateZips"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["zips"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateZips"] != null &&
+                          typeof $steps["updateZips"] === "object" &&
+                          typeof $steps["updateZips"].then === "function"
+                        ) {
+                          $steps["updateZips"] = await $steps["updateZips"];
+                        }
+                      }}
                     >
                       <MapPinSvgIcon
                         data-plasmic-name={"svg"}
