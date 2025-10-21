@@ -408,17 +408,14 @@ function PlasmicDropdown__RenderFunc(props: {
                   customFunction: async () => {
                     return (() => {
                       return setTimeout(() => {
-                        const dropdown =
-                          document.querySelector(".dropdown-trigger");
-                        if (!dropdown) return;
-                        const inputs = dropdown
-                          .closest(".dropdown")
-                          ?.querySelectorAll("input");
+                        const root = $plasmicHostElement;
+                        if (!root) return;
+                        const inputs = root.querySelectorAll("input");
                         const visible = Array.from(inputs).find(
                           el => el.offsetParent !== null && !el.disabled
                         );
                         if (visible) visible.focus();
-                      }, 50);
+                      }, 100);
                     })();
                   }
                 };
