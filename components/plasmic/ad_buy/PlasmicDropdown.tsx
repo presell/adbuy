@@ -395,6 +395,79 @@ function PlasmicDropdown__RenderFunc(props: {
         ) {
           $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
         }
+
+        $steps["updateMenuOpen2"] = true
+          ? (() => {
+              const actionArgs = {
+                customFunction: async () => {
+                  return (() => {
+                    const FOCUS_RETRIES = 10;
+                    const DELAY_MS = 60;
+                    function isVisible(el) {
+                      return !!(el && el.offsetParent !== null && !el.disabled);
+                    }
+                    function tryFocus(attempt = 0) {
+                      let root;
+                      try {
+                        root =
+                          typeof $plasmicHostElement !== "undefined"
+                            ? $plasmicHostElement
+                            : document;
+                      } catch {
+                        root = document;
+                      }
+                      let el = root.querySelector("input.dropdown-input");
+                      if (!isVisible(el)) {
+                        const all = Array.from(
+                          document.querySelectorAll("input.dropdown-input")
+                        );
+                        el = all.find(isVisible) || null;
+                      }
+                      if (isVisible(el)) {
+                        el.focus({ preventScroll: true });
+                        try {
+                          el.setSelectionRange(0, el.value?.length ?? 0);
+                        } catch (_) {}
+                        return;
+                      }
+                      if (attempt < FOCUS_RETRIES) {
+                        setTimeout(() => tryFocus(attempt + 1), DELAY_MS);
+                      }
+                    }
+                    setTimeout(() => tryFocus(), DELAY_MS);
+                    return setTimeout(() => {
+                      const root =
+                        typeof $plasmicHostElement !== "undefined"
+                          ? $plasmicHostElement
+                          : document;
+                      console.log(
+                        "[dbg] using root:",
+                        root === document ? "document" : "PlasmicHostElement"
+                      );
+                      console.log(
+                        "[dbg] dropdown inputs local:",
+                        root.querySelectorAll("input.dropdown-input").length
+                      );
+                      console.log(
+                        "[dbg] dropdown inputs global:",
+                        document.querySelectorAll("input.dropdown-input").length
+                      );
+                    }, 150);
+                  })();
+                }
+              };
+              return (({ customFunction }) => {
+                return customFunction();
+              })?.apply(null, [actionArgs]);
+            })()
+          : undefined;
+        if (
+          $steps["updateMenuOpen2"] != null &&
+          typeof $steps["updateMenuOpen2"] === "object" &&
+          typeof $steps["updateMenuOpen2"].then === "function"
+        ) {
+          $steps["updateMenuOpen2"] = await $steps["updateMenuOpen2"];
+        }
       }}
     >
       <div
@@ -418,116 +491,6 @@ function PlasmicDropdown__RenderFunc(props: {
             [sty.dropdownTriggerwidth__200]: hasVariant($state, "width", "_200")
           }
         )}
-        onClick={async event => {
-          const $steps = {};
-
-          $steps["updateMenuOpen"] = true
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["menuOpen"]
-                  },
-                  operation: 4
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
-
-                  const oldValue = $stateGet(objRoot, variablePath);
-                  $stateSet(objRoot, variablePath, !oldValue);
-                  return !oldValue;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateMenuOpen"] != null &&
-            typeof $steps["updateMenuOpen"] === "object" &&
-            typeof $steps["updateMenuOpen"].then === "function"
-          ) {
-            $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
-          }
-
-          $steps["updateMenuOpen2"] = true
-            ? (() => {
-                const actionArgs = {
-                  customFunction: async () => {
-                    return (() => {
-                      const FOCUS_RETRIES = 10;
-                      const DELAY_MS = 60;
-                      function isVisible(el) {
-                        return !!(
-                          el &&
-                          el.offsetParent !== null &&
-                          !el.disabled
-                        );
-                      }
-                      function tryFocus(attempt = 0) {
-                        let root;
-                        try {
-                          root =
-                            typeof $plasmicHostElement !== "undefined"
-                              ? $plasmicHostElement
-                              : document;
-                        } catch {
-                          root = document;
-                        }
-                        let el = root.querySelector("input.dropdown-input");
-                        if (!isVisible(el)) {
-                          const all = Array.from(
-                            document.querySelectorAll("input.dropdown-input")
-                          );
-                          el = all.find(isVisible) || null;
-                        }
-                        if (isVisible(el)) {
-                          el.focus({ preventScroll: true });
-                          try {
-                            el.setSelectionRange(0, el.value?.length ?? 0);
-                          } catch (_) {}
-                          return;
-                        }
-                        if (attempt < FOCUS_RETRIES) {
-                          setTimeout(() => tryFocus(attempt + 1), DELAY_MS);
-                        }
-                      }
-                      setTimeout(() => tryFocus(), DELAY_MS);
-                      return setTimeout(() => {
-                        const root =
-                          typeof $plasmicHostElement !== "undefined"
-                            ? $plasmicHostElement
-                            : document;
-                        console.log(
-                          "[dbg] using root:",
-                          root === document ? "document" : "PlasmicHostElement"
-                        );
-                        console.log(
-                          "[dbg] dropdown inputs local:",
-                          root.querySelectorAll("input.dropdown-input").length
-                        );
-                        console.log(
-                          "[dbg] dropdown inputs global:",
-                          document.querySelectorAll("input.dropdown-input")
-                            .length
-                        );
-                      }, 150);
-                    })();
-                  }
-                };
-                return (({ customFunction }) => {
-                  return customFunction();
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateMenuOpen2"] != null &&
-            typeof $steps["updateMenuOpen2"] === "object" &&
-            typeof $steps["updateMenuOpen2"].then === "function"
-          ) {
-            $steps["updateMenuOpen2"] = await $steps["updateMenuOpen2"];
-          }
-        }}
       >
         <div
           data-plasmic-name={"dropdownSelected"}
@@ -871,43 +834,6 @@ function PlasmicDropdown__RenderFunc(props: {
                     $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
                   }
                 }).apply(null, eventArgs);
-              }}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateMenuOpen"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["menuOpen"]
-                        },
-                        operation: 0,
-                        value: true
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateMenuOpen"] != null &&
-                  typeof $steps["updateMenuOpen"] === "object" &&
-                  typeof $steps["updateMenuOpen"].then === "function"
-                ) {
-                  $steps["updateMenuOpen"] = await $steps["updateMenuOpen"];
-                }
               }}
               onKeyDown={async event => {
                 const $steps = {};
