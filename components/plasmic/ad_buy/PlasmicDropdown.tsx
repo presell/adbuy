@@ -407,15 +407,50 @@ function PlasmicDropdown__RenderFunc(props: {
                 const actionArgs = {
                   customFunction: async () => {
                     return (() => {
+                      const FOCUS_RETRIES = 10;
+                      const DELAY_MS = 60;
+                      function isVisible(el) {
+                        return !!(
+                          el &&
+                          el.offsetParent !== null &&
+                          !el.disabled
+                        );
+                      }
+                      function tryFocus(attempt = 0) {
+                        let el = $plasmicHostElement.querySelector(
+                          "input.dropdown-input"
+                        );
+                        if (!isVisible(el)) {
+                          const all = Array.from(
+                            document.querySelectorAll("input.dropdown-input")
+                          );
+                          el = all.find(isVisible) || null;
+                        }
+                        if (isVisible(el)) {
+                          el.focus({ preventScroll: true });
+                          try {
+                            el.setSelectionRange(0, el.value?.length ?? 0);
+                          } catch (_) {}
+                          return;
+                        }
+                        if (attempt < FOCUS_RETRIES) {
+                          setTimeout(() => tryFocus(attempt + 1), DELAY_MS);
+                        }
+                      }
+                      setTimeout(() => tryFocus(), DELAY_MS);
                       return setTimeout(() => {
                         const root = $plasmicHostElement;
-                        if (!root) return;
-                        const inputs = root.querySelectorAll("input");
-                        const visible = Array.from(inputs).find(
-                          el => el.offsetParent !== null && !el.disabled
+                        console.log("[dbg] root exists:", !!root);
+                        console.log(
+                          "[dbg] local dropdown-inputs:",
+                          root.querySelectorAll("input.dropdown-input").length
                         );
-                        if (visible) visible.focus();
-                      }, 100);
+                        console.log(
+                          "[dbg] global dropdown-inputs:",
+                          document.querySelectorAll("input.dropdown-input")
+                            .length
+                        );
+                      }, 150);
                     })();
                   }
                 };
@@ -716,7 +751,7 @@ function PlasmicDropdown__RenderFunc(props: {
                 projectcss.all,
                 projectcss.input,
                 sty.filter,
-                "geologica-h2",
+                "geologica-h2 dropdown-input",
                 {
                   [sty.filterfilterable]: hasVariant(
                     $state,
@@ -786,7 +821,7 @@ function PlasmicDropdown__RenderFunc(props: {
                 projectcss.all,
                 projectcss.input,
                 sty.enter,
-                "geologica-h2",
+                "geologica-h2 dropdown-input",
                 {
                   [sty.enterfilterable]: hasVariant(
                     $state,
