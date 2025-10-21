@@ -999,7 +999,10 @@ function PlasmicDropdown__RenderFunc(props: {
             projectcss.all,
             sty.dropdownMenu,
             "dropdown-menu",
-            { [sty.dropdownMenuzip]: hasVariant($state, "zip", "zip") }
+            {
+              [sty.dropdownMenuwidth__200]: hasVariant($state, "width", "_200"),
+              [sty.dropdownMenuzip]: hasVariant($state, "zip", "zip")
+            }
           )}
           onMouseLeave={async event => {
             const $steps = {};
