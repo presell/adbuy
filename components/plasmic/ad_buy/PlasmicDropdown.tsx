@@ -905,21 +905,23 @@ function PlasmicDropdown__RenderFunc(props: {
             />
           ) : null}
           {(
-            hasVariant($state, "multiFilter", "multiFilter")
+            hasVariant($state, "zip", "zip")
               ? true
-              : (() => {
-                  try {
-                    return !!$state.selectedLabel;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
+              : hasVariant($state, "multiFilter", "multiFilter")
+                ? true
+                : (() => {
+                    try {
+                      return !!$state.selectedLabel;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()
+                  })()
           ) ? (
             <div
               data-plasmic-name={"dropdownLabelSelected"}
@@ -934,6 +936,11 @@ function PlasmicDropdown__RenderFunc(props: {
                     $state,
                     "multiFilter",
                     "multiFilter"
+                  ),
+                  [sty.dropdownLabelSelectedzip]: hasVariant(
+                    $state,
+                    "zip",
+                    "zip"
                   )
                 }
               )}

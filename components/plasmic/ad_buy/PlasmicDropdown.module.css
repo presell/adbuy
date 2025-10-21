@@ -199,6 +199,9 @@
 .dropdownLabelSelectedmultiFilter {
   display: none;
 }
+.dropdownLabelSelectedzip {
+  display: none;
+}
 .dropdownChevron {
   object-fit: cover;
   max-width: 100%;
