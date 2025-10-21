@@ -373,7 +373,7 @@ function PlasmicDropdown__RenderFunc(props: {
                   objRoot: $state,
                   variablePath: ["menuOpen"]
                 },
-                operation: 0,
+                operation: 4,
                 value: true
               };
               return (({ variable, value, startIndex, deleteCount }) => {
@@ -382,8 +382,9 @@ function PlasmicDropdown__RenderFunc(props: {
                 }
                 const { objRoot, variablePath } = variable;
 
-                $stateSet(objRoot, variablePath, value);
-                return value;
+                const oldValue = $stateGet(objRoot, variablePath);
+                $stateSet(objRoot, variablePath, !oldValue);
+                return !oldValue;
               })?.apply(null, [actionArgs]);
             })()
           : undefined;
