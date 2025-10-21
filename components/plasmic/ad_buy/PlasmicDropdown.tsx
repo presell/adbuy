@@ -417,9 +417,16 @@ function PlasmicDropdown__RenderFunc(props: {
                         );
                       }
                       function tryFocus(attempt = 0) {
-                        let el = $plasmicHostElement.querySelector(
-                          "input.dropdown-input"
-                        );
+                        let root;
+                        try {
+                          root =
+                            typeof $plasmicHostElement !== "undefined"
+                              ? $plasmicHostElement
+                              : document;
+                        } catch {
+                          root = document;
+                        }
+                        let el = root.querySelector("input.dropdown-input");
                         if (!isVisible(el)) {
                           const all = Array.from(
                             document.querySelectorAll("input.dropdown-input")
@@ -439,14 +446,20 @@ function PlasmicDropdown__RenderFunc(props: {
                       }
                       setTimeout(() => tryFocus(), DELAY_MS);
                       return setTimeout(() => {
-                        const root = $plasmicHostElement;
-                        console.log("[dbg] root exists:", !!root);
+                        const root =
+                          typeof $plasmicHostElement !== "undefined"
+                            ? $plasmicHostElement
+                            : document;
                         console.log(
-                          "[dbg] local dropdown-inputs:",
+                          "[dbg] using root:",
+                          root === document ? "document" : "PlasmicHostElement"
+                        );
+                        console.log(
+                          "[dbg] dropdown inputs local:",
                           root.querySelectorAll("input.dropdown-input").length
                         );
                         console.log(
-                          "[dbg] global dropdown-inputs:",
+                          "[dbg] dropdown inputs global:",
                           document.querySelectorAll("input.dropdown-input")
                             .length
                         );
