@@ -102,6 +102,8 @@ export type PlasmicAppCampaigns__OverridesType = {
   stateDrop?: Flex__<typeof Dropdown>;
   zipDrop?: Flex__<typeof Dropdown>;
   budgetInput?: Flex__<"input">;
+  mobileBudget?: Flex__<"div">;
+  budgetInput2?: Flex__<"input">;
   focusPage?: Flex__<typeof Embed>;
 };
 
@@ -293,7 +295,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
         path: "product",
@@ -509,6 +511,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "budgetInput2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -860,8 +868,8 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       radius={"rightZero"}
                       width={
                         hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "_150"
-                          : "_200"
+                          ? "stretch"
+                          : "stretch"
                       }
                     />
                   </div>
@@ -1027,8 +1035,8 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         radius={"leftZero"}
                         width={
                           hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "_150"
-                            : "_200"
+                            ? "stretch"
+                            : "stretch"
                         }
                       />
                     ) : null}
@@ -1783,7 +1791,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "stateDrop",
                           "placeholder"
                         ])}
-                        radius={"rightZero"}
+                        radius={
+                          hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? undefined
+                            : "rightZero"
+                        }
+                        width={"stretch"}
                       />
 
                       <Dropdown
@@ -1886,6 +1899,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "placeholder"
                         ])}
                         radius={"rightZero"}
+                        width={"stretch"}
                         zip={true}
                       />
                     </div>
@@ -2138,6 +2152,112 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     </div>
                   </div>
                 </div>
+                {(
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? true
+                    : false
+                ) ? (
+                  <div
+                    data-plasmic-name={"mobileBudget"}
+                    data-plasmic-override={overrides.mobileBudget}
+                    className={classNames(projectcss.all, sty.mobileBudget)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__oaogo,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Daily Budget"}
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ytVa6)}
+                    >
+                      {(() => {
+                        try {
+                          return (
+                            $state.budgetInput2.value == undefined ||
+                            $state.budgetInput2.value == ""
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2Pzec
+                          )}
+                        >
+                          {"$"}
+                        </div>
+                      ) : null}
+                      {(() => {
+                        try {
+                          return (
+                            $state.budgetInput2.value != undefined &&
+                            $state.budgetInput2.value != ""
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wf0Cj
+                          )}
+                        >
+                          {"$"}
+                        </div>
+                      ) : null}
+                      <input
+                        data-plasmic-name={"budgetInput2"}
+                        data-plasmic-override={overrides.budgetInput2}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.input,
+                          sty.budgetInput2
+                        )}
+                        onChange={async (...eventArgs: any) => {
+                          (e => {
+                            generateStateOnChangeProp($state, [
+                              "budgetInput2",
+                              "value"
+                            ])(e.target.value);
+                          }).apply(null, eventArgs);
+                        }}
+                        placeholder={``}
+                        ref={ref => {
+                          $refs["budgetInput2"] = ref;
+                        }}
+                        type={"text"}
+                        value={
+                          generateStateValueProp($state, [
+                            "budgetInput2",
+                            "value"
+                          ]) ?? ""
+                        }
+                      />
+                    </div>
+                  </div>
+                ) : null}
               </React.Fragment>
             }
             className={classNames("__wab_instance", sty.appLayout)}
@@ -2185,6 +2305,8 @@ const PlasmicDescendants = {
     "stateDrop",
     "zipDrop",
     "budgetInput",
+    "mobileBudget",
+    "budgetInput2",
     "focusPage"
   ],
   appLayout: [
@@ -2197,7 +2319,9 @@ const PlasmicDescendants = {
     "productDropMedical",
     "stateDrop",
     "zipDrop",
-    "budgetInput"
+    "budgetInput",
+    "mobileBudget",
+    "budgetInput2"
   ],
   industryDrop: ["industryDrop"],
   productDropEmpty: ["productDropEmpty"],
@@ -2208,6 +2332,8 @@ const PlasmicDescendants = {
   stateDrop: ["stateDrop"],
   zipDrop: ["zipDrop"],
   budgetInput: ["budgetInput"],
+  mobileBudget: ["mobileBudget", "budgetInput2"],
+  budgetInput2: ["budgetInput2"],
   focusPage: ["focusPage"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -2225,6 +2351,8 @@ type NodeDefaultElementType = {
   stateDrop: typeof Dropdown;
   zipDrop: typeof Dropdown;
   budgetInput: "input";
+  mobileBudget: "div";
+  budgetInput2: "input";
   focusPage: typeof Embed;
 };
 
@@ -2300,6 +2428,8 @@ export const PlasmicAppCampaigns = Object.assign(
     stateDrop: makeNodeComponent("stateDrop"),
     zipDrop: makeNodeComponent("zipDrop"),
     budgetInput: makeNodeComponent("budgetInput"),
+    mobileBudget: makeNodeComponent("mobileBudget"),
+    budgetInput2: makeNodeComponent("budgetInput2"),
     focusPage: makeNodeComponent("focusPage"),
 
     // Metadata about props expected for PlasmicAppCampaigns

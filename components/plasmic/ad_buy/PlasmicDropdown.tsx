@@ -74,7 +74,7 @@ createPlasmicElementProxy;
 
 export type PlasmicDropdown__VariantMembers = {
   radius: "rightZero" | "leftZero";
-  width: "_200" | "_175" | "_150" | "_125";
+  width: "_200" | "_175" | "_150" | "_125" | "stretch";
   filterable: "filterable";
   multiFilter: "multiFilter";
   zip: "zip";
@@ -83,7 +83,7 @@ export type PlasmicDropdown__VariantMembers = {
 };
 export type PlasmicDropdown__VariantsArgs = {
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
-  width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
+  width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125" | "stretch">;
   filterable?: SingleBooleanChoiceArg<"filterable">;
   multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
   zip?: SingleBooleanChoiceArg<"zip">;
@@ -154,7 +154,7 @@ export interface DefaultDropdownProps {
   multi?: boolean;
   onMultiChange?: (val: string) => void;
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
-  width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125">;
+  width?: SingleChoiceArg<"_200" | "_175" | "_150" | "_125" | "stretch">;
   filterable?: SingleBooleanChoiceArg<"filterable">;
   multiFilter?: SingleBooleanChoiceArg<"multiFilter">;
   zip?: SingleBooleanChoiceArg<"zip">;
@@ -374,7 +374,8 @@ function PlasmicDropdown__RenderFunc(props: {
           [sty.dropdownwidth__125]: hasVariant($state, "width", "_125"),
           [sty.dropdownwidth__150]: hasVariant($state, "width", "_150"),
           [sty.dropdownwidth__175]: hasVariant($state, "width", "_175"),
-          [sty.dropdownwidth__200]: hasVariant($state, "width", "_200")
+          [sty.dropdownwidth__200]: hasVariant($state, "width", "_200"),
+          [sty.dropdownwidth_stretch]: hasVariant($state, "width", "stretch")
         }
       )}
       onClick={async event => {
@@ -548,6 +549,11 @@ function PlasmicDropdown__RenderFunc(props: {
                 $state,
                 "width",
                 "_200"
+              ),
+              [sty.dropdownSelectedwidth_stretch]: hasVariant(
+                $state,
+                "width",
+                "stretch"
               ),
               [sty.dropdownSelectedzip]: hasVariant($state, "zip", "zip")
             }

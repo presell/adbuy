@@ -21,6 +21,10 @@
 .dropdownwidth__125 {
   width: 125px;
 }
+.dropdownwidth_stretch {
+  width: 100%;
+  min-width: 0;
+}
 .dropdownlocked {
   cursor: not-allowed;
 }
@@ -146,6 +150,11 @@
   border-width: 1px;
   border-style: none;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .filter {
+    font-size: 16px;
+  }
+}
 .filterfilterable {
   display: flex;
 }
@@ -171,6 +180,11 @@
   display: none;
   border-width: 1px;
   border-style: none;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .enter {
+    font-size: 16px;
+  }
 }
 .enterfilterable {
   display: flex;
