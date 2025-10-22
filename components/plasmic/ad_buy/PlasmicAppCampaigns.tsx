@@ -587,41 +587,8 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             projectcss.plasmic_mixins,
             styleTokensClassNames,
             sty.root,
-            "page-root"
+            ``
           )}
-          onKeyPress={async event => {
-            const $steps = {};
-
-            $steps["updateAppLayoutPopOpen"] = true
-              ? (() => {
-                  const actionArgs = {
-                    variable: {
-                      objRoot: $state,
-                      variablePath: ["appLayout", "popOpen"]
-                    },
-                    operation: 0,
-                    value: true
-                  };
-                  return (({ variable, value, startIndex, deleteCount }) => {
-                    if (!variable) {
-                      return;
-                    }
-                    const { objRoot, variablePath } = variable;
-
-                    $stateSet(objRoot, variablePath, value);
-                    return value;
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-            if (
-              $steps["updateAppLayoutPopOpen"] != null &&
-              typeof $steps["updateAppLayoutPopOpen"] === "object" &&
-              typeof $steps["updateAppLayoutPopOpen"].then === "function"
-            ) {
-              $steps["updateAppLayoutPopOpen"] =
-                await $steps["updateAppLayoutPopOpen"];
-            }
-          }}
         >
           <AppLayout
             data-plasmic-name={"appLayout"}
