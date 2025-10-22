@@ -1,11 +1,14 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useState, createContext } from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 import { PlasmicAppCampaigns } from "../../components/plasmic/ad_buy/PlasmicAppCampaigns";
 import { useRouter } from "next/router";
 
+export const CampaignsContext = createContext<any[]>([]);
+
 function AppCampaigns() {
   const router = useRouter();
+  const [campaigns, setCampaigns] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -23,23 +26,13 @@ function AppCampaigns() {
           .select("*");
 
         if (error) throw error;
+
         console.log("[Campaigns] 📦 Supabase campaigns:", data);
+        setCampaigns(data || []);
 
-        // ✅ Sync with both Plasmic Studio ($state) and runtime ($plasmic)
-        const win = window as any;
-
-        if (win.$state) {
-          win.$state.campaigns = data;
-          console.log("[Campaigns] ✅ Updated $state.campaigns for Plasmic bindings");
-        }
-
-        if (win.$plasmic?.updateGlobalContext) {
-          win.$plasmic.updateGlobalContext({
-            campaigns: data,
-          });
-          console.log("[Campaigns] ✅ Updated $plasmic global context");
-        } else {
-          console.log("[Campaigns] ℹ️ No $plasmic found — running outside Studio");
+        // ✅ Optional: expose for Plasmic Studio bindings (dev only)
+        if (typeof window !== "undefined") {
+          (window as any).campaigns = data;
         }
       } catch (err) {
         console.error("[Campaigns] ❌ Supabase query failed:", err);
@@ -48,13 +41,15 @@ function AppCampaigns() {
   }, []);
 
   return (
-    <PageParamsProvider__
-      route={router?.pathname}
-      params={router?.query}
-      query={router?.query}
-    >
-      <PlasmicAppCampaigns />
-    </PageParamsProvider__>
+    <CampaignsContext.Provider value={campaigns}>
+      <PageParamsProvider__
+        route={router?.pathname}
+        params={router?.query}
+        query={router?.query}
+      >
+        <PlasmicAppCampaigns />
+      </PageParamsProvider__>
+    </CampaignsContext.Provider>
   );
 }
 
