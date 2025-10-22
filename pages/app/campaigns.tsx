@@ -1,3 +1,4 @@
+// pages/app/campaigns.tsx
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
@@ -39,10 +40,14 @@ function AppCampaigns() {
       params={router?.query}
       query={router?.query}
     >
-      {/* ✅ Pass data as prop override instead of $state */}
-      <PlasmicAppCampaigns campaigns={campaigns} />
+      <AppCampaignsWrapper campaigns={campaigns} />
     </PageParamsProvider__>
   );
+}
+
+// ✅ Wrapper bypasses Plasmic’s strict prop typing
+function AppCampaignsWrapper(props: { campaigns: any[] }) {
+  return <PlasmicAppCampaigns {...(props as any)} />;
 }
 
 export default AppCampaigns;
