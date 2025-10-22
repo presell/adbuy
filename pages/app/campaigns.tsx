@@ -1,10 +1,13 @@
-// ✅ TypeScript global declaration (prevents build errors)
+// ✅ Fix for TypeScript global declaration conflicts
+import type { SupabaseClient } from "@supabase/supabase-js";
+
+// Extend the Window interface safely without redeclaring incompatible types
 declare global {
   interface Window {
     $plasmic?: {
       updateGlobalState?: (key: string, value: any) => void;
     };
-    supabase?: any;
+    supabase?: SupabaseClient;
     __supabaseReady__?: boolean;
   }
 }
@@ -26,7 +29,7 @@ function AppCampaigns() {
       try {
         console.log("[Campaigns] 🔄 Waiting for Supabase...");
 
-        // Wait for global initialization from _app.tsx
+        // Wait for Supabase to initialize globally
         let retries = 20;
         while ((!window.__supabaseReady__ || !window.supabase) && retries > 0) {
           await new Promise((r) => setTimeout(r, 150));
