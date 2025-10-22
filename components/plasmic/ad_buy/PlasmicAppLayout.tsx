@@ -239,12 +239,6 @@ function PlasmicAppLayout__RenderFunc(props: {
 
         valueProp: "popOpen",
         onChangeProp: "onPopOpenChange"
-      },
-      {
-        path: "touchStartY",
-        type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]

@@ -146,6 +146,8 @@ function PlasmicAppCampaigns__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const currentUser = useCurrentUser?.() || {};
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
@@ -612,18 +614,18 @@ function PlasmicAppCampaigns__RenderFunc(props: {
               <React.Fragment>
                 <div className={classNames(projectcss.all, sty.freeBox__qnqdv)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ju8Ms,
-                      "geologica-h1"
-                    )}
+                    className={classNames(projectcss.all, sty.freeBox__sIpJq)}
                   >
-                    {"Campaign Type"}
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___8Qw2D)}
-                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ju8Ms,
+                        "geologica-h1"
+                      )}
+                    >
+                      {"Campaign Type"}
+                    </div>
                     <Dropdown
                       data-plasmic-name={"industryDrop"}
                       data-plasmic-override={overrides.industryDrop}
@@ -856,9 +858,16 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         "placeholder"
                       ])}
                       radius={"rightZero"}
-                      width={"_200"}
+                      width={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "_150"
+                          : "_200"
+                      }
                     />
-
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___8Qw2D)}
+                  >
                     {(() => {
                       try {
                         return $state.product == "";
@@ -1016,7 +1025,11 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           "placeholder"
                         ])}
                         radius={"leftZero"}
-                        width={"_200"}
+                        width={
+                          hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? "_150"
+                            : "_200"
+                        }
                       />
                     ) : null}
                     {(() => {

@@ -2556,6 +2556,7 @@
   .text__axDqU {
     animation: none;
     font-size: 13px;
+    margin-right: 0px;
   }
 }
 .freeBox__ffu89 {
@@ -2572,6 +2573,11 @@
   padding: 3px;
   border-width: 1px;
   border-style: solid;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ffu89 {
+    display: none;
+  }
 }
 .svg__wqN2 {
   object-fit: cover;
