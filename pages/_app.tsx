@@ -7,6 +7,12 @@ import Script from "next/script";
 import localFont from "next/font/local";
 import { useRouter } from "next/router"; // ✅ Correct named import
 
+// ✅ Attach Supabase globally so Plasmic embeds & client-side scripts can use it
+if (typeof window !== "undefined" && !window.supabase) {
+  window.supabase = supabase;
+  console.log("[Global] Supabase client attached to window");
+}
+
 // Declare global functions injected by main.js to avoid TypeScript errors
 declare global {
   interface Window {
