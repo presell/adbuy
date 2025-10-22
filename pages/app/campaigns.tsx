@@ -5,11 +5,9 @@ import { supabase } from "../../lib/supabaseClient";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 import { PlasmicAppCampaigns } from "../../components/plasmic/ad_buy/PlasmicAppCampaigns";
 import { useRouter } from "next/router";
-import { usePlasmicRootContext } from "@plasmicapp/react-web";
 
 function AppCampaigns() {
   const router = useRouter();
-  const plasmicCtx = usePlasmicRootContext();
 
   useEffect(() => {
     (async () => {
@@ -26,34 +24,23 @@ function AppCampaigns() {
           .select("*");
 
         if (error) throw error;
-
         console.log("[Campaigns] 📦 Supabase campaigns:", data);
 
-        // ✅ Option 1: Update Plasmic’s global context (if project uses it)
-        if (plasmicCtx?.updateGlobalContext) {
-          plasmicCtx.updateGlobalContext({ campaigns: data });
-          console.log("[Campaigns] ✅ Updated global context");
-        }
-
-        // ✅ Option 2: Patch Plasmic’s root state (works always, even if no schema)
-        else if (plasmicCtx?.setGlobalVariants) {
-          plasmicCtx.setGlobalVariants((prev: any) => ({
-            ...prev,
-            campaigns: data,
-          }));
-          console.log("[Campaigns] ✅ Set campaigns via global variants");
-        }
-
-        // ✅ Option 3: Last resort, mirror into window for debug or Studio
+        // ✅ Try to update Plasmic global state (Studio/runtime)
+        if (window.$state) {
+          window.$state.campaigns = data;
+          console.log("[Campaigns] ✅ Updated $state.campaigns for Plasmic bindings");
+        } 
+        // ✅ Fallback: attach to window for debugging / external scripts
         else {
-          (window as any).$plasmic = { ...(window as any).$plasmic, campaigns: data };
-          console.warn("[Campaigns] ⚠️ Fallback: set campaigns on window.$plasmic");
+          window.$plasmic = { ...(window.$plasmic || {}), campaigns: data };
+          console.warn("[Campaigns] ⚠️ No $state found, attached to window.$plasmic");
         }
       } catch (err) {
         console.error("[Campaigns] ❌ Supabase query failed:", err);
       }
     })();
-  }, [plasmicCtx]);
+  }, []);
 
   return (
     <PageParamsProvider__
