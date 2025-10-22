@@ -2295,7 +2295,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
-                      return $state.campaigns;
+                      return props?.campaigns ?? $state?.campaigns;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
