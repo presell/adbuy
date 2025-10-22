@@ -238,6 +238,12 @@ function PlasmicAppLayout__RenderFunc(props: {
 
         valueProp: "popOpen",
         onChangeProp: "onPopOpenChange"
+      },
+      {
+        path: "touchStartY",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -2391,6 +2397,61 @@ function PlasmicAppLayout__RenderFunc(props: {
                 ? "grab"
                 : undefined
             )}
+            onTouchEnd={async event => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const endY = event.changedTouches?.[0]?.clientY ?? 0;
+                          const deltaY = endY - $state.touchStartY;
+                          if (deltaY > 80) {
+                            return ($state.popOpen = false);
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+            onTouchStart={async event => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          return ($state.touchStartY =
+                            event.touches?.[0]?.clientY ?? 0);
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
           />
 
           <div
@@ -2633,7 +2694,7 @@ function PlasmicAppLayout__RenderFunc(props: {
         data-plasmic-override={overrides.grabFunction}
         className={classNames("__wab_instance", sty.grabFunction)}
         code={
-          '<script>\n(function setupGrabListener(attempt = 0) {\n  const grab = document.querySelector(".grab");\n  if (!grab) {\n    if (attempt < 50) return setTimeout(() => setupGrabListener(attempt + 1), 100);\n    console.warn("[grab] .grab not found after 5s");\n    return;\n  }\n\n  console.log("[grab] found .grab element \u2014 initializing listeners");\n  let startY = 0;\n  let currentY = 0;\n  let isDragging = false;\n\n  // Always grab directly \u2014 don\u2019t rely on closest()\n  function getSheet() {\n    const sheet = document.querySelector(".create-container");\n    if (!sheet) console.warn("[grab] .create-container not found");\n    return sheet;\n  }\n\n  function closePopup() {\n    console.log("[grab] attempting to close popup");\n    const sheet = getSheet();\n    if (!sheet) return;\n\n    if (typeof window.$plasmic !== "undefined" && window.$plasmic?.updateStateValue) {\n      console.log("[grab] using $plasmic.updateStateValue()");\n      window.$plasmic.updateStateValue({ path: ["popOpen"], value: false });\n      return;\n    }\n\n    sheet.style.transition = "transform 0.25s ease";\n    sheet.style.transform = "translateY(100%)";\n    setTimeout(() => (sheet.style.display = "none"), 250);\n  }\n\n  grab.addEventListener("touchstart", (e) => {\n    const sheet = getSheet();\n    if (!sheet) return;\n    startY = e.touches[0].clientY;\n    isDragging = true;\n    sheet.style.transition = "none";\n    console.log("[grab] touchstart");\n  }, { passive: false });\n\n  grab.addEventListener("touchmove", (e) => {\n    if (!isDragging) return;\n    const sheet = getSheet();\n    if (!sheet) return;\n    currentY = e.touches[0].clientY;\n    const deltaY = currentY - startY;\n    if (deltaY > 0) {\n      e.preventDefault();\n      sheet.style.transform = `translateY(${deltaY}px)`;\n    }\n  }, { passive: false });\n\n  grab.addEventListener("touchend", (e) => {\n    if (!isDragging) return;\n    isDragging = false;\n    const deltaY = e.changedTouches[0].clientY - startY;\n    console.log("[grab] touchend deltaY:", deltaY);\n\n    if (deltaY > 80) {\n      console.log("[grab] swipe down detected \u2705");\n      closePopup();\n    } else {\n      const sheet = getSheet();\n      if (sheet) {\n        sheet.style.transition = "transform 0.25s ease";\n        sheet.style.transform = "translateY(0)";\n      }\n    }\n  }, { passive: false });\n})();\n</script>\n\n<style>\nhtml, body { overscroll-behavior: none; }\n.grab { touch-action: none; }\n</style>'
+          '<style>\nhtml, body {\n  overscroll-behavior: none; /* Prevents pull-to-refresh */\n}\n.grab {\n  touch-action: none; /* Prevents Safari scrolling conflicts */\n  -webkit-user-select: none; /* Prevents accidental text highlight */\n  user-select: none;\n}\n</style>\n\n<script>\ndocument.addEventListener("touchmove", (e) => {\n  const grab = e.target.closest(".grab");\n  const sheet = document.querySelector(".create-container");\n  if (!grab || !sheet || !$state.popOpen) return;\n  const deltaY = e.touches[0].clientY - $state.touchStartY;\n  if (deltaY > 0 && deltaY < 200) {\n    e.preventDefault();\n    sheet.style.transform = `translateY(${deltaY}px)`;\n  }\n});\n\ndocument.addEventListener("touchend", () => {\n  const sheet = document.querySelector(".create-container");\n  if (sheet) {\n    sheet.style.transition = "transform 0.25s ease";\n    sheet.style.transform = "translateY(0)";\n  }\n});\n</script>'
         }
       />
     </div>
