@@ -2375,7 +2375,11 @@ function PlasmicAppLayout__RenderFunc(props: {
         <div
           data-plasmic-name={"createContainer"}
           data-plasmic-override={overrides.createContainer}
-          className={classNames(projectcss.all, sty.createContainer)}
+          className={classNames(
+            projectcss.all,
+            sty.createContainer,
+            "create-container"
+          )}
         >
           <div
             data-plasmic-name={"grab"}
