@@ -1,10 +1,19 @@
-// pages/app/campaigns.tsx
 import * as React from "react";
 import { useEffect } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 import { PlasmicAppCampaigns } from "../../components/plasmic/ad_buy/PlasmicAppCampaigns";
 import { useRouter } from "next/router";
+
+// ✅ Declare the extra globals so TypeScript stops complaining
+declare global {
+  interface Window {
+    __supabaseReady__?: boolean;
+    supabase?: typeof supabase;
+    $state?: any;
+    $plasmic?: any;
+  }
+}
 
 function AppCampaigns() {
   const router = useRouter();
@@ -30,9 +39,8 @@ function AppCampaigns() {
         if (window.$state) {
           window.$state.campaigns = data;
           console.log("[Campaigns] ✅ Updated $state.campaigns for Plasmic bindings");
-        } 
-        // ✅ Fallback: attach to window for debugging / external scripts
-        else {
+        } else {
+          // ✅ Fallback: attach to window for debugging / external scripts
           window.$plasmic = { ...(window.$plasmic || {}), campaigns: data };
           console.warn("[Campaigns] ⚠️ No $state found, attached to window.$plasmic");
         }
