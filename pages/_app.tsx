@@ -11,10 +11,18 @@ import { useRouter } from "next/router"; // ✅ Correct named import
 declare global {
   interface Window {
     supabase?: typeof supabase;
+    __supabaseReady__?: boolean;
     reinitializeHomepageScripts?: () => void;
     initTilt?: () => void;
     initMarquees?: () => void;
   }
+}
+
+// ✅ Attach Supabase globally so Plasmic embeds & client-side scripts can use it
+if (typeof window !== "undefined" && !window.supabase) {
+  window.supabase = supabase;
+  window.__supabaseReady__ = true;
+  console.log("[Global] Supabase client attached to window");
 }
 
 // Declare global functions injected by main.js to avoid TypeScript errors
