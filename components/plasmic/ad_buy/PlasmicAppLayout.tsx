@@ -2399,58 +2399,9 @@ function PlasmicAppLayout__RenderFunc(props: {
             )}
             onTouchEnd={async event => {
               const $steps = {};
-
-              $steps["runCode"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          const endY = event.changedTouches?.[0]?.clientY ?? 0;
-                          const deltaY = endY - $state.touchStartY;
-                          if (deltaY > 80) {
-                            return ($state.popOpen = false);
-                          }
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode"] != null &&
-                typeof $steps["runCode"] === "object" &&
-                typeof $steps["runCode"].then === "function"
-              ) {
-                $steps["runCode"] = await $steps["runCode"];
-              }
             }}
             onTouchStart={async event => {
               const $steps = {};
-
-              $steps["runCode"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          return ($state.touchStartY =
-                            event.touches?.[0]?.clientY ?? 0);
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode"] != null &&
-                typeof $steps["runCode"] === "object" &&
-                typeof $steps["runCode"].then === "function"
-              ) {
-                $steps["runCode"] = await $steps["runCode"];
-              }
             }}
           />
 
@@ -2559,7 +2510,11 @@ function PlasmicAppLayout__RenderFunc(props: {
           <div
             data-plasmic-name={"body"}
             data-plasmic-override={overrides.body}
-            className={classNames(projectcss.all, sty.body)}
+            className={classNames(
+              projectcss.all,
+              sty.body,
+              "scrollable-content"
+            )}
           >
             {renderPlasmicSlot({
               defaultContents: null,
@@ -2694,7 +2649,7 @@ function PlasmicAppLayout__RenderFunc(props: {
         data-plasmic-override={overrides.grabFunction}
         className={classNames("__wab_instance", sty.grabFunction)}
         code={
-          '<style>\nhtml, body {\n  overscroll-behavior: none; /* Prevents pull-to-refresh */\n}\n.grab {\n  touch-action: none; /* Prevents Safari scrolling conflicts */\n  -webkit-user-select: none; /* Prevents accidental text highlight */\n  user-select: none;\n}\n</style>\n\n<script>\ndocument.addEventListener("touchmove", (e) => {\n  const grab = e.target.closest(".grab");\n  const sheet = document.querySelector(".create-container");\n  if (!grab || !sheet || !$state.popOpen) return;\n  const deltaY = e.touches[0].clientY - $state.touchStartY;\n  if (deltaY > 0 && deltaY < 200) {\n    e.preventDefault();\n    sheet.style.transform = `translateY(${deltaY}px)`;\n  }\n});\n\ndocument.addEventListener("touchend", () => {\n  const sheet = document.querySelector(".create-container");\n  if (sheet) {\n    sheet.style.transition = "transform 0.25s ease";\n    sheet.style.transform = "translateY(0)";\n  }\n});\n</script>'
+          '<style>\nhtml, body {\n  overscroll-behavior: none; /* Prevent Safari pull-to-refresh */\n}\n\n.create-container {\n  touch-action: none; /* Let JS handle gestures */\n  transition: transform 0.25s ease;\n  will-change: transform;\n  -webkit-user-select: none;\n  user-select: none;\n}\n</style>\n\n\n<script>\n(function() {\n  let startY = 0;\n  let currentY = 0;\n  let isDragging = false;\n  let sheet = null;\n  let scrollable = null;\n\n  function isAtTop(el) {\n    return el ? el.scrollTop <= 0 : true;\n  }\n\n  function closePopup() {\n    console.log("[sheet] Closing popup\u2026");\n    if (window.$plasmic?.updateStateValue) {\n      window.$plasmic.updateStateValue({ path: ["popOpen"], value: false });\n    } else {\n      if (sheet) {\n        sheet.style.transition = "transform 0.25s ease";\n        sheet.style.transform = "translateY(100%)";\n        setTimeout(() => (sheet.style.display = "none"), 250);\n      }\n    }\n  }\n\n  document.addEventListener("touchstart", (e) => {\n    sheet = e.target.closest(".create-container");\n    if (!sheet) return;\n    scrollable = sheet.querySelector(".scrollable-content") || sheet;\n\n    // Only start drag if at top of scroll\n    if (!isAtTop(scrollable)) return;\n\n    startY = e.touches[0].clientY;\n    isDragging = true;\n    sheet.style.transition = "none";\n    console.log("[sheet] Touch start");\n  }, { passive: true });\n\n  document.addEventListener("touchmove", (e) => {\n    if (!isDragging || !sheet) return;\n    currentY = e.touches[0].clientY;\n    const deltaY = currentY - startY;\n\n    if (deltaY > 0 && isAtTop(scrollable)) {\n      e.preventDefault();\n      sheet.style.transform = `translateY(${deltaY}px)`;\n    }\n  }, { passive: false });\n\n  document.addEventListener("touchend", (e) => {\n    if (!isDragging || !sheet) return;\n    isDragging = false;\n\n    const deltaY = e.changedTouches[0].clientY - startY;\n    console.log("[sheet] Touch end deltaY:", deltaY);\n\n    if (deltaY > 100) {\n      console.log("[sheet] Swipe down confirmed \u2705");\n      sheet.style.transition = "transform 0.25s ease";\n      sheet.style.transform = "translateY(100%)";\n      setTimeout(closePopup, 200);\n    } else {\n      sheet.style.transition = "transform 0.25s ease";\n      sheet.style.transform = "translateY(0)";\n    }\n  }, { passive: false });\n})();\n</script>'
         }
       />
     </div>
