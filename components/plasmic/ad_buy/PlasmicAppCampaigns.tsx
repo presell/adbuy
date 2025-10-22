@@ -2253,14 +2253,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 return (async () => {
                                   try {
                                     let retries = 10;
-                                    while (!window.supabase && retries > 0) {
+                                    while (
+                                      (!window.__supabaseReady__ ||
+                                        !window.supabase) &&
+                                      retries > 0
+                                    ) {
                                       await new Promise(r =>
                                         setTimeout(r, 200)
                                       );
                                       retries--;
                                     }
                                     if (!window.supabase) {
-                                      console.error("Supabase not initialized");
+                                      console.error(
+                                        "Supabase not initialized after waiting"
+                                      );
                                       return;
                                     }
                                     const { data, error } =
@@ -2269,7 +2275,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                         .select("*");
                                     if (error) throw error;
                                     console.log(
-                                      "[Plasmic] Supabase campaigns:",
+                                      "[Plasmic] \u2705 Supabase campaigns:",
                                       data
                                     );
                                     $state.campaigns = data;
