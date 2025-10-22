@@ -2285,24 +2285,30 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               return (async () => {
                                 return (async () => {
                                   try {
+                                    let retries = 10;
+                                    while (!window.supabase && retries > 0) {
+                                      await new Promise(r =>
+                                        setTimeout(r, 200)
+                                      );
+                                      retries--;
+                                    }
+                                    if (!window.supabase) {
+                                      console.error("Supabase not initialized");
+                                      return;
+                                    }
                                     const { data, error } =
                                       await window.supabase
                                         .from("campaigns")
-                                        .select("*")
-                                        .order("created_at", {
-                                          ascending: false
-                                        });
-                                    if (error) {
-                                      console.error(
-                                        "[Plasmic] Supabase fetch error:",
-                                        error
-                                      );
-                                      return;
-                                    }
-                                    $state.campaigns = data || [];
+                                        .select("*");
+                                    if (error) throw error;
+                                    console.log(
+                                      "[Plasmic] Supabase campaigns:",
+                                      data
+                                    );
+                                    $state.campaigns = data;
                                   } catch (err) {
                                     console.error(
-                                      "[Plasmic] Unexpected error:",
+                                      "Supabase query failed:",
                                       err
                                     );
                                   }
@@ -2344,34 +2350,41 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__djHLh
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__xZiqY)}
                       key={currentIndex}
                     >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return "testing";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__djHLh
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return currentItem?.created_at;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
+                          })()}
+                        </React.Fragment>
+                      </div>
                     </div>
                   );
                 })}
                 {(() => {
                   try {
-                    return $state.campaigns != 0;
+                    return (
+                      Array.isArray($state.campaigns) &&
+                      $state.campaigns.length > 0
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||

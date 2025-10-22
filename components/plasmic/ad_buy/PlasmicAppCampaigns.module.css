@@ -34,8 +34,19 @@
   max-width: 100%;
   object-fit: cover;
 }
-.text__djHLh {
+.freeBox__xZiqY {
+  display: flex;
+  flex-direction: column;
   position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.text__djHLh {
   width: 100%;
   height: auto;
   max-width: 100%;

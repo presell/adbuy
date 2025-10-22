@@ -1247,6 +1247,11 @@ function PlasmicDropdown__RenderFunc(props: {
             "dropdown-menu",
             {
               [sty.dropdownMenuwidth__200]: hasVariant($state, "width", "_200"),
+              [sty.dropdownMenuwidth_stretch]: hasVariant(
+                $state,
+                "width",
+                "stretch"
+              ),
               [sty.dropdownMenuzip]: hasVariant($state, "zip", "zip")
             }
           )}
@@ -1314,7 +1319,14 @@ function PlasmicDropdown__RenderFunc(props: {
                 className={classNames(
                   projectcss.all,
                   sty.dropdownItem,
-                  "dropdown-item"
+                  "dropdown-item",
+                  {
+                    [sty.dropdownItemwidth_stretch]: hasVariant(
+                      $state,
+                      "width",
+                      "stretch"
+                    )
+                  }
                 )}
                 key={optionIndex}
                 onClick={async event => {
@@ -1405,7 +1417,14 @@ function PlasmicDropdown__RenderFunc(props: {
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.itemLabel,
-                    "item-label geologica-h2 "
+                    "item-label geologica-h2 ",
+                    {
+                      [sty.itemLabelwidth_stretch]: hasVariant(
+                        $state,
+                        "width",
+                        "stretch"
+                      )
+                    }
                   )}
                 >
                   <React.Fragment>
