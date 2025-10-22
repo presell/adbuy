@@ -812,6 +812,11 @@ function PlasmicDropdown__RenderFunc(props: {
                     "multiFilter",
                     "multiFilter"
                   ),
+                  [sty.filterwidth_stretch]: hasVariant(
+                    $state,
+                    "width",
+                    "stretch"
+                  ),
                   [sty.filterzip]: hasVariant($state, "zip", "zip")
                 }
               )}
@@ -872,6 +877,17 @@ function PlasmicDropdown__RenderFunc(props: {
                             const isEnter = key === "Enter";
                             const isBackspace = key === "Backspace";
                             const isDelete = key === "Delete";
+                            if (
+                              (isBackspace || isDelete) &&
+                              $state._lastFilterValueClearedAt &&
+                              Date.now() - $state._lastFilterValueClearedAt <
+                                250
+                            ) {
+                              return;
+                            }
+                            if ($state.filter?.value?.trim() === "") {
+                              $state._lastFilterValueClearedAt = Date.now();
+                            }
                             if (
                               (isBackspace || isDelete) &&
                               (!$state.filter?.value ||

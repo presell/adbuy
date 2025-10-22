@@ -295,7 +295,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       },
       {
         path: "product",
@@ -2141,7 +2141,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         ref={ref => {
                           $refs["budgetInput"] = ref;
                         }}
-                        type={"text"}
+                        type={"number"}
                         value={
                           generateStateValueProp($state, [
                             "budgetInput",
