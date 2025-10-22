@@ -2228,67 +2228,92 @@ function PlasmicAppLayout__RenderFunc(props: {
           })}
         </div>
       </div>
-      <div
-        data-plasmic-name={"drawerOverlay"}
-        data-plasmic-override={overrides.drawerOverlay}
-        className={classNames(
-          projectcss.all,
-          sty.drawerOverlay,
-          (() => {
-            try {
-              return $state.drawerOpen
-                ? "drawer-overlay open"
-                : "drawer-overlay";
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
+      {(
+        hasVariant(globalVariants, "screen", "mobileOnly")
+          ? (() => {
+              try {
+                return $state.drawerOpen == true;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
               }
-              throw e;
+            })()
+          : true
+      ) ? (
+        <div
+          data-plasmic-name={"drawerOverlay"}
+          data-plasmic-override={overrides.drawerOverlay}
+          className={classNames(
+            projectcss.all,
+            sty.drawerOverlay,
+            (() => {
+              try {
+                return $state.drawerOpen
+                  ? "drawer-overlay open"
+                  : "drawer-overlay";
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })(),
+            {
+              [sty.drawerOverlaypage_calls]: hasVariant(
+                $state,
+                "page",
+                "calls"
+              ),
+              [sty.drawerOverlaypage_cards]: hasVariant(
+                $state,
+                "page",
+                "cards"
+              ),
+              [sty.drawerOverlaypage_leads]: hasVariant($state, "page", "leads")
             }
-          })(),
-          {
-            [sty.drawerOverlaypage_calls]: hasVariant($state, "page", "calls"),
-            [sty.drawerOverlaypage_cards]: hasVariant($state, "page", "cards"),
-            [sty.drawerOverlaypage_leads]: hasVariant($state, "page", "leads")
-          }
-        )}
-        onClick={async event => {
-          const $steps = {};
+          )}
+          onClick={async event => {
+            const $steps = {};
 
-          $steps["updateDrawerOpen"] = true
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["drawerOpen"]
-                  },
-                  operation: 0,
-                  value: false
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
+            $steps["updateDrawerOpen"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["drawerOpen"]
+                    },
+                    operation: 0,
+                    value: false
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
 
-                  $stateSet(objRoot, variablePath, value);
-                  return value;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateDrawerOpen"] != null &&
-            typeof $steps["updateDrawerOpen"] === "object" &&
-            typeof $steps["updateDrawerOpen"].then === "function"
-          ) {
-            $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
-          }
-        }}
-      />
-
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateDrawerOpen"] != null &&
+              typeof $steps["updateDrawerOpen"] === "object" &&
+              typeof $steps["updateDrawerOpen"].then === "function"
+            ) {
+              $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+            }
+          }}
+        />
+      ) : null}
       {(() => {
         try {
           return $state.popOpen == true;
