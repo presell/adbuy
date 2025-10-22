@@ -2252,22 +2252,10 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               return (async () => {
                                 return (async () => {
                                   try {
-                                    let retries = 10;
-                                    while (
-                                      (!window.__supabaseReady__ ||
-                                        !window.supabase) &&
-                                      retries > 0
-                                    ) {
+                                    while (!window.__supabaseReady__) {
                                       await new Promise(r =>
-                                        setTimeout(r, 200)
+                                        setTimeout(r, 100)
                                       );
-                                      retries--;
-                                    }
-                                    if (!window.supabase) {
-                                      console.error(
-                                        "Supabase not initialized after waiting"
-                                      );
-                                      return;
                                     }
                                     const { data, error } =
                                       await window.supabase
