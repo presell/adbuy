@@ -67,6 +67,7 @@ import {
 } from "@plasmicapp/react-web/lib/data-sources";
 
 import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import Dropdown from "../../Dropdown"; // plasmic-import: 7Tx4ikCz5Jfw/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
@@ -93,6 +94,7 @@ export const PlasmicAppCampaigns__ArgProps = new Array<ArgPropType>();
 export type PlasmicAppCampaigns__OverridesType = {
   root?: Flex__<"div">;
   appLayout?: Flex__<typeof AppLayout>;
+  sideEffect?: Flex__<typeof SideEffect>;
   industryDrop?: Flex__<typeof Dropdown>;
   productDropEmpty?: Flex__<typeof Dropdown>;
   productDropInsurance?: Flex__<typeof Dropdown>;
@@ -295,7 +297,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
         path: "product",
@@ -517,6 +519,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "campaigns",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -2247,7 +2255,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         ref={ref => {
                           $refs["budgetInput2"] = ref;
                         }}
-                        type={"text"}
+                        type={"number"}
                         value={
                           generateStateValueProp($state, [
                             "budgetInput2",
@@ -2261,7 +2269,131 @@ function PlasmicAppCampaigns__RenderFunc(props: {
               </React.Fragment>
             }
             className={classNames("__wab_instance", sty.appLayout)}
-            contents2={null}
+            contents2={
+              <React.Fragment>
+                <SideEffect
+                  data-plasmic-name={"sideEffect"}
+                  data-plasmic-override={overrides.sideEffect}
+                  className={classNames("__wab_instance", sty.sideEffect)}
+                  onMount={async () => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (async () => {
+                                return (async () => {
+                                  try {
+                                    const { data, error } =
+                                      await window.supabase
+                                        .from("campaigns")
+                                        .select("*")
+                                        .order("created_at", {
+                                          ascending: false
+                                        });
+                                    if (error) {
+                                      console.error(
+                                        "[Plasmic] Supabase fetch error:",
+                                        error
+                                      );
+                                      return;
+                                    }
+                                    $state.campaigns = data || [];
+                                  } catch (err) {
+                                    console.error(
+                                      "[Plasmic] Unexpected error:",
+                                      err
+                                    );
+                                  }
+                                })();
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                />
+
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $state.campaigns;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__djHLh
+                      )}
+                      key={currentIndex}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return "testing";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  );
+                })}
+                {(() => {
+                  try {
+                    return $state.campaigns != 0;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__xT3Uj
+                    )}
+                  >
+                    {"not empty\n"}
+                  </div>
+                ) : null}
+              </React.Fragment>
+            }
             onPopOpenChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["appLayout", "popOpen"]).apply(
                 null,
@@ -2296,6 +2428,7 @@ const PlasmicDescendants = {
   root: [
     "root",
     "appLayout",
+    "sideEffect",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -2311,6 +2444,7 @@ const PlasmicDescendants = {
   ],
   appLayout: [
     "appLayout",
+    "sideEffect",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -2323,6 +2457,7 @@ const PlasmicDescendants = {
     "mobileBudget",
     "budgetInput2"
   ],
+  sideEffect: ["sideEffect"],
   industryDrop: ["industryDrop"],
   productDropEmpty: ["productDropEmpty"],
   productDropInsurance: ["productDropInsurance"],
@@ -2342,6 +2477,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   appLayout: typeof AppLayout;
+  sideEffect: typeof SideEffect;
   industryDrop: typeof Dropdown;
   productDropEmpty: typeof Dropdown;
   productDropInsurance: typeof Dropdown;
@@ -2419,6 +2555,7 @@ export const PlasmicAppCampaigns = Object.assign(
   {
     // Helper components rendering sub-elements
     appLayout: makeNodeComponent("appLayout"),
+    sideEffect: makeNodeComponent("sideEffect"),
     industryDrop: makeNodeComponent("industryDrop"),
     productDropEmpty: makeNodeComponent("productDropEmpty"),
     productDropInsurance: makeNodeComponent("productDropInsurance"),
