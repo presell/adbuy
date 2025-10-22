@@ -154,6 +154,7 @@ export type PlasmicAppLayout__OverridesType = {
   drawerFunctionMobile?: Flex__<typeof Embed>;
   blurOverlayPopUp?: Flex__<typeof Embed>;
   grabFunction?: Flex__<typeof Embed>;
+  popBtn?: Flex__<"div">;
 };
 
 export interface DefaultAppLayoutProps {
@@ -2649,8 +2650,47 @@ function PlasmicAppLayout__RenderFunc(props: {
         data-plasmic-override={overrides.grabFunction}
         className={classNames("__wab_instance", sty.grabFunction)}
         code={
-          '<style>\nhtml, body {\n  overscroll-behavior: none; /* Prevent Safari pull-to-refresh */\n}\n\n.create-container {\n  touch-action: none;\n  transition: transform 0.25s ease;\n  will-change: transform;\n  -webkit-user-select: none;\n  user-select: none;\n}\n</style>\n\n<script>\n(function setupSheetSwipe() {\n  let startY = 0;\n  let currentY = 0;\n  let isDragging = false;\n  let sheet = null;\n  let scrollable = null;\n\n  const THRESHOLD = 100;\n\n  function isAtTop(el) {\n    return el ? el.scrollTop <= 0 : true;\n  }\n\n  function getRoot() {\n    // Works both inside Plasmic Studio and deployed environments\n    try {\n      return typeof $plasmicHostElement !== "undefined"\n        ? $plasmicHostElement\n        : document;\n    } catch {\n      return document;\n    }\n  }\n\n  function closePopup() {\n    console.log("[sheet] Closing popup\u2026");\n    const root = getRoot();\n\n    // \u2705 Safely update Plasmic state if available\n    if (window.$plasmic && window.$plasmic.updateStateValue) {\n      console.log("[sheet] Updating popOpen \u2192 false");\n      window.$plasmic.updateStateValue({\n        path: ["popOpen"],\n        value: false,\n      });\n    } else {\n      // Fallback manual hide\n      if (sheet) {\n        sheet.style.transition = "transform 0.25s ease";\n        sheet.style.transform = "translateY(100%)";\n        setTimeout(() => (sheet.style.display = "none"), 250);\n      }\n    }\n  }\n\n  document.addEventListener(\n    "touchstart",\n    (e) => {\n      sheet = e.target.closest(".create-container");\n      if (!sheet) return;\n      scrollable = sheet.querySelector(".scrollable-content") || sheet;\n\n      if (!isAtTop(scrollable)) return; // allow normal scroll\n\n      startY = e.touches[0].clientY;\n      isDragging = true;\n      sheet.style.transition = "none";\n      console.log("[sheet] Touch start");\n    },\n    { passive: true }\n  );\n\n  document.addEventListener(\n    "touchmove",\n    (e) => {\n      if (!isDragging || !sheet) return;\n      currentY = e.touches[0].clientY;\n      const deltaY = currentY - startY;\n\n      if (deltaY > 0 && isAtTop(scrollable)) {\n        e.preventDefault();\n        // \u2705 Smooth live animation while dragging\n        sheet.style.transform = `translateY(${deltaY}px)`;\n      }\n    },\n    { passive: false }\n  );\n\n  document.addEventListener(\n    "touchend",\n    (e) => {\n      if (!isDragging || !sheet) return;\n      isDragging = false;\n\n      const deltaY = e.changedTouches[0].clientY - startY;\n      console.log("[sheet] Touch end deltaY:", deltaY);\n\n      if (deltaY > THRESHOLD) {\n        console.log("[sheet] Swipe down confirmed \u2705");\n        sheet.style.transition = "transform 0.25s ease";\n        sheet.style.transform = "translateY(100%)";\n\n        // Wait for animation to finish before toggling state\n        setTimeout(closePopup, 200);\n      } else {\n        // Snap back\n        sheet.style.transition = "transform 0.25s ease";\n        sheet.style.transform = "translateY(0)";\n      }\n    },\n    { passive: false }\n  );\n})();\n</script>'
+          '<style>\nhtml, body {\n  overscroll-behavior: none; /* Prevent Safari pull-to-refresh */\n}\n\n.create-container {\n  touch-action: none;\n  transition: transform 0.25s ease;\n  will-change: transform;\n  -webkit-user-select: none;\n  user-select: none;\n}\n</style>\n\n<script>\n(function setupSheetSwipe() {\n  let startY = 0;\n  let currentY = 0;\n  let isDragging = false;\n  let sheet = null;\n  let scrollable = null;\n\n  const THRESHOLD = 100;\n\n  function isAtTop(el) {\n    return el ? el.scrollTop <= 0 : true;\n  }\n\n  function simulatePopButtonClick() {\n    const btn = document.getElementById("pop-button");\n    if (btn) {\n      console.log("[sheet] Simulating click on #pop-button");\n      btn.click();\n    } else {\n      console.warn("[sheet] No #pop-button found!");\n    }\n  }\n\n  function closePopup() {\n    console.log("[sheet] Closing popup\u2026");\n\n    // trigger your Plasmic interaction via click\n    simulatePopButtonClick();\n\n    // still gracefully hide if needed\n    if (sheet) {\n      sheet.style.transition = "transform 0.25s ease";\n      sheet.style.transform = "translateY(100%)";\n      setTimeout(() => (sheet.style.display = "none"), 250);\n    }\n  }\n\n  document.addEventListener(\n    "touchstart",\n    (e) => {\n      sheet = e.target.closest(".create-container");\n      if (!sheet) return;\n      scrollable = sheet.querySelector(".scrollable-content") || sheet;\n\n      if (!isAtTop(scrollable)) return;\n\n      startY = e.touches[0].clientY;\n      isDragging = true;\n      sheet.style.transition = "none";\n      console.log("[sheet] Touch start");\n    },\n    { passive: true }\n  );\n\n  document.addEventListener(\n    "touchmove",\n    (e) => {\n      if (!isDragging || !sheet) return;\n      currentY = e.touches[0].clientY;\n      const deltaY = currentY - startY;\n\n      if (deltaY > 0 && isAtTop(scrollable)) {\n        e.preventDefault();\n        sheet.style.transform = `translateY(${deltaY}px)`;\n      }\n    },\n    { passive: false }\n  );\n\n  document.addEventListener(\n    "touchend",\n    (e) => {\n      if (!isDragging || !sheet) return;\n      isDragging = false;\n\n      const deltaY = e.changedTouches[0].clientY - startY;\n      console.log("[sheet] Touch end deltaY:", deltaY);\n\n      if (deltaY > THRESHOLD) {\n        console.log("[sheet] Swipe down confirmed \u2705");\n        sheet.style.transition = "transform 0.25s ease";\n        sheet.style.transform = "translateY(100%)";\n        setTimeout(closePopup, 200);\n      } else {\n        sheet.style.transition = "transform 0.25s ease";\n        sheet.style.transform = "translateY(0)";\n      }\n    },\n    { passive: false }\n  );\n})();\n</script>'
         }
+      />
+
+      <div
+        data-plasmic-name={"popBtn"}
+        data-plasmic-override={overrides.popBtn}
+        className={classNames(projectcss.all, sty.popBtn)}
+        id={"pop-button"}
+        onClick={async event => {
+          const $steps = {};
+
+          $steps["updatePopOpen"] = true
+            ? (() => {
+                const actionArgs = {
+                  variable: {
+                    objRoot: $state,
+                    variablePath: ["popOpen"]
+                  },
+                  operation: 0,
+                  value: false
+                };
+                return (({ variable, value, startIndex, deleteCount }) => {
+                  if (!variable) {
+                    return;
+                  }
+                  const { objRoot, variablePath } = variable;
+
+                  $stateSet(objRoot, variablePath, value);
+                  return value;
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["updatePopOpen"] != null &&
+            typeof $steps["updatePopOpen"] === "object" &&
+            typeof $steps["updatePopOpen"].then === "function"
+          ) {
+            $steps["updatePopOpen"] = await $steps["updatePopOpen"];
+          }
+        }}
       />
     </div>
   ) as React.ReactElement | null;
@@ -2679,7 +2719,8 @@ const PlasmicDescendants = {
     "btn1",
     "drawerFunctionMobile",
     "blurOverlayPopUp",
-    "grabFunction"
+    "grabFunction",
+    "popBtn"
   ],
   sidebarGroup: [
     "sidebarGroup",
@@ -2709,7 +2750,8 @@ const PlasmicDescendants = {
   btn1: ["btn1"],
   drawerFunctionMobile: ["drawerFunctionMobile"],
   blurOverlayPopUp: ["blurOverlayPopUp"],
-  grabFunction: ["grabFunction"]
+  grabFunction: ["grabFunction"],
+  popBtn: ["popBtn"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2737,6 +2779,7 @@ type NodeDefaultElementType = {
   drawerFunctionMobile: typeof Embed;
   blurOverlayPopUp: typeof Embed;
   grabFunction: typeof Embed;
+  popBtn: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2822,6 +2865,7 @@ export const PlasmicAppLayout = Object.assign(
     drawerFunctionMobile: makeNodeComponent("drawerFunctionMobile"),
     blurOverlayPopUp: makeNodeComponent("blurOverlayPopUp"),
     grabFunction: makeNodeComponent("grabFunction"),
+    popBtn: makeNodeComponent("popBtn"),
 
     // Metadata about props expected for PlasmicAppLayout
     internalVariantProps: PlasmicAppLayout__VariantProps,

@@ -2258,8 +2258,8 @@
     width: auto;
     height: auto;
     bottom: 0%;
-    left: 0px;
-    right: 0px;
+    left: 1px;
+    right: 1px;
     top: auto;
     max-height: 90vh;
     border-bottom-left-radius: 0px;
@@ -2579,4 +2579,17 @@
 .grabFunction:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
+}
+.popBtn {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  left: 1424px;
+  top: 447px;
+  flex-shrink: 0;
 }
