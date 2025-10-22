@@ -2044,6 +2044,8 @@
   max-width: 100%;
   height: 15px;
   margin-right: 15px;
+  width: 15px;
+  flex-shrink: 0;
   display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -2115,6 +2117,7 @@
   .text__vkzNl {
     animation: none;
     font-size: 13px;
+    margin-right: 0px;
   }
 }
 .freeBox__qCdhf {
@@ -2132,6 +2135,11 @@
   padding: 3px;
   border-width: 1px;
   border-style: solid;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__qCdhf {
+    display: none;
+  }
 }
 .svg___5UrAb {
   object-fit: cover;
