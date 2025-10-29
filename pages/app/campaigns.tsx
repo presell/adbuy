@@ -6,7 +6,6 @@ import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-we
 import { PlasmicAppCampaigns } from "../../components/plasmic/ad_buy/PlasmicAppCampaigns";
 import { useRouter } from "next/router";
 
-// ✅ Declare globals for Supabase + Plasmic runtime variables
 declare global {
   interface Window {
     __supabaseReady__?: boolean;
@@ -23,24 +22,27 @@ function AppCampaigns() {
       try {
         console.log("[Campaigns] ⏳ Waiting for Supabase...");
 
-        // Wait for Supabase to be ready
+        // Wait for Supabase initialization
         while (!window.__supabaseReady__ || !window.supabase) {
           await new Promise((r) => setTimeout(r, 150));
         }
 
         console.log("[Campaigns] ✅ Supabase ready, fetching campaigns...");
-        const { data, error } = await window.supabase.from("campaigns").select("*");
+        const { data, error } = await window.supabase
+          .from("campaigns")
+          .select("*");
 
         if (error) throw error;
-
         console.log("[Campaigns] 📦 Supabase campaigns:", data);
 
-        // ✅ Bind data back to Plasmic $state (exactly like the original side effect)
+        // ✅ Works in both Studio + production
         if (window.$state) {
           window.$state.campaigns = data;
-          console.log("[Campaigns] ✅ Bound data to $state.campaigns");
+          console.log("[Campaigns] ✅ Updated $state.campaigns (Plasmic Studio)");
         } else {
-          console.warn("[Campaigns] ⚠️ No $state found — likely running outside Studio context");
+          // ✅ Outside Studio, mimic state manually for production rendering
+          window.$state = { campaigns: data };
+          console.log("[Campaigns] ✅ Created fallback $state for production");
         }
       } catch (err) {
         console.error("[Campaigns] ❌ Supabase query failed:", err);
