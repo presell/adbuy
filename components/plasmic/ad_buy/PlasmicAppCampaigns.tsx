@@ -297,7 +297,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
         path: "product",
@@ -2316,19 +2316,40 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                         setTimeout(r, 100)
                                       );
                                     }
+                                    const {
+                                      data: { session },
+                                      error: sessionError
+                                    } = await window.supabase.auth.getSession();
+                                    if (sessionError) throw sessionError;
+                                    const user = session?.user;
+                                    if (!user) {
+                                      console.warn(
+                                        "[Plasmic] \u26A0️ No logged-in user \u2014 skipping campaigns fetch."
+                                      );
+                                      $state.campaigns = [];
+                                      return;
+                                    }
+                                    console.log(
+                                      "[Plasmic] \uD83D\uDC64 Logged in as:",
+                                      user.email
+                                    );
                                     const { data, error } =
                                       await window.supabase
                                         .from("campaigns")
-                                        .select("*");
+                                        .select("*")
+                                        .eq("user_id", user.id)
+                                        .order("created_at", {
+                                          ascending: false
+                                        });
                                     if (error) throw error;
                                     console.log(
-                                      "[Plasmic] \u2705 Supabase campaigns:",
+                                      "[Plasmic] \u2705 Fetched campaigns for user:",
                                       data
                                     );
                                     $state.campaigns = data;
                                   } catch (err) {
                                     console.error(
-                                      "Supabase query failed:",
+                                      "[Plasmic] \u274C Supabase query failed:",
                                       err
                                     );
                                   }

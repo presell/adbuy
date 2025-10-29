@@ -1246,6 +1246,11 @@ function PlasmicDropdown__RenderFunc(props: {
             sty.dropdownMenu,
             "dropdown-menu",
             {
+              [sty.dropdownMenumultiFilter]: hasVariant(
+                $state,
+                "multiFilter",
+                "multiFilter"
+              ),
               [sty.dropdownMenuwidth__200]: hasVariant($state, "width", "_200"),
               [sty.dropdownMenuwidth_stretch]: hasVariant(
                 $state,
@@ -1321,6 +1326,11 @@ function PlasmicDropdown__RenderFunc(props: {
                   sty.dropdownItem,
                   "dropdown-item",
                   {
+                    [sty.dropdownItemmultiFilter]: hasVariant(
+                      $state,
+                      "multiFilter",
+                      "multiFilter"
+                    ),
                     [sty.dropdownItemwidth_stretch]: hasVariant(
                       $state,
                       "width",
@@ -1451,7 +1461,13 @@ function PlasmicDropdown__RenderFunc(props: {
       <Embed
         data-plasmic-name={"hiddenFunction"}
         data-plasmic-override={overrides.hiddenFunction}
-        className={classNames("__wab_instance", sty.hiddenFunction)}
+        className={classNames("__wab_instance", sty.hiddenFunction, {
+          [sty.hiddenFunctionmultiFilter]: hasVariant(
+            $state,
+            "multiFilter",
+            "multiFilter"
+          )
+        })}
         code={
           "<style>\n.dropdown.hide-dropdown {\n  opacity: 0;\n  pointer-events: none;\n  height: 0 !important;\n  min-height: 0 !important;\n  width: 0 !important;        /* collapse horizontally */\n  min-width: 0 !important;\n  margin: 0 !important;\n  padding: 0 !important;\n  overflow: hidden !important;\n  flex: 0 0 0 !important;     /* tell flex parents not to reserve space */\n  grid-column: 1 / 1 !important; /* collapse in grid layouts too */\n  transition: opacity 0.15s ease;\n  position: absolute !important; /* remove from normal flow entirely */\n  left: -9999px !important;      /* safely off-canvas if needed */\n  z-index: -1000 !important;     /* avoid hover/focus shadows leaking */\n}\n\n/* Hide all internal content */\n.dropdown.hide-dropdown * {\n  display: none !important;\n}\n</style>"
         }
