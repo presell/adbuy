@@ -2245,7 +2245,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   onMount={async () => {
                     const $steps = {};
 
-                    $steps["runCode"] = false
+                    $steps["runCode"] = true
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
