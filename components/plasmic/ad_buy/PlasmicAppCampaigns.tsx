@@ -297,7 +297,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       },
       {
         path: "product",
@@ -795,7 +795,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             $steps["legal"] = await $steps["legal"];
                           }
 
-                          $steps["updateProduct2"] =
+                          $steps["medical"] =
                             $state.industryDrop.selectedValue == "medical"
                               ? (() => {
                                   const actionArgs = {
@@ -823,12 +823,71 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 })()
                               : undefined;
                           if (
-                            $steps["updateProduct2"] != null &&
-                            typeof $steps["updateProduct2"] === "object" &&
-                            typeof $steps["updateProduct2"].then === "function"
+                            $steps["medical"] != null &&
+                            typeof $steps["medical"] === "object" &&
+                            typeof $steps["medical"].then === "function"
                           ) {
-                            $steps["updateProduct2"] =
-                              await $steps["updateProduct2"];
+                            $steps["medical"] = await $steps["medical"];
+                          }
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (async () => {
+                                      return (async () => {
+                                        try {
+                                          while (
+                                            !window.__supabaseReady__ ||
+                                            !window.supabase
+                                          ) {
+                                            await new Promise(r =>
+                                              setTimeout(r, 100)
+                                            );
+                                          }
+                                          const rowId = 1;
+                                          const selectedIndustry =
+                                            $state.industryDrop?.selectedValue;
+                                          if (!selectedIndustry) {
+                                            console.warn(
+                                              "[Supabase] \u26A0️ No industry selected \u2014 skipping patch"
+                                            );
+                                            return;
+                                          }
+                                          const { data, error } =
+                                            await window.supabase
+                                              .from("campaigns")
+                                              .update({
+                                                industry: selectedIndustry
+                                              })
+                                              .eq("id", rowId)
+                                              .select();
+                                          if (error) throw error;
+                                          console.log(
+                                            "[Supabase] \u2705 Patched row successfully:",
+                                            data
+                                          );
+                                        } catch (err) {
+                                          console.error(
+                                            "[Supabase] \u274C Patch failed:",
+                                            err
+                                          );
+                                        }
+                                      })();
+                                    })();
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
                           }
                         }).apply(null, eventArgs);
                       }}
