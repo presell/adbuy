@@ -1431,8 +1431,7 @@
     font-size: 12px;
   }
 }
-.link__i0Nac {
-  display: flex;
+.gtm {
   flex-direction: row;
   position: relative;
   align-items: stretch;
@@ -1443,10 +1442,11 @@
   margin-bottom: 0px;
   cursor: pointer;
   min-width: 0;
+  display: none;
   border-radius: 10px;
   padding: 8px;
 }
-.root .link__i0Nac:hover {
+.root .gtm:hover {
   background: #eeeeee;
 }
 .freeBox___5H5Kv {
@@ -1534,6 +1534,112 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__twtJf {
+    font-size: 12px;
+  }
+}
+.link__n1403 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 0px;
+  cursor: pointer;
+  min-width: 0;
+  border-radius: 10px;
+  padding: 8px;
+}
+.root .link__n1403:hover {
+  background: #eeeeee;
+}
+.freeBox__fxrM1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 1px solid #d3d3d3;
+}
+.svg__asah4 {
+  object-fit: cover;
+  max-width: 100%;
+  width: 20px;
+  height: 23px;
+  color: #272727;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__asah4 {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+}
+.freeBox__r8ZlY {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 15px;
+  min-width: 0;
+}
+.text__gJk1H {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  color: #0c0c0c;
+  font-size: 13px;
+  font-weight: 400;
+  margin-right: 0px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__gJk1H {
+    font-size: 12px;
+  }
+}
+.text___1AFzc {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  color: #0c0c0c;
+  font-size: 13px;
+  font-weight: 400;
+  margin-right: 0px;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___1AFzc {
     font-size: 12px;
   }
 }

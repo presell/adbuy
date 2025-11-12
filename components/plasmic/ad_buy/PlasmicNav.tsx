@@ -81,6 +81,7 @@ import HealthSvgrepoComSvgIcon from "./icons/PlasmicIcon__HealthSvgrepoComSvg"; 
 import ScaleSvgIcon from "./icons/PlasmicIcon__ScaleSvg"; // plasmic-import: xaKgo3gcm8tm/icon
 import Home1SvgrepoComSvgIcon from "./icons/PlasmicIcon__Home1SvgrepoComSvg"; // plasmic-import: hVG-NOES9EtU/icon
 import TestTubeSvgIcon from "./icons/PlasmicIcon__TestTubeSvg"; // plasmic-import: CDNSUt2kYFWr/icon
+import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-import: 8wp36EsoJArA/icon
 import LeadsIconSvgIcon from "./icons/PlasmicIcon__LeadsIconSvg"; // plasmic-import: v_nPMrRo9l36/icon
 import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // plasmic-import: ySCbYXMYPZYM/icon
 import ApiIconSvgIcon from "./icons/PlasmicIcon__ApiIconSvg"; // plasmic-import: mjJmnHwXSh-R/icon
@@ -109,6 +110,7 @@ export type PlasmicNav__OverridesType = {
   h21159?: Flex__<"div">;
   h21160?: Flex__<"div">;
   solutionsNav13?: Flex__<"div">;
+  gtm?: Flex__<"a"> & Partial<LinkProps>;
   solutionsNav14?: Flex__<"div">;
 };
 
@@ -1140,10 +1142,12 @@ function PlasmicNav__RenderFunc(props: {
                     </div>
                   </PlasmicLink__>
                   <PlasmicLink__
+                    data-plasmic-name={"gtm"}
+                    data-plasmic-override={overrides.gtm}
                     className={classNames(
                       projectcss.all,
                       projectcss.a,
-                      sty.link__i0Nac,
+                      sty.gtm,
                       "hover-black"
                     )}
                     component={Link}
@@ -1183,6 +1187,50 @@ function PlasmicNav__RenderFunc(props: {
                         )}
                       >
                         {"Custom Enterprise Solution"}
+                      </div>
+                    </div>
+                  </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__n1403,
+                      "hover-black"
+                    )}
+                    component={Link}
+                    href={`/gtm`}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__fxrM1)}
+                    >
+                      <CreditCardSvgIcon
+                        className={classNames(projectcss.all, sty.svg__asah4)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__r8ZlY)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__gJk1H,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"Debt"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___1AFzc,
+                          "geologica-h3"
+                        )}
+                      >
+                        {"Credit Repair | Tax Relief "}
                       </div>
                     </div>
                   </PlasmicLink__>
@@ -1385,6 +1433,7 @@ const PlasmicDescendants = {
     "h21159",
     "h21160",
     "solutionsNav13",
+    "gtm",
     "solutionsNav14"
   ],
   primaryctaStage13: ["primaryctaStage13"],
@@ -1405,7 +1454,8 @@ const PlasmicDescendants = {
   h21158: ["h21158"],
   h21159: ["h21159"],
   h21160: ["h21160"],
-  solutionsNav13: ["solutionsNav13"],
+  solutionsNav13: ["solutionsNav13", "gtm"],
+  gtm: ["gtm"],
   solutionsNav14: ["solutionsNav14"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1424,6 +1474,7 @@ type NodeDefaultElementType = {
   h21159: "div";
   h21160: "div";
   solutionsNav13: "div";
+  gtm: "a";
   solutionsNav14: "div";
 };
 
@@ -1500,6 +1551,7 @@ export const PlasmicNav = Object.assign(
     h21159: makeNodeComponent("h21159"),
     h21160: makeNodeComponent("h21160"),
     solutionsNav13: makeNodeComponent("solutionsNav13"),
+    gtm: makeNodeComponent("gtm"),
     solutionsNav14: makeNodeComponent("solutionsNav14"),
 
     // Metadata about props expected for PlasmicNav

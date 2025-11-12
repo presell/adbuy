@@ -119,6 +119,7 @@ export type PlasmicFooter__OverridesType = {
   h21147?: Flex__<"div">;
   h21154?: Flex__<"div">;
   h21155?: Flex__<"div">;
+  h21156?: Flex__<"div">;
   companyDesktop?: Flex__<"div">;
   h21125?: Flex__<"div">;
   h21126?: Flex__<"div">;
@@ -884,6 +885,29 @@ function PlasmicFooter__RenderFunc(props: {
                       {"GTM"}
                     </div>
                   </PlasmicLink__>
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link__lHa4Y
+                    )}
+                    component={Link}
+                    href={`/gtm`}
+                    platform={"nextjs"}
+                  >
+                    <div
+                      data-plasmic-name={"h21156"}
+                      data-plasmic-override={overrides.h21156}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.h21156,
+                        "geologica-h3"
+                      )}
+                    >
+                      {"Debt"}
+                    </div>
+                  </PlasmicLink__>
                 </div>
               </div>
             </div>
@@ -1187,6 +1211,7 @@ const PlasmicDescendants = {
     "h21147",
     "h21154",
     "h21155",
+    "h21156",
     "companyDesktop",
     "h21125",
     "h21126",
@@ -1238,6 +1263,7 @@ const PlasmicDescendants = {
     "h21147",
     "h21154",
     "h21155",
+    "h21156",
     "companyDesktop",
     "h21125",
     "h21126",
@@ -1287,6 +1313,7 @@ const PlasmicDescendants = {
     "h21147",
     "h21154",
     "h21155",
+    "h21156",
     "companyDesktop",
     "h21125",
     "h21126",
@@ -1335,6 +1362,7 @@ const PlasmicDescendants = {
     "h21147",
     "h21154",
     "h21155",
+    "h21156",
     "companyDesktop",
     "h21125",
     "h21126",
@@ -1396,7 +1424,8 @@ const PlasmicDescendants = {
     "h21140",
     "h21147",
     "h21154",
-    "h21155"
+    "h21155",
+    "h21156"
   ],
   h21122: ["h21122"],
   h21123: ["h21123"],
@@ -1410,6 +1439,7 @@ const PlasmicDescendants = {
   h21147: ["h21147"],
   h21154: ["h21154"],
   h21155: ["h21155"],
+  h21156: ["h21156"],
   companyDesktop: ["companyDesktop", "h21125", "h21126", "h21127", "h21145"],
   h21125: ["h21125"],
   h21126: ["h21126"],
@@ -1465,6 +1495,7 @@ type NodeDefaultElementType = {
   h21147: "div";
   h21154: "div";
   h21155: "div";
+  h21156: "div";
   companyDesktop: "div";
   h21125: "div";
   h21126: "div";
@@ -1578,6 +1609,7 @@ export const PlasmicFooter = Object.assign(
     h21147: makeNodeComponent("h21147"),
     h21154: makeNodeComponent("h21154"),
     h21155: makeNodeComponent("h21155"),
+    h21156: makeNodeComponent("h21156"),
     companyDesktop: makeNodeComponent("companyDesktop"),
     h21125: makeNodeComponent("h21125"),
     h21126: makeNodeComponent("h21126"),
