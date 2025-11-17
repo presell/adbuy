@@ -2562,7 +2562,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 window.$state &&
                                 "campaignId" in window.$state
                               ) {
-                                $state.campaignId = created.id;
+                                $state.campaignId = String(created.id);
                               }
                               if (Array.isArray($state.campaigns)) {
                                 $state.campaigns = [
