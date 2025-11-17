@@ -2459,22 +2459,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     </div>
                   );
                 })}
-                {(() => {
-                  try {
-                    return (
-                      Array.isArray($state.campaigns) &&
-                      $state.campaigns.length > 0
-                    );
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
+                {false ? (
                   <div
                     className={classNames(
                       projectcss.all,
@@ -2505,7 +2490,21 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                       sty.text__sTodg
                     )}
                   >
-                    {"not empty\n"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $state.campaignId;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "not empty\n";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                 ) : null}
               </React.Fragment>
