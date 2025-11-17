@@ -2470,43 +2470,29 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     {"not empty\n"}
                   </div>
                 ) : null}
-                {(() => {
-                  try {
-                    return $state.campaignId;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__sTodg
-                    )}
-                  >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $state.campaignId;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "not empty\n";
-                          }
-                          throw e;
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__sTodg
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $state.campaignId;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "not empty\n";
                         }
-                      })()}
-                    </React.Fragment>
-                  </div>
-                ) : null}
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
               </React.Fragment>
             }
             navBtnclick={async event => {
