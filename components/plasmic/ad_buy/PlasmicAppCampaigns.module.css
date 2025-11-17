@@ -58,6 +58,13 @@
   max-width: 100%;
   min-width: 0;
 }
+.text__sTodg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
 .freeBox__qnqdv {
   display: flex;
   flex-direction: row;

@@ -525,6 +525,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "campaignId",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -2479,6 +2485,29 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     {"not empty\n"}
                   </div>
                 ) : null}
+                {(() => {
+                  try {
+                    return $state.campaignId;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__sTodg
+                    )}
+                  >
+                    {"not empty\n"}
+                  </div>
+                ) : null}
               </React.Fragment>
             }
             navBtnclick={async event => {
@@ -2525,36 +2554,37 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 await new Promise(r => setTimeout(r, 100));
                               }
                               const {
-                                data: { session },
-                                error: sessionError
+                                data: { session }
                               } = await window.supabase.auth.getSession();
-                              if (sessionError) throw sessionError;
                               const user = session?.user;
                               if (!user) {
-                                console.warn(
-                                  "[Create] \u26A0️ No logged-in user \u2014 cannot create campaign."
-                                );
+                                console.warn("[Create] No logged in user");
                                 return;
                               }
                               console.log(
-                                "[Create] \uD83D\uDC64 Creating campaign for:",
-                                user.id
+                                "[Create] Creating campaign for:",
+                                user.email
                               );
-                              const { data, error } = await window.supabase
-                                .from("campaigns")
-                                .insert({ user_id: user.id })
-                                .select();
+                              const { data: created, error } =
+                                await window.supabase
+                                  .from("campaigns")
+                                  .insert({ user_id: user.id })
+                                  .select()
+                                  .single();
                               if (error) throw error;
-                              const created = data?.[0];
-                              console.log(
-                                "[Create] \u2705 Created row:",
-                                created
-                              );
-                              $state.campaignId = created?.id;
-                              $state.campaigns = [
-                                ...($state.campaigns || []),
-                                created
-                              ];
+                              console.log("[Create] Created row:", created);
+                              if (
+                                window.$state &&
+                                "campaignId" in window.$state
+                              ) {
+                                $state.campaignId = created.id;
+                              }
+                              if (Array.isArray($state.campaigns)) {
+                                $state.campaigns = [
+                                  created,
+                                  ...$state.campaigns
+                                ];
+                              }
                             } catch (err) {
                               console.error(
                                 "[Create] \u274C Failed to create campaign:",
