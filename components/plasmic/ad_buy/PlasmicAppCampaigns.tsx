@@ -2294,6 +2294,39 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                 ) : null}
               </React.Fragment>
             }
+            btnClick={async event => {
+              const $steps = {};
+
+              $steps["updateAppLayoutPopOpen"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["appLayout", "popOpen"]
+                      },
+                      operation: 0,
+                      value: false
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateAppLayoutPopOpen"] != null &&
+                typeof $steps["updateAppLayoutPopOpen"] === "object" &&
+                typeof $steps["updateAppLayoutPopOpen"].then === "function"
+              ) {
+                $steps["updateAppLayoutPopOpen"] =
+                  await $steps["updateAppLayoutPopOpen"];
+              }
+            }}
             className={classNames("__wab_instance", sty.appLayout)}
             contents2={
               <React.Fragment>
@@ -2448,6 +2481,103 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                 ) : null}
               </React.Fragment>
             }
+            navBtnclick={async event => {
+              const $steps = {};
+
+              $steps["updateAppLayoutPopOpen"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["appLayout", "popOpen"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateAppLayoutPopOpen"] != null &&
+                typeof $steps["updateAppLayoutPopOpen"] === "object" &&
+                typeof $steps["updateAppLayoutPopOpen"].then === "function"
+              ) {
+                $steps["updateAppLayoutPopOpen"] =
+                  await $steps["updateAppLayoutPopOpen"];
+              }
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (async () => {
+                          return (async () => {
+                            try {
+                              while (!window.__supabaseReady__) {
+                                await new Promise(r => setTimeout(r, 100));
+                              }
+                              const {
+                                data: { session },
+                                error: sessionError
+                              } = await window.supabase.auth.getSession();
+                              if (sessionError) throw sessionError;
+                              const user = session?.user;
+                              if (!user) {
+                                console.warn(
+                                  "[Create] \u26A0️ No logged-in user \u2014 cannot create campaign."
+                                );
+                                return;
+                              }
+                              console.log(
+                                "[Create] \uD83D\uDC64 Creating campaign for:",
+                                user.id
+                              );
+                              const { data, error } = await window.supabase
+                                .from("campaigns")
+                                .insert({ user_id: user.id })
+                                .select();
+                              if (error) throw error;
+                              const created = data?.[0];
+                              console.log(
+                                "[Create] \u2705 Created row:",
+                                created
+                              );
+                              $state.campaignId = created?.id;
+                              $state.campaigns = [
+                                ...($state.campaigns || []),
+                                created
+                              ];
+                            } catch (err) {
+                              console.error(
+                                "[Create] \u274C Failed to create campaign:",
+                                err
+                              );
+                            }
+                          })();
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
             onPopOpenChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["appLayout", "popOpen"]).apply(
                 null,

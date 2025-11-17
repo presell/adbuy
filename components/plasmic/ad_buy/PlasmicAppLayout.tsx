@@ -120,6 +120,8 @@ export const PlasmicAppLayout__VariantProps = new Array<VariantPropType>(
 export type PlasmicAppLayout__ArgsType = {
   popOpen?: boolean;
   onPopOpenChange?: (val: string) => void;
+  btnClick?: (event: any) => void;
+  navBtnclick?: (event: any) => void;
   contents2?: React.ReactNode;
   body2?: React.ReactNode;
 };
@@ -127,6 +129,8 @@ type ArgPropType = keyof PlasmicAppLayout__ArgsType;
 export const PlasmicAppLayout__ArgProps = new Array<ArgPropType>(
   "popOpen",
   "onPopOpenChange",
+  "btnClick",
+  "navBtnclick",
   "contents2",
   "body2"
 );
@@ -160,6 +164,8 @@ export type PlasmicAppLayout__OverridesType = {
 export interface DefaultAppLayoutProps {
   popOpen?: boolean;
   onPopOpenChange?: (val: string) => void;
+  btnClick?: (event: any) => void;
+  navBtnclick?: (event: any) => void;
   contents2?: React.ReactNode;
   body2?: React.ReactNode;
   page?: SingleChoiceArg<
@@ -2140,43 +2146,7 @@ function PlasmicAppLayout__RenderFunc(props: {
               data-plasmic-name={"btn12"}
               data-plasmic-override={overrides.btn12}
               className={classNames(projectcss.all, sty.btn12, "button")}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updatePopOpen"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["popOpen"]
-                        },
-                        operation: 0,
-                        value: true
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updatePopOpen"] != null &&
-                  typeof $steps["updatePopOpen"] === "object" &&
-                  typeof $steps["updatePopOpen"].then === "function"
-                ) {
-                  $steps["updatePopOpen"] = await $steps["updatePopOpen"];
-                }
-              }}
+              onClick={args.navBtnclick}
             >
               <div
                 className={classNames(
@@ -2550,43 +2520,7 @@ function PlasmicAppLayout__RenderFunc(props: {
               data-plasmic-name={"btn1"}
               data-plasmic-override={overrides.btn1}
               className={classNames(projectcss.all, sty.btn1, "button")}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updatePopOpen"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["popOpen"]
-                        },
-                        operation: 0,
-                        value: false
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updatePopOpen"] != null &&
-                  typeof $steps["updatePopOpen"] === "object" &&
-                  typeof $steps["updatePopOpen"].then === "function"
-                ) {
-                  $steps["updatePopOpen"] = await $steps["updatePopOpen"];
-                }
-              }}
+              onClick={args.btnClick}
               onKeyPress={async event => {
                 const $steps = {};
 
