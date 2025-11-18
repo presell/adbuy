@@ -530,7 +530,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "campaignId",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) => "default"
       }
     ],
     [$props, $ctx, $refs]
