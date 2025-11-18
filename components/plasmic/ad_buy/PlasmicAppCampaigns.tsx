@@ -2563,6 +2563,14 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 "campaignId" in window.$state
                               ) {
                                 $state.campaignId = String(created.id);
+                                console.log(
+                                  "[Create] Patched $state.campaignId \u2192",
+                                  $state.campaignId
+                                );
+                              } else {
+                                console.warn(
+                                  "[Create] campaignId state variable not found"
+                                );
                               }
                               if (Array.isArray($state.campaigns)) {
                                 $state.campaigns = [
