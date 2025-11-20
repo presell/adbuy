@@ -297,7 +297,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       },
       {
         path: "product",
@@ -836,50 +836,55 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             $steps["medical"] = await $steps["medical"];
                           }
 
-                          $steps["runCode"] = true
+                          $steps["patchRow"] = true
                             ? (() => {
                                 const actionArgs = {
                                   customFunction: async () => {
                                     return (async () => {
-                                      return (async () => {
-                                        try {
-                                          while (
-                                            !window.__supabaseReady__ ||
-                                            !window.supabase
-                                          ) {
-                                            await new Promise(r =>
-                                              setTimeout(r, 100)
-                                            );
-                                          }
-                                          const rowId = 1;
-                                          const selectedIndustry =
-                                            $state.industryDrop?.selectedValue;
-                                          if (!selectedIndustry) {
-                                            console.warn(
-                                              "[Supabase] \u26A0️ No industry selected \u2014 skipping patch"
-                                            );
-                                            return;
-                                          }
-                                          const { data, error } =
-                                            await window.supabase
-                                              .from("campaigns")
-                                              .update({
-                                                industry: selectedIndustry
-                                              })
-                                              .eq("id", rowId)
-                                              .select();
-                                          if (error) throw error;
-                                          console.log(
-                                            "[Supabase] \u2705 Patched row successfully:",
-                                            data
-                                          );
-                                        } catch (err) {
-                                          console.error(
-                                            "[Supabase] \u274C Patch failed:",
-                                            err
+                                      try {
+                                        while (!window.__supabaseReady__) {
+                                          await new Promise(r =>
+                                            setTimeout(r, 100)
                                           );
                                         }
-                                      })();
+                                        const campaignId =
+                                          localStorage.getItem("campaignId");
+                                        if (!campaignId) {
+                                          console.warn(
+                                            "[Patch] No campaignId found in localStorage"
+                                          );
+                                          return;
+                                        }
+                                        const industryValue =
+                                          $state.industryDrop?.selectedValue;
+                                        if (!industryValue) {
+                                          console.warn(
+                                            "[Patch] No industry selected \u2014 nothing to update"
+                                          );
+                                          return;
+                                        }
+                                        console.log(
+                                          `[Patch] Updating campaign ${campaignId} with industry =`,
+                                          industryValue
+                                        );
+                                        const { data, error } =
+                                          await window.supabase
+                                            .from("campaigns")
+                                            .update({ industry: industryValue })
+                                            .eq("id", Number(campaignId))
+                                            .select()
+                                            .single();
+                                        if (error) throw error;
+                                        console.log(
+                                          "[Patch] Successfully updated row:",
+                                          data
+                                        );
+                                      } catch (err) {
+                                        console.error(
+                                          "[Patch] \u274C Failed to patch campaign:",
+                                          err
+                                        );
+                                      }
                                     })();
                                   }
                                 };
@@ -889,11 +894,11 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               })()
                             : undefined;
                           if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
+                            $steps["patchRow"] != null &&
+                            typeof $steps["patchRow"] === "object" &&
+                            typeof $steps["patchRow"].then === "function"
                           ) {
-                            $steps["runCode"] = await $steps["runCode"];
+                            $steps["patchRow"] = await $steps["patchRow"];
                           }
                         }).apply(null, eventArgs);
                       }}
