@@ -524,6 +524,54 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "default"
+      },
+      {
+        path: "industryDrop.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "productDropEmpty.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "productDropInsurance.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "productDropMortgage.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "productDropLegal.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "productDropMedical.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "stateDrop.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "zipDrop.selectedObject",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -660,6 +708,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         generateStateOnChangeProp($state, [
                           "industryDrop",
                           "selectedLabel"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      onSelectedObjectChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "industryDrop",
+                          "selectedObject"
                         ]).apply(null, eventArgs);
 
                         if (
@@ -1005,6 +1067,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             return;
                           }
                         }}
+                        onSelectedObjectChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropEmpty",
+                            "selectedObject"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onSelectedValueChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropEmpty",
@@ -1109,6 +1185,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           generateStateOnChangeProp($state, [
                             "productDropInsurance",
                             "selectedLabel"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedObjectChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropInsurance",
+                            "selectedObject"
                           ]).apply(null, eventArgs);
 
                           if (
@@ -1320,6 +1410,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             return;
                           }
                         }}
+                        onSelectedObjectChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropMortgage",
+                            "selectedObject"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onSelectedValueChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropMortgage",
@@ -1521,6 +1625,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             return;
                           }
                         }}
+                        onSelectedObjectChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropLegal",
+                            "selectedObject"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         onSelectedValueChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
                             "productDropLegal",
@@ -1712,6 +1830,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           generateStateOnChangeProp($state, [
                             "productDropMedical",
                             "selectedLabel"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedObjectChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "productDropMedical",
+                            "selectedObject"
                           ]).apply(null, eventArgs);
 
                           if (
@@ -1978,7 +2110,8 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                               return;
                                             }
                                             const targetingValue =
-                                              $state.selectedObject || [];
+                                              $state.stateDrop
+                                                ?.selectedObject || [];
                                             console.log(
                                               "DEBUG TARGETING STATE:",
                                               { targetingValue }
@@ -2051,6 +2184,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           generateStateOnChangeProp($state, [
                             "stateDrop",
                             "selectedLabel"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedObjectChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "stateDrop",
+                            "selectedObject"
                           ]).apply(null, eventArgs);
 
                           if (
@@ -2158,6 +2305,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           generateStateOnChangeProp($state, [
                             "zipDrop",
                             "selectedLabel"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        onSelectedObjectChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "zipDrop",
+                            "selectedObject"
                           ]).apply(null, eventArgs);
 
                           if (

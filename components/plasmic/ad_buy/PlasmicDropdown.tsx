@@ -108,6 +108,7 @@ export type PlasmicDropdown__ArgsType = {
   placeholder?: string;
   onPlaceholderChange?: (val: string) => void;
   onSelectedValueChange?: (val: string) => void;
+  onSelectedObjectChange?: (val: string) => void;
   multi?: boolean;
   onMultiChange?: (val: string) => void;
 };
@@ -119,6 +120,7 @@ export const PlasmicDropdown__ArgProps = new Array<ArgPropType>(
   "placeholder",
   "onPlaceholderChange",
   "onSelectedValueChange",
+  "onSelectedObjectChange",
   "multi",
   "onMultiChange"
 );
@@ -151,6 +153,7 @@ export interface DefaultDropdownProps {
   placeholder?: string;
   onPlaceholderChange?: (val: string) => void;
   onSelectedValueChange?: (val: string) => void;
+  onSelectedObjectChange?: (val: string) => void;
   multi?: boolean;
   onMultiChange?: (val: string) => void;
   radius?: SingleChoiceArg<"rightZero" | "leftZero">;
@@ -270,9 +273,11 @@ function PlasmicDropdown__RenderFunc(props: {
       },
       {
         path: "selectedObject",
-        type: "private",
+        type: "readonly",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $ctx }) => [],
+
+        onChangeProp: "onSelectedObjectChange"
       },
       {
         path: "multiFilter",
