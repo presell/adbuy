@@ -1065,6 +1065,15 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                             const pIns =
                                               $state.productDropInsurance
                                                 ?.selectedValue || "";
+                                            console.log(
+                                              "[PatchProduct] Raw values:",
+                                              {
+                                                pMed,
+                                                pLegal,
+                                                pMort,
+                                                pIns
+                                              }
+                                            );
                                             const productValue =
                                               pMed ||
                                               pLegal ||
@@ -1859,6 +1868,10 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                             }
                                             const targetingValue =
                                               $state.selectedObject || [];
+                                            console.log(
+                                              "DEBUG TARGETING STATE:",
+                                              { targetingValue }
+                                            );
                                             if (
                                               !Array.isArray(targetingValue)
                                             ) {
