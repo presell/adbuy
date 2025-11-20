@@ -1053,36 +1053,31 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                               );
                                               return;
                                             }
-                                            const pMed =
-                                              $state.productDropMedical
-                                                ?.selectedValue || "";
-                                            const pLegal =
-                                              $state.productDropLegal
-                                                ?.selectedValue || "";
-                                            const pMort =
-                                              $state.productDropMortgage
-                                                ?.selectedValue || "";
                                             const pIns =
                                               $state.productDropInsurance
-                                                ?.selectedValue || "";
-                                            console.log(
-                                              "[PatchProduct] Raw values:",
-                                              {
-                                                pMed,
-                                                pLegal,
-                                                pMort,
-                                                pIns
-                                              }
+                                                ?.selectedValue;
+                                            const pMort =
+                                              $state.productDropMortgage
+                                                ?.selectedValue;
+                                            const pLegal =
+                                              $state.productDropLegal
+                                                ?.selectedValue;
+                                            const pMed =
+                                              $state.productDropMedical
+                                                ?.selectedValue;
+                                            const productValue = [
+                                              pIns,
+                                              pMort,
+                                              pLegal,
+                                              pMed
+                                            ].find(
+                                              v =>
+                                                typeof v === "string" &&
+                                                v.trim() !== ""
                                             );
-                                            const productValue =
-                                              pMed ||
-                                              pLegal ||
-                                              pMort ||
-                                              pIns ||
-                                              "";
                                             if (!productValue) {
                                               console.warn(
-                                                "[PatchProduct] No product value selected \u2014 skipping update"
+                                                "[PatchProduct] No valid product found \u2014 skipping update"
                                               );
                                               return;
                                             }
