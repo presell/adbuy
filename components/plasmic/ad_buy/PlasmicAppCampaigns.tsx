@@ -1031,40 +1031,91 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           (async val => {
                             const $steps = {};
 
-                            $steps["updateIndustryDropOptions"] = false
+                            $steps["runCode"] = true
                               ? (() => {
                                   const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["industryDrop", "options"]
-                                    },
-                                    operation: 0
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
+                                    customFunction: async () => {
+                                      return (async () => {
+                                        return (async () => {
+                                          try {
+                                            while (!window.__supabaseReady__) {
+                                              await new Promise(r =>
+                                                setTimeout(r, 100)
+                                              );
+                                            }
+                                            const campaignId =
+                                              localStorage.getItem(
+                                                "campaignId"
+                                              );
+                                            if (!campaignId) {
+                                              console.warn(
+                                                "[PatchProduct] No campaignId found in localStorage"
+                                              );
+                                              return;
+                                            }
+                                            const pMed =
+                                              $state.productDropMedical
+                                                ?.selectedValue || "";
+                                            const pLegal =
+                                              $state.productDropLegal
+                                                ?.selectedValue || "";
+                                            const pMort =
+                                              $state.productDropMortgage
+                                                ?.selectedValue || "";
+                                            const pIns =
+                                              $state.productDropInsurance
+                                                ?.selectedValue || "";
+                                            const productValue =
+                                              pMed ||
+                                              pLegal ||
+                                              pMort ||
+                                              pIns ||
+                                              "";
+                                            if (!productValue) {
+                                              console.warn(
+                                                "[PatchProduct] No product value selected \u2014 skipping update"
+                                              );
+                                              return;
+                                            }
+                                            console.log(
+                                              `[PatchProduct] Updating campaign ${campaignId} with product =`,
+                                              productValue
+                                            );
+                                            const { data, error } =
+                                              await window.supabase
+                                                .from("campaigns")
+                                                .update({
+                                                  product: productValue
+                                                })
+                                                .eq("id", Number(campaignId))
+                                                .select()
+                                                .single();
+                                            if (error) throw error;
+                                            console.log(
+                                              "[PatchProduct] Successfully updated row:",
+                                              data
+                                            );
+                                          } catch (err) {
+                                            console.error(
+                                              "[PatchProduct] \u274C Failed to patch campaign:",
+                                              err
+                                            );
+                                          }
+                                        })();
+                                      })();
                                     }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
                                   })?.apply(null, [actionArgs]);
                                 })()
                               : undefined;
                             if (
-                              $steps["updateIndustryDropOptions"] != null &&
-                              typeof $steps["updateIndustryDropOptions"] ===
-                                "object" &&
-                              typeof $steps["updateIndustryDropOptions"]
-                                .then === "function"
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
                             ) {
-                              $steps["updateIndustryDropOptions"] =
-                                await $steps["updateIndustryDropOptions"];
+                              $steps["runCode"] = await $steps["runCode"];
                             }
                           }).apply(null, eventArgs);
                         }}
@@ -1783,6 +1834,79 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               $steps["updateStateDropMulti"] =
                                 await $steps["updateStateDropMulti"];
                             }
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (async () => {
+                                        return (async () => {
+                                          try {
+                                            while (!window.__supabaseReady__) {
+                                              await new Promise(r =>
+                                                setTimeout(r, 100)
+                                              );
+                                            }
+                                            const campaignId =
+                                              localStorage.getItem(
+                                                "campaignId"
+                                              );
+                                            if (!campaignId) {
+                                              console.warn(
+                                                "[PatchTargeting] No campaignId found in localStorage"
+                                              );
+                                              return;
+                                            }
+                                            const targetingValue =
+                                              $state.selectedObject || [];
+                                            if (
+                                              !Array.isArray(targetingValue)
+                                            ) {
+                                              console.warn(
+                                                "[PatchTargeting] selectedObject is not an array \u2014 skipping update"
+                                              );
+                                              return;
+                                            }
+                                            console.log(
+                                              `[PatchTargeting] Updating campaign ${campaignId} with targeting =`,
+                                              targetingValue
+                                            );
+                                            const { data, error } =
+                                              await window.supabase
+                                                .from("campaigns")
+                                                .update({
+                                                  targeting: targetingValue
+                                                })
+                                                .eq("id", Number(campaignId))
+                                                .select()
+                                                .single();
+                                            if (error) throw error;
+                                            console.log(
+                                              "[PatchTargeting] Successfully updated row:",
+                                              data
+                                            );
+                                          } catch (err) {
+                                            console.error(
+                                              "[PatchTargeting] \u274C Failed to patch targeting:",
+                                              err
+                                            );
+                                          }
+                                        })();
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
                           }).apply(null, eventArgs);
                         }}
                         onPlaceholderChange={async (...eventArgs: any) => {
@@ -2179,6 +2303,84 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               "budgetInput",
                               "value"
                             ])(e.target.value);
+                          }).apply(null, eventArgs);
+
+                          (async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (async () => {
+                                        return (async () => {
+                                          try {
+                                            while (!window.__supabaseReady__) {
+                                              await new Promise(r =>
+                                                setTimeout(r, 100)
+                                              );
+                                            }
+                                            const campaignId =
+                                              localStorage.getItem(
+                                                "campaignId"
+                                              );
+                                            if (!campaignId) {
+                                              console.warn(
+                                                "[PatchBudget] No campaignId found in localStorage"
+                                              );
+                                              return;
+                                            }
+                                            let budgetValue =
+                                              $state.budgetInput?.value;
+                                            const numericBudget =
+                                              Number(budgetValue);
+                                            if (isNaN(numericBudget)) {
+                                              console.warn(
+                                                "[PatchBudget] Budget is not a valid number:",
+                                                budgetValue
+                                              );
+                                              return;
+                                            }
+                                            console.log(
+                                              `[PatchBudget] Updating campaign ${campaignId} with budget =`,
+                                              numericBudget
+                                            );
+                                            const { data, error } =
+                                              await window.supabase
+                                                .from("campaigns")
+                                                .update({
+                                                  budget: numericBudget
+                                                })
+                                                .eq("id", Number(campaignId))
+                                                .select()
+                                                .single();
+                                            if (error) throw error;
+                                            console.log(
+                                              "[PatchBudget] Successfully updated row:",
+                                              data
+                                            );
+                                          } catch (err) {
+                                            console.error(
+                                              "[PatchBudget] \u274C Failed to patch budget:",
+                                              err
+                                            );
+                                          }
+                                        })();
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
                           }).apply(null, eventArgs);
                         }}
                         placeholder={``}
