@@ -2558,26 +2558,14 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                   .single();
                               if (error) throw error;
                               console.log("[Create] Created row:", created);
-                              if (
-                                window.$state &&
-                                "campaignId" in window.$state
-                              ) {
-                                $state.campaignId = String(created.id);
-                                console.log(
-                                  "[Create] Patched $state.campaignId \u2192",
-                                  $state.campaignId
-                                );
-                              } else {
-                                console.warn(
-                                  "[Create] campaignId state variable not found"
-                                );
-                              }
-                              if (Array.isArray($state.campaigns)) {
-                                $state.campaigns = [
-                                  created,
-                                  ...$state.campaigns
-                                ];
-                              }
+                              localStorage.setItem(
+                                "campaignId",
+                                String(created.id)
+                              );
+                              console.log(
+                                "[Create] Saved campaignId to localStorage =",
+                                created.id
+                              );
                             } catch (err) {
                               console.error(
                                 "[Create] \u274C Failed to create campaign:",
