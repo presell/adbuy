@@ -2355,19 +2355,27 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                         setTimeout(r, 100)
                                       );
                                     }
-                                    const {
-                                      data: { session },
-                                      error: sessionError
-                                    } = await window.supabase.auth.getSession();
-                                    if (sessionError) throw sessionError;
-                                    const user = session?.user;
-                                    if (!user) {
+                                    let session = null;
+                                    for (let i = 0; i < 20; i++) {
+                                      const { data } =
+                                        await window.supabase.auth.getSession();
+                                      session = data?.session;
+                                      if (session?.user) break;
+                                      console.log(
+                                        "[Plasmic] Waiting for Supabase session restore..."
+                                      );
+                                      await new Promise(r =>
+                                        setTimeout(r, 150)
+                                      );
+                                    }
+                                    if (!session?.user) {
                                       console.warn(
-                                        "[Plasmic] \u26A0️ No logged-in user \u2014 skipping campaigns fetch."
+                                        "[Plasmic] \u26A0️ No logged-in user after waiting \u2014 skipping fetch"
                                       );
                                       $state.campaigns = [];
                                       return;
                                     }
+                                    const user = session.user;
                                     console.log(
                                       "[Plasmic] \uD83D\uDC64 Logged in as:",
                                       user.email
@@ -2538,14 +2546,22 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               while (!window.__supabaseReady__) {
                                 await new Promise(r => setTimeout(r, 100));
                               }
-                              const {
-                                data: { session }
-                              } = await window.supabase.auth.getSession();
-                              const user = session?.user;
-                              if (!user) {
+                              let session = null;
+                              for (let i = 0; i < 20; i++) {
+                                const { data } =
+                                  await window.supabase.auth.getSession();
+                                session = data?.session;
+                                if (session?.user) break;
+                                console.log(
+                                  "[Create] Waiting for Supabase session..."
+                                );
+                                await new Promise(r => setTimeout(r, 150));
+                              }
+                              if (!session?.user) {
                                 console.warn("[Create] No logged in user");
                                 return;
                               }
+                              const user = session.user;
                               console.log(
                                 "[Create] Creating campaign for:",
                                 user.email
