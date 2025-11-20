@@ -2050,7 +2050,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           (async val => {
                             const $steps = {};
 
-                            $steps["updateStateDropMulti"] = true
+                            $steps["updateStateDropMulti"] = false
                               ? (() => {
                                   const actionArgs = {
                                     variable: {
@@ -2087,7 +2087,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 await $steps["updateStateDropMulti"];
                             }
 
-                            $steps["runCode"] = true
+                            $steps["runCode"] = false
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
@@ -2221,6 +2221,88 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           ) {
                             return;
                           }
+
+                          (async val => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (async () => {
+                                        return (async () => {
+                                          try {
+                                            while (!window.__supabaseReady__) {
+                                              await new Promise(r =>
+                                                setTimeout(r, 100)
+                                              );
+                                            }
+                                            const campaignId =
+                                              localStorage.getItem(
+                                                "campaignId"
+                                              );
+                                            if (!campaignId) {
+                                              console.warn(
+                                                "[PatchTargeting] No campaignId found in localStorage"
+                                              );
+                                              return;
+                                            }
+                                            const targetingValue =
+                                              $state.stateDrop
+                                                ?.selectedObject || [];
+                                            console.log(
+                                              "DEBUG TARGETING STATE:",
+                                              { targetingValue }
+                                            );
+                                            if (
+                                              !Array.isArray(targetingValue)
+                                            ) {
+                                              console.warn(
+                                                "[PatchTargeting] selectedObject is not an array \u2014 skipping update"
+                                              );
+                                              return;
+                                            }
+                                            console.log(
+                                              `[PatchTargeting] Updating campaign ${campaignId} with targeting =`,
+                                              targetingValue
+                                            );
+                                            const { data, error } =
+                                              await window.supabase
+                                                .from("campaigns")
+                                                .update({
+                                                  targeting: targetingValue
+                                                })
+                                                .eq("id", Number(campaignId))
+                                                .select()
+                                                .single();
+                                            if (error) throw error;
+                                            console.log(
+                                              "[PatchTargeting] Successfully updated row:",
+                                              data
+                                            );
+                                          } catch (err) {
+                                            console.error(
+                                              "[PatchTargeting] \u274C Failed to patch targeting:",
+                                              err
+                                            );
+                                          }
+                                        })();
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+                          }).apply(null, eventArgs);
                         }}
                         options={generateStateValueProp($state, [
                           "stateDrop",

@@ -35,7 +35,6 @@
   object-fit: cover;
 }
 .freeBox__xZiqY {
-  display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -44,6 +43,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
+  display: none;
 }
 .text__djHLh {
   width: 100%;
