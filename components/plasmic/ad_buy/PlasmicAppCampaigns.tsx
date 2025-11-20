@@ -1026,41 +1026,40 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           (async val => {
                             const $steps = {};
 
-                            $steps["useIntegration"] = false
+                            $steps["updateIndustryDropOptions"] = false
                               ? (() => {
-                                  const actionArgs = {};
-                                  return (async ({
-                                    dataOp,
-                                    continueOnError
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["industryDrop", "options"]
+                                    },
+                                    operation: 0
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
                                   }) => {
-                                    try {
-                                      const response =
-                                        await executePlasmicDataOp(dataOp, {
-                                          userAuthToken:
-                                            dataSourcesCtx?.userAuthToken,
-                                          user: dataSourcesCtx?.user
-                                        });
-                                      await plasmicInvalidate(
-                                        dataOp.invalidatedKeys
-                                      );
-                                      return response;
-                                    } catch (e) {
-                                      if (!continueOnError) {
-                                        throw e;
-                                      }
-                                      return e;
+                                    if (!variable) {
+                                      return;
                                     }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
                                   })?.apply(null, [actionArgs]);
                                 })()
                               : undefined;
                             if (
-                              $steps["useIntegration"] != null &&
-                              typeof $steps["useIntegration"] === "object" &&
-                              typeof $steps["useIntegration"].then ===
-                                "function"
+                              $steps["updateIndustryDropOptions"] != null &&
+                              typeof $steps["updateIndustryDropOptions"] ===
+                                "object" &&
+                              typeof $steps["updateIndustryDropOptions"]
+                                .then === "function"
                             ) {
-                              $steps["useIntegration"] =
-                                await $steps["useIntegration"];
+                              $steps["updateIndustryDropOptions"] =
+                                await $steps["updateIndustryDropOptions"];
                             }
                           }).apply(null, eventArgs);
                         }}
@@ -2348,6 +2347,27 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (async () => {
+                                async function getLoggedInUser() {
+                                  const { data } =
+                                    await window.supabase.auth.getSession();
+                                  const sessionUser = data?.session?.user;
+                                  if (sessionUser) {
+                                    return {
+                                      id: sessionUser.id,
+                                      email: sessionUser.email,
+                                      source: "supabase"
+                                    };
+                                  }
+                                  const plasmicUser = window.__PLASMIC_USER__;
+                                  if (plasmicUser?.email) {
+                                    return {
+                                      id: plasmicUser.id,
+                                      email: plasmicUser.email,
+                                      source: "cookie"
+                                    };
+                                  }
+                                  return null;
+                                }
                                 return (async () => {
                                   try {
                                     while (!window.__supabaseReady__) {
@@ -2355,30 +2375,20 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                         setTimeout(r, 100)
                                       );
                                     }
-                                    let session = null;
-                                    for (let i = 0; i < 20; i++) {
-                                      const { data } =
-                                        await window.supabase.auth.getSession();
-                                      session = data?.session;
-                                      if (session?.user) break;
-                                      console.log(
-                                        "[Plasmic] Waiting for Supabase session restore..."
-                                      );
-                                      await new Promise(r =>
-                                        setTimeout(r, 150)
-                                      );
-                                    }
-                                    if (!session?.user) {
+                                    const user = await getLoggedInUser();
+                                    if (!user) {
                                       console.warn(
-                                        "[Plasmic] \u26A0️ No logged-in user after waiting \u2014 skipping fetch"
+                                        "[SideEffect] \u274C No logged-in user \u2014 cannot fetch campaigns."
                                       );
                                       $state.campaigns = [];
                                       return;
                                     }
-                                    const user = session.user;
                                     console.log(
-                                      "[Plasmic] \uD83D\uDC64 Logged in as:",
-                                      user.email
+                                      "[SideEffect] \uD83D\uDC64 Logged in as:",
+                                      user.email,
+                                      "(via",
+                                      user.source,
+                                      ")"
                                     );
                                     const { data, error } =
                                       await window.supabase
@@ -2390,15 +2400,16 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                         });
                                     if (error) throw error;
                                     console.log(
-                                      "[Plasmic] \u2705 Fetched campaigns for user:",
+                                      "[SideEffect] \u2705 Loaded campaigns:",
                                       data
                                     );
                                     $state.campaigns = data;
                                   } catch (err) {
                                     console.error(
-                                      "[Plasmic] \u274C Supabase query failed:",
+                                      "[SideEffect] \u274C Failed to fetch campaigns:",
                                       err
                                     );
+                                    $state.campaigns = [];
                                   }
                                 })();
                               })();
@@ -2541,30 +2552,45 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     const actionArgs = {
                       customFunction: async () => {
                         return (async () => {
+                          async function getLoggedInUser() {
+                            const { data } =
+                              await window.supabase.auth.getSession();
+                            const sessionUser = data?.session?.user;
+                            if (sessionUser) {
+                              return {
+                                id: sessionUser.id,
+                                email: sessionUser.email,
+                                source: "supabase"
+                              };
+                            }
+                            const plasmicUser = window.__PLASMIC_USER__;
+                            if (plasmicUser?.email) {
+                              return {
+                                id: plasmicUser.id,
+                                email: plasmicUser.email,
+                                source: "cookie"
+                              };
+                            }
+                            return null;
+                          }
                           return (async () => {
                             try {
                               while (!window.__supabaseReady__) {
                                 await new Promise(r => setTimeout(r, 100));
                               }
-                              let session = null;
-                              for (let i = 0; i < 20; i++) {
-                                const { data } =
-                                  await window.supabase.auth.getSession();
-                                session = data?.session;
-                                if (session?.user) break;
-                                console.log(
-                                  "[Create] Waiting for Supabase session..."
+                              const user = await getLoggedInUser();
+                              if (!user) {
+                                console.warn(
+                                  "[Create] \u274C No logged-in user \u2014 cannot create campaign."
                                 );
-                                await new Promise(r => setTimeout(r, 150));
-                              }
-                              if (!session?.user) {
-                                console.warn("[Create] No logged in user");
                                 return;
                               }
-                              const user = session.user;
                               console.log(
                                 "[Create] Creating campaign for:",
-                                user.email
+                                user.email,
+                                "(via",
+                                user.source,
+                                ")"
                               );
                               const { data: created, error } =
                                 await window.supabase
@@ -2573,15 +2599,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                   .select()
                                   .single();
                               if (error) throw error;
-                              console.log("[Create] Created row:", created);
+                              console.log(
+                                "[Create] \u2705 Created campaign row:",
+                                created
+                              );
                               localStorage.setItem(
                                 "campaignId",
                                 String(created.id)
                               );
                               console.log(
-                                "[Create] Saved campaignId to localStorage =",
+                                "[Create] Saved campaignId to localStorage \u2192",
                                 created.id
                               );
+                              if (Array.isArray($state.campaigns)) {
+                                $state.campaigns = [
+                                  created,
+                                  ...$state.campaigns
+                                ];
+                              }
                             } catch (err) {
                               console.error(
                                 "[Create] \u274C Failed to create campaign:",
