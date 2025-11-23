@@ -71,24 +71,27 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  height: auto;
+  height: 100vh;
   max-width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
   overflow: auto;
-  min-width: 0;
+  background: none;
 }
 .header10 {
   animation: none;
   display: flex;
   flex-direction: row;
-  position: relative;
+  position: sticky;
   align-items: stretch;
   justify-content: flex-start;
   width: auto;
   height: auto;
   max-width: 100%;
   background: #eeeeee;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
   border-radius: 10px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -396,7 +399,6 @@
 }
 .callsHeader {
   animation: none;
-  display: flex;
   flex-direction: row;
   position: relative;
   width: 165px;
@@ -405,6 +407,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
+  display: none;
   padding: 8px 16px 8px 35px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -524,6 +527,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: pointer;
+  overflow: visible;
   border-bottom: 1px solid #d3d3d3;
 }
 .offOn {
@@ -791,7 +795,6 @@
   }
 }
 .calls {
-  display: flex;
   flex-direction: row;
   position: relative;
   width: 165px;
@@ -800,6 +803,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
+  display: none;
   padding: 8px 16px 8px 35px;
 }
 .freeBox__fuWmg {
