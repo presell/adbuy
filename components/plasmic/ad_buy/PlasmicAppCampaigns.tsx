@@ -95,6 +95,9 @@ export type PlasmicAppCampaigns__OverridesType = {
   sideEffect?: Flex__<typeof SideEffect>;
   mainParent?: Flex__<"div">;
   header10?: Flex__<"div">;
+  leadsHeader?: Flex__<"div">;
+  callsHeader?: Flex__<"div">;
+  spendHeader?: Flex__<"div">;
   campaignRow?: Flex__<"div">;
   offOn?: Flex__<"div">;
   toggle?: Flex__<typeof Toggle>;
@@ -104,6 +107,12 @@ export type PlasmicAppCampaigns__OverridesType = {
   mobileedit3?: Flex__<"svg">;
   budget?: Flex__<"div">;
   mobileedit4?: Flex__<"svg">;
+  leads?: Flex__<"div">;
+  mobileedit5?: Flex__<"svg">;
+  calls?: Flex__<"div">;
+  mobileedit6?: Flex__<"svg">;
+  spend?: Flex__<"div">;
+  mobileedit7?: Flex__<"svg">;
   industryDrop?: Flex__<typeof Dropdown>;
   productDropEmpty?: Flex__<typeof Dropdown>;
   productDropInsurance?: Flex__<typeof Dropdown>;
@@ -3195,6 +3204,69 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         {"Budget"}
                       </div>
                     </div>
+                    <div
+                      data-plasmic-name={"leadsHeader"}
+                      data-plasmic-override={overrides.leadsHeader}
+                      className={classNames(projectcss.all, sty.leadsHeader)}
+                    >
+                      <DollarSign1SvgIcon
+                        className={classNames(projectcss.all, sty.svg___4YUYj)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__jjE8G,
+                          "geologica-text-medium"
+                        )}
+                      >
+                        {"Leads"}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"callsHeader"}
+                      data-plasmic-override={overrides.callsHeader}
+                      className={classNames(projectcss.all, sty.callsHeader)}
+                    >
+                      <DollarSign1SvgIcon
+                        className={classNames(projectcss.all, sty.svg___4Y5Z4)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___8ZMZq,
+                          "geologica-text-medium"
+                        )}
+                      >
+                        {"Calls"}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"spendHeader"}
+                      data-plasmic-override={overrides.spendHeader}
+                      className={classNames(projectcss.all, sty.spendHeader)}
+                    >
+                      <DollarSign1SvgIcon
+                        className={classNames(projectcss.all, sty.svg__fOJt)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__q4XF,
+                          "geologica-text-medium"
+                        )}
+                      >
+                        {"Spend"}
+                      </div>
+                    </div>
                   </div>
                   {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                     (() => {
@@ -3406,6 +3478,126 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             role={"img"}
                           />
                         </div>
+                        <div
+                          data-plasmic-name={"leads"}
+                          data-plasmic-override={overrides.leads}
+                          className={classNames(projectcss.all, sty.leads)}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__zPatd
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__aRod0
+                              )}
+                            >
+                              {"714"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__dePxR
+                              )}
+                            >
+                              {"$6.52 each"}
+                            </div>
+                          </div>
+                          <EditActiveSvgIcon
+                            data-plasmic-name={"mobileedit5"}
+                            data-plasmic-override={overrides.mobileedit5}
+                            className={classNames(
+                              projectcss.all,
+                              sty.mobileedit5
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                        <div
+                          data-plasmic-name={"calls"}
+                          data-plasmic-override={overrides.calls}
+                          className={classNames(projectcss.all, sty.calls)}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__fuWmg
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___2TE7
+                              )}
+                            >
+                              {"128"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__kuJF
+                              )}
+                            >
+                              {"$24.53 each"}
+                            </div>
+                          </div>
+                          <EditActiveSvgIcon
+                            data-plasmic-name={"mobileedit6"}
+                            data-plasmic-override={overrides.mobileedit6}
+                            className={classNames(
+                              projectcss.all,
+                              sty.mobileedit6
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                        <div
+                          data-plasmic-name={"spend"}
+                          data-plasmic-override={overrides.spend}
+                          className={classNames(projectcss.all, sty.spend)}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__r1R2
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__d7Qqq
+                              )}
+                            >
+                              {"$4,300"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__zRNuj
+                              )}
+                            >
+                              {"Since 10/15/2025"}
+                            </div>
+                          </div>
+                          <EditActiveSvgIcon
+                            data-plasmic-name={"mobileedit7"}
+                            data-plasmic-override={overrides.mobileedit7}
+                            className={classNames(
+                              projectcss.all,
+                              sty.mobileedit7
+                            )}
+                            role={"img"}
+                          />
+                        </div>
                       </div>
                     );
                   })}
@@ -3575,6 +3767,9 @@ const PlasmicDescendants = {
     "sideEffect",
     "mainParent",
     "header10",
+    "leadsHeader",
+    "callsHeader",
+    "spendHeader",
     "campaignRow",
     "offOn",
     "toggle",
@@ -3584,6 +3779,12 @@ const PlasmicDescendants = {
     "mobileedit3",
     "budget",
     "mobileedit4",
+    "leads",
+    "mobileedit5",
+    "calls",
+    "mobileedit6",
+    "spend",
+    "mobileedit7",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -3602,6 +3803,9 @@ const PlasmicDescendants = {
     "sideEffect",
     "mainParent",
     "header10",
+    "leadsHeader",
+    "callsHeader",
+    "spendHeader",
     "campaignRow",
     "offOn",
     "toggle",
@@ -3611,6 +3815,12 @@ const PlasmicDescendants = {
     "mobileedit3",
     "budget",
     "mobileedit4",
+    "leads",
+    "mobileedit5",
+    "calls",
+    "mobileedit6",
+    "spend",
+    "mobileedit7",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -3627,6 +3837,9 @@ const PlasmicDescendants = {
   mainParent: [
     "mainParent",
     "header10",
+    "leadsHeader",
+    "callsHeader",
+    "spendHeader",
     "campaignRow",
     "offOn",
     "toggle",
@@ -3635,9 +3848,18 @@ const PlasmicDescendants = {
     "location",
     "mobileedit3",
     "budget",
-    "mobileedit4"
+    "mobileedit4",
+    "leads",
+    "mobileedit5",
+    "calls",
+    "mobileedit6",
+    "spend",
+    "mobileedit7"
   ],
-  header10: ["header10"],
+  header10: ["header10", "leadsHeader", "callsHeader", "spendHeader"],
+  leadsHeader: ["leadsHeader"],
+  callsHeader: ["callsHeader"],
+  spendHeader: ["spendHeader"],
   campaignRow: [
     "campaignRow",
     "offOn",
@@ -3647,7 +3869,13 @@ const PlasmicDescendants = {
     "location",
     "mobileedit3",
     "budget",
-    "mobileedit4"
+    "mobileedit4",
+    "leads",
+    "mobileedit5",
+    "calls",
+    "mobileedit6",
+    "spend",
+    "mobileedit7"
   ],
   offOn: ["offOn", "toggle"],
   toggle: ["toggle"],
@@ -3657,6 +3885,12 @@ const PlasmicDescendants = {
   mobileedit3: ["mobileedit3"],
   budget: ["budget", "mobileedit4"],
   mobileedit4: ["mobileedit4"],
+  leads: ["leads", "mobileedit5"],
+  mobileedit5: ["mobileedit5"],
+  calls: ["calls", "mobileedit6"],
+  mobileedit6: ["mobileedit6"],
+  spend: ["spend", "mobileedit7"],
+  mobileedit7: ["mobileedit7"],
   industryDrop: ["industryDrop"],
   productDropEmpty: ["productDropEmpty"],
   productDropInsurance: ["productDropInsurance"],
@@ -3679,6 +3913,9 @@ type NodeDefaultElementType = {
   sideEffect: typeof SideEffect;
   mainParent: "div";
   header10: "div";
+  leadsHeader: "div";
+  callsHeader: "div";
+  spendHeader: "div";
   campaignRow: "div";
   offOn: "div";
   toggle: typeof Toggle;
@@ -3688,6 +3925,12 @@ type NodeDefaultElementType = {
   mobileedit3: "svg";
   budget: "div";
   mobileedit4: "svg";
+  leads: "div";
+  mobileedit5: "svg";
+  calls: "div";
+  mobileedit6: "svg";
+  spend: "div";
+  mobileedit7: "svg";
   industryDrop: typeof Dropdown;
   productDropEmpty: typeof Dropdown;
   productDropInsurance: typeof Dropdown;
@@ -3768,6 +4011,9 @@ export const PlasmicAppCampaigns = Object.assign(
     sideEffect: makeNodeComponent("sideEffect"),
     mainParent: makeNodeComponent("mainParent"),
     header10: makeNodeComponent("header10"),
+    leadsHeader: makeNodeComponent("leadsHeader"),
+    callsHeader: makeNodeComponent("callsHeader"),
+    spendHeader: makeNodeComponent("spendHeader"),
     campaignRow: makeNodeComponent("campaignRow"),
     offOn: makeNodeComponent("offOn"),
     toggle: makeNodeComponent("toggle"),
@@ -3777,6 +4023,12 @@ export const PlasmicAppCampaigns = Object.assign(
     mobileedit3: makeNodeComponent("mobileedit3"),
     budget: makeNodeComponent("budget"),
     mobileedit4: makeNodeComponent("mobileedit4"),
+    leads: makeNodeComponent("leads"),
+    mobileedit5: makeNodeComponent("mobileedit5"),
+    calls: makeNodeComponent("calls"),
+    mobileedit6: makeNodeComponent("mobileedit6"),
+    spend: makeNodeComponent("spend"),
+    mobileedit7: makeNodeComponent("mobileedit7"),
     industryDrop: makeNodeComponent("industryDrop"),
     productDropEmpty: makeNodeComponent("productDropEmpty"),
     productDropInsurance: makeNodeComponent("productDropInsurance"),
