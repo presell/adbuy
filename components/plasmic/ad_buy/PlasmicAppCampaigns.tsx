@@ -61,6 +61,7 @@ import {
 
 import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import Toggle from "../../Toggle"; // plasmic-import: F5MIL-9TzQmo/component
 import Dropdown from "../../Dropdown"; // plasmic-import: 7Tx4ikCz5Jfw/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
@@ -71,7 +72,11 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicAppCampaigns.module.css"; // plasmic-import: mTVCR0WtVqvB/css
 
+import ToggleLeftSvgIcon from "./icons/PlasmicIcon__ToggleLeftSvg"; // plasmic-import: 4yAUxwLLbNVI/icon
+import MoveUpRightSvgIcon from "./icons/PlasmicIcon__MoveUpRightSvg"; // plasmic-import: yPw2r6PF5Lx4/icon
 import MapPinSvgIcon from "./icons/PlasmicIcon__MapPinSvg"; // plasmic-import: -SnCIoFrsIAj/icon
+import DollarSign1SvgIcon from "./icons/PlasmicIcon__DollarSign1Svg"; // plasmic-import: e7anIF66FNNl/icon
+import EditActiveSvgIcon from "./icons/PlasmicIcon__EditActiveSvg"; // plasmic-import: 2DRB0xm4Rnlz/icon
 
 createPlasmicElementProxy;
 
@@ -88,6 +93,17 @@ export type PlasmicAppCampaigns__OverridesType = {
   root?: Flex__<"div">;
   appLayout?: Flex__<typeof AppLayout>;
   sideEffect?: Flex__<typeof SideEffect>;
+  mainParent?: Flex__<"div">;
+  header10?: Flex__<"div">;
+  campaignRow?: Flex__<"div">;
+  offOn?: Flex__<"div">;
+  toggle?: Flex__<typeof Toggle>;
+  campaign?: Flex__<"div">;
+  mobileedit2?: Flex__<"svg">;
+  location?: Flex__<"div">;
+  mobileedit3?: Flex__<"svg">;
+  budget?: Flex__<"div">;
+  mobileedit4?: Flex__<"svg">;
   industryDrop?: Flex__<typeof Dropdown>;
   productDropEmpty?: Flex__<typeof Dropdown>;
   productDropInsurance?: Flex__<typeof Dropdown>;
@@ -290,7 +306,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
         path: "product",
@@ -3086,6 +3102,314 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     })()}
                   </React.Fragment>
                 </div>
+                <div
+                  data-plasmic-name={"mainParent"}
+                  data-plasmic-override={overrides.mainParent}
+                  className={classNames(projectcss.all, sty.mainParent)}
+                >
+                  <div
+                    data-plasmic-name={"header10"}
+                    data-plasmic-override={overrides.header10}
+                    className={classNames(
+                      projectcss.all,
+                      sty.header10,
+                      "header"
+                    )}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__cjtIq)}
+                    >
+                      <ToggleLeftSvgIcon
+                        className={classNames(projectcss.all, sty.svg__c7CvT)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__eQXh,
+                          "geologica-text-medium"
+                        )}
+                      >
+                        {"Off/On"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___39AZg
+                      )}
+                    >
+                      <MoveUpRightSvgIcon
+                        className={classNames(projectcss.all, sty.svg__mFzY0)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___16XdU,
+                          "geologica-text-medium"
+                        )}
+                      >
+                        {"Campaign"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__xPwmk)}
+                    >
+                      <MapPinSvgIcon
+                        className={classNames(projectcss.all, sty.svg__ms0DI)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__vP6Ny,
+                          "geologica-text-medium"
+                        )}
+                      >
+                        {"Location"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ygWL)}
+                    >
+                      <DollarSign1SvgIcon
+                        className={classNames(projectcss.all, sty.svg___0NQsR)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__lwzag,
+                          "geologica-text-medium"
+                        )}
+                      >
+                        {"Budget"}
+                      </div>
+                    </div>
+                  </div>
+                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                    (() => {
+                      try {
+                        return $state?.campaigns;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                    const currentItem = __plasmic_item_0;
+                    const currentIndex = __plasmic_idx_0;
+                    return (
+                      <div
+                        data-plasmic-name={"campaignRow"}
+                        data-plasmic-override={overrides.campaignRow}
+                        className={classNames(projectcss.all, sty.campaignRow)}
+                        key={currentIndex}
+                      >
+                        <div
+                          data-plasmic-name={"offOn"}
+                          data-plasmic-override={overrides.offOn}
+                          className={classNames(projectcss.all, sty.offOn)}
+                        >
+                          <Toggle
+                            data-plasmic-name={"toggle"}
+                            data-plasmic-override={overrides.toggle}
+                            className={classNames("__wab_instance", sty.toggle)}
+                            small={true}
+                          />
+                        </div>
+                        <div
+                          data-plasmic-name={"campaign"}
+                          data-plasmic-override={overrides.campaign}
+                          className={classNames(projectcss.all, sty.campaign)}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__wI78I
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__yiyeW
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem?.industry;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Industry";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__j9Ftk
+                              )}
+                            >
+                              {"|"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___4D36G
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem?.product;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "Product";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <EditActiveSvgIcon
+                              data-plasmic-name={"mobileedit2"}
+                              data-plasmic-override={overrides.mobileedit2}
+                              className={classNames(
+                                projectcss.all,
+                                sty.mobileedit2
+                              )}
+                              role={"img"}
+                            />
+                          </div>
+                        </div>
+                        <div
+                          data-plasmic-name={"location"}
+                          data-plasmic-override={overrides.location}
+                          className={classNames(projectcss.all, sty.location)}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___7CsLh
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___1P3V6
+                              )}
+                            >
+                              {"National"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__mhv4R
+                              )}
+                            >
+                              {"US"}
+                            </div>
+                          </div>
+                          <EditActiveSvgIcon
+                            data-plasmic-name={"mobileedit3"}
+                            data-plasmic-override={overrides.mobileedit3}
+                            className={classNames(
+                              projectcss.all,
+                              sty.mobileedit3
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                        <div
+                          data-plasmic-name={"budget"}
+                          data-plasmic-override={overrides.budget}
+                          className={classNames(projectcss.all, sty.budget)}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__ikVp
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___6K9Tf
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return "$" + currentItem?.budget;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "$-";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__nuYsm
+                              )}
+                            >
+                              {"Daily"}
+                            </div>
+                          </div>
+                          <EditActiveSvgIcon
+                            data-plasmic-name={"mobileedit4"}
+                            data-plasmic-override={overrides.mobileedit4}
+                            className={classNames(
+                              projectcss.all,
+                              sty.mobileedit4
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </React.Fragment>
             }
             navBtnclick={async event => {
@@ -3249,6 +3573,17 @@ const PlasmicDescendants = {
     "root",
     "appLayout",
     "sideEffect",
+    "mainParent",
+    "header10",
+    "campaignRow",
+    "offOn",
+    "toggle",
+    "campaign",
+    "mobileedit2",
+    "location",
+    "mobileedit3",
+    "budget",
+    "mobileedit4",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -3265,6 +3600,17 @@ const PlasmicDescendants = {
   appLayout: [
     "appLayout",
     "sideEffect",
+    "mainParent",
+    "header10",
+    "campaignRow",
+    "offOn",
+    "toggle",
+    "campaign",
+    "mobileedit2",
+    "location",
+    "mobileedit3",
+    "budget",
+    "mobileedit4",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -3278,6 +3624,39 @@ const PlasmicDescendants = {
     "budgetInput2"
   ],
   sideEffect: ["sideEffect"],
+  mainParent: [
+    "mainParent",
+    "header10",
+    "campaignRow",
+    "offOn",
+    "toggle",
+    "campaign",
+    "mobileedit2",
+    "location",
+    "mobileedit3",
+    "budget",
+    "mobileedit4"
+  ],
+  header10: ["header10"],
+  campaignRow: [
+    "campaignRow",
+    "offOn",
+    "toggle",
+    "campaign",
+    "mobileedit2",
+    "location",
+    "mobileedit3",
+    "budget",
+    "mobileedit4"
+  ],
+  offOn: ["offOn", "toggle"],
+  toggle: ["toggle"],
+  campaign: ["campaign", "mobileedit2"],
+  mobileedit2: ["mobileedit2"],
+  location: ["location", "mobileedit3"],
+  mobileedit3: ["mobileedit3"],
+  budget: ["budget", "mobileedit4"],
+  mobileedit4: ["mobileedit4"],
   industryDrop: ["industryDrop"],
   productDropEmpty: ["productDropEmpty"],
   productDropInsurance: ["productDropInsurance"],
@@ -3298,6 +3677,17 @@ type NodeDefaultElementType = {
   root: "div";
   appLayout: typeof AppLayout;
   sideEffect: typeof SideEffect;
+  mainParent: "div";
+  header10: "div";
+  campaignRow: "div";
+  offOn: "div";
+  toggle: typeof Toggle;
+  campaign: "div";
+  mobileedit2: "svg";
+  location: "div";
+  mobileedit3: "svg";
+  budget: "div";
+  mobileedit4: "svg";
   industryDrop: typeof Dropdown;
   productDropEmpty: typeof Dropdown;
   productDropInsurance: typeof Dropdown;
@@ -3376,6 +3766,17 @@ export const PlasmicAppCampaigns = Object.assign(
     // Helper components rendering sub-elements
     appLayout: makeNodeComponent("appLayout"),
     sideEffect: makeNodeComponent("sideEffect"),
+    mainParent: makeNodeComponent("mainParent"),
+    header10: makeNodeComponent("header10"),
+    campaignRow: makeNodeComponent("campaignRow"),
+    offOn: makeNodeComponent("offOn"),
+    toggle: makeNodeComponent("toggle"),
+    campaign: makeNodeComponent("campaign"),
+    mobileedit2: makeNodeComponent("mobileedit2"),
+    location: makeNodeComponent("location"),
+    mobileedit3: makeNodeComponent("mobileedit3"),
+    budget: makeNodeComponent("budget"),
+    mobileedit4: makeNodeComponent("mobileedit4"),
     industryDrop: makeNodeComponent("industryDrop"),
     productDropEmpty: makeNodeComponent("productDropEmpty"),
     productDropInsurance: makeNodeComponent("productDropInsurance"),

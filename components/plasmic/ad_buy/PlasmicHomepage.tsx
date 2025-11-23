@@ -4875,7 +4875,7 @@ export const PlasmicHomepage = Object.assign(
     pageMetadata: {
       title: "AdBuy | Lead Generation & Engagement Platform",
       description:
-        "AdBuy is the all-in-one advertising platform for lead generation with built-in AI workflows to nurture, score, and activate prospects.",
+        "AdBuy is the all-in-one advertising platform for Lead Generation with built-in AI Workflows to nurture, score, and activate prospects.",
       ogImageSrc:
         "https://site-assets.plasmic.app/d1eac95f3934b1653900f60b4f2a55c6.png",
       canonical: ""

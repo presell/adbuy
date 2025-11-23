@@ -573,6 +573,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/gtm"
+        },
+        {
+          "id": "F5MIL-9TzQmo",
+          "name": "Toggle",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicToggle.tsx",
+          "importSpec": {
+            "modulePath": "Toggle.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicToggle.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -835,6 +848,26 @@
           "id": "CDNSUt2kYFWr",
           "name": "TestTubeSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__TestTubeSvg.tsx"
+        },
+        {
+          "id": "4yAUxwLLbNVI",
+          "name": "ToggleLeftSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ToggleLeftSvg.tsx"
+        },
+        {
+          "id": "yPw2r6PF5Lx4",
+          "name": "MoveUpRightSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__MoveUpRightSvg.tsx"
+        },
+        {
+          "id": "e7anIF66FNNl",
+          "name": "DollarSign1SvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__DollarSign1Svg.tsx"
+        },
+        {
+          "id": "2DRB0xm4Rnlz",
+          "name": "EditActiveSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__EditActiveSvg.tsx"
         }
       ],
       "images": [

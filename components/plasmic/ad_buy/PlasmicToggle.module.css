@@ -1,0 +1,111 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  justify-self: flex-start;
+  cursor: pointer;
+  padding: 1px;
+}
+.text__uy2Gc {
+  position: relative;
+  width: 23px;
+  height: auto;
+  max-width: 100%;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+.textsmall__uy2GcJMwQ3 {
+  display: none;
+}
+.text__e9Uw {
+  position: relative;
+  width: 23px;
+  height: auto;
+  max-width: 100%;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.textsmall__e9UwJMwQ3 {
+  display: none;
+}
+._false {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 60px;
+  height: auto;
+  max-width: 100%;
+  background: none;
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding: 2px;
+  border-width: 0.1px;
+  border-style: solid;
+}
+._falsesmall {
+  width: 45px;
+  flex-shrink: 0;
+}
+.onFalse {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 27px;
+  height: 27px;
+  max-width: 100%;
+  background: #1a1c20;
+  align-self: flex-start;
+  flex-shrink: 0;
+  border-radius: 50px;
+}
+.onFalsesmall {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+._true {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 60px;
+  height: auto;
+  max-width: 100%;
+  background: #e1edf7;
+  flex-shrink: 0;
+  border-radius: 30px;
+  padding: 2px;
+  border-width: 0.1px;
+  border-style: solid;
+}
+._truesmall {
+  width: 45px;
+  flex-shrink: 0;
+}
+.onTrue2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 27px;
+  height: 27px;
+  max-width: 100%;
+  background: #0978be;
+  align-self: flex-end;
+  flex-shrink: 0;
+  border-radius: 50px;
+}
+.onTrue2small {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
