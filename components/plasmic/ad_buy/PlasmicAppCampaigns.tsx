@@ -95,6 +95,7 @@ export type PlasmicAppCampaigns__OverridesType = {
   sideEffect?: Flex__<typeof SideEffect>;
   mainParent?: Flex__<"div">;
   tableScrollWrapper?: Flex__<"div">;
+  innerTable?: Flex__<"div">;
   campaignHeader?: Flex__<"div">;
   leadsHeader?: Flex__<"div">;
   callsHeader?: Flex__<"div">;
@@ -3128,515 +3129,548 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     )}
                   >
                     <div
-                      data-plasmic-name={"campaignHeader"}
-                      data-plasmic-override={overrides.campaignHeader}
-                      className={classNames(
-                        projectcss.all,
-                        sty.campaignHeader,
-                        "header"
-                      )}
+                      data-plasmic-name={"innerTable"}
+                      data-plasmic-override={overrides.innerTable}
+                      className={classNames(projectcss.all, sty.innerTable)}
                     >
                       <div
+                        data-plasmic-name={"campaignHeader"}
+                        data-plasmic-override={overrides.campaignHeader}
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__cjtIq
+                          sty.campaignHeader,
+                          "header"
                         )}
                       >
-                        <ToggleLeftSvgIcon
-                          className={classNames(projectcss.all, sty.svg__c7CvT)}
-                          role={"img"}
-                        />
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__cjtIq
+                          )}
+                        >
+                          <ToggleLeftSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__c7CvT
+                            )}
+                            role={"img"}
+                          />
 
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__eQXh,
-                            "geologica-text-medium"
-                          )}
-                        >
-                          {"Off/On"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___39AZg
-                        )}
-                      >
-                        <MoveUpRightSvgIcon
-                          className={classNames(projectcss.all, sty.svg__mFzY0)}
-                          role={"img"}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___16XdU,
-                            "geologica-text-medium"
-                          )}
-                        >
-                          {"Campaign"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__xPwmk
-                        )}
-                      >
-                        <MapPinSvgIcon
-                          className={classNames(projectcss.all, sty.svg__ms0DI)}
-                          role={"img"}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__vP6Ny,
-                            "geologica-text-medium"
-                          )}
-                        >
-                          {"Location"}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ygWL
-                        )}
-                      >
-                        <DollarSign1SvgIcon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___0NQsR
-                          )}
-                          role={"img"}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lwzag,
-                            "geologica-text-medium"
-                          )}
-                        >
-                          {"Budget"}
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"leadsHeader"}
-                        data-plasmic-override={overrides.leadsHeader}
-                        className={classNames(projectcss.all, sty.leadsHeader)}
-                      >
-                        <DollarSign1SvgIcon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___4YUYj
-                          )}
-                          role={"img"}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__jjE8G,
-                            "geologica-text-medium"
-                          )}
-                        >
-                          {"Leads"}
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"callsHeader"}
-                        data-plasmic-override={overrides.callsHeader}
-                        className={classNames(projectcss.all, sty.callsHeader)}
-                      >
-                        <DollarSign1SvgIcon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___4Y5Z4
-                          )}
-                          role={"img"}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___8ZMZq,
-                            "geologica-text-medium"
-                          )}
-                        >
-                          {"Calls"}
-                        </div>
-                      </div>
-                      <div
-                        data-plasmic-name={"spendHeader"}
-                        data-plasmic-override={overrides.spendHeader}
-                        className={classNames(projectcss.all, sty.spendHeader)}
-                      >
-                        <DollarSign1SvgIcon
-                          className={classNames(projectcss.all, sty.svg__fOJt)}
-                          role={"img"}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__q4XF,
-                            "geologica-text-medium"
-                          )}
-                        >
-                          {"Spend"}
-                        </div>
-                      </div>
-                    </div>
-                    {(_par =>
-                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                      (() => {
-                        try {
-                          return $state?.campaigns;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                      const currentItem = __plasmic_item_0;
-                      const currentIndex = __plasmic_idx_0;
-                      return (
-                        <div
-                          data-plasmic-name={"campaignRow"}
-                          data-plasmic-override={overrides.campaignRow}
-                          className={classNames(
-                            projectcss.all,
-                            sty.campaignRow
-                          )}
-                          key={currentIndex}
-                        >
                           <div
-                            data-plasmic-name={"offOn"}
-                            data-plasmic-override={overrides.offOn}
-                            className={classNames(projectcss.all, sty.offOn)}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__eQXh,
+                              "geologica-text-medium"
+                            )}
                           >
-                            <Toggle
-                              data-plasmic-name={"toggle"}
-                              data-plasmic-override={overrides.toggle}
-                              className={classNames(
-                                "__wab_instance",
-                                sty.toggle
-                              )}
-                              small={true}
-                            />
+                            {"Off/On"}
                           </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___39AZg
+                          )}
+                        >
+                          <MoveUpRightSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__mFzY0
+                            )}
+                            role={"img"}
+                          />
+
                           <div
-                            data-plasmic-name={"campaign"}
-                            data-plasmic-override={overrides.campaign}
-                            className={classNames(projectcss.all, sty.campaign)}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___16XdU,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Campaign"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__xPwmk
+                          )}
+                        >
+                          <MapPinSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__ms0DI
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__vP6Ny,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Location"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__ygWL
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___0NQsR
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__lwzag,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Budget"}
+                          </div>
+                        </div>
+                        <div
+                          data-plasmic-name={"leadsHeader"}
+                          data-plasmic-override={overrides.leadsHeader}
+                          className={classNames(
+                            projectcss.all,
+                            sty.leadsHeader
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___4YUYj
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__jjE8G,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Leads"}
+                          </div>
+                        </div>
+                        <div
+                          data-plasmic-name={"callsHeader"}
+                          data-plasmic-override={overrides.callsHeader}
+                          className={classNames(
+                            projectcss.all,
+                            sty.callsHeader
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___4Y5Z4
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___8ZMZq,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Calls"}
+                          </div>
+                        </div>
+                        <div
+                          data-plasmic-name={"spendHeader"}
+                          data-plasmic-override={overrides.spendHeader}
+                          className={classNames(
+                            projectcss.all,
+                            sty.spendHeader
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__fOJt
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__q4XF,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Spend"}
+                          </div>
+                        </div>
+                      </div>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return $state?.campaigns;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
+                          <div
+                            data-plasmic-name={"campaignRow"}
+                            data-plasmic-override={overrides.campaignRow}
+                            className={classNames(
+                              projectcss.all,
+                              sty.campaignRow
+                            )}
+                            key={currentIndex}
                           >
                             <div
+                              data-plasmic-name={"offOn"}
+                              data-plasmic-override={overrides.offOn}
+                              className={classNames(projectcss.all, sty.offOn)}
+                            >
+                              <Toggle
+                                data-plasmic-name={"toggle"}
+                                data-plasmic-override={overrides.toggle}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.toggle
+                                )}
+                                small={true}
+                              />
+                            </div>
+                            <div
+                              data-plasmic-name={"campaign"}
+                              data-plasmic-override={overrides.campaign}
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox__wI78I
+                                sty.campaign
                               )}
                             >
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__yiyeW
+                                  sty.freeBox__wI78I
                                 )}
                               >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return currentItem?.industry;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "Industry";
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__yiyeW
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem?.industry;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Industry";
+                                        }
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__j9Ftk
+                                  )}
+                                >
+                                  {"|"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___4D36G
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem?.product;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Product";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <EditActiveSvgIcon
+                                  data-plasmic-name={"mobileedit2"}
+                                  data-plasmic-override={overrides.mobileedit2}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.mobileedit2
+                                  )}
+                                  role={"img"}
+                                />
                               </div>
+                            </div>
+                            <div
+                              data-plasmic-name={"location"}
+                              data-plasmic-override={overrides.location}
+                              className={classNames(
+                                projectcss.all,
+                                sty.location
+                              )}
+                            >
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__j9Ftk
+                                  sty.freeBox___7CsLh
                                 )}
                               >
-                                {"|"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___4D36G
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return currentItem?.product;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "Product";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___1P3V6
+                                  )}
+                                >
+                                  {"National"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__mhv4R
+                                  )}
+                                >
+                                  {"US"}
+                                </div>
                               </div>
                               <EditActiveSvgIcon
-                                data-plasmic-name={"mobileedit2"}
-                                data-plasmic-override={overrides.mobileedit2}
+                                data-plasmic-name={"mobileedit3"}
+                                data-plasmic-override={overrides.mobileedit3}
                                 className={classNames(
                                   projectcss.all,
-                                  sty.mobileedit2
+                                  sty.mobileedit3
+                                )}
+                                role={"img"}
+                              />
+                            </div>
+                            <div
+                              data-plasmic-name={"budget"}
+                              data-plasmic-override={overrides.budget}
+                              className={classNames(projectcss.all, sty.budget)}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__ikVp
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___6K9Tf
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return "$" + currentItem?.budget;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "$-";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__nuYsm
+                                  )}
+                                >
+                                  {"Daily"}
+                                </div>
+                              </div>
+                              <EditActiveSvgIcon
+                                data-plasmic-name={"mobileedit4"}
+                                data-plasmic-override={overrides.mobileedit4}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.mobileedit4
+                                )}
+                                role={"img"}
+                              />
+                            </div>
+                            <div
+                              data-plasmic-name={"leads"}
+                              data-plasmic-override={overrides.leads}
+                              className={classNames(projectcss.all, sty.leads)}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__zPatd
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__aRod0
+                                  )}
+                                >
+                                  {"714"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__dePxR
+                                  )}
+                                >
+                                  {"$6.52 each"}
+                                </div>
+                              </div>
+                              <EditActiveSvgIcon
+                                data-plasmic-name={"mobileedit5"}
+                                data-plasmic-override={overrides.mobileedit5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.mobileedit5
+                                )}
+                                role={"img"}
+                              />
+                            </div>
+                            <div
+                              data-plasmic-name={"calls"}
+                              data-plasmic-override={overrides.calls}
+                              className={classNames(projectcss.all, sty.calls)}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__fuWmg
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___2TE7
+                                  )}
+                                >
+                                  {"128"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__kuJF
+                                  )}
+                                >
+                                  {"$24.53 each"}
+                                </div>
+                              </div>
+                              <EditActiveSvgIcon
+                                data-plasmic-name={"mobileedit6"}
+                                data-plasmic-override={overrides.mobileedit6}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.mobileedit6
+                                )}
+                                role={"img"}
+                              />
+                            </div>
+                            <div
+                              data-plasmic-name={"spend"}
+                              data-plasmic-override={overrides.spend}
+                              className={classNames(projectcss.all, sty.spend)}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__r1R2
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__d7Qqq
+                                  )}
+                                >
+                                  {"$4,300"}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__zRNuj
+                                  )}
+                                >
+                                  {"Since 10/15/2025"}
+                                </div>
+                              </div>
+                              <EditActiveSvgIcon
+                                data-plasmic-name={"mobileedit7"}
+                                data-plasmic-override={overrides.mobileedit7}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.mobileedit7
                                 )}
                                 role={"img"}
                               />
                             </div>
                           </div>
-                          <div
-                            data-plasmic-name={"location"}
-                            data-plasmic-override={overrides.location}
-                            className={classNames(projectcss.all, sty.location)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___7CsLh
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___1P3V6
-                                )}
-                              >
-                                {"National"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__mhv4R
-                                )}
-                              >
-                                {"US"}
-                              </div>
-                            </div>
-                            <EditActiveSvgIcon
-                              data-plasmic-name={"mobileedit3"}
-                              data-plasmic-override={overrides.mobileedit3}
-                              className={classNames(
-                                projectcss.all,
-                                sty.mobileedit3
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                          <div
-                            data-plasmic-name={"budget"}
-                            data-plasmic-override={overrides.budget}
-                            className={classNames(projectcss.all, sty.budget)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__ikVp
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___6K9Tf
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return "$" + currentItem?.budget;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "$-";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__nuYsm
-                                )}
-                              >
-                                {"Daily"}
-                              </div>
-                            </div>
-                            <EditActiveSvgIcon
-                              data-plasmic-name={"mobileedit4"}
-                              data-plasmic-override={overrides.mobileedit4}
-                              className={classNames(
-                                projectcss.all,
-                                sty.mobileedit4
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                          <div
-                            data-plasmic-name={"leads"}
-                            data-plasmic-override={overrides.leads}
-                            className={classNames(projectcss.all, sty.leads)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__zPatd
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__aRod0
-                                )}
-                              >
-                                {"714"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__dePxR
-                                )}
-                              >
-                                {"$6.52 each"}
-                              </div>
-                            </div>
-                            <EditActiveSvgIcon
-                              data-plasmic-name={"mobileedit5"}
-                              data-plasmic-override={overrides.mobileedit5}
-                              className={classNames(
-                                projectcss.all,
-                                sty.mobileedit5
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                          <div
-                            data-plasmic-name={"calls"}
-                            data-plasmic-override={overrides.calls}
-                            className={classNames(projectcss.all, sty.calls)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__fuWmg
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___2TE7
-                                )}
-                              >
-                                {"128"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__kuJF
-                                )}
-                              >
-                                {"$24.53 each"}
-                              </div>
-                            </div>
-                            <EditActiveSvgIcon
-                              data-plasmic-name={"mobileedit6"}
-                              data-plasmic-override={overrides.mobileedit6}
-                              className={classNames(
-                                projectcss.all,
-                                sty.mobileedit6
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                          <div
-                            data-plasmic-name={"spend"}
-                            data-plasmic-override={overrides.spend}
-                            className={classNames(projectcss.all, sty.spend)}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__r1R2
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__d7Qqq
-                                )}
-                              >
-                                {"$4,300"}
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__zRNuj
-                                )}
-                              >
-                                {"Since 10/15/2025"}
-                              </div>
-                            </div>
-                            <EditActiveSvgIcon
-                              data-plasmic-name={"mobileedit7"}
-                              data-plasmic-override={overrides.mobileedit7}
-                              className={classNames(
-                                projectcss.all,
-                                sty.mobileedit7
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </React.Fragment>
@@ -3797,7 +3831,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             data-plasmic-override={overrides.tableScroll}
             className={classNames("__wab_instance", sty.tableScroll)}
             code={
-              "<style>\n\n.table-scroll {\n  overflow-x: auto;\n  overflow-y: visible;\n  -webkit-overflow-scrolling: touch;\n  display: block;     /* Force single layer */\n  position: relative; /* Required for sticky children */\n  white-space: nowrap;\n}\n\n</style>"
+              "<style>\n\n.table-scroll {\n  overflow-x: auto !important;\n  overflow-y: visible !important;\n  -webkit-overflow-scrolling: touch !important;\n  display: block !important;\n  position: relative !important;\n  white-space: nowrap !important;\n}\n\n</style>"
             }
           />
         </div>
@@ -3813,6 +3847,7 @@ const PlasmicDescendants = {
     "sideEffect",
     "mainParent",
     "tableScrollWrapper",
+    "innerTable",
     "campaignHeader",
     "leadsHeader",
     "callsHeader",
@@ -3851,6 +3886,7 @@ const PlasmicDescendants = {
     "sideEffect",
     "mainParent",
     "tableScrollWrapper",
+    "innerTable",
     "campaignHeader",
     "leadsHeader",
     "callsHeader",
@@ -3886,6 +3922,7 @@ const PlasmicDescendants = {
   mainParent: [
     "mainParent",
     "tableScrollWrapper",
+    "innerTable",
     "campaignHeader",
     "leadsHeader",
     "callsHeader",
@@ -3908,6 +3945,29 @@ const PlasmicDescendants = {
   ],
   tableScrollWrapper: [
     "tableScrollWrapper",
+    "innerTable",
+    "campaignHeader",
+    "leadsHeader",
+    "callsHeader",
+    "spendHeader",
+    "campaignRow",
+    "offOn",
+    "toggle",
+    "campaign",
+    "mobileedit2",
+    "location",
+    "mobileedit3",
+    "budget",
+    "mobileedit4",
+    "leads",
+    "mobileedit5",
+    "calls",
+    "mobileedit6",
+    "spend",
+    "mobileedit7"
+  ],
+  innerTable: [
+    "innerTable",
     "campaignHeader",
     "leadsHeader",
     "callsHeader",
@@ -3991,6 +4051,7 @@ type NodeDefaultElementType = {
   sideEffect: typeof SideEffect;
   mainParent: "div";
   tableScrollWrapper: "div";
+  innerTable: "div";
   campaignHeader: "div";
   leadsHeader: "div";
   callsHeader: "div";
@@ -4091,6 +4152,7 @@ export const PlasmicAppCampaigns = Object.assign(
     sideEffect: makeNodeComponent("sideEffect"),
     mainParent: makeNodeComponent("mainParent"),
     tableScrollWrapper: makeNodeComponent("tableScrollWrapper"),
+    innerTable: makeNodeComponent("innerTable"),
     campaignHeader: makeNodeComponent("campaignHeader"),
     leadsHeader: makeNodeComponent("leadsHeader"),
     callsHeader: makeNodeComponent("callsHeader"),

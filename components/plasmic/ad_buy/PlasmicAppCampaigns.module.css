@@ -76,7 +76,8 @@
   justify-content: flex-start;
   align-items: flex-start;
   background: none;
-  overflow: visible;
+  overflow: auto;
+  min-width: 0;
 }
 .tableScrollWrapper {
   display: flex;
@@ -90,7 +91,22 @@
   top: auto;
   left: auto;
   z-index: 0;
+  overflow: auto;
   min-width: 0;
+}
+.innerTable {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  min-width: 1200px;
 }
 .campaignHeader {
   animation: none;
@@ -413,6 +429,7 @@
 }
 .callsHeader {
   animation: none;
+  display: flex;
   flex-direction: row;
   position: relative;
   width: 165px;
@@ -421,7 +438,6 @@
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
-  display: none;
   padding: 8px 16px 8px 35px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -535,12 +551,14 @@
   position: relative;
   align-items: stretch;
   justify-content: flex-start;
-  width: auto;
+  width: 100%;
   height: auto;
-  max-width: none;
+  max-width: 1200px;
   padding-top: 10px;
   padding-bottom: 10px;
   cursor: pointer;
+  overflow: visible;
+  min-width: 0;
   border-bottom: 1px solid #d3d3d3;
 }
 .offOn {
@@ -808,6 +826,7 @@
   }
 }
 .calls {
+  display: flex;
   flex-direction: row;
   position: relative;
   width: 165px;
@@ -816,7 +835,6 @@
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
-  display: none;
   padding: 8px 16px 8px 35px;
 }
 .freeBox__fuWmg {
