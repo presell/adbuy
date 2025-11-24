@@ -68,7 +68,7 @@
 }
 .mainParent {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -76,6 +76,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   background: none;
+  overflow: visible;
 }
 .tableScrollWrapper {
   display: flex;
