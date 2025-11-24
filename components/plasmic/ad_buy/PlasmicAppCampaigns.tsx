@@ -198,7 +198,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "industryDrop.placeholder",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "Select Industry"
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return (
+                $state.campaigns?.find(
+                  c => c.id === Number($state.selectedCampaign)
+                )?.industry || "Select Industry"
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "industryDrop.selectedValue",
@@ -224,7 +241,24 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "productDropEmpty.placeholder",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "Select Product"
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return (
+                $state.campaigns?.find(
+                  c => c.id === Number($state.selectedCampaign)
+                )?.product || "Select Product"
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "productDropEmpty.selectedValue",
@@ -2772,7 +2806,23 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             }
                           }).apply(null, eventArgs);
                         }}
-                        placeholder={``}
+                        placeholder={(() => {
+                          try {
+                            return (
+                              $state.campaigns?.find(
+                                c => c.id === Number($state.selectedCampaign)
+                              )?.budget || " -"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
                         ref={ref => {
                           $refs["budgetInput"] = ref;
                         }}
