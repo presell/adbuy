@@ -530,12 +530,6 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "variable",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
         path: "budgetInput2.value",
         type: "private",
         variableType: "text",
@@ -546,12 +540,6 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
-      },
-      {
-        path: "campaignId",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "default"
       },
       {
         path: "industryDrop.selectedObject",
@@ -600,6 +588,12 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "selectedCampaign",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -3092,29 +3086,6 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   </div>
                 ) : null}
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__sTodg
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return $state.campaignId;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "not empty\n";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
-                </div>
-                <div
                   data-plasmic-name={"mainParent"}
                   data-plasmic-override={overrides.mainParent}
                   className={classNames(projectcss.all, sty.mainParent)}
@@ -3351,6 +3322,85 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               sty.campaignRow
                             )}
                             key={currentIndex}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["updateSelectedCampaign"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["selectedCampaign"]
+                                      },
+                                      operation: 0,
+                                      value: currentItem.id
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateSelectedCampaign"] != null &&
+                                typeof $steps["updateSelectedCampaign"] ===
+                                  "object" &&
+                                typeof $steps["updateSelectedCampaign"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateSelectedCampaign"] =
+                                  await $steps["updateSelectedCampaign"];
+                              }
+
+                              $steps["updateAppLayoutPopOpen"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["appLayout", "popOpen"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateAppLayoutPopOpen"] != null &&
+                                typeof $steps["updateAppLayoutPopOpen"] ===
+                                  "object" &&
+                                typeof $steps["updateAppLayoutPopOpen"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateAppLayoutPopOpen"] =
+                                  await $steps["updateAppLayoutPopOpen"];
+                              }
+                            }}
                           >
                             <div
                               data-plasmic-name={"offOn"}
