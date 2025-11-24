@@ -89,7 +89,6 @@
   top: auto;
   left: auto;
   z-index: 0;
-  overflow: auto;
   min-width: 0;
 }
 .campaignHeader {
