@@ -207,13 +207,36 @@ function PlasmicAppCards__RenderFunc(props: {
                     const actionArgs = {
                       customFunction: async () => {
                         return async function addCard() {
+                          console.log("▶️ addCard() clicked");
+
                           const res = await fetch("/api/stripe/add-card", {
                             method: "POST"
                           });
-                          const data = await res.json();
 
-                          if (data.clientSecret) {
-                            window.location.href = `https://billing.stripe.com/setup/${data.clientSecret}`;
+                          console.log("📡 Response status:", res.status);
+
+                          let data;
+                          try {
+                            data = await res.json();
+                            console.log("📦 Response JSON:", data);
+                          } catch (e) {
+                            console.error("❌ Failed to parse JSON:", e);
+                            return;
+                          }
+
+                          if (data.error) {
+                            console.error(
+                              "❌ API returned an error:",
+                              data.error
+                            );
+                            return;
+                          }
+
+                          if (data.url) {
+                            console.log("➡️ Redirecting to:", data.url);
+                            window.location.href = data.url;
+                          } else {
+                            console.warn("⚠️ No URL returned from API");
                           }
                         };
                       }
