@@ -269,57 +269,51 @@ function PlasmicAppCards__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
-                            return (async () => {
-                              async function addCard() {
-                                console.log("\u25B6️ addCard() clicked");
-                                const {
-                                  data: { session }
-                                } = await supabase.auth.getSession();
-                                if (!session?.access_token) {
-                                  console.error(
-                                    "\u274C No Supabase session. User not logged in."
-                                  );
-                                  return;
-                                }
-                                const res = await fetch(
-                                  "/api/stripe/add-card",
-                                  {
-                                    method: "POST",
-                                    headers: {
-                                      Authorization: `Bearer ${session.access_token}`
-                                    }
-                                  }
+                            return async function addCard() {
+                              console.log("▶️ addCard() clicked");
+
+                              // 1️⃣ Get Supabase client from Plasmic global namespace
+                              const supa = window.__PLASMIC?.supabaseClient;
+
+                              // 2️⃣ Read session from localStorage (Supabase stores it there)
+                              const session = supa?.auth?.session();
+                              const accessToken = session?.access_token;
+
+                              if (!accessToken) {
+                                console.error(
+                                  "❌ No Supabase access token found"
                                 );
-                                console.log(
-                                  "\uD83D\uDCE1 Response status:",
-                                  res.status
-                                );
-                                const data = await res.json();
-                                console.log(
-                                  "\uD83D\uDCE6 Response JSON:",
-                                  data
-                                );
-                                if (data.error) {
-                                  console.error(
-                                    "\u274C API returned an error:",
-                                    data.error
-                                  );
-                                  return;
-                                }
-                                if (data.url) {
-                                  console.log(
-                                    "\u27A1️ Redirecting to:",
-                                    data.url
-                                  );
-                                  window.location.href = data.url;
-                                } else {
-                                  console.warn(
-                                    "\u26A0️ No URL returned from API"
-                                  );
-                                }
+                                return;
                               }
-                              return addCard();
-                            })();
+
+                              // 3️⃣ Send token to API route
+                              const res = await fetch("/api/stripe/add-card", {
+                                method: "POST",
+                                headers: {
+                                  Authorization: `Bearer ${accessToken}`
+                                }
+                              });
+
+                              console.log("📡 Response status:", res.status);
+
+                              const data = await res.json();
+                              console.log("📦 Response JSON:", data);
+
+                              if (data.error) {
+                                console.error(
+                                  "❌ API returned an error:",
+                                  data.error
+                                );
+                                return;
+                              }
+
+                              if (data.clientSecret) {
+                                console.log("➡️ Redirecting to Stripe…");
+                                window.location.href = `https://billing.stripe.com/setup/${data.clientSecret}`;
+                              } else {
+                                console.warn("⚠️ No clientSecret returned");
+                              }
+                            };
                           }
                         };
                         return (({ customFunction }) => {
