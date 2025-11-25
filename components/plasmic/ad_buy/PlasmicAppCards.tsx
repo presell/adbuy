@@ -272,88 +272,28 @@ function PlasmicAppCards__RenderFunc(props: {
                             return (async () => {
                               async function addCard() {
                                 console.log("\u25B6️ addCard() clicked");
-                                const key = Object.keys(localStorage).find(
-                                  k =>
-                                    k.startsWith("sb-") &&
-                                    k.endsWith("-auth-token")
-                                );
-                                if (!key) {
-                                  console.error(
-                                    "\u274C No Supabase auth token key in localStorage"
-                                  );
-                                  return;
-                                }
-                                const raw = localStorage.getItem(key);
-                                if (!raw) {
-                                  console.error(
-                                    "\u274C Supabase auth token entry missing"
-                                  );
-                                  return;
-                                }
-                                let sessionData;
-                                try {
-                                  sessionData = JSON.parse(raw);
-                                } catch (e) {
-                                  console.error(
-                                    "\u274C Failed to parse Supabase session JSON:",
-                                    e
-                                  );
-                                  return;
-                                }
-                                const accessToken = sessionData?.access_token;
-                                if (!accessToken) {
-                                  console.error(
-                                    "\u274C No access_token in Supabase session"
-                                  );
-                                  return;
-                                }
-                                console.log(
-                                  "\uD83D\uDD11 Found Supabase access token"
-                                );
+                                const token = getSupabaseAccessTokenSomehow();
+                                if (!token)
+                                  return console.error("\u274C No token");
                                 const res = await fetch(
                                   "/api/stripe/add-card",
                                   {
                                     method: "POST",
                                     headers: {
-                                      Authorization: `Bearer ${accessToken}`
+                                      Authorization: `Bearer ${token}`
                                     }
                                   }
                                 );
-                                console.log(
-                                  "\uD83D\uDCE1 Response status:",
-                                  res.status
-                                );
-                                let data;
-                                try {
-                                  data = await res.json();
-                                  console.log(
-                                    "\uD83D\uDCE6 Response JSON:",
-                                    data
-                                  );
-                                } catch (e) {
-                                  console.error(
-                                    "\u274C Failed to parse API JSON:",
-                                    e
-                                  );
-                                  return;
-                                }
-                                if (data.error) {
-                                  console.error(
-                                    "\u274C API returned error:",
-                                    data.error,
-                                    data.detail
-                                  );
-                                  return;
-                                }
+                                const data = await res.json();
+                                console.log("Response:", data);
                                 if (data.url) {
                                   console.log(
-                                    "\u27A1️ Redirecting to Billing Portal:",
-                                    data.url
+                                    "\u27A1️ Redirecting to Billing Portal\u2026"
                                   );
                                   window.location.href = data.url;
                                 } else {
                                   console.warn(
-                                    "\u26A0️ No url returned from /api/stripe/add-card"
+                                    "\u26A0️ No redirect URL returned"
                                   );
                                 }
                               }
