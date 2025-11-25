@@ -352,7 +352,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
         path: "product",
@@ -3390,11 +3390,95 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text___1P3V6
+                                    sty.freeBox__akrfe
                                   )}
                                 >
-                                  {"National"}
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___1P3V6
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (currentItem?.targeting || [])
+                                            .slice(0, 3)
+                                            .map(s => s.value)
+                                            .join(", ");
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "NC, SC, VA";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  {(() => {
+                                    try {
+                                      return (
+                                        Math.max(
+                                          0,
+                                          (currentItem?.targeting?.length ||
+                                            0) - 3
+                                        ) != 0
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return true;
+                                      }
+                                      throw e;
+                                    }
+                                  })() ? (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox___1YOe
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__r7Jj
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return (
+                                                "+ " +
+                                                Math.max(
+                                                  0,
+                                                  (currentItem?.targeting
+                                                    ?.length || 0) - 3
+                                                )
+                                              );
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "+ 7";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      </div>
+                                    </div>
+                                  ) : null}
                                 </div>
                                 <div
                                   className={classNames(
@@ -3403,7 +3487,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                     sty.text__mhv4R
                                   )}
                                 >
-                                  {"US"}
+                                  {"Plus 8 Others"}
                                 </div>
                               </div>
                               <EditActiveSvgIcon
