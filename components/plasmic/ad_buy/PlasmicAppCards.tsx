@@ -272,53 +272,40 @@ function PlasmicAppCards__RenderFunc(props: {
                             return (async () => {
                               async function addCard() {
                                 console.log("\u25B6️ addCard() clicked");
-                                const key = Object.keys(localStorage).find(
-                                  k =>
-                                    k.startsWith("sb-") &&
-                                    k.endsWith("-auth-token")
-                                );
-                                if (!key) {
-                                  console.error(
-                                    "\u274C No Supabase session found in localStorage"
-                                  );
-                                  return;
-                                }
-                                const stored = JSON.parse(
-                                  localStorage.getItem(key)
-                                );
-                                const session = stored?.currentSession;
-                                if (!session) {
-                                  console.error(
-                                    "\u274C No currentSession inside Supabase localStorage"
-                                  );
-                                  return;
-                                }
-                                const jwt = session?.access_token;
-                                if (!jwt) {
-                                  console.error(
-                                    "\u274C No JWT found in session"
-                                  );
-                                  return;
-                                }
-                                console.log(
-                                  "\uD83D\uDD11 Using JWT:",
-                                  jwt.substring(0, 20) + "..."
-                                );
                                 const res = await fetch(
                                   "/api/stripe/add-card",
                                   {
                                     method: "POST",
-                                    headers: { Authorization: `Bearer ${jwt}` }
+                                    credentials: "include"
                                   }
                                 );
                                 console.log(
-                                  "\uD83D\uDCE1 Response:",
+                                  "\uD83D\uDCE1 Response status:",
                                   res.status
                                 );
                                 const data = await res.json();
-                                console.log("\uD83D\uDCE6 JSON:", data);
+                                console.log(
+                                  "\uD83D\uDCE6 Response JSON:",
+                                  data
+                                );
+                                if (data.error) {
+                                  console.error(
+                                    "\u274C API returned:",
+                                    data.error
+                                  );
+                                  return;
+                                }
                                 if (data.clientSecret) {
-                                  window.location.href = `https://billing.stripe.com/setup/${data.clientSecret}`;
+                                  const url = `https://billing.stripe.com/setup/${data.clientSecret}`;
+                                  console.log(
+                                    "\u27A1️ Redirecting to Stripe:",
+                                    url
+                                  );
+                                  window.location.href = url;
+                                } else {
+                                  console.warn(
+                                    "\u26A0️ No clientSecret returned"
+                                  );
                                 }
                               }
                               return addCard();
