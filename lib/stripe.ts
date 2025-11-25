@@ -6,12 +6,11 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
 });
 
-// Unified Stripe customer helper
 export async function getOrCreateStripeCustomer(
   userId: string,
   email: string
 ) {
-  // Check metadata table
+  // Check if a Stripe customer already exists
   const { data: existing } = await supabaseAdmin
     .from("user_metadata")
     .select("stripe_customer_id")
@@ -28,16 +27,18 @@ export async function getOrCreateStripeCustomer(
     metadata: { internalUserId: userId },
   });
 
-  // Save to Supabase (correct v2 syntax)
-  await supabaseAdmin.from("user_metadata").insert(
-    {
-      user_id: userId,
-      stripe_customer_id: customer.id,
-    },
-    {
-      onConflict: "user_id",
-    }
-  );
+  // Save with UPSERT (works on all Supabase clients)
+  await supabaseAdmin
+    .from("user_metadata")
+    .upsert(
+      {
+        user_id: userId,
+        stripe_customer_id: customer.id,
+      },
+      {
+        onConflict: "user_id",
+      }
+    );
 
   return customer.id;
 }
