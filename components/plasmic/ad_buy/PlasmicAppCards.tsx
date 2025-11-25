@@ -274,16 +274,22 @@ function PlasmicAppCards__RenderFunc(props: {
                                 console.log("\u25B6️ addCard() clicked");
                                 const res = await fetch(
                                   "/api/stripe/add-card",
-                                  {
-                                    method: "POST",
-                                    credentials: "include"
-                                  }
+                                  { method: "POST" }
                                 );
                                 console.log(
                                   "\uD83D\uDCE1 Response status:",
                                   res.status
                                 );
-                                const data = await res.json();
+                                let data;
+                                try {
+                                  data = await res.json();
+                                } catch (e) {
+                                  console.error(
+                                    "\u274C Failed to parse JSON:",
+                                    e
+                                  );
+                                  return;
+                                }
                                 console.log(
                                   "\uD83D\uDCE6 Response JSON:",
                                   data
@@ -297,14 +303,11 @@ function PlasmicAppCards__RenderFunc(props: {
                                 }
                                 if (data.clientSecret) {
                                   const url = `https://billing.stripe.com/setup/${data.clientSecret}`;
-                                  console.log(
-                                    "\u27A1️ Redirecting to Stripe:",
-                                    url
-                                  );
+                                  console.log("\u27A1️ Redirecting to:", url);
                                   window.location.href = url;
                                 } else {
                                   console.warn(
-                                    "\u26A0️ No clientSecret returned"
+                                    "\u26A0️ No clientSecret returned from API"
                                   );
                                 }
                               }
