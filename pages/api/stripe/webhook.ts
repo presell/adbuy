@@ -8,7 +8,7 @@ export const config = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") return res.status(405).end("Method not allowed");
+  if (req.method !== "POST") return res.status(405).send("Method not allowed");
 
   const buf = await buffer(req);
   const sig = req.headers["stripe-signature"];
@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.json({ received: true });
   } catch (err: any) {
-    console.error("Webhook error:", err.message);
+    console.error("❌ Webhook signature verification failed:", err.message);
     res.status(400).send(`Webhook Error: ${err.message}`);
   }
 }
