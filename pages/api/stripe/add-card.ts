@@ -1,35 +1,36 @@
+// pages/api/stripe/add-card.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getAuthenticatedUserIdFromRequest } from "../../../lib/auth";
-import { getOrCreateStripeCustomer, stripe } from "../../../lib/stripe";
+import { stripe, getOrCreateStripeCustomer } from "../../../lib/stripe";
+import { supabaseAdmin } from "../../../lib/supabaseAdmin";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
-  // 🔐 Authenticate user
-  const userId = await getAuthenticatedUserIdFromRequest(req);
-
-  if (!userId) {
-    console.warn("❌ No authenticated user found in request");
-    return res.status(401).json({ error: "Unauthorized" });
-  }
-
   try {
-    // 1️⃣ Ensure Stripe customer exists
-    const customerId = await getOrCreateStripeCustomer(userId);
+    const token = req.headers.authorization?.replace("Bearer ", "");
+    if (!token) return res.status(401).json({ error: "Not authenticated" });
 
-    // 2️⃣ Create Billing Portal Session with RETURN URL
-    const portalSession = await stripe.billingPortal.sessions.create({
+    // Get the Supabase user
+    const { data: userData, error } = await supabaseAdmin.auth.getUser(token);
+    if (error || !userData?.user) {
+      return res.status(401).json({ error: "Invalid auth token" });
+    }
+
+    const supaUser = userData.user;
+
+    // Unified Stripe customer creation
+    const customerId = await getOrCreateStripeCustomer(
+      supaUser.id,
+      supaUser.email ?? ""
+    );
+
+    // Create Billing Portal Session
+    const portal = await stripe.billingPortal.sessions.create({
       customer: customerId,
       return_url: "https://www.adbuy.ai/app/campaigns/cards",
     });
 
-    return res.status(200).json({
-      url: portalSession.url,
-    });
-  } catch (err) {
-    console.error("❌ Stripe Billing Portal error:", err);
-    return res.status(500).json({ error: "Internal Server Error" });
+    res.status(200).json({ url: portal.url });
+  } catch (err: any) {
+    console.error("Stripe error:", err);
+    res.status(500).json({ error: err.message });
   }
 }
