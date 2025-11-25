@@ -269,39 +269,52 @@ function PlasmicAppCards__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
-                            return async function addCard() {
-                              console.log("▶️ addCard() clicked");
-
-                              const res = await fetch("/api/stripe/add-card", {
-                                method: "POST"
-                              });
-
-                              console.log("📡 Response status:", res.status);
-
-                              let data;
-                              try {
-                                data = await res.json();
-                                console.log("📦 Response JSON:", data);
-                              } catch (e) {
-                                console.error("❌ Failed to parse JSON:", e);
-                                return;
-                              }
-
-                              if (data.error) {
-                                console.error(
-                                  "❌ API returned an error:",
-                                  data.error
+                            return (async () => {
+                              async function addCard() {
+                                console.log("\u25B6️ addCard() clicked");
+                                const res = await fetch(
+                                  "/api/stripe/add-card",
+                                  { method: "POST" }
                                 );
-                                return;
+                                console.log(
+                                  "\uD83D\uDCE1 Response status:",
+                                  res.status
+                                );
+                                let data;
+                                try {
+                                  data = await res.json();
+                                  console.log(
+                                    "\uD83D\uDCE6 Response JSON:",
+                                    data
+                                  );
+                                } catch (e) {
+                                  console.error(
+                                    "\u274C Failed to parse JSON:",
+                                    e
+                                  );
+                                  return;
+                                }
+                                if (data.error) {
+                                  console.error(
+                                    "\u274C API returned an error:",
+                                    data.error
+                                  );
+                                  return;
+                                }
+                                if (data.url) {
+                                  console.log(
+                                    "\u27A1️ Redirecting to:",
+                                    data.url
+                                  );
+                                  window.location.href = data.url;
+                                } else {
+                                  console.warn(
+                                    "\u26A0️ No URL returned from API"
+                                  );
+                                }
                               }
-
-                              if (data.url) {
-                                console.log("➡️ Redirecting to:", data.url);
-                                window.location.href = data.url;
-                              } else {
-                                console.warn("⚠️ No URL returned from API");
-                              }
-                            };
+                              return addCard();
+                            })();
                           }
                         };
                         return (({ customFunction }) => {
