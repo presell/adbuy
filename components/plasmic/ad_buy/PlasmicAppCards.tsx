@@ -199,7 +199,71 @@ function PlasmicAppCards__RenderFunc(props: {
           <AppLayout
             data-plasmic-name={"appLayout"}
             data-plasmic-override={overrides.appLayout}
+            btnClick={async event => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return async function addCard() {
+                          const res = await fetch("/api/stripe/add-card", {
+                            method: "POST"
+                          });
+                          const data = await res.json();
+
+                          if (data.clientSecret) {
+                            window.location.href = `https://billing.stripe.com/setup/${data.clientSecret}`;
+                          }
+                        };
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
             className={classNames("__wab_instance", sty.appLayout)}
+            navBtnclick={async event => {
+              const $steps = {};
+
+              $steps["updateAppLayoutPopOpen"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["appLayout", "popOpen"]
+                      },
+                      operation: 0
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateAppLayoutPopOpen"] != null &&
+                typeof $steps["updateAppLayoutPopOpen"] === "object" &&
+                typeof $steps["updateAppLayoutPopOpen"].then === "function"
+              ) {
+                $steps["updateAppLayoutPopOpen"] =
+                  await $steps["updateAppLayoutPopOpen"];
+              }
+            }}
             onPopOpenChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["appLayout", "popOpen"]).apply(
                 null,
