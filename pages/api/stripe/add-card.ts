@@ -19,17 +19,31 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const customerId = await getOrCreateStripeCustomer(userId);
 
-    // ✅ Create a Stripe Billing Portal session JUST for updating payment methods
+    // 🔗 Figure out a valid origin for the return_url
+    const origin =
+      process.env.NEXT_PUBLIC_APP_URL ||
+      `${(req.headers["x-forwarded-proto"] as string) || "https"}://${req.headers.host}`;
+
+    // ✅ Create a Stripe Billing Portal session for updating payment methods
     const portalSession = await stripe.billingPortal.sessions.create({
       customer: customerId,
       flow_data: { type: "payment_method_update" },
-      return_url: `${process.env.NEXT_PUBLIC_APP_URL}/app/cards`,
+      return_url: `${origin}/app/cards`,
     });
 
-    // Return hosted portal URL
     return res.status(200).json({ url: portalSession.url });
-  } catch (err) {
-    console.error("❌ Billing portal error:", err);
-    return res.status(500).json({ error: "Internal Server Error" });
+  } catch (err: any) {
+    // Log *and* surface some detail so we can see Stripe’s complaint
+    console.error("❌ Billing portal error:", err?.raw ?? err);
+
+    const message =
+      err?.raw?.message ||
+      err?.message ||
+      "Unknown error";
+
+    return res.status(500).json({
+      error: "Internal Server Error",
+      detail: message,
+    });
   }
 }
