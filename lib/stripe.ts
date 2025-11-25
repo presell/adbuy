@@ -6,10 +6,13 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
 });
 
-// Main unified function
-export async function getOrCreateStripeCustomer(userId: string, email: string) {
+// Unified Stripe customer helper
+export async function getOrCreateStripeCustomer(
+  userId: string,
+  email: string
+) {
   // Check metadata table
-  const { data: existing, error } = await supabaseAdmin
+  const { data: existing } = await supabaseAdmin
     .from("user_metadata")
     .select("stripe_customer_id")
     .eq("user_id", userId)
@@ -19,20 +22,22 @@ export async function getOrCreateStripeCustomer(userId: string, email: string) {
     return existing.stripe_customer_id;
   }
 
-  // Create new Stripe Customer
+  // Create customer in Stripe
   const customer = await stripe.customers.create({
     email,
     metadata: { internalUserId: userId },
   });
 
-  // Save to Supabase
-  await supabaseAdmin
-    .from("user_metadata")
-    .insert({
+  // Save to Supabase (correct v2 syntax)
+  await supabaseAdmin.from("user_metadata").insert(
+    {
       user_id: userId,
       stripe_customer_id: customer.id,
-    })
-    .onConflict("user_id");
+    },
+    {
+      onConflict: "user_id",
+    }
+  );
 
   return customer.id;
 }
