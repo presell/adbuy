@@ -352,7 +352,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
         path: "appLayout.popOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       },
       {
         path: "product",
@@ -1294,65 +1294,48 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                                 setTimeout(r, 100)
                                               );
                                             }
-                                            const campaignId =
-                                              localStorage.getItem(
-                                                "campaignId"
-                                              );
-                                            if (!campaignId) {
-                                              console.warn(
-                                                "[PatchProduct] No campaignId found in localStorage"
-                                              );
-                                              return;
-                                            }
-                                            const pIns =
+                                            const campaignId = Number(
+                                              localStorage.getItem("campaignId")
+                                            );
+                                            if (!campaignId) return;
+                                            const values = [
                                               $state.productDropInsurance
-                                                ?.selectedValue;
-                                            const pMort =
+                                                ?.selectedValue,
                                               $state.productDropMortgage
-                                                ?.selectedValue;
-                                            const pLegal =
+                                                ?.selectedValue,
                                               $state.productDropLegal
-                                                ?.selectedValue;
-                                            const pMed =
+                                                ?.selectedValue,
                                               $state.productDropMedical
-                                                ?.selectedValue;
-                                            const productValue = [
-                                              pIns,
-                                              pMort,
-                                              pLegal,
-                                              pMed
-                                            ].find(
-                                              v =>
-                                                typeof v === "string" &&
-                                                v.trim() !== ""
+                                                ?.selectedValue
+                                            ];
+
+                                            const productValue = values.find(
+                                              v => v && v.trim() !== ""
                                             );
-                                            if (!productValue) {
-                                              console.warn(
-                                                "[PatchProduct] No valid product found \u2014 skipping update"
+                                            if (!productValue)
+                                              return console.warn(
+                                                "[PatchProduct] No product selected"
                                               );
-                                              return;
-                                            }
-                                            console.log(
-                                              `[PatchProduct] Updating campaign ${campaignId} with product =`,
-                                              productValue
-                                            );
-                                            const { data, error } =
+                                            const payload = {
+                                              product: productValue
+                                            };
+                                            const { data: updated, error } =
                                               await window.supabase
                                                 .from("campaigns")
-                                                .update({
-                                                  product: productValue
-                                                })
-                                                .eq("id", Number(campaignId))
+                                                .update(payload)
+                                                .eq("id", campaignId)
                                                 .select()
                                                 .single();
                                             if (error) throw error;
-                                            console.log(
-                                              "[PatchProduct] Successfully updated row:",
-                                              data
-                                            );
+                                            $state.campaigns =
+                                              $state.campaigns.map(c =>
+                                                c.id === updated.id
+                                                  ? updated
+                                                  : c
+                                              );
                                           } catch (err) {
                                             console.error(
-                                              "[PatchProduct] \u274C Failed to patch campaign:",
+                                              "[PatchProduct] \u274C",
                                               err
                                             );
                                           }
@@ -1509,65 +1492,48 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                                 setTimeout(r, 100)
                                               );
                                             }
-                                            const campaignId =
-                                              localStorage.getItem(
-                                                "campaignId"
-                                              );
-                                            if (!campaignId) {
-                                              console.warn(
-                                                "[PatchProduct] No campaignId found in localStorage"
-                                              );
-                                              return;
-                                            }
-                                            const pIns =
+                                            const campaignId = Number(
+                                              localStorage.getItem("campaignId")
+                                            );
+                                            if (!campaignId) return;
+                                            const values = [
                                               $state.productDropInsurance
-                                                ?.selectedValue;
-                                            const pMort =
+                                                ?.selectedValue,
                                               $state.productDropMortgage
-                                                ?.selectedValue;
-                                            const pLegal =
+                                                ?.selectedValue,
                                               $state.productDropLegal
-                                                ?.selectedValue;
-                                            const pMed =
+                                                ?.selectedValue,
                                               $state.productDropMedical
-                                                ?.selectedValue;
-                                            const productValue = [
-                                              pIns,
-                                              pMort,
-                                              pLegal,
-                                              pMed
-                                            ].find(
-                                              v =>
-                                                typeof v === "string" &&
-                                                v.trim() !== ""
+                                                ?.selectedValue
+                                            ];
+
+                                            const productValue = values.find(
+                                              v => v && v.trim() !== ""
                                             );
-                                            if (!productValue) {
-                                              console.warn(
-                                                "[PatchProduct] No valid product found \u2014 skipping update"
+                                            if (!productValue)
+                                              return console.warn(
+                                                "[PatchProduct] No product selected"
                                               );
-                                              return;
-                                            }
-                                            console.log(
-                                              `[PatchProduct] Updating campaign ${campaignId} with product =`,
-                                              productValue
-                                            );
-                                            const { data, error } =
+                                            const payload = {
+                                              product: productValue
+                                            };
+                                            const { data: updated, error } =
                                               await window.supabase
                                                 .from("campaigns")
-                                                .update({
-                                                  product: productValue
-                                                })
-                                                .eq("id", Number(campaignId))
+                                                .update(payload)
+                                                .eq("id", campaignId)
                                                 .select()
                                                 .single();
                                             if (error) throw error;
-                                            console.log(
-                                              "[PatchProduct] Successfully updated row:",
-                                              data
-                                            );
+                                            $state.campaigns =
+                                              $state.campaigns.map(c =>
+                                                c.id === updated.id
+                                                  ? updated
+                                                  : c
+                                              );
                                           } catch (err) {
                                             console.error(
-                                              "[PatchProduct] \u274C Failed to patch campaign:",
+                                              "[PatchProduct] \u274C",
                                               err
                                             );
                                           }
@@ -1724,65 +1690,48 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                                 setTimeout(r, 100)
                                               );
                                             }
-                                            const campaignId =
-                                              localStorage.getItem(
-                                                "campaignId"
-                                              );
-                                            if (!campaignId) {
-                                              console.warn(
-                                                "[PatchProduct] No campaignId found in localStorage"
-                                              );
-                                              return;
-                                            }
-                                            const pIns =
+                                            const campaignId = Number(
+                                              localStorage.getItem("campaignId")
+                                            );
+                                            if (!campaignId) return;
+                                            const values = [
                                               $state.productDropInsurance
-                                                ?.selectedValue;
-                                            const pMort =
+                                                ?.selectedValue,
                                               $state.productDropMortgage
-                                                ?.selectedValue;
-                                            const pLegal =
+                                                ?.selectedValue,
                                               $state.productDropLegal
-                                                ?.selectedValue;
-                                            const pMed =
+                                                ?.selectedValue,
                                               $state.productDropMedical
-                                                ?.selectedValue;
-                                            const productValue = [
-                                              pIns,
-                                              pMort,
-                                              pLegal,
-                                              pMed
-                                            ].find(
-                                              v =>
-                                                typeof v === "string" &&
-                                                v.trim() !== ""
+                                                ?.selectedValue
+                                            ];
+
+                                            const productValue = values.find(
+                                              v => v && v.trim() !== ""
                                             );
-                                            if (!productValue) {
-                                              console.warn(
-                                                "[PatchProduct] No valid product found \u2014 skipping update"
+                                            if (!productValue)
+                                              return console.warn(
+                                                "[PatchProduct] No product selected"
                                               );
-                                              return;
-                                            }
-                                            console.log(
-                                              `[PatchProduct] Updating campaign ${campaignId} with product =`,
-                                              productValue
-                                            );
-                                            const { data, error } =
+                                            const payload = {
+                                              product: productValue
+                                            };
+                                            const { data: updated, error } =
                                               await window.supabase
                                                 .from("campaigns")
-                                                .update({
-                                                  product: productValue
-                                                })
-                                                .eq("id", Number(campaignId))
+                                                .update(payload)
+                                                .eq("id", campaignId)
                                                 .select()
                                                 .single();
                                             if (error) throw error;
-                                            console.log(
-                                              "[PatchProduct] Successfully updated row:",
-                                              data
-                                            );
+                                            $state.campaigns =
+                                              $state.campaigns.map(c =>
+                                                c.id === updated.id
+                                                  ? updated
+                                                  : c
+                                              );
                                           } catch (err) {
                                             console.error(
-                                              "[PatchProduct] \u274C Failed to patch campaign:",
+                                              "[PatchProduct] \u274C",
                                               err
                                             );
                                           }
@@ -1939,65 +1888,48 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                                 setTimeout(r, 100)
                                               );
                                             }
-                                            const campaignId =
-                                              localStorage.getItem(
-                                                "campaignId"
-                                              );
-                                            if (!campaignId) {
-                                              console.warn(
-                                                "[PatchProduct] No campaignId found in localStorage"
-                                              );
-                                              return;
-                                            }
-                                            const pIns =
+                                            const campaignId = Number(
+                                              localStorage.getItem("campaignId")
+                                            );
+                                            if (!campaignId) return;
+                                            const values = [
                                               $state.productDropInsurance
-                                                ?.selectedValue;
-                                            const pMort =
+                                                ?.selectedValue,
                                               $state.productDropMortgage
-                                                ?.selectedValue;
-                                            const pLegal =
+                                                ?.selectedValue,
                                               $state.productDropLegal
-                                                ?.selectedValue;
-                                            const pMed =
+                                                ?.selectedValue,
                                               $state.productDropMedical
-                                                ?.selectedValue;
-                                            const productValue = [
-                                              pIns,
-                                              pMort,
-                                              pLegal,
-                                              pMed
-                                            ].find(
-                                              v =>
-                                                typeof v === "string" &&
-                                                v.trim() !== ""
+                                                ?.selectedValue
+                                            ];
+
+                                            const productValue = values.find(
+                                              v => v && v.trim() !== ""
                                             );
-                                            if (!productValue) {
-                                              console.warn(
-                                                "[PatchProduct] No valid product found \u2014 skipping update"
+                                            if (!productValue)
+                                              return console.warn(
+                                                "[PatchProduct] No product selected"
                                               );
-                                              return;
-                                            }
-                                            console.log(
-                                              `[PatchProduct] Updating campaign ${campaignId} with product =`,
-                                              productValue
-                                            );
-                                            const { data, error } =
+                                            const payload = {
+                                              product: productValue
+                                            };
+                                            const { data: updated, error } =
                                               await window.supabase
                                                 .from("campaigns")
-                                                .update({
-                                                  product: productValue
-                                                })
-                                                .eq("id", Number(campaignId))
+                                                .update(payload)
+                                                .eq("id", campaignId)
                                                 .select()
                                                 .single();
                                             if (error) throw error;
-                                            console.log(
-                                              "[PatchProduct] Successfully updated row:",
-                                              data
-                                            );
+                                            $state.campaigns =
+                                              $state.campaigns.map(c =>
+                                                c.id === updated.id
+                                                  ? updated
+                                                  : c
+                                              );
                                           } catch (err) {
                                             console.error(
-                                              "[PatchProduct] \u274C Failed to patch campaign:",
+                                              "[PatchProduct] \u274C",
                                               err
                                             );
                                           }
@@ -2142,84 +2074,6 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               $steps["updateStateDropMulti"] =
                                 await $steps["updateStateDropMulti"];
                             }
-
-                            $steps["runCode"] = false
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return (async () => {
-                                        return (async () => {
-                                          try {
-                                            while (!window.__supabaseReady__) {
-                                              await new Promise(r =>
-                                                setTimeout(r, 100)
-                                              );
-                                            }
-                                            const campaignId =
-                                              localStorage.getItem(
-                                                "campaignId"
-                                              );
-                                            if (!campaignId) {
-                                              console.warn(
-                                                "[PatchTargeting] No campaignId found in localStorage"
-                                              );
-                                              return;
-                                            }
-                                            const targetingValue =
-                                              $state.stateDrop
-                                                ?.selectedObject || [];
-                                            console.log(
-                                              "DEBUG TARGETING STATE:",
-                                              { targetingValue }
-                                            );
-                                            if (
-                                              !Array.isArray(targetingValue)
-                                            ) {
-                                              console.warn(
-                                                "[PatchTargeting] selectedObject is not an array \u2014 skipping update"
-                                              );
-                                              return;
-                                            }
-                                            console.log(
-                                              `[PatchTargeting] Updating campaign ${campaignId} with targeting =`,
-                                              targetingValue
-                                            );
-                                            const { data, error } =
-                                              await window.supabase
-                                                .from("campaigns")
-                                                .update({
-                                                  targeting: targetingValue
-                                                })
-                                                .eq("id", Number(campaignId))
-                                                .select()
-                                                .single();
-                                            if (error) throw error;
-                                            console.log(
-                                              "[PatchTargeting] Successfully updated row:",
-                                              data
-                                            );
-                                          } catch (err) {
-                                            console.error(
-                                              "[PatchTargeting] \u274C Failed to patch targeting:",
-                                              err
-                                            );
-                                          }
-                                        })();
-                                      })();
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["runCode"] != null &&
-                              typeof $steps["runCode"] === "object" &&
-                              typeof $steps["runCode"].then === "function"
-                            ) {
-                              $steps["runCode"] = await $steps["runCode"];
-                            }
                           }).apply(null, eventArgs);
                         }}
                         onPlaceholderChange={async (...eventArgs: any) => {
@@ -2293,52 +2147,37 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                                 setTimeout(r, 100)
                                               );
                                             }
-                                            const campaignId =
-                                              localStorage.getItem(
-                                                "campaignId"
-                                              );
-                                            if (!campaignId) {
-                                              console.warn(
-                                                "[PatchTargeting] No campaignId found in localStorage"
-                                              );
-                                              return;
-                                            }
+                                            const campaignId = Number(
+                                              localStorage.getItem("campaignId")
+                                            );
+                                            if (!campaignId) return;
                                             const targetingValue =
                                               $state.stateDrop
                                                 ?.selectedObject || [];
-                                            console.log(
-                                              "DEBUG TARGETING STATE:",
-                                              { targetingValue }
-                                            );
-                                            if (
-                                              !Array.isArray(targetingValue)
-                                            ) {
-                                              console.warn(
-                                                "[PatchTargeting] selectedObject is not an array \u2014 skipping update"
+                                            if (!Array.isArray(targetingValue))
+                                              return console.warn(
+                                                "[PatchTargeting] Not array"
                                               );
-                                              return;
-                                            }
-                                            console.log(
-                                              `[PatchTargeting] Updating campaign ${campaignId} with targeting =`,
-                                              targetingValue
-                                            );
-                                            const { data, error } =
+                                            const payload = {
+                                              targeting: targetingValue
+                                            };
+                                            const { data: updated, error } =
                                               await window.supabase
                                                 .from("campaigns")
-                                                .update({
-                                                  targeting: targetingValue
-                                                })
-                                                .eq("id", Number(campaignId))
+                                                .update(payload)
+                                                .eq("id", campaignId)
                                                 .select()
                                                 .single();
                                             if (error) throw error;
-                                            console.log(
-                                              "[PatchTargeting] Successfully updated row:",
-                                              data
-                                            );
+                                            $state.campaigns =
+                                              $state.campaigns.map(c =>
+                                                c.id === updated.id
+                                                  ? updated
+                                                  : c
+                                              );
                                           } catch (err) {
                                             console.error(
-                                              "[PatchTargeting] \u274C Failed to patch targeting:",
+                                              "[PatchTargeting] \u274C",
                                               err
                                             );
                                           }
@@ -2743,48 +2582,33 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                                 setTimeout(r, 100)
                                               );
                                             }
-                                            const campaignId =
-                                              localStorage.getItem(
-                                                "campaignId"
-                                              );
-                                            if (!campaignId) {
-                                              console.warn(
-                                                "[PatchBudget] No campaignId found in localStorage"
-                                              );
-                                              return;
-                                            }
-                                            let budgetValue =
-                                              $state.budgetInput?.value;
-                                            const numericBudget =
-                                              Number(budgetValue);
-                                            if (isNaN(numericBudget)) {
-                                              console.warn(
-                                                "[PatchBudget] Budget is not a valid number:",
-                                                budgetValue
-                                              );
-                                              return;
-                                            }
-                                            console.log(
-                                              `[PatchBudget] Updating campaign ${campaignId} with budget =`,
-                                              numericBudget
+                                            const campaignId = Number(
+                                              localStorage.getItem("campaignId")
                                             );
-                                            const { data, error } =
+                                            if (!campaignId) return;
+                                            const budgetValue = Number(
+                                              $state.budgetInput?.value || 0
+                                            );
+                                            const payload = {
+                                              budget: budgetValue
+                                            };
+                                            const { data: updated, error } =
                                               await window.supabase
                                                 .from("campaigns")
-                                                .update({
-                                                  budget: numericBudget
-                                                })
-                                                .eq("id", Number(campaignId))
+                                                .update(payload)
+                                                .eq("id", campaignId)
                                                 .select()
                                                 .single();
                                             if (error) throw error;
-                                            console.log(
-                                              "[PatchBudget] Successfully updated row:",
-                                              data
-                                            );
+                                            $state.campaigns =
+                                              $state.campaigns.map(c =>
+                                                c.id === updated.id
+                                                  ? updated
+                                                  : c
+                                              );
                                           } catch (err) {
                                             console.error(
-                                              "[PatchBudget] \u274C Failed to patch budget:",
+                                              "[PatchBudget] \u274C",
                                               err
                                             );
                                           }
@@ -3665,7 +3489,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                     sty.text__aRod0
                                   )}
                                 >
-                                  {"714"}
+                                  {"-"}
                                 </div>
                                 <div
                                   className={classNames(
@@ -3674,7 +3498,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                     sty.text__dePxR
                                   )}
                                 >
-                                  {"$6.52 each"}
+                                  {"$- each"}
                                 </div>
                               </div>
                               <EditActiveSvgIcon
@@ -3705,7 +3529,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                     sty.text___2TE7
                                   )}
                                 >
-                                  {"128"}
+                                  {"-"}
                                 </div>
                                 <div
                                   className={classNames(
@@ -3745,7 +3569,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                     sty.text__d7Qqq
                                   )}
                                 >
-                                  {"$4,300"}
+                                  {"-"}
                                 </div>
                                 <div
                                   className={classNames(
