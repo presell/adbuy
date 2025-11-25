@@ -15,15 +15,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const customerId = await getOrCreateStripeCustomer(userId);
 
-    const session = await stripe.billingPortal.sessions.create({
+    const setupIntent = await stripe.setupIntents.create({
       customer: customerId,
-      flow_data: { type: "payment_method_update" },
-      return_url: `${process.env.NEXT_PUBLIC_APP_URL}/app/cards`, 
+      payment_method_types: ["card"],
     });
 
-    return res.status(200).json({ url: session.url });
+    const url = `https://billing.stripe.com/setup/${setupIntent.client_secret}`;
+
+    return res.status(200).json({ url });
   } catch (e) {
-    console.error("Billing portal error:", e);
+    console.error("SetupIntent error:", e);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
