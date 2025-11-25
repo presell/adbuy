@@ -269,36 +269,39 @@ function PlasmicAppCards__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
-                            return (async () => {
-                              async function addCard() {
-                                console.log("\u25B6️ addCard() clicked");
-                                const token = getSupabaseAccessTokenSomehow();
-                                if (!token)
-                                  return console.error("\u274C No token");
+                            return async function addCard() {
+                              console.log("addCard clicked");
+
+                              try {
+                                const supabase = getSupabaseBrowserClient();
+                                const { data: session } =
+                                  await supabase.auth.getSession();
+
+                                if (!session?.session?.access_token) {
+                                  console.error("No access token found");
+                                  return;
+                                }
+
                                 const res = await fetch(
                                   "/api/stripe/add-card",
                                   {
                                     method: "POST",
                                     headers: {
-                                      Authorization: `Bearer ${token}`
+                                      Authorization: `Bearer ${session.session.access_token}`
                                     }
                                   }
                                 );
-                                const data = await res.json();
-                                console.log("Response:", data);
-                                if (data.url) {
-                                  console.log(
-                                    "\u27A1️ Redirecting to Billing Portal\u2026"
-                                  );
-                                  window.location.href = data.url;
+
+                                const { url } = await res.json();
+                                if (url) {
+                                  window.location.href = url;
                                 } else {
-                                  console.warn(
-                                    "\u26A0️ No redirect URL returned"
-                                  );
+                                  console.error("No URL returned from API");
                                 }
+                              } catch (err) {
+                                console.error("Error in addCard:", err);
                               }
-                              return addCard();
-                            })();
+                            };
                           }
                         };
                         return (({ customFunction }) => {
