@@ -340,7 +340,8 @@ function PlasmicAppCards__RenderFunc(props: {
                                 if (data.error) {
                                   console.error(
                                     "\u274C API returned error:",
-                                    data.error
+                                    data.error,
+                                    data.detail
                                   );
                                   return;
                                 }
