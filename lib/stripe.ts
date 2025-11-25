@@ -1,26 +1,38 @@
+// lib/stripe.ts
 import Stripe from "stripe";
-import { getUserById, updateStripeCustomerId } from "./users";
+import { supabaseAdmin } from "./supabaseAdmin";
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
 });
 
-export async function getOrCreateStripeCustomer(userId: string) {
-  const user = await getUserById(userId);
+// Main unified function
+export async function getOrCreateStripeCustomer(userId: string, email: string) {
+  // Check metadata table
+  const { data: existing, error } = await supabaseAdmin
+    .from("user_metadata")
+    .select("stripe_customer_id")
+    .eq("user_id", userId)
+    .maybeSingle();
 
-  // If already set, return it
-  if (user.stripe_customer_id) {
-    return user.stripe_customer_id;
+  if (existing?.stripe_customer_id) {
+    return existing.stripe_customer_id;
   }
 
-  // Otherwise create one in Stripe
+  // Create new Stripe Customer
   const customer = await stripe.customers.create({
-    email: user.email,
+    email,
     metadata: { internalUserId: userId },
   });
 
-  // Save in DB
-  await updateStripeCustomerId(userId, customer.id);
+  // Save to Supabase
+  await supabaseAdmin
+    .from("user_metadata")
+    .insert({
+      user_id: userId,
+      stripe_customer_id: customer.id,
+    })
+    .onConflict("user_id");
 
   return customer.id;
 }
