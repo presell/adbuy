@@ -272,28 +272,33 @@ function PlasmicAppCards__RenderFunc(props: {
                             return (async () => {
                               async function addCard() {
                                 console.log("\u25B6️ addCard() clicked");
+                                const {
+                                  data: { session }
+                                } = await supabase.auth.getSession();
+                                if (!session?.access_token) {
+                                  console.error(
+                                    "\u274C No Supabase session. User not logged in."
+                                  );
+                                  return;
+                                }
                                 const res = await fetch(
                                   "/api/stripe/add-card",
-                                  { method: "POST" }
+                                  {
+                                    method: "POST",
+                                    headers: {
+                                      Authorization: `Bearer ${session.access_token}`
+                                    }
+                                  }
                                 );
                                 console.log(
                                   "\uD83D\uDCE1 Response status:",
                                   res.status
                                 );
-                                let data;
-                                try {
-                                  data = await res.json();
-                                  console.log(
-                                    "\uD83D\uDCE6 Response JSON:",
-                                    data
-                                  );
-                                } catch (e) {
-                                  console.error(
-                                    "\u274C Failed to parse JSON:",
-                                    e
-                                  );
-                                  return;
-                                }
+                                const data = await res.json();
+                                console.log(
+                                  "\uD83D\uDCE6 Response JSON:",
+                                  data
+                                );
                                 if (data.error) {
                                   console.error(
                                     "\u274C API returned an error:",
