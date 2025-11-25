@@ -1,28 +1,13 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+// /pages/api/stripe/webhook.ts
 import { stripe } from "../../../lib/stripe";
-import { handleStripeWebhook } from "../../../lib/stripeWebhookHandler";
+import { buffer } from "micro";
+import { supabaseAdmin } from "../../../lib/supabaseAdmin";
 
-// Disable Next.js default body parsing for this route
 export const config = {
-  api: {
-    bodyParser: false,
-  },
+  api: { bodyParser: false },
 };
 
-// Helper to read raw body from request
-async function buffer(readable: any) {
-  const chunks = [];
-  for await (const chunk of readable) {
-    chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
-  }
-  return Buffer.concat(chunks);
-}
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
-
+export default async function handler(req, res) {
   const buf = await buffer(req);
   const sig = req.headers["stripe-signature"];
 
@@ -31,19 +16,40 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     event = stripe.webhooks.constructEvent(
       buf,
-      sig as string,
-      process.env.STRIPE_WEBHOOK_SECRET!
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET
     );
-  } catch (err: any) {
-    console.error("❌ Webhook signature verification failed:", err.message);
+  } catch (err) {
+    console.error("❌ Webhook signature failure:", err);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  try {
-    await handleStripeWebhook(event);
-  } catch (e) {
-    console.error("❌ Webhook handler error:", e);
-    return res.status(500).send("Webhook handler failed");
+  switch (event.type) {
+    case "payment_method.attached": {
+      const pm = event.data.object;
+      const customer = await stripe.customers.retrieve(pm.customer);
+
+      const userId = customer.metadata?.internalUserId;
+      if (!userId) break;
+
+      await supabaseAdmin
+        .from("user_payment_methods")
+        .upsert({
+          id: pm.id,
+          user_id: userId,
+          brand: pm.card.brand,
+          last4: pm.card.last4,
+          exp_month: pm.card.exp_month,
+          exp_year: pm.card.exp_year,
+        });
+
+      break;
+    }
+
+    case "customer.updated": {
+      // Update default payment method if needed
+      break;
+    }
   }
 
   res.json({ received: true });
