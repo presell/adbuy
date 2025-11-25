@@ -25,3 +25,22 @@
 .appLayout:global(.__wab_instance) {
   position: relative;
 }
+.freeBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100px;
+  height: 50px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 5px;
+  padding: 8px;
+}
+.text {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+}

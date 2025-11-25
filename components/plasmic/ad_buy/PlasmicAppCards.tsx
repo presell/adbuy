@@ -82,6 +82,8 @@ export const PlasmicAppCards__ArgProps = new Array<ArgPropType>();
 export type PlasmicAppCards__OverridesType = {
   root?: Flex__<"div">;
   appLayout?: Flex__<typeof AppLayout>;
+  freeBox?: Flex__<"div">;
+  text?: Flex__<"div">;
 };
 
 export interface DefaultAppCardsProps {}
@@ -255,6 +257,80 @@ function PlasmicAppCards__RenderFunc(props: {
               }
             }}
             className={classNames("__wab_instance", sty.appLayout)}
+            contents2={
+              <div
+                data-plasmic-name={"freeBox"}
+                data-plasmic-override={overrides.freeBox}
+                className={classNames(projectcss.all, sty.freeBox)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return async function addCard() {
+                              console.log("▶️ addCard() clicked");
+
+                              const res = await fetch("/api/stripe/add-card", {
+                                method: "POST"
+                              });
+
+                              console.log("📡 Response status:", res.status);
+
+                              let data;
+                              try {
+                                data = await res.json();
+                                console.log("📦 Response JSON:", data);
+                              } catch (e) {
+                                console.error("❌ Failed to parse JSON:", e);
+                                return;
+                              }
+
+                              if (data.error) {
+                                console.error(
+                                  "❌ API returned an error:",
+                                  data.error
+                                );
+                                return;
+                              }
+
+                              if (data.url) {
+                                console.log("➡️ Redirecting to:", data.url);
+                                window.location.href = data.url;
+                              } else {
+                                console.warn("⚠️ No URL returned from API");
+                              }
+                            };
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }}
+              >
+                <div
+                  data-plasmic-name={"text"}
+                  data-plasmic-override={overrides.text}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text
+                  )}
+                >
+                  {"Add Card"}
+                </div>
+              </div>
+            }
             navBtnclick={async event => {
               const $steps = {};
 
@@ -311,8 +387,10 @@ function PlasmicAppCards__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "appLayout"],
-  appLayout: ["appLayout"]
+  root: ["root", "appLayout", "freeBox", "text"],
+  appLayout: ["appLayout", "freeBox", "text"],
+  freeBox: ["freeBox", "text"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -320,6 +398,8 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   appLayout: typeof AppLayout;
+  freeBox: "div";
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -385,6 +465,8 @@ export const PlasmicAppCards = Object.assign(
   {
     // Helper components rendering sub-elements
     appLayout: makeNodeComponent("appLayout"),
+    freeBox: makeNodeComponent("freeBox"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicAppCards
     internalVariantProps: PlasmicAppCards__VariantProps,
