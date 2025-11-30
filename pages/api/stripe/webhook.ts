@@ -6,7 +6,7 @@ import { handleStripeWebhook } from "../../../lib/stripeWebhookHandler";
 
 export const config = {
   api: {
-    bodyParser: false, // we need the raw body for Stripe signature verification
+    bodyParser: false, // Raw body required for Stripe signature verification
   },
 };
 
