@@ -1,56 +1,56 @@
 // pages/api/stripe/webhook.ts
-import { stripe } from "../../../lib/stripe";
-import { supabaseAdmin } from "../../../lib/supabaseAdmin";
 import type { NextApiRequest, NextApiResponse } from "next";
+import type StripeType from "stripe";
+import { stripe } from "../../../lib/stripe";
+import { handleStripeWebhook } from "../../../lib/stripeWebhookHandler";
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: false, // we need the raw body for Stripe signature verification
   },
 };
 
-function buffer(req: any) {
-  return new Promise((resolve) => {
-    let data: Uint8Array[] = [];
-    req.on("data", (chunk: Uint8Array) => data.push(chunk));
-    req.on("end", () => resolve(Buffer.concat(data)));
+function bufferFromRequest(req: NextApiRequest): Promise<Buffer> {
+  return new Promise((resolve, reject) => {
+    const chunks: Uint8Array[] = [];
+
+    req.on("data", (chunk) => chunks.push(chunk));
+    req.on("end", () => resolve(Buffer.concat(chunks)));
+    req.on("error", (err) => reject(err));
   });
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") return res.status(405).end("Method Not Allowed");
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).end("Method Not Allowed");
+  }
 
-  const buf = (await buffer(req)) as Buffer;
-  const sig = req.headers["stripe-signature"]!;
+  const sig = req.headers["stripe-signature"] as string | undefined;
+  if (!sig) {
+    return res.status(400).send("Missing Stripe signature");
+  }
 
-  let event;
+  let event: StripeType.Event;
+
   try {
+    const buf = await bufferFromRequest(req);
+
     event = stripe.webhooks.constructEvent(
       buf,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
   } catch (err: any) {
-    console.error("Webhook signature error:", err);
+    console.error("❌ Stripe webhook signature verification failed:", err.message);
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 
-  if (event.type === "payment_method.attached") {
-    const pm = event.data.object;
-
-    const userId = pm.metadata?.internalUserId;
-    if (!userId) return res.status(200).send("No internal user id");
-
-    await supabaseAdmin.from("user_payment_methods").upsert({
-      id: pm.id,
-      user_id: userId,
-      brand: pm.card?.brand,
-      last4: pm.card?.last4,
-      exp_month: pm.card?.exp_month,
-      exp_year: pm.card?.exp_year,
-      is_default: false,
-    });
+  try {
+    await handleStripeWebhook(event);
+    return res.json({ received: true });
+  } catch (err) {
+    console.error("❌ Error in handleStripeWebhook:", err);
+    return res.status(500).json({ error: "Webhook handler failed" });
   }
-
-  res.status(200).send("ok");
 }
