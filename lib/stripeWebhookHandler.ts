@@ -1,40 +1,35 @@
-// lib/stripeWebhookHandler.ts
 import type Stripe from "stripe";
 import { stripe } from "./stripe";
 import { createClient } from "@supabase/supabase-js";
 
-// Server-side Supabase client — uses your real server vars
+// Server-side service role client
 const supabase = createClient(
-  process.env.SUPABASE_URL!,         // <-- FIXED
-  process.env.SUPABASE_ANON_KEY!     // <-- FIXED (safe: table is unrestricted)
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
 async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
   const internalUserId = customer.metadata?.internalUserId;
   if (!internalUserId) {
-    console.warn("⚠️ No internalUserId in metadata for customer:", customer.id);
+    console.warn("Customer missing metadata.internalUserId, skipping", customer.id);
     return;
   }
 
-  const defaultPmId = customer.invoice_settings
-    ?.default_payment_method as string | null;
-
+  const defaultPmId = customer.invoice_settings?.default_payment_method;
   if (!defaultPmId) {
-    console.log("ℹ️ Customer has no default payment method:", customer.id);
+    console.log("Customer has no default payment method:", customer.id);
     return;
   }
 
-  // Fetch the PaymentMethod details
   const pm = await stripe.paymentMethods.retrieve(defaultPmId);
 
   if (pm.type !== "card" || !pm.card) {
-    console.warn("⚠️ Default PM is not a card:", defaultPmId);
+    console.warn("Default payment method is not card, skipping", defaultPmId);
     return;
   }
 
   const { brand, last4, exp_month, exp_year } = pm.card;
 
-  // Exact column match for your `user_payment_methods` table
   const payload = {
     user_id: internalUserId,
     payment_method_id: pm.id,
@@ -46,37 +41,25 @@ async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
 
   const { error } = await supabase
     .from("user_payment_methods")
-    .upsert(payload, {
-      onConflict: "user_id",
-    });
+    .upsert(payload, { onConflict: "user_id" });
 
   if (error) {
-    console.error("❌ Error inserting payment method:", error);
+    console.error("Supabase upsert error:", error);
     throw error;
   }
 
-  console.log("✅ Synced card for user:", internalUserId);
+  console.log("✅ Synced Stripe card →", internalUserId);
 }
 
 export async function handleStripeWebhook(event: Stripe.Event) {
   switch (event.type) {
-    case "customer.updated": {
-      const customer = event.data.object as Stripe.Customer;
-      await syncDefaultPaymentMethodFromCustomer(customer);
+    case "customer.updated":
+      await syncDefaultPaymentMethodFromCustomer(
+        event.data.object as Stripe.Customer
+      );
       break;
-    }
-
-    case "payment_method.attached": {
-      // Extra safety: fetch customer and sync default PM
-      const pm = event.data.object as Stripe.PaymentMethod;
-      if (pm.customer) {
-        const customer = await stripe.customers.retrieve(pm.customer as string);
-        await syncDefaultPaymentMethodFromCustomer(customer as Stripe.Customer);
-      }
-      break;
-    }
 
     default:
-      console.log("ℹ️ Unhandled Stripe event:", event.type);
+      console.log("Ignoring event:", event.type);
   }
 }
