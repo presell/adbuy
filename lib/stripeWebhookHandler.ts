@@ -2,7 +2,7 @@ import type Stripe from "stripe";
 import { stripe } from "./stripe";
 import { createClient } from "@supabase/supabase-js";
 
-// Server-side service role client
+// Use service role key for secure server-side writes
 const supabase = createClient(
   process.env.SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
@@ -15,16 +15,18 @@ async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
     return;
   }
 
-  const defaultPmId = customer.invoice_settings?.default_payment_method;
-  if (!defaultPmId) {
-    console.log("Customer has no default payment method:", customer.id);
+  let defaultPmId = customer.invoice_settings?.default_payment_method;
+
+  // 👇 FIX: ensure it's a string ID
+  if (!defaultPmId || typeof defaultPmId !== "string") {
+    console.warn("Customer default payment method is not a string ID:", defaultPmId);
     return;
   }
 
   const pm = await stripe.paymentMethods.retrieve(defaultPmId);
 
   if (pm.type !== "card" || !pm.card) {
-    console.warn("Default payment method is not card, skipping", defaultPmId);
+    console.warn("Default payment method is not card — skipping", defaultPmId);
     return;
   }
 
