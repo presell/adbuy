@@ -269,39 +269,98 @@ function PlasmicAppCards__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
-                            return async function addCard() {
-                              console.log("addCard clicked");
-
-                              try {
-                                const supabase = getSupabaseBrowserClient();
-                                const { data: session } =
-                                  await supabase.auth.getSession();
-
-                                if (!session?.session?.access_token) {
-                                  console.error("No access token found");
+                            return (async () => {
+                              async function addCard() {
+                                console.log("\u25B6️ addCard() clicked");
+                                const authKey = Object.keys(localStorage).find(
+                                  k =>
+                                    k.startsWith("sb-") &&
+                                    k.endsWith("-auth-token")
+                                );
+                                if (!authKey) {
+                                  console.error(
+                                    "\u274C No Supabase auth token key found in localStorage"
+                                  );
                                   return;
                                 }
-
-                                const res = await fetch(
-                                  "/api/stripe/add-card",
-                                  {
+                                const raw = localStorage.getItem(authKey);
+                                if (!raw) {
+                                  console.error(
+                                    "\u274C Supabase auth token missing"
+                                  );
+                                  return;
+                                }
+                                let session;
+                                try {
+                                  session = JSON.parse(raw);
+                                } catch (err) {
+                                  console.error(
+                                    "\u274C Failed to parse Supabase auth JSON:",
+                                    err
+                                  );
+                                  return;
+                                }
+                                const accessToken = session?.access_token;
+                                if (!accessToken) {
+                                  console.error(
+                                    "\u274C No access_token found in session"
+                                  );
+                                  return;
+                                }
+                                console.log(
+                                  "\uD83D\uDD11 Supabase access token found"
+                                );
+                                let res;
+                                try {
+                                  res = await fetch("/api/stripe/add-card", {
                                     method: "POST",
                                     headers: {
-                                      Authorization: `Bearer ${session.session.access_token}`
+                                      Authorization: `Bearer ${accessToken}`
                                     }
-                                  }
-                                );
-
-                                const { url } = await res.json();
-                                if (url) {
-                                  window.location.href = url;
-                                } else {
-                                  console.error("No URL returned from API");
+                                  });
+                                } catch (err) {
+                                  console.error(
+                                    "\u274C Network error calling /api/stripe/add-card:",
+                                    err
+                                  );
+                                  return;
                                 }
-                              } catch (err) {
-                                console.error("Error in addCard:", err);
+                                console.log(
+                                  "\uD83D\uDCE1 Response status:",
+                                  res.status
+                                );
+                                let data;
+                                try {
+                                  data = await res.json();
+                                } catch (err) {
+                                  console.error(
+                                    "\u274C Failed to parse JSON response:",
+                                    err
+                                  );
+                                  return;
+                                }
+                                if (data.error) {
+                                  console.error(
+                                    "\u274C API Error:",
+                                    data.error,
+                                    data.detail
+                                  );
+                                  return;
+                                }
+                                if (data.url) {
+                                  console.log(
+                                    "\u27A1️ Redirecting to:",
+                                    data.url
+                                  );
+                                  window.location.href = data.url;
+                                  return;
+                                }
+                                console.warn(
+                                  "\u26A0️ /api/stripe/add-card returned no URL"
+                                );
                               }
-                            };
+                              return addCard();
+                            })();
                           }
                         };
                         return (({ customFunction }) => {
