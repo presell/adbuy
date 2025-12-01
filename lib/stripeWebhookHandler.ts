@@ -3,186 +3,148 @@ import type Stripe from "stripe";
 import { stripe } from "./stripe";
 import { createClient } from "@supabase/supabase-js";
 
-/**
- * Server-side Supabase client.
- * Uses your existing server env vars (no new ones needed).
- *
- * - SUPABASE_URL
- * - SUPABASE_SERVICE_ROLE_KEY  (preferred, if present)
- * - SUPABASE_ANON_KEY          (fallback)
- */
-const supabaseUrl = process.env.SUPABASE_URL!;
-const supabaseKey =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_ANON_KEY!;
+// Use your existing server-side env vars (no NEXT_PUBLIC_ duplicates needed)
+const supabaseUrl =
+  process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey =
+  process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
-  console.error(
-    "[stripeWebhook] Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY / SUPABASE_ANON_KEY"
-  );
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error("Supabase env vars missing (SUPABASE_URL / SUPABASE_ANON_KEY)");
 }
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+// RLS is disabled on user_payment_methods, so anon key is fine here.
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-/**
- * Sync the customer’s *default* card into your user_payment_methods table.
- * Table schema (matches your screenshot):
- *
- *  - id            uuid (PK, generated)
- *  - user_id       uuid (FK -> auth.users.id)
- *  - payment_method text
- *  - brand         text
- *  - last4         text
- *  - exp_month     int4
- *  - exp_year      int4
- *  - created_at    timestamp (default now())
- */
-async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
-  const internalUserId = customer.metadata?.internalUserId;
-
-  if (!internalUserId) {
-    console.log(
-      "[stripeWebhook] customer.updated without internalUserId; skipping",
-      customer.id
-    );
-    return;
-  }
-
-  const rawDefaultPm =
-    customer.invoice_settings?.default_payment_method as
-      | string
-      | Stripe.PaymentMethod
-      | null
-      | undefined;
-
-  if (!rawDefaultPm) {
-    console.log(
-      "[stripeWebhook] customer has no default_payment_method; skipping",
-      customer.id
-    );
-    return;
-  }
-
-  const defaultPmId =
-    typeof rawDefaultPm === "string" ? rawDefaultPm : rawDefaultPm.id;
-
-  const pm = await stripe.paymentMethods.retrieve(defaultPmId);
-
+async function upsertUserPaymentMethod(
+  internalUserId: string,
+  pm: Stripe.PaymentMethod
+) {
   if (pm.type !== "card" || !pm.card) {
-    console.log(
-      "[stripeWebhook] default payment method is not a card; skipping",
-      pm.id,
-      pm.type
-    );
+    console.warn("⚠️ PaymentMethod is not a card, skipping:", pm.id);
     return;
   }
 
   const { brand, last4, exp_month, exp_year } = pm.card;
 
+  // Keep ONE row per user: delete old, then insert new
+  const { error: deleteError } = await supabase
+    .from("user_payment_methods")
+    .delete()
+    .eq("user_id", internalUserId);
+
+  if (deleteError) {
+    console.error("❌ Supabase delete failed:", deleteError);
+    throw deleteError;
+  }
+
   const payload = {
     user_id: internalUserId,
-    payment_method: pm.id,
+    payment_method: pm.id, // matches your `payment_method` column
     brand,
     last4: last4 ?? "",
     exp_month,
     exp_year,
   };
 
-  // ---- NO onConflict: we manually upsert to avoid needing a unique constraint ----
-  const { data: rows, error: selectError } = await supabase
+  const { error: insertError } = await supabase
     .from("user_payment_methods")
-    .select("id")
-    .eq("user_id", internalUserId)
-    .limit(1);
+    .insert(payload as any); // cast to avoid TS type noise
 
-  if (selectError) {
-    console.error(
-      "[stripeWebhook] error selecting user_payment_methods row:",
-      selectError
+  if (insertError) {
+    console.error("❌ Supabase insert failed:", insertError);
+    throw insertError;
+  }
+
+  console.log("✅ Synced card to user_payment_methods for", internalUserId);
+}
+
+// Helper: given a PaymentMethod, find internalUserId via the customer
+async function syncFromPaymentMethod(pm: Stripe.PaymentMethod) {
+  if (!pm.customer) {
+    console.warn("⚠️ PaymentMethod has no customer, skipping:", pm.id);
+    return;
+  }
+
+  const customer = (await stripe.customers.retrieve(
+    pm.customer as string
+  )) as Stripe.Customer;
+
+  const internalUserId = customer.metadata?.internalUserId;
+  if (!internalUserId) {
+    console.warn(
+      "⚠️ Customer missing metadata.internalUserId; skipping sync",
+      customer.id
     );
     return;
   }
 
-  if (rows && rows.length > 0) {
-    const rowId = rows[0].id;
+  await upsertUserPaymentMethod(internalUserId, pm);
+}
 
-    const { error: updateError } = await supabase
-      .from("user_payment_methods")
-      .update(payload)
-      .eq("id", rowId);
-
-    if (updateError) {
-      console.error(
-        "[stripeWebhook] error updating user_payment_methods row:",
-        updateError
-      );
-      return;
-    }
-
-    console.log(
-      "[stripeWebhook] ✅ updated user_payment_methods for user",
-      internalUserId
+// Helper: handle a customer when default card changes or is removed
+async function syncFromCustomer(customer: Stripe.Customer) {
+  const internalUserId = customer.metadata?.internalUserId;
+  if (!internalUserId) {
+    console.warn(
+      "⚠️ customer.updated without internalUserId; skipping",
+      customer.id
     );
-  } else {
-    const { error: insertError } = await supabase
-      .from("user_payment_methods")
-      .insert(payload);
-
-    if (insertError) {
-      console.error(
-        "[stripeWebhook] error inserting user_payment_methods row:",
-        insertError
-      );
-      return;
-    }
-
-    console.log(
-      "[stripeWebhook] ✅ inserted user_payment_methods for user",
-      internalUserId
-    );
+    return;
   }
+
+  const rawDefaultPm = customer.invoice_settings?.default_payment_method;
+
+  // If no default card, clear their row
+  if (!rawDefaultPm) {
+    const { error: deleteError } = await supabase
+      .from("user_payment_methods")
+      .delete()
+      .eq("user_id", internalUserId);
+
+    if (deleteError) {
+      console.error("❌ Supabase delete (no default card) failed:", deleteError);
+      throw deleteError;
+    }
+
+    console.log(
+      "ℹ️ Customer has no default card; cleared user_payment_methods for",
+      internalUserId
+    );
+    return;
+  }
+
+  // rawDefaultPm can be a string ID or a PaymentMethod object
+  const defaultPmId =
+    typeof rawDefaultPm === "string" ? rawDefaultPm : rawDefaultPm.id;
+
+  const pm = (await stripe.paymentMethods.retrieve(
+    defaultPmId
+  )) as Stripe.PaymentMethod;
+
+  await upsertUserPaymentMethod(internalUserId, pm);
 }
 
 export async function handleStripeWebhook(event: Stripe.Event) {
-  console.log(
-    "[stripeWebhook] received event",
-    event.id,
-    "type:",
-    event.type
-  );
-
   try {
     switch (event.type) {
-      case "customer.updated": {
-        const customer = event.data.object as Stripe.Customer;
-        await syncDefaultPaymentMethodFromCustomer(customer);
-        break;
-      }
-
       case "payment_method.attached": {
         const pm = event.data.object as Stripe.PaymentMethod;
-        if (pm.customer) {
-          const customerId =
-            typeof pm.customer === "string"
-              ? pm.customer
-              : pm.customer.id;
-
-          const customer = (await stripe.customers.retrieve(
-            customerId
-          )) as Stripe.Customer;
-
-          await syncDefaultPaymentMethodFromCustomer(customer);
-        }
+        await syncFromPaymentMethod(pm);
         break;
       }
 
-      default: {
-        // We don't need to do anything for other events,
-        // but we still return 200 to Stripe.
-        console.log("[stripeWebhook] ignoring event type", event.type);
+      case "customer.updated": {
+        const customer = event.data.object as Stripe.Customer;
+        await syncFromCustomer(customer);
+        break;
       }
+
+      default:
+        console.log("ℹ️ Ignoring Stripe event type:", event.type);
     }
   } catch (err) {
-    // DO NOT rethrow — we just log so /api/stripe/webhook can respond 200
-    console.error("[stripeWebhook] unhandled error in handler:", err);
+    console.error("❌ Error in handleStripeWebhook:", err);
+    throw err; // causes 500 back to Stripe so we see problems
   }
 }
