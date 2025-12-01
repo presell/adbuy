@@ -3,74 +3,54 @@ import type Stripe from "stripe";
 import { stripe } from "./stripe";
 import { createClient } from "@supabase/supabase-js";
 
-// ---- Supabase client (server-side) ----
+// Use your existing server env vars from Vercel
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn(
-    "⚠️ SUPABASE_URL or SUPABASE_ANON_KEY is missing in environment variables."
-  );
+  // Crash loudly so you see it in logs if env vars are missing
+  throw new Error("Missing SUPABASE_URL or SUPABASE_ANON_KEY in environment");
 }
 
-const supabase = createClient(supabaseUrl!, supabaseAnonKey!);
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-// ---- Helpers ----
-
-// Stripe types allow default_payment_method to be a string or an object.
-// Normalize that to a string id.
-function getDefaultPaymentMethodId(customer: Stripe.Customer): string | null {
-  const pm = customer.invoice_settings?.default_payment_method;
-  if (!pm) return null;
-  if (typeof pm === "string") return pm;
-  return pm.id;
-}
-
-async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
+async function syncDefaultPaymentMethodFromCustomer(
+  customer: Stripe.Customer
+) {
   const internalUserId = customer.metadata?.internalUserId;
 
   if (!internalUserId) {
     console.warn(
-      "⚠️ No metadata.internalUserId for customer; skipping sync. customer.id =",
+      "⚠️ No internalUserId in metadata for customer:",
       customer.id
     );
     return;
   }
 
-  const defaultPmId = getDefaultPaymentMethodId(customer);
-  if (!defaultPmId) {
-    console.log(
-      "ℹ️ Customer has no default_payment_method; nothing to sync. customer.id =",
-      customer.id
-    );
+  const defaultPm = customer.invoice_settings?.default_payment_method;
+
+  if (!defaultPm) {
+    console.log("ℹ️ Customer has no default payment method:", customer.id);
     return;
   }
 
-  console.log(
-    "🔎 Syncing default card for internalUserId",
-    internalUserId,
-    "pm id =",
-    defaultPmId
-  );
+  // Normalize string | PaymentMethod into an ID string
+  const defaultPmId =
+    typeof defaultPm === "string" ? defaultPm : defaultPm.id;
 
-  // Always retrieve to ensure we have full card details
+  // Retrieve PaymentMethod
   const pm = await stripe.paymentMethods.retrieve(defaultPmId);
 
   if (pm.type !== "card" || !pm.card) {
-    console.warn(
-      "⚠️ Default payment method is not a card; skipping. pm.id =",
-      pm.id,
-      "type =",
-      pm.type
-    );
+    console.warn("⚠️ Default PM is not a card:", pm.id);
     return;
   }
 
   const { brand, last4, exp_month, exp_year } = pm.card;
 
-  // IMPORTANT: column names match your Supabase table:
+  // Matches your user_payment_methods schema:
   // id (uuid, PK, default gen_random_uuid())
-  // user_id (uuid, FK to auth.users)
+  // user_id (uuid → auth.users.id)
   // payment_method (text)
   // brand (text)
   // last4 (text)
@@ -79,7 +59,7 @@ async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
   // created_at (timestamp, default now())
   const payload = {
     user_id: internalUserId,
-    payment_method: pm.id, // <-- matches `payment_method` column
+    payment_method: pm.id,
     brand,
     last4: last4 ?? "",
     exp_month,
@@ -89,7 +69,7 @@ async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
   const { error } = await supabase
     .from("user_payment_methods")
     .upsert(payload, {
-      onConflict: "user_id", // one row per user; last default card wins
+      onConflict: "user_id", // one row per user; adjust if you later support multiple cards
     });
 
   if (error) {
@@ -99,8 +79,6 @@ async function syncDefaultPaymentMethodFromCustomer(customer: Stripe.Customer) {
 
   console.log("✅ Synced card to user_payment_methods for", internalUserId);
 }
-
-// ---- Main webhook dispatcher ----
 
 export async function handleStripeWebhook(event: Stripe.Event) {
   try {
@@ -112,31 +90,29 @@ export async function handleStripeWebhook(event: Stripe.Event) {
       }
 
       case "payment_method.attached": {
-        // Extra safety: when a card is attached, also sync using the customer
         const pm = event.data.object as Stripe.PaymentMethod;
 
         if (pm.customer) {
-          const customer = (await stripe.customers.retrieve(
-            pm.customer as string
-          )) as Stripe.Customer;
-          await syncDefaultPaymentMethodFromCustomer(customer);
-        } else {
-          console.log(
-            "ℹ️ payment_method.attached without customer; skipping. pm.id =",
-            pm.id
+          // pm.customer is an expandable field; normalize to string ID
+          const customerId =
+            typeof pm.customer === "string" ? pm.customer : pm.customer.id;
+
+          const customer = await stripe.customers.retrieve(customerId);
+          await syncDefaultPaymentMethodFromCustomer(
+            customer as Stripe.Customer
           );
         }
         break;
       }
 
       default: {
-        console.log("ℹ️ Ignoring Stripe event type:", event.type);
+        // We still respond 200 for other events so Stripe stays happy
+        console.log("ℹ️ Ignoring event type:", event.type);
         break;
       }
     }
   } catch (err) {
     console.error("❌ Error in handleStripeWebhook:", err);
-    // Re-throw so the API route returns 500 and Stripe can retry
-    throw err;
+    throw err; // This is what causes the 500 Stripe shows
   }
 }
