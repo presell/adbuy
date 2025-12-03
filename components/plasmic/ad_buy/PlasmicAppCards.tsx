@@ -1082,6 +1082,44 @@ function PlasmicAppCards__RenderFunc(props: {
                                         $steps["runCode"] =
                                           await $steps["runCode"];
                                       }
+
+                                      $steps["runCode2"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (async () => {
+                                                  return await fetch(
+                                                    "/api/stripe/set-default-card",
+                                                    {
+                                                      method: "POST",
+                                                      headers: {
+                                                        "Content-Type":
+                                                          "application/json"
+                                                      },
+                                                      body: JSON.stringify({
+                                                        payment_method_id:
+                                                          row.payment_method_id
+                                                      })
+                                                    }
+                                                  );
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode2"] != null &&
+                                        typeof $steps["runCode2"] ===
+                                          "object" &&
+                                        typeof $steps["runCode2"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode2"] =
+                                          await $steps["runCode2"];
+                                      }
                                     }}
                                     role={"img"}
                                   />
