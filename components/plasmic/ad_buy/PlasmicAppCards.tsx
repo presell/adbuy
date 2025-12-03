@@ -636,6 +636,46 @@ function PlasmicAppCards__RenderFunc(props: {
                                       projectcss.__wab_text,
                                       sty.text__zJMzJ
                                     )}
+                                    onClick={async event => {
+                                      const $steps = {};
+
+                                      $steps["runCode"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (async () => {
+                                                  return await fetch(
+                                                    "/api/stripe/remove-card",
+                                                    {
+                                                      method: "POST",
+                                                      headers: {
+                                                        "Content-Type":
+                                                          "application/json"
+                                                      },
+                                                      body: JSON.stringify({
+                                                        payment_method_id:
+                                                          currentItem.payment_method_id
+                                                      })
+                                                    }
+                                                  );
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode"] != null &&
+                                        typeof $steps["runCode"] === "object" &&
+                                        typeof $steps["runCode"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode"] =
+                                          await $steps["runCode"];
+                                      }
+                                    }}
                                   >
                                     {"Remove"}
                                   </div>
