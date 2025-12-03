@@ -590,15 +590,29 @@ function PlasmicAppCards__RenderFunc(props: {
                               sty.freeBox__kzh68
                             )}
                           >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__zJMzJ
-                              )}
-                            >
-                              {"Remove"}
-                            </div>
+                            {(() => {
+                              try {
+                                return $state.cardIndex == currentIndex;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__zJMzJ
+                                )}
+                              >
+                                {"Remove"}
+                              </div>
+                            ) : null}
                             {(() => {
                               try {
                                 return currentItem["default"] == true;
@@ -755,24 +769,129 @@ function PlasmicAppCards__RenderFunc(props: {
                                   projectcss.all,
                                   sty.svg___3LtVl
                                 )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["runCode"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return (async () => {
+                                              return (async () => {
+                                                try {
+                                                  while (
+                                                    !window.__supabaseReady__
+                                                  ) {
+                                                    await new Promise(r =>
+                                                      setTimeout(r, 80)
+                                                    );
+                                                  }
+                                                  const row = currentItem;
+                                                  if (!row) {
+                                                    console.error(
+                                                      "[DefaultCard] No currentItem found."
+                                                    );
+                                                    return;
+                                                  }
+                                                  const userId = row.user_id;
+                                                  const thisCardId = row.id;
+                                                  if (!userId || !thisCardId) {
+                                                    console.error(
+                                                      "[DefaultCard] Missing user_id or card id."
+                                                    );
+                                                    return;
+                                                  }
+                                                  const newValue = !row.default;
+                                                  console.log(
+                                                    "[DefaultCard] Toggling card",
+                                                    thisCardId,
+                                                    "\u2192",
+                                                    newValue
+                                                  );
+                                                  const {
+                                                    data: updated,
+                                                    error: updateError
+                                                  } = await window.supabase
+                                                    .from(
+                                                      "user_payment_methods"
+                                                    )
+                                                    .update({
+                                                      default: newValue
+                                                    })
+                                                    .eq("id", thisCardId)
+                                                    .select()
+                                                    .single();
+                                                  if (updateError)
+                                                    throw updateError;
+                                                  console.log(
+                                                    "[DefaultCard] Updated this card:",
+                                                    updated
+                                                  );
+                                                  if (newValue) {
+                                                    const {
+                                                      error: clearError
+                                                    } = await window.supabase
+                                                      .from(
+                                                        "user_payment_methods"
+                                                      )
+                                                      .update({
+                                                        default: false
+                                                      })
+                                                      .eq("user_id", userId)
+                                                      .neq("id", thisCardId);
+                                                    if (clearError)
+                                                      throw clearError;
+                                                    console.log(
+                                                      "[DefaultCard] Cleared default from all other cards."
+                                                    );
+                                                  }
+                                                  const {
+                                                    data: refreshed,
+                                                    error: getError
+                                                  } = await window.supabase
+                                                    .from(
+                                                      "user_payment_methods"
+                                                    )
+                                                    .select("*")
+                                                    .eq("user_id", userId)
+                                                    .order("created_at", {
+                                                      ascending: false
+                                                    });
+                                                  if (getError) throw getError;
+                                                  console.log(
+                                                    "[DefaultCard] Refreshed cards:",
+                                                    refreshed
+                                                  );
+                                                  $state.cards = refreshed;
+                                                } catch (err) {
+                                                  console.error(
+                                                    "[DefaultCard] \u274C Error:",
+                                                    err
+                                                  );
+                                                }
+                                              })();
+                                            })();
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
+                                }}
                                 role={"img"}
                               />
                             ) : null}
                           </div>
                         </div>
-                        {(() => {
-                          try {
-                            return $state.cardIndex == currentIndex;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
+                        {false ? (
                           <div
                             data-plasmic-name={"hoverCard"}
                             data-plasmic-override={overrides.hoverCard}

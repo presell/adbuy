@@ -217,32 +217,38 @@
   padding-bottom: 0px;
   flex-shrink: 0;
   margin-right: 0px;
+  flex-grow: 0;
 }
 .text__zJMzJ {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
-  font-size: 7.5px;
+  font-size: 13px;
   color: #ffffff;
   font-weight: 300;
   text-align: left;
   font-family: var(--plasmic-font-geologica);
-  margin-right: 5px;
+  margin-right: 10px;
   min-width: 0;
-  display: none;
 }
 .svg__sTQiV {
   object-fit: cover;
   max-width: 100%;
   color: #ffb800;
-  height: 1em;
+  margin-bottom: 2px;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 .svg___3LtVl {
   object-fit: cover;
   max-width: 100%;
   color: #ffb800;
-  height: 1em;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  margin: 0px 0px 2px;
 }
 .hoverCard {
   display: flex;
@@ -265,7 +271,7 @@
   object-fit: cover;
   max-width: 100%;
   color: #aa2121;
-  height: 12.5px;
+  height: 18px;
   margin-right: 5px;
 }
 .text__tmCi4 {
@@ -273,9 +279,9 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  font-weight: 300;
+  font-weight: 400;
   font-family: var(--plasmic-font-geologica);
-  font-size: 12px;
+  font-size: 14.5px;
   color: #aa2121;
 }
 .hoverCard2 {
