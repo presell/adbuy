@@ -478,14 +478,28 @@ function PlasmicAppLayout__RenderFunc(props: {
                 role={"img"}
               />
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__nlZf)}>
+            <div
+              className={classNames(projectcss.all, sty.freeBox__nlZf, {
+                [sty.freeBoxpage_campaigns__nlZFpKxs6]: hasVariant(
+                  $state,
+                  "page",
+                  "campaigns"
+                )
+              })}
+            >
               <HelpSvgIcon
                 className={classNames(projectcss.all, sty.svg__imR6P)}
                 role={"img"}
               />
             </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox__xjXdy)}
+              className={classNames(projectcss.all, sty.freeBox__xjXdy, {
+                [sty.freeBoxpage_campaigns__xjXdypKxs6]: hasVariant(
+                  $state,
+                  "page",
+                  "campaigns"
+                )
+              })}
               onClick={async event => {
                 const $steps = {};
 
@@ -570,7 +584,13 @@ function PlasmicAppLayout__RenderFunc(props: {
                 data-plasmic-name={"img"}
                 data-plasmic-override={overrides.img}
                 alt={""}
-                className={classNames(sty.img)}
+                className={classNames(sty.img, {
+                  [sty.imgpage_campaigns]: hasVariant(
+                    $state,
+                    "page",
+                    "campaigns"
+                  )
+                })}
                 displayHeight={"100%"}
                 displayMaxHeight={"none"}
                 displayMaxWidth={"100%"}
@@ -587,7 +607,13 @@ function PlasmicAppLayout__RenderFunc(props: {
               />
 
               <LogoutCircleSvgrepoComSvgIcon
-                className={classNames(projectcss.all, sty.svg__tu23M)}
+                className={classNames(projectcss.all, sty.svg__tu23M, {
+                  [sty.svgpage_campaigns__tu23MpKxs6]: hasVariant(
+                    $state,
+                    "page",
+                    "campaigns"
+                  )
+                })}
                 role={"img"}
               />
 

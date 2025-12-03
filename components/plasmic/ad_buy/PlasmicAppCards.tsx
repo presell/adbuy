@@ -647,43 +647,44 @@ function PlasmicAppCards__RenderFunc(props: {
                                                   console.log(
                                                     "\u25B6️ remove card clicked"
                                                   );
-                                                  const key = Object.keys(
+                                                  const authKey = Object.keys(
                                                     localStorage
                                                   ).find(
                                                     k =>
                                                       k.startsWith("sb-") &&
                                                       k.endsWith("-auth-token")
                                                   );
-                                                  if (!key) {
+                                                  if (!authKey) {
                                                     console.error(
-                                                      "\u274C No Supabase auth token found"
+                                                      "\u274C No Supabase auth token key found in localStorage"
                                                     );
                                                     return;
                                                   }
                                                   const raw =
-                                                    localStorage.getItem(key);
+                                                    localStorage.getItem(
+                                                      authKey
+                                                    );
                                                   if (!raw) {
                                                     console.error(
-                                                      "\u274C Supabase token entry missing"
+                                                      "\u274C Supabase auth token missing"
                                                     );
                                                     return;
                                                   }
-                                                  let sessionData;
+                                                  let session;
                                                   try {
-                                                    sessionData =
-                                                      JSON.parse(raw);
-                                                  } catch (e) {
+                                                    session = JSON.parse(raw);
+                                                  } catch (err) {
                                                     console.error(
-                                                      "\u274C Failed to parse Supabase token",
-                                                      e
+                                                      "\u274C Failed to parse Supabase auth JSON:",
+                                                      err
                                                     );
                                                     return;
                                                   }
                                                   const accessToken =
-                                                    sessionData?.access_token;
+                                                    session?.access_token;
                                                   if (!accessToken) {
                                                     console.error(
-                                                      "\u274C No access_token inside Supabase session"
+                                                      "\u274C No access_token found in session"
                                                     );
                                                     return;
                                                   }
@@ -715,6 +716,20 @@ function PlasmicAppCards__RenderFunc(props: {
                                                   console.log(
                                                     "\uD83D\uDCE6 remove-card response json:",
                                                     data
+                                                  );
+                                                  if (!res.ok) {
+                                                    window.plasmicToast?.error(
+                                                      data?.error ||
+                                                        "Something went wrong removing the card."
+                                                    );
+                                                    return;
+                                                  }
+                                                  $state.cards = (
+                                                    $state.cards || []
+                                                  ).filter(
+                                                    c =>
+                                                      c.payment_method_id !==
+                                                      currentItem.payment_method_id
                                                   );
                                                   return window.plasmicToast?.success(
                                                     "Card removed"
