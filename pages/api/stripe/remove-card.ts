@@ -1,49 +1,98 @@
 // pages/api/stripe/remove-card.ts
 
 import type { NextApiRequest, NextApiResponse } from "next";
+import { stripe } from "../../../lib/stripe";
 import { getAuthenticatedUserIdFromRequest } from "../../../lib/auth";
-import { getOrCreateStripeCustomer, stripe } from "../../../lib/stripe";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = process.env.SUPABASE_URL!;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+
+const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Optional CORS safety, fine to keep:
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
+  // ----- Auth -----
   const userId = await getAuthenticatedUserIdFromRequest(req);
   if (!userId) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
-  const { payment_method_id } = req.body;
+  const { payment_method_id } = req.body as { payment_method_id?: string };
 
-  if (!payment_method_id) {
-    return res.status(400).json({ error: "payment_method_id required" });
+  if (!payment_method_id || typeof payment_method_id !== "string") {
+    return res.status(400).json({ error: "Missing payment_method_id" });
   }
 
   try {
-    // retrieve customer to ensure this pm belongs to the user's stripe customer
-    const customerId = await getOrCreateStripeCustomer(userId);
+    // 1) Look up row in user_payment_methods using the *correct* column name
+    const { data: row, error: selectError } = await supabase
+      .from("user_payment_methods")
+      .select("*")
+      .eq("payment_method_id", payment_method_id)
+      .single();
 
-    // Optional but recommended: validate the payment method belongs to the customer
-    const pm = await stripe.paymentMethods.retrieve(payment_method_id);
-    if (pm.customer !== customerId) {
-      return res.status(403).json({
-        error: "Payment method does not belong to this user",
-      });
+    if (selectError) {
+      console.error("[remove-card] select error:", selectError);
+      // PGRST116 = no rows; treat as "not your card"
+      if ((selectError as any).code === "PGRST116") {
+        return res
+          .status(403)
+          .json({ error: "Payment method does not belong to this user" });
+      }
+      return res.status(500).json({ error: "Database error" });
     }
 
-    // 🔥 Detach the payment method
+    if (!row || row.user_id !== userId) {
+      console.warn(
+        "[remove-card] Card row does not belong to user",
+        "row.user_id=",
+        row?.user_id,
+        "userId=",
+        userId
+      );
+      return res
+        .status(403)
+        .json({ error: "Payment method does not belong to this user" });
+    }
+
+    // 2) Detach from Stripe
     await stripe.paymentMethods.detach(payment_method_id);
 
-    // Do not delete DB here — let webhooks do it!
-    // (payment_method.detached or customer.updated will trigger syncFromCustomer)
+    // 3) Delete from our table
+    const { error: deleteError } = await supabase
+      .from("user_payment_methods")
+      .delete()
+      .eq("id", row.id);
+
+    if (deleteError) {
+      console.error("[remove-card] delete error:", deleteError);
+      return res.status(500).json({ error: "Failed to delete local record" });
+    }
+
+    console.log(
+      "[remove-card] Successfully detached and deleted card",
+      payment_method_id,
+      "for user",
+      userId
+    );
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error("❌ remove-card error:", err);
-    return res.status(500).json({ error: "Internal Server Error" });
+    console.error("[remove-card] unexpected error:", err);
+    return res.status(500).json({ error: "Internal server error" });
   }
 }
