@@ -644,19 +644,80 @@ function PlasmicAppCards__RenderFunc(props: {
                                             const actionArgs = {
                                               customFunction: async () => {
                                                 return (async () => {
-                                                  return await fetch(
+                                                  console.log(
+                                                    "\u25B6️ remove card clicked"
+                                                  );
+                                                  const key = Object.keys(
+                                                    localStorage
+                                                  ).find(
+                                                    k =>
+                                                      k.startsWith("sb-") &&
+                                                      k.endsWith("-auth-token")
+                                                  );
+                                                  if (!key) {
+                                                    console.error(
+                                                      "\u274C No Supabase auth token found"
+                                                    );
+                                                    return;
+                                                  }
+                                                  const raw =
+                                                    localStorage.getItem(key);
+                                                  if (!raw) {
+                                                    console.error(
+                                                      "\u274C Supabase token entry missing"
+                                                    );
+                                                    return;
+                                                  }
+                                                  let sessionData;
+                                                  try {
+                                                    sessionData =
+                                                      JSON.parse(raw);
+                                                  } catch (e) {
+                                                    console.error(
+                                                      "\u274C Failed to parse Supabase token",
+                                                      e
+                                                    );
+                                                    return;
+                                                  }
+                                                  const accessToken =
+                                                    sessionData?.access_token;
+                                                  if (!accessToken) {
+                                                    console.error(
+                                                      "\u274C No access_token inside Supabase session"
+                                                    );
+                                                    return;
+                                                  }
+                                                  console.log(
+                                                    "\uD83D\uDD11 Auth token loaded"
+                                                  );
+                                                  const res = await fetch(
                                                     "/api/stripe/remove-card",
                                                     {
                                                       method: "POST",
                                                       headers: {
                                                         "Content-Type":
-                                                          "application/json"
+                                                          "application/json",
+                                                        Authorization: `Bearer ${accessToken}`
                                                       },
                                                       body: JSON.stringify({
                                                         payment_method_id:
                                                           currentItem.payment_method_id
                                                       })
                                                     }
+                                                  );
+                                                  console.log(
+                                                    "\uD83D\uDCE1 remove-card res:",
+                                                    res.status
+                                                  );
+                                                  const data = await res
+                                                    .json()
+                                                    .catch(() => null);
+                                                  console.log(
+                                                    "\uD83D\uDCE6 remove-card response json:",
+                                                    data
+                                                  );
+                                                  return window.plasmicToast?.success(
+                                                    "Card removed"
                                                   );
                                                 })();
                                               }
