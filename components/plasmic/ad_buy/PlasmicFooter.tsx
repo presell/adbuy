@@ -892,7 +892,7 @@ function PlasmicFooter__RenderFunc(props: {
                       sty.link__lHa4Y
                     )}
                     component={Link}
-                    href={`/gtm`}
+                    href={`/debt`}
                     platform={"nextjs"}
                   >
                     <div

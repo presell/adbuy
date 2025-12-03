@@ -1198,7 +1198,7 @@ function PlasmicNav__RenderFunc(props: {
                       "hover-black"
                     )}
                     component={Link}
-                    href={`/gtm`}
+                    href={`/debt`}
                     platform={"nextjs"}
                   >
                     <div

@@ -561,20 +561,6 @@
           "componentType": "component"
         },
         {
-          "id": "c6l1zJVqzUP7",
-          "name": "Gtm",
-          "type": "managed",
-          "projectId": "fKsvVS5XnenaZB1533Xwx5",
-          "renderModuleFilePath": "plasmic/ad_buy/PlasmicGtm.tsx",
-          "importSpec": {
-            "modulePath": "../pages/gtm.tsx"
-          },
-          "cssFilePath": "plasmic/ad_buy/PlasmicGtm.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/gtm"
-        },
-        {
           "id": "F5MIL-9TzQmo",
           "name": "Toggle",
           "type": "managed",
@@ -586,6 +572,20 @@
           "cssFilePath": "plasmic/ad_buy/PlasmicToggle.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "WxZMvh90N_L3",
+          "name": "Debt",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicDebt.tsx",
+          "importSpec": {
+            "modulePath": "../pages/debt.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicDebt.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/debt"
         }
       ],
       "icons": [
