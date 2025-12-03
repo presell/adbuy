@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -67,6 +68,12 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicAppCards.module.css"; // plasmic-import: -F6KTATRxFF2/css
+
+import ChipSvgIcon from "./icons/PlasmicIcon__ChipSvg"; // plasmic-import: U8UXyL_So0yp/icon
+import VisaIconSvgIcon from "./icons/PlasmicIcon__VisaIconSvg"; // plasmic-import: SxgcbNMZ3u-5/icon
+import StarSvgIcon from "./icons/PlasmicIcon__StarSvg"; // plasmic-import: sK8VAJg-RzuJ/icon
+import StarLineSvgIcon from "./icons/PlasmicIcon__StarLineSvg"; // plasmic-import: dMJRbC-MfYtA/icon
+import TrashSvgIcon from "./icons/PlasmicIcon__TrashSvg"; // plasmic-import: AnEMiUEeSu7J/icon
 
 createPlasmicElementProxy;
 
@@ -82,8 +89,9 @@ export const PlasmicAppCards__ArgProps = new Array<ArgPropType>();
 export type PlasmicAppCards__OverridesType = {
   root?: Flex__<"div">;
   appLayout?: Flex__<typeof AppLayout>;
-  freeBox?: Flex__<"div">;
-  text?: Flex__<"div">;
+  sideEffect?: Flex__<typeof SideEffect>;
+  repeatingCard?: Flex__<"div">;
+  hoverCard?: Flex__<"div">;
 };
 
 export interface DefaultAppCardsProps {}
@@ -136,6 +144,18 @@ function PlasmicAppCards__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "cardIndex",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "cards",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -203,44 +223,665 @@ function PlasmicAppCards__RenderFunc(props: {
             data-plasmic-override={overrides.appLayout}
             btnClick={async event => {
               const $steps = {};
+            }}
+            className={classNames("__wab_instance", sty.appLayout)}
+            contents2={
+              <React.Fragment>
+                <SideEffect
+                  data-plasmic-name={"sideEffect"}
+                  data-plasmic-override={overrides.sideEffect}
+                  className={classNames("__wab_instance", sty.sideEffect)}
+                  onMount={async () => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (async () => {
+                                async function getLoggedInUser() {
+                                  const { data } =
+                                    await window.supabase.auth.getSession();
+                                  const sessionUser = data?.session?.user;
+                                  if (sessionUser) {
+                                    return {
+                                      id: sessionUser.id,
+                                      email: sessionUser.email,
+                                      source: "supabase"
+                                    };
+                                  }
+                                  const plasmicUser = window.__PLASMIC_USER__;
+                                  if (plasmicUser?.email) {
+                                    return {
+                                      id: plasmicUser.id,
+                                      email: plasmicUser.email,
+                                      source: "cookie"
+                                    };
+                                  }
+                                  return null;
+                                }
+                                return (async () => {
+                                  try {
+                                    while (!window.__supabaseReady__) {
+                                      await new Promise(r =>
+                                        setTimeout(r, 100)
+                                      );
+                                    }
+                                    const user = await getLoggedInUser();
+                                    if (!user) {
+                                      console.warn(
+                                        "[Cards] \u274C No logged-in user \u2014 cannot fetch cards."
+                                      );
+                                      $state.cards = [];
+                                      return;
+                                    }
+                                    console.log(
+                                      "[Cards] \uD83D\uDC64 Logged in as:",
+                                      user.email,
+                                      "(via",
+                                      user.source,
+                                      ")"
+                                    );
+                                    const { data, error } =
+                                      await window.supabase
+                                        .from("user_payment_methods")
+                                        .select("*")
+                                        .eq("user_id", user.id)
+                                        .order("created_at", {
+                                          ascending: false
+                                        });
+                                    if (error) throw error;
+                                    console.log(
+                                      "[Cards] \uD83D\uDCB3 Loaded cards:",
+                                      data
+                                    );
+                                    $state.cards = data;
+                                  } catch (err) {
+                                    console.error(
+                                      "[Cards] \u274C Failed to fetch cards:",
+                                      err
+                                    );
+                                    $state.cards = [];
+                                  }
+                                })();
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                />
+
+                <div className={classNames(projectcss.all, sty.freeBox__uVsqc)}>
+                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                    (() => {
+                      try {
+                        return $state.cards;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()
+                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                    const currentItem = __plasmic_item_0;
+                    const currentIndex = __plasmic_idx_0;
+                    return (
+                      <div
+                        data-plasmic-name={"repeatingCard"}
+                        data-plasmic-override={overrides.repeatingCard}
+                        className={classNames(
+                          projectcss.all,
+                          sty.repeatingCard
+                        )}
+                        key={currentIndex}
+                        onMouseEnter={async event => {
+                          const $steps = {};
+
+                          $steps["updateCardIndex"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["cardIndex"]
+                                  },
+                                  operation: 0,
+                                  value: currentIndex
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateCardIndex"] != null &&
+                            typeof $steps["updateCardIndex"] === "object" &&
+                            typeof $steps["updateCardIndex"].then === "function"
+                          ) {
+                            $steps["updateCardIndex"] =
+                              await $steps["updateCardIndex"];
+                          }
+                        }}
+                        onMouseLeave={async event => {
+                          const $steps = {};
+
+                          $steps["updateCardIndex"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["cardIndex"]
+                                  },
+                                  operation: 0,
+                                  value: 0
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateCardIndex"] != null &&
+                            typeof $steps["updateCardIndex"] === "object" &&
+                            typeof $steps["updateCardIndex"].then === "function"
+                          ) {
+                            $steps["updateCardIndex"] =
+                              await $steps["updateCardIndex"];
+                          }
+                        }}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__i8F9F
+                          )}
+                        >
+                          <ChipSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__yZiv3
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__bouaP
+                            )}
+                          />
+
+                          {(() => {
+                            try {
+                              return currentItem?.brand == "visa";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <VisaIconSvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__pxZdP
+                              )}
+                              role={"img"}
+                            />
+                          ) : null}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__tyxbt
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__a9H6F
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (
+                                    "****  ****  ****  " + currentItem?.last4
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "****  ****  ****  ****";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__xf3Ru
+                          )}
+                        >
+                          {false ? (
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox___5VvWw
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___97BpH
+                                )}
+                              >
+                                {"Cardholder Name"}
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__ojG80
+                                )}
+                              >
+                                {""}
+                              </div>
+                            </div>
+                          ) : null}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__upccb
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__oew8R
+                              )}
+                            >
+                              {"Expiry Date"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__ql65B
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (
+                                      currentItem.exp_month +
+                                      " / " +
+                                      currentItem.exp_year
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "02/30";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__kzh68
+                            )}
+                          >
+                            {(() => {
+                              try {
+                                return currentItem["default"] == true;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <StarSvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__sTQiV
+                                )}
+                                role={"img"}
+                              />
+                            ) : null}
+                            {(() => {
+                              try {
+                                return currentItem["default"] != true;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <StarLineSvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg___3LtVl
+                                )}
+                                role={"img"}
+                              />
+                            ) : null}
+                          </div>
+                        </div>
+                        <div
+                          data-plasmic-name={"hoverCard"}
+                          data-plasmic-override={overrides.hoverCard}
+                          className={classNames(projectcss.all, sty.hoverCard)}
+                        >
+                          <TrashSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___1OrnV
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__tmCi4
+                            )}
+                          >
+                            {"Remove Card"}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__qlkZg)}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (async () => {
+                                async function addCard() {
+                                  console.log("\u25B6️ addCard() clicked");
+                                  const authKey = Object.keys(
+                                    localStorage
+                                  ).find(
+                                    k =>
+                                      k.startsWith("sb-") &&
+                                      k.endsWith("-auth-token")
+                                  );
+                                  if (!authKey) {
+                                    console.error(
+                                      "\u274C No Supabase auth token key found in localStorage"
+                                    );
+                                    return;
+                                  }
+                                  const raw = localStorage.getItem(authKey);
+                                  if (!raw) {
+                                    console.error(
+                                      "\u274C Supabase auth token missing"
+                                    );
+                                    return;
+                                  }
+                                  let session;
+                                  try {
+                                    session = JSON.parse(raw);
+                                  } catch (err) {
+                                    console.error(
+                                      "\u274C Failed to parse Supabase auth JSON:",
+                                      err
+                                    );
+                                    return;
+                                  }
+                                  const accessToken = session?.access_token;
+                                  if (!accessToken) {
+                                    console.error(
+                                      "\u274C No access_token found in session"
+                                    );
+                                    return;
+                                  }
+                                  console.log(
+                                    "\uD83D\uDD11 Supabase access token found"
+                                  );
+                                  let res;
+                                  try {
+                                    res = await fetch("/api/stripe/add-card", {
+                                      method: "POST",
+                                      headers: {
+                                        Authorization: `Bearer ${accessToken}`
+                                      }
+                                    });
+                                  } catch (err) {
+                                    console.error(
+                                      "\u274C Network error calling /api/stripe/add-card:",
+                                      err
+                                    );
+                                    return;
+                                  }
+                                  console.log(
+                                    "\uD83D\uDCE1 Response status:",
+                                    res.status
+                                  );
+                                  let data;
+                                  try {
+                                    data = await res.json();
+                                  } catch (err) {
+                                    console.error(
+                                      "\u274C Failed to parse JSON response:",
+                                      err
+                                    );
+                                    return;
+                                  }
+                                  if (data.error) {
+                                    console.error(
+                                      "\u274C API Error:",
+                                      data.error,
+                                      data.detail
+                                    );
+                                    return;
+                                  }
+                                  if (data.url) {
+                                    console.log(
+                                      "\u27A1️ Redirecting to:",
+                                      data.url
+                                    );
+                                    window.location.href = data.url;
+                                    return;
+                                  }
+                                  console.warn(
+                                    "\u26A0️ /api/stripe/add-card returned no URL"
+                                  );
+                                }
+                                return addCard();
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__t4QXm
+                    )}
+                  >
+                    {"Add Card"}
+                  </div>
+                </div>
+              </React.Fragment>
+            }
+            navBtnclick={async event => {
+              const $steps = {};
 
               $steps["runCode"] = true
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
-                        return async function addCard() {
-                          console.log("▶️ addCard() clicked");
-
-                          const res = await fetch("/api/stripe/add-card", {
-                            method: "POST"
-                          });
-
-                          console.log("📡 Response status:", res.status);
-
-                          let data;
-                          try {
-                            data = await res.json();
-                            console.log("📦 Response JSON:", data);
-                          } catch (e) {
-                            console.error("❌ Failed to parse JSON:", e);
-                            return;
-                          }
-
-                          if (data.error) {
-                            console.error(
-                              "❌ API returned an error:",
-                              data.error
+                        return (async () => {
+                          async function addCard() {
+                            console.log("\u25B6️ addCard() clicked");
+                            const authKey = Object.keys(localStorage).find(
+                              k =>
+                                k.startsWith("sb-") && k.endsWith("-auth-token")
                             );
-                            return;
+                            if (!authKey) {
+                              console.error(
+                                "\u274C No Supabase auth token key found in localStorage"
+                              );
+                              return;
+                            }
+                            const raw = localStorage.getItem(authKey);
+                            if (!raw) {
+                              console.error(
+                                "\u274C Supabase auth token missing"
+                              );
+                              return;
+                            }
+                            let session;
+                            try {
+                              session = JSON.parse(raw);
+                            } catch (err) {
+                              console.error(
+                                "\u274C Failed to parse Supabase auth JSON:",
+                                err
+                              );
+                              return;
+                            }
+                            const accessToken = session?.access_token;
+                            if (!accessToken) {
+                              console.error(
+                                "\u274C No access_token found in session"
+                              );
+                              return;
+                            }
+                            console.log(
+                              "\uD83D\uDD11 Supabase access token found"
+                            );
+                            let res;
+                            try {
+                              res = await fetch("/api/stripe/add-card", {
+                                method: "POST",
+                                headers: {
+                                  Authorization: `Bearer ${accessToken}`
+                                }
+                              });
+                            } catch (err) {
+                              console.error(
+                                "\u274C Network error calling /api/stripe/add-card:",
+                                err
+                              );
+                              return;
+                            }
+                            console.log(
+                              "\uD83D\uDCE1 Response status:",
+                              res.status
+                            );
+                            let data;
+                            try {
+                              data = await res.json();
+                            } catch (err) {
+                              console.error(
+                                "\u274C Failed to parse JSON response:",
+                                err
+                              );
+                              return;
+                            }
+                            if (data.error) {
+                              console.error(
+                                "\u274C API Error:",
+                                data.error,
+                                data.detail
+                              );
+                              return;
+                            }
+                            if (data.url) {
+                              console.log("\u27A1️ Redirecting to:", data.url);
+                              window.location.href = data.url;
+                              return;
+                            }
+                            console.warn(
+                              "\u26A0️ /api/stripe/add-card returned no URL"
+                            );
                           }
-
-                          if (data.url) {
-                            console.log("➡️ Redirecting to:", data.url);
-                            window.location.href = data.url;
-                          } else {
-                            console.warn("⚠️ No URL returned from API");
-                          }
-                        };
+                          return addCard();
+                        })();
                       }
                     };
                     return (({ customFunction }) => {
@@ -254,172 +895,6 @@ function PlasmicAppCards__RenderFunc(props: {
                 typeof $steps["runCode"].then === "function"
               ) {
                 $steps["runCode"] = await $steps["runCode"];
-              }
-            }}
-            className={classNames("__wab_instance", sty.appLayout)}
-            contents2={
-              <div
-                data-plasmic-name={"freeBox"}
-                data-plasmic-override={overrides.freeBox}
-                className={classNames(projectcss.all, sty.freeBox)}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["runCode"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          customFunction: async () => {
-                            return (async () => {
-                              async function addCard() {
-                                console.log("\u25B6️ addCard() clicked");
-                                const authKey = Object.keys(localStorage).find(
-                                  k =>
-                                    k.startsWith("sb-") &&
-                                    k.endsWith("-auth-token")
-                                );
-                                if (!authKey) {
-                                  console.error(
-                                    "\u274C No Supabase auth token key found in localStorage"
-                                  );
-                                  return;
-                                }
-                                const raw = localStorage.getItem(authKey);
-                                if (!raw) {
-                                  console.error(
-                                    "\u274C Supabase auth token missing"
-                                  );
-                                  return;
-                                }
-                                let session;
-                                try {
-                                  session = JSON.parse(raw);
-                                } catch (err) {
-                                  console.error(
-                                    "\u274C Failed to parse Supabase auth JSON:",
-                                    err
-                                  );
-                                  return;
-                                }
-                                const accessToken = session?.access_token;
-                                if (!accessToken) {
-                                  console.error(
-                                    "\u274C No access_token found in session"
-                                  );
-                                  return;
-                                }
-                                console.log(
-                                  "\uD83D\uDD11 Supabase access token found"
-                                );
-                                let res;
-                                try {
-                                  res = await fetch("/api/stripe/add-card", {
-                                    method: "POST",
-                                    headers: {
-                                      Authorization: `Bearer ${accessToken}`
-                                    }
-                                  });
-                                } catch (err) {
-                                  console.error(
-                                    "\u274C Network error calling /api/stripe/add-card:",
-                                    err
-                                  );
-                                  return;
-                                }
-                                console.log(
-                                  "\uD83D\uDCE1 Response status:",
-                                  res.status
-                                );
-                                let data;
-                                try {
-                                  data = await res.json();
-                                } catch (err) {
-                                  console.error(
-                                    "\u274C Failed to parse JSON response:",
-                                    err
-                                  );
-                                  return;
-                                }
-                                if (data.error) {
-                                  console.error(
-                                    "\u274C API Error:",
-                                    data.error,
-                                    data.detail
-                                  );
-                                  return;
-                                }
-                                if (data.url) {
-                                  console.log(
-                                    "\u27A1️ Redirecting to:",
-                                    data.url
-                                  );
-                                  window.location.href = data.url;
-                                  return;
-                                }
-                                console.warn(
-                                  "\u26A0️ /api/stripe/add-card returned no URL"
-                                );
-                              }
-                              return addCard();
-                            })();
-                          }
-                        };
-                        return (({ customFunction }) => {
-                          return customFunction();
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["runCode"] != null &&
-                    typeof $steps["runCode"] === "object" &&
-                    typeof $steps["runCode"].then === "function"
-                  ) {
-                    $steps["runCode"] = await $steps["runCode"];
-                  }
-                }}
-              >
-                <div
-                  data-plasmic-name={"text"}
-                  data-plasmic-override={overrides.text}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text
-                  )}
-                >
-                  {"Add Card"}
-                </div>
-              </div>
-            }
-            navBtnclick={async event => {
-              const $steps = {};
-
-              $steps["updateAppLayoutPopOpen"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["appLayout", "popOpen"]
-                      },
-                      operation: 0
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateAppLayoutPopOpen"] != null &&
-                typeof $steps["updateAppLayoutPopOpen"] === "object" &&
-                typeof $steps["updateAppLayoutPopOpen"].then === "function"
-              ) {
-                $steps["updateAppLayoutPopOpen"] =
-                  await $steps["updateAppLayoutPopOpen"];
               }
             }}
             onPopOpenChange={async (...eventArgs: any) => {
@@ -446,10 +921,11 @@ function PlasmicAppCards__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "appLayout", "freeBox", "text"],
-  appLayout: ["appLayout", "freeBox", "text"],
-  freeBox: ["freeBox", "text"],
-  text: ["text"]
+  root: ["root", "appLayout", "sideEffect", "repeatingCard", "hoverCard"],
+  appLayout: ["appLayout", "sideEffect", "repeatingCard", "hoverCard"],
+  sideEffect: ["sideEffect"],
+  repeatingCard: ["repeatingCard", "hoverCard"],
+  hoverCard: ["hoverCard"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -457,8 +933,9 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   appLayout: typeof AppLayout;
-  freeBox: "div";
-  text: "div";
+  sideEffect: typeof SideEffect;
+  repeatingCard: "div";
+  hoverCard: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -524,8 +1001,9 @@ export const PlasmicAppCards = Object.assign(
   {
     // Helper components rendering sub-elements
     appLayout: makeNodeComponent("appLayout"),
-    freeBox: makeNodeComponent("freeBox"),
-    text: makeNodeComponent("text"),
+    sideEffect: makeNodeComponent("sideEffect"),
+    repeatingCard: makeNodeComponent("repeatingCard"),
+    hoverCard: makeNodeComponent("hoverCard"),
 
     // Metadata about props expected for PlasmicAppCards
     internalVariantProps: PlasmicAppCards__VariantProps,

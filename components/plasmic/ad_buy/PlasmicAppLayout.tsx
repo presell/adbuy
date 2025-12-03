@@ -2145,7 +2145,9 @@ function PlasmicAppLayout__RenderFunc(props: {
             <div
               data-plasmic-name={"btn12"}
               data-plasmic-override={overrides.btn12}
-              className={classNames(projectcss.all, sty.btn12, "button")}
+              className={classNames(projectcss.all, sty.btn12, "button", {
+                [sty.btn12page_cards]: hasVariant($state, "page", "cards")
+              })}
               onClick={args.navBtnclick}
             >
               <div
@@ -2153,10 +2155,17 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.all,
                   projectcss.__wab_text,
                   sty.text__vkzNl,
-                  "geologica-h1"
+                  "geologica-h1",
+                  {
+                    [sty.textpage_cards__vkzNltk8Pz]: hasVariant(
+                      $state,
+                      "page",
+                      "cards"
+                    )
+                  }
                 )}
               >
-                {"Create"}
+                {hasVariant($state, "page", "cards") ? "Add Card" : "Create"}
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__qCdhf)}>
                 {false ? (

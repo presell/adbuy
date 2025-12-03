@@ -868,6 +868,31 @@
           "id": "2DRB0xm4Rnlz",
           "name": "EditActiveSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__EditActiveSvg.tsx"
+        },
+        {
+          "id": "SxgcbNMZ3u-5",
+          "name": "VisaIconSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__VisaIconSvg.tsx"
+        },
+        {
+          "id": "U8UXyL_So0yp",
+          "name": "ChipSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ChipSvg.tsx"
+        },
+        {
+          "id": "AnEMiUEeSu7J",
+          "name": "TrashSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__TrashSvg.tsx"
+        },
+        {
+          "id": "sK8VAJg-RzuJ",
+          "name": "StarSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__StarSvg.tsx"
+        },
+        {
+          "id": "dMJRbC-MfYtA",
+          "name": "StarLineSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__StarLineSvg.tsx"
         }
       ],
       "images": [
@@ -895,6 +920,16 @@
           "id": "hc4SRtMuQyl-",
           "name": "DG - Headshot - Small.png",
           "filePath": "../public/plasmic/ad_buy/images/dgHeadshotSmallPng.png"
+        },
+        {
+          "id": "8MtzF6KPWDhn",
+          "name": "Group.png",
+          "filePath": "../public/plasmic/ad_buy/images/groupPng.png"
+        },
+        {
+          "id": "I_Nbi8FHxlQL",
+          "name": "starLine.png",
+          "filePath": "../public/plasmic/ad_buy/images/starLinePng.png"
         }
       ],
       "indirect": false,
