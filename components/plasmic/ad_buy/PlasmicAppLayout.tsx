@@ -74,6 +74,8 @@ import WorkflowsiconSvgIcon from "./icons/PlasmicIcon__WorkflowsiconSvg"; // pla
 import ApiIconSvgIcon from "./icons/PlasmicIcon__ApiIconSvg"; // plasmic-import: mjJmnHwXSh-R/icon
 import GiftSvgrepoComSvgIcon from "./icons/PlasmicIcon__GiftSvgrepoComSvg"; // plasmic-import: 2E5Q_54R4vQ5/icon
 import HelpSvgIcon from "./icons/PlasmicIcon__HelpSvg"; // plasmic-import: omxN7Fvt6PUz/icon
+import LogoutCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__LogoutCircleSvgrepoComSvg"; // plasmic-import: pWrPQKIqDtgo/icon
+import Building2SvgIcon from "./icons/PlasmicIcon__Building2Svg"; // plasmic-import: zs93xyGd0bQn/icon
 import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
 import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
@@ -582,6 +584,16 @@ function PlasmicAppLayout__RenderFunc(props: {
                   fullHeight: 300,
                   aspectRatio: undefined
                 }}
+              />
+
+              <LogoutCircleSvgrepoComSvgIcon
+                className={classNames(projectcss.all, sty.svg__tu23M)}
+                role={"img"}
+              />
+
+              <Building2SvgIcon
+                className={classNames(projectcss.all, sty.svg__eCjih)}
+                role={"img"}
               />
             </div>
           </div>

@@ -403,7 +403,7 @@ function PlasmicAppCards__RenderFunc(props: {
                                     variablePath: ["cardIndex"]
                                   },
                                   operation: 0,
-                                  value: 0
+                                  value: 1000000
                                 };
                                 return (({
                                   variable,
@@ -844,135 +844,140 @@ function PlasmicAppCards__RenderFunc(props: {
                     </div>
                   </div>
                 </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__qlkZg)}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["runCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return (async () => {
-                                async function addCard() {
-                                  console.log("\u25B6️ addCard() clicked");
-                                  const authKey = Object.keys(
-                                    localStorage
-                                  ).find(
-                                    k =>
-                                      k.startsWith("sb-") &&
-                                      k.endsWith("-auth-token")
-                                  );
-                                  if (!authKey) {
-                                    console.error(
-                                      "\u274C No Supabase auth token key found in localStorage"
-                                    );
-                                    return;
-                                  }
-                                  const raw = localStorage.getItem(authKey);
-                                  if (!raw) {
-                                    console.error(
-                                      "\u274C Supabase auth token missing"
-                                    );
-                                    return;
-                                  }
-                                  let session;
-                                  try {
-                                    session = JSON.parse(raw);
-                                  } catch (err) {
-                                    console.error(
-                                      "\u274C Failed to parse Supabase auth JSON:",
-                                      err
-                                    );
-                                    return;
-                                  }
-                                  const accessToken = session?.access_token;
-                                  if (!accessToken) {
-                                    console.error(
-                                      "\u274C No access_token found in session"
-                                    );
-                                    return;
-                                  }
-                                  console.log(
-                                    "\uD83D\uDD11 Supabase access token found"
-                                  );
-                                  let res;
-                                  try {
-                                    res = await fetch("/api/stripe/add-card", {
-                                      method: "POST",
-                                      headers: {
-                                        Authorization: `Bearer ${accessToken}`
-                                      }
-                                    });
-                                  } catch (err) {
-                                    console.error(
-                                      "\u274C Network error calling /api/stripe/add-card:",
-                                      err
-                                    );
-                                    return;
-                                  }
-                                  console.log(
-                                    "\uD83D\uDCE1 Response status:",
-                                    res.status
-                                  );
-                                  let data;
-                                  try {
-                                    data = await res.json();
-                                  } catch (err) {
-                                    console.error(
-                                      "\u274C Failed to parse JSON response:",
-                                      err
-                                    );
-                                    return;
-                                  }
-                                  if (data.error) {
-                                    console.error(
-                                      "\u274C API Error:",
-                                      data.error,
-                                      data.detail
-                                    );
-                                    return;
-                                  }
-                                  if (data.url) {
-                                    console.log(
-                                      "\u27A1️ Redirecting to:",
-                                      data.url
-                                    );
-                                    window.location.href = data.url;
-                                    return;
-                                  }
-                                  console.warn(
-                                    "\u26A0️ /api/stripe/add-card returned no URL"
-                                  );
-                                }
-                                return addCard();
-                              })();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
-                    }
-                  }}
-                >
+                {false ? (
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__t4QXm
-                    )}
+                    className={classNames(projectcss.all, sty.freeBox__qlkZg)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (async () => {
+                                  async function addCard() {
+                                    console.log("\u25B6️ addCard() clicked");
+                                    const authKey = Object.keys(
+                                      localStorage
+                                    ).find(
+                                      k =>
+                                        k.startsWith("sb-") &&
+                                        k.endsWith("-auth-token")
+                                    );
+                                    if (!authKey) {
+                                      console.error(
+                                        "\u274C No Supabase auth token key found in localStorage"
+                                      );
+                                      return;
+                                    }
+                                    const raw = localStorage.getItem(authKey);
+                                    if (!raw) {
+                                      console.error(
+                                        "\u274C Supabase auth token missing"
+                                      );
+                                      return;
+                                    }
+                                    let session;
+                                    try {
+                                      session = JSON.parse(raw);
+                                    } catch (err) {
+                                      console.error(
+                                        "\u274C Failed to parse Supabase auth JSON:",
+                                        err
+                                      );
+                                      return;
+                                    }
+                                    const accessToken = session?.access_token;
+                                    if (!accessToken) {
+                                      console.error(
+                                        "\u274C No access_token found in session"
+                                      );
+                                      return;
+                                    }
+                                    console.log(
+                                      "\uD83D\uDD11 Supabase access token found"
+                                    );
+                                    let res;
+                                    try {
+                                      res = await fetch(
+                                        "/api/stripe/add-card",
+                                        {
+                                          method: "POST",
+                                          headers: {
+                                            Authorization: `Bearer ${accessToken}`
+                                          }
+                                        }
+                                      );
+                                    } catch (err) {
+                                      console.error(
+                                        "\u274C Network error calling /api/stripe/add-card:",
+                                        err
+                                      );
+                                      return;
+                                    }
+                                    console.log(
+                                      "\uD83D\uDCE1 Response status:",
+                                      res.status
+                                    );
+                                    let data;
+                                    try {
+                                      data = await res.json();
+                                    } catch (err) {
+                                      console.error(
+                                        "\u274C Failed to parse JSON response:",
+                                        err
+                                      );
+                                      return;
+                                    }
+                                    if (data.error) {
+                                      console.error(
+                                        "\u274C API Error:",
+                                        data.error,
+                                        data.detail
+                                      );
+                                      return;
+                                    }
+                                    if (data.url) {
+                                      console.log(
+                                        "\u27A1️ Redirecting to:",
+                                        data.url
+                                      );
+                                      window.location.href = data.url;
+                                      return;
+                                    }
+                                    console.warn(
+                                      "\u26A0️ /api/stripe/add-card returned no URL"
+                                    );
+                                  }
+                                  return addCard();
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+                    }}
                   >
-                    {"Add Card"}
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__t4QXm
+                      )}
+                    >
+                      {"Add Card"}
+                    </div>
                   </div>
-                </div>
+                ) : null}
               </React.Fragment>
             }
             navBtnclick={async event => {

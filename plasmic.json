@@ -893,6 +893,16 @@
           "id": "dMJRbC-MfYtA",
           "name": "StarLineSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__StarLineSvg.tsx"
+        },
+        {
+          "id": "zs93xyGd0bQn",
+          "name": "Building2SvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__Building2Svg.tsx"
+        },
+        {
+          "id": "pWrPQKIqDtgo",
+          "name": "LogoutCircleSvgrepoComSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LogoutCircleSvgrepoComSvg.tsx"
         }
       ],
       "images": [
