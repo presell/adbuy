@@ -967,32 +967,15 @@ function PlasmicAppCards__RenderFunc(props: {
                                                         );
                                                       }
                                                       const row = currentItem;
-                                                      if (!row) {
-                                                        console.error(
-                                                          "[DefaultCard] No currentItem found."
+                                                      if (!row)
+                                                        return console.error(
+                                                          "[DefaultCard] No currentItem"
                                                         );
-                                                        return;
-                                                      }
                                                       const userId =
                                                         row.user_id;
                                                       const thisCardId = row.id;
-                                                      if (
-                                                        !userId ||
-                                                        !thisCardId
-                                                      ) {
-                                                        console.error(
-                                                          "[DefaultCard] Missing user_id or card id."
-                                                        );
-                                                        return;
-                                                      }
                                                       const newValue =
                                                         !row.default;
-                                                      console.log(
-                                                        "[DefaultCard] Toggling card",
-                                                        thisCardId,
-                                                        "\u2192",
-                                                        newValue
-                                                      );
                                                       const {
                                                         data: updated,
                                                         error: updateError
@@ -1008,38 +991,52 @@ function PlasmicAppCards__RenderFunc(props: {
                                                         .single();
                                                       if (updateError)
                                                         throw updateError;
-                                                      console.log(
-                                                        "[DefaultCard] Updated this card:",
-                                                        updated
-                                                      );
                                                       if (newValue) {
-                                                        const {
-                                                          error: clearError
-                                                        } =
-                                                          await window.supabase
-                                                            .from(
-                                                              "user_payment_methods"
-                                                            )
-                                                            .update({
-                                                              default: false
-                                                            })
-                                                            .eq(
-                                                              "user_id",
-                                                              userId
-                                                            )
-                                                            .neq(
-                                                              "id",
-                                                              thisCardId
-                                                            );
-                                                        if (clearError)
-                                                          throw clearError;
+                                                        await window.supabase
+                                                          .from(
+                                                            "user_payment_methods"
+                                                          )
+                                                          .update({
+                                                            default: false
+                                                          })
+                                                          .eq("user_id", userId)
+                                                          .neq(
+                                                            "id",
+                                                            thisCardId
+                                                          );
+                                                      }
+                                                      if (newValue) {
                                                         console.log(
-                                                          "[DefaultCard] Cleared default from all other cards."
+                                                          "[DefaultCard] Updating Stripe..."
+                                                        );
+                                                        const stripeRes =
+                                                          await fetch(
+                                                            "/api/stripe/set-default-card",
+                                                            {
+                                                              method: "POST",
+                                                              headers: {
+                                                                "Content-Type":
+                                                                  "application/json"
+                                                              },
+                                                              body: JSON.stringify(
+                                                                {
+                                                                  payment_method_id:
+                                                                    row.payment_method_id
+                                                                }
+                                                              )
+                                                            }
+                                                          );
+                                                        const stripeJson =
+                                                          await stripeRes
+                                                            .json()
+                                                            .catch(() => ({}));
+                                                        console.log(
+                                                          "[DefaultCard] Stripe result:",
+                                                          stripeJson
                                                         );
                                                       }
                                                       const {
-                                                        data: refreshed,
-                                                        error: getError
+                                                        data: refreshed
                                                       } = await window.supabase
                                                         .from(
                                                           "user_payment_methods"
@@ -1049,12 +1046,6 @@ function PlasmicAppCards__RenderFunc(props: {
                                                         .order("created_at", {
                                                           ascending: false
                                                         });
-                                                      if (getError)
-                                                        throw getError;
-                                                      console.log(
-                                                        "[DefaultCard] Refreshed cards:",
-                                                        refreshed
-                                                      );
                                                       $state.cards = refreshed;
                                                     } catch (err) {
                                                       console.error(
@@ -1081,44 +1072,6 @@ function PlasmicAppCards__RenderFunc(props: {
                                       ) {
                                         $steps["runCode"] =
                                           await $steps["runCode"];
-                                      }
-
-                                      $steps["runCode2"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              customFunction: async () => {
-                                                return (async () => {
-                                                  return await fetch(
-                                                    "/api/stripe/set-default-card",
-                                                    {
-                                                      method: "POST",
-                                                      headers: {
-                                                        "Content-Type":
-                                                          "application/json"
-                                                      },
-                                                      body: JSON.stringify({
-                                                        payment_method_id:
-                                                          row.payment_method_id
-                                                      })
-                                                    }
-                                                  );
-                                                })();
-                                              }
-                                            };
-                                            return (({ customFunction }) => {
-                                              return customFunction();
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["runCode2"] != null &&
-                                        typeof $steps["runCode2"] ===
-                                          "object" &&
-                                        typeof $steps["runCode2"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["runCode2"] =
-                                          await $steps["runCode2"];
                                       }
                                     }}
                                     role={"img"}
