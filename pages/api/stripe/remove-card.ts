@@ -14,7 +14,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Optional CORS safety, fine to keep:
+  // Optional CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   if (req.method === "OPTIONS") {
@@ -25,7 +25,7 @@ export default async function handler(
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  // ----- Auth -----
+  // ----- Auth via Supabase bearer token -----
   const userId = await getAuthenticatedUserIdFromRequest(req);
   if (!userId) {
     return res.status(401).json({ error: "Unauthorized" });
@@ -38,7 +38,7 @@ export default async function handler(
   }
 
   try {
-    // 1) Look up row in user_payment_methods using the *correct* column name
+    // 1) Look up row in user_payment_methods
     const { data: row, error: selectError } = await supabase
       .from("user_payment_methods")
       .select("*")
@@ -47,12 +47,13 @@ export default async function handler(
 
     if (selectError) {
       console.error("[remove-card] select error:", selectError);
-      // PGRST116 = no rows; treat as "not your card"
+
+      // PGRST116 = no rows found
       if ((selectError as any).code === "PGRST116") {
-        return res
-          .status(403)
-          .json({ error: "Payment method does not belong to this user" });
+        // Nothing to delete locally; treat as idempotent success
+        return res.status(200).json({ success: true });
       }
+
       return res.status(500).json({ error: "Database error" });
     }
 
@@ -69,10 +70,34 @@ export default async function handler(
         .json({ error: "Payment method does not belong to this user" });
     }
 
-    // 2) Detach from Stripe
-    await stripe.paymentMethods.detach(payment_method_id);
+    // 2) Try to detach from Stripe
+    try {
+      await stripe.paymentMethods.detach(payment_method_id);
+    } catch (err: any) {
+      const code = err?.code || err?.raw?.code;
+      const msg: string =
+        err?.message || err?.raw?.message || "";
 
-    // 3) Delete from our table
+      // If the PM is missing or already not attached, treat as non-fatal.
+      const isResourceMissing = code === "resource_missing";
+      const isNotAttached =
+        msg.includes("not attached to a customer");
+
+      if (isResourceMissing || isNotAttached) {
+        console.warn(
+          "[remove-card] Non-fatal Stripe detach error, continuing cleanup:",
+          code,
+          msg
+        );
+      } else {
+        console.error("[remove-card] Stripe detach fatal error:", err);
+        return res
+          .status(500)
+          .json({ error: "Failed to detach card from Stripe" });
+      }
+    }
+
+    // 3) Delete from our table (always, even if Stripe detach was non-fatal)
     const { error: deleteError } = await supabase
       .from("user_payment_methods")
       .delete()
@@ -84,7 +109,7 @@ export default async function handler(
     }
 
     console.log(
-      "[remove-card] Successfully detached and deleted card",
+      "[remove-card] Successfully cleaned up card",
       payment_method_id,
       "for user",
       userId
