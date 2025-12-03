@@ -1006,7 +1006,7 @@ function PlasmicAppCards__RenderFunc(props: {
                     : null}
                   {(() => {
                     try {
-                      return $state?.cards == [];
+                      return !$state?.cards || $state.cards.length === 0;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -1522,52 +1522,6 @@ function PlasmicAppCards__RenderFunc(props: {
                           {"C"}
                         </div>
                       </div>
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.disableCardClicks == false;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__oLa4G
-                      )}
-                    >
-                      <React.Fragment>{"FALSE"}</React.Fragment>
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.disableCardClicks == true;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__iXaKc
-                      )}
-                    >
-                      <React.Fragment>{"TRUE"}</React.Fragment>
                     </div>
                   ) : null}
                 </div>
