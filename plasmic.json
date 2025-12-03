@@ -903,6 +903,11 @@
           "id": "pWrPQKIqDtgo",
           "name": "LogoutCircleSvgrepoComSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__LogoutCircleSvgrepoComSvg.tsx"
+        },
+        {
+          "id": "VGwllik7uwYn",
+          "name": "CanvasPlusSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__CanvasPlusSvg.tsx"
         }
       ],
       "images": [
