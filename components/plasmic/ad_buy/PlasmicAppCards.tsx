@@ -74,6 +74,8 @@ import VisaIconSvgIcon from "./icons/PlasmicIcon__VisaIconSvg"; // plasmic-impor
 import StarSvgIcon from "./icons/PlasmicIcon__StarSvg"; // plasmic-import: sK8VAJg-RzuJ/icon
 import StarLineSvgIcon from "./icons/PlasmicIcon__StarLineSvg"; // plasmic-import: dMJRbC-MfYtA/icon
 import TrashSvgIcon from "./icons/PlasmicIcon__TrashSvg"; // plasmic-import: AnEMiUEeSu7J/icon
+import PlusSvg2Icon from "./icons/PlasmicIcon__PlusSvg2"; // plasmic-import: IjmbUWMwGAqS/icon
+import EnterSvgIcon from "./icons/PlasmicIcon__EnterSvg"; // plasmic-import: x8a8y30xjfZo/icon
 
 createPlasmicElementProxy;
 
@@ -92,6 +94,7 @@ export type PlasmicAppCards__OverridesType = {
   sideEffect?: Flex__<typeof SideEffect>;
   repeatingCard?: Flex__<"div">;
   hoverCard?: Flex__<"div">;
+  hoverCard2?: Flex__<"div">;
 };
 
 export interface DefaultAppCardsProps {}
@@ -135,6 +138,8 @@ function PlasmicAppCards__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const currentUser = useCurrentUser?.() || {};
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
@@ -149,7 +154,7 @@ function PlasmicAppCards__RenderFunc(props: {
         path: "cardIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $ctx }) => 100000
       },
       {
         path: "cards",
@@ -585,6 +590,15 @@ function PlasmicAppCards__RenderFunc(props: {
                               sty.freeBox__kzh68
                             )}
                           >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__zJMzJ
+                              )}
+                            >
+                              {"Remove"}
+                            </div>
                             {(() => {
                               try {
                                 return currentItem["default"] == true;
@@ -603,6 +617,123 @@ function PlasmicAppCards__RenderFunc(props: {
                                   projectcss.all,
                                   sty.svg__sTQiV
                                 )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["runCode"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return (async () => {
+                                              return (async () => {
+                                                try {
+                                                  while (
+                                                    !window.__supabaseReady__
+                                                  ) {
+                                                    await new Promise(r =>
+                                                      setTimeout(r, 80)
+                                                    );
+                                                  }
+                                                  const row = currentItem;
+                                                  if (!row) {
+                                                    console.error(
+                                                      "[DefaultCard] No currentItem found."
+                                                    );
+                                                    return;
+                                                  }
+                                                  const userId = row.user_id;
+                                                  const thisCardId = row.id;
+                                                  if (!userId || !thisCardId) {
+                                                    console.error(
+                                                      "[DefaultCard] Missing user_id or card id."
+                                                    );
+                                                    return;
+                                                  }
+                                                  const newValue = !row.default;
+                                                  console.log(
+                                                    "[DefaultCard] Toggling card",
+                                                    thisCardId,
+                                                    "\u2192",
+                                                    newValue
+                                                  );
+                                                  const {
+                                                    data: updated,
+                                                    error: updateError
+                                                  } = await window.supabase
+                                                    .from(
+                                                      "user_payment_methods"
+                                                    )
+                                                    .update({
+                                                      default: newValue
+                                                    })
+                                                    .eq("id", thisCardId)
+                                                    .select()
+                                                    .single();
+                                                  if (updateError)
+                                                    throw updateError;
+                                                  console.log(
+                                                    "[DefaultCard] Updated this card:",
+                                                    updated
+                                                  );
+                                                  if (newValue) {
+                                                    const {
+                                                      error: clearError
+                                                    } = await window.supabase
+                                                      .from(
+                                                        "user_payment_methods"
+                                                      )
+                                                      .update({
+                                                        default: false
+                                                      })
+                                                      .eq("user_id", userId)
+                                                      .neq("id", thisCardId);
+                                                    if (clearError)
+                                                      throw clearError;
+                                                    console.log(
+                                                      "[DefaultCard] Cleared default from all other cards."
+                                                    );
+                                                  }
+                                                  const {
+                                                    data: refreshed,
+                                                    error: getError
+                                                  } = await window.supabase
+                                                    .from(
+                                                      "user_payment_methods"
+                                                    )
+                                                    .select("*")
+                                                    .eq("user_id", userId)
+                                                    .order("created_at", {
+                                                      ascending: false
+                                                    });
+                                                  if (getError) throw getError;
+                                                  console.log(
+                                                    "[DefaultCard] Refreshed cards:",
+                                                    refreshed
+                                                  );
+                                                  $state.cards = refreshed;
+                                                } catch (err) {
+                                                  console.error(
+                                                    "[DefaultCard] \u274C Error:",
+                                                    err
+                                                  );
+                                                }
+                                              })();
+                                            })();
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
+                                }}
                                 role={"img"}
                               />
                             ) : null}
@@ -629,32 +760,89 @@ function PlasmicAppCards__RenderFunc(props: {
                             ) : null}
                           </div>
                         </div>
-                        <div
-                          data-plasmic-name={"hoverCard"}
-                          data-plasmic-override={overrides.hoverCard}
-                          className={classNames(projectcss.all, sty.hoverCard)}
-                        >
-                          <TrashSvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg___1OrnV
-                            )}
-                            role={"img"}
-                          />
-
+                        {(() => {
+                          try {
+                            return $state.cardIndex == currentIndex;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
                           <div
+                            data-plasmic-name={"hoverCard"}
+                            data-plasmic-override={overrides.hoverCard}
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__tmCi4
+                              sty.hoverCard
                             )}
                           >
-                            {"Remove Card"}
+                            <TrashSvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___1OrnV
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__tmCi4
+                              )}
+                            >
+                              {"Remove Card"}
+                            </div>
                           </div>
-                        </div>
+                        ) : null}
                       </div>
                     );
                   })}
+                  <div
+                    data-plasmic-name={"hoverCard2"}
+                    data-plasmic-override={overrides.hoverCard2}
+                    className={classNames(projectcss.all, sty.hoverCard2)}
+                  >
+                    <PlusSvg2Icon
+                      className={classNames(projectcss.all, sty.svg___7EnXr)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__z1LDk
+                      )}
+                    >
+                      {"Add Card"}
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__fVyrE)}
+                    >
+                      {false ? (
+                        <EnterSvgIcon
+                          className={classNames(projectcss.all, sty.svg__ySqyM)}
+                          role={"img"}
+                        />
+                      ) : null}
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__r3JXy,
+                          "geologica-h1"
+                        )}
+                      >
+                        {"C"}
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__qlkZg)}
@@ -921,11 +1109,25 @@ function PlasmicAppCards__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "appLayout", "sideEffect", "repeatingCard", "hoverCard"],
-  appLayout: ["appLayout", "sideEffect", "repeatingCard", "hoverCard"],
+  root: [
+    "root",
+    "appLayout",
+    "sideEffect",
+    "repeatingCard",
+    "hoverCard",
+    "hoverCard2"
+  ],
+  appLayout: [
+    "appLayout",
+    "sideEffect",
+    "repeatingCard",
+    "hoverCard",
+    "hoverCard2"
+  ],
   sideEffect: ["sideEffect"],
   repeatingCard: ["repeatingCard", "hoverCard"],
-  hoverCard: ["hoverCard"]
+  hoverCard: ["hoverCard"],
+  hoverCard2: ["hoverCard2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -936,6 +1138,7 @@ type NodeDefaultElementType = {
   sideEffect: typeof SideEffect;
   repeatingCard: "div";
   hoverCard: "div";
+  hoverCard2: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1004,6 +1207,7 @@ export const PlasmicAppCards = Object.assign(
     sideEffect: makeNodeComponent("sideEffect"),
     repeatingCard: makeNodeComponent("repeatingCard"),
     hoverCard: makeNodeComponent("hoverCard"),
+    hoverCard2: makeNodeComponent("hoverCard2"),
 
     // Metadata about props expected for PlasmicAppCards
     internalVariantProps: PlasmicAppCards__VariantProps,
