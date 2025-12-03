@@ -3,8 +3,10 @@ import type Stripe from "stripe";
 import { stripe } from "./stripe";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const supabaseUrl =
+  process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey =
+  process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error("Missing Supabase env vars SUPABASE_URL / SUPABASE_ANON_KEY");
@@ -27,7 +29,10 @@ async function deleteUserPaymentMethods(userId: string) {
   }
 }
 
-async function insertUserPaymentMethod(userId: string, pm: Stripe.PaymentMethod) {
+async function insertUserPaymentMethod(
+  userId: string,
+  pm: Stripe.PaymentMethod
+) {
   if (pm.type !== "card" || !pm.card) {
     console.log("[stripeWebhook] payment method is not a card, skipping", pm.id);
     return;
@@ -119,9 +124,11 @@ export async function handleStripeWebhook(event: Stripe.Event) {
 
   try {
     switch (event.type) {
+      // ✅ NEW: ignore payment_method.attached so only customer.updated does the sync
       case "payment_method.attached": {
-        const pm = event.data.object as Stripe.PaymentMethod;
-        await syncFromPaymentMethod(pm);
+        console.log(
+          "[stripeWebhook] Skipping payment_method.attached; customer.updated will perform the sync"
+        );
         break;
       }
 
@@ -131,8 +138,10 @@ export async function handleStripeWebhook(event: Stripe.Event) {
         break;
       }
 
-      default:
+      default: {
         console.log("[stripeWebhook] Ignoring Stripe event type:", event.type);
+        break;
+      }
     }
   } catch (err) {
     console.error("[stripeWebhook] Error in handleStripeWebhook:", err);
