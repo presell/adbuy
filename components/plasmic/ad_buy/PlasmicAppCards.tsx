@@ -161,6 +161,12 @@ function PlasmicAppCards__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "disableCardClicks",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -663,6 +669,15 @@ function PlasmicAppCards__RenderFunc(props: {
                                                 return (async () => {
                                                   return (async () => {
                                                     try {
+                                                      if (
+                                                        $state.disableCardClicks
+                                                      ) {
+                                                        console.warn(
+                                                          "[DefaultCard] Click blocked (already processing)"
+                                                        );
+                                                        return;
+                                                      }
+                                                      $state.disableCardClicks = true;
                                                       while (
                                                         !window.__supabaseReady__
                                                       ) {
@@ -765,6 +780,8 @@ function PlasmicAppCards__RenderFunc(props: {
                                                         "[DefaultCard] \u274C Error:",
                                                         err
                                                       );
+                                                    } finally {
+                                                      $state.disableCardClicks = false;
                                                     }
                                                   })();
                                                 })();
@@ -817,6 +834,15 @@ function PlasmicAppCards__RenderFunc(props: {
                                                 return (async () => {
                                                   return (async () => {
                                                     try {
+                                                      if (
+                                                        $state.disableCardClicks
+                                                      ) {
+                                                        console.warn(
+                                                          "[DefaultCard] Click blocked (already processing)"
+                                                        );
+                                                        return;
+                                                      }
+                                                      $state.disableCardClicks = true;
                                                       while (
                                                         !window.__supabaseReady__
                                                       ) {
@@ -919,6 +945,8 @@ function PlasmicAppCards__RenderFunc(props: {
                                                         "[DefaultCard] \u274C Error:",
                                                         err
                                                       );
+                                                    } finally {
+                                                      $state.disableCardClicks = false;
                                                     }
                                                   })();
                                                 })();
@@ -1494,6 +1522,52 @@ function PlasmicAppCards__RenderFunc(props: {
                           {"C"}
                         </div>
                       </div>
+                    </div>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.disableCardClicks == false;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__oLa4G
+                      )}
+                    >
+                      <React.Fragment>{"FALSE"}</React.Fragment>
+                    </div>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.disableCardClicks == true;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__iXaKc
+                      )}
+                    >
+                      <React.Fragment>{"TRUE"}</React.Fragment>
                     </div>
                   ) : null}
                 </div>
