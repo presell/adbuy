@@ -945,6 +945,11 @@
           "id": "I_Nbi8FHxlQL",
           "name": "starLine.png",
           "filePath": "../public/plasmic/ad_buy/images/starLinePng.png"
+        },
+        {
+          "id": "pknZnH7qOxyk",
+          "name": "sample.png",
+          "filePath": "../public/plasmic/ad_buy/images/samplePng.png"
         }
       ],
       "indirect": false,
