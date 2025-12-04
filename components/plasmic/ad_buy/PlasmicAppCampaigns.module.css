@@ -96,11 +96,9 @@
   justify-content: flex-start;
   width: auto;
   height: auto;
-  max-width: 100%;
   top: 0px;
   left: 0px;
   z-index: 10;
-  min-width: 1200px;
 }
 .campaignHeader {
   animation: none;
@@ -1444,11 +1442,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 100vh;
+  width: 100%;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__fCDnW {
@@ -1512,7 +1511,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__luBlK {
     animation: none;
-    font-size: 12.5px;
+    font-size: 18px;
   }
 }
 .text__yDwLd {
@@ -1541,6 +1540,7 @@
   .text__yDwLd {
     animation: none;
     font-size: 12.5px;
+    max-width: 60%;
   }
 }
 .freeBox___3S4TN {

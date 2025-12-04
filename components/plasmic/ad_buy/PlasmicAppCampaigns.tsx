@@ -3160,33 +3160,49 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                             {"Calls"}
                           </div>
                         </div>
-                        <div
-                          data-plasmic-name={"spendHeader"}
-                          data-plasmic-override={overrides.spendHeader}
-                          className={classNames(
-                            projectcss.all,
-                            sty.spendHeader
-                          )}
-                        >
-                          <DollarSign1SvgIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__fOJt
-                            )}
-                            role={"img"}
-                          />
-
+                        {(() => {
+                          try {
+                            return (
+                              $state?.campaigns && $state.campaigns.length > 0
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
                           <div
+                            data-plasmic-name={"spendHeader"}
+                            data-plasmic-override={overrides.spendHeader}
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__q4XF,
-                              "geologica-text-medium"
+                              sty.spendHeader
                             )}
                           >
-                            {"Spend"}
+                            <DollarSign1SvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__fOJt
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__q4XF,
+                                "geologica-text-medium"
+                              )}
+                            >
+                              {"Spend"}
+                            </div>
                           </div>
-                        </div>
+                        ) : null}
                       </div>
                       {(_par =>
                         !_par ? [] : Array.isArray(_par) ? _par : [_par])(
@@ -4176,51 +4192,69 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                       role={"img"}
                                     />
                                   </div>
-                                  <div
-                                    data-plasmic-name={"spend2"}
-                                    data-plasmic-override={overrides.spend2}
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.spend2
-                                    )}
-                                  >
+                                  {(() => {
+                                    try {
+                                      return (
+                                        $state?.campaigns &&
+                                        $state.campaigns.length > 0
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return true;
+                                      }
+                                      throw e;
+                                    }
+                                  })() ? (
                                     <div
+                                      data-plasmic-name={"spend2"}
+                                      data-plasmic-override={overrides.spend2}
                                       className={classNames(
                                         projectcss.all,
-                                        sty.freeBox__f4IIk
+                                        sty.spend2
                                       )}
                                     >
                                       <div
                                         className={classNames(
                                           projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__tVcUz
+                                          sty.freeBox__f4IIk
                                         )}
                                       >
-                                        {"-"}
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__tVcUz
+                                          )}
+                                        >
+                                          {"-"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__pf7D
+                                          )}
+                                        >
+                                          {"Since 10/15/2025"}
+                                        </div>
                                       </div>
-                                      <div
+                                      <EditActiveSvgIcon
+                                        data-plasmic-name={"mobileedit13"}
+                                        data-plasmic-override={
+                                          overrides.mobileedit13
+                                        }
                                         className={classNames(
                                           projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__pf7D
+                                          sty.mobileedit13
                                         )}
-                                      >
-                                        {"Since 10/15/2025"}
-                                      </div>
+                                        role={"img"}
+                                      />
                                     </div>
-                                    <EditActiveSvgIcon
-                                      data-plasmic-name={"mobileedit13"}
-                                      data-plasmic-override={
-                                        overrides.mobileedit13
-                                      }
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.mobileedit13
-                                      )}
-                                      role={"img"}
-                                    />
-                                  </div>
+                                  ) : null}
                                 </div>
                               );
                             })}
@@ -4290,6 +4324,146 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 projectcss.all,
                                 sty.freeBox___3S4TN
                               )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["updateAppLayoutPopOpen"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["appLayout", "popOpen"]
+                                        },
+                                        operation: 0,
+                                        value: true
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateAppLayoutPopOpen"] != null &&
+                                  typeof $steps["updateAppLayoutPopOpen"] ===
+                                    "object" &&
+                                  typeof $steps["updateAppLayoutPopOpen"]
+                                    .then === "function"
+                                ) {
+                                  $steps["updateAppLayoutPopOpen"] =
+                                    await $steps["updateAppLayoutPopOpen"];
+                                }
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (async function getLoggedInUser() {
+                                            const { data } =
+                                              await window.supabase.auth.getSession();
+                                            const sessionUser =
+                                              data?.session?.user;
+                                            if (sessionUser) {
+                                              return {
+                                                id: sessionUser.id,
+                                                email: sessionUser.email,
+                                                source: "supabase"
+                                              };
+                                            }
+                                            const plasmicUser =
+                                              window.__PLASMIC_USER__;
+                                            if (plasmicUser?.email) {
+                                              return {
+                                                id: plasmicUser.id,
+                                                email: plasmicUser.email,
+                                                source: "cookie"
+                                              };
+                                            }
+                                            return null;
+                                          })(async () => {
+                                            try {
+                                              while (
+                                                !window.__supabaseReady__
+                                              ) {
+                                                await new Promise(r =>
+                                                  setTimeout(r, 100)
+                                                );
+                                              }
+                                              const user =
+                                                await getLoggedInUser();
+                                              if (!user) {
+                                                console.warn(
+                                                  "[Create] \u274C No logged-in user \u2014 cannot create campaign."
+                                                );
+                                                return;
+                                              }
+                                              console.log(
+                                                "[Create] Creating campaign for:",
+                                                user.email,
+                                                "(via",
+                                                user.source,
+                                                ")"
+                                              );
+                                              const { data: created, error } =
+                                                await window.supabase
+                                                  .from("campaigns")
+                                                  .insert({ user_id: user.id })
+                                                  .select()
+                                                  .single();
+                                              if (error) throw error;
+                                              console.log(
+                                                "[Create] \u2705 Created campaign row:",
+                                                created
+                                              );
+                                              localStorage.setItem(
+                                                "campaignId",
+                                                String(created.id)
+                                              );
+                                              console.log(
+                                                "[Create] Saved campaignId to localStorage \u2192",
+                                                created.id
+                                              );
+                                              if (
+                                                Array.isArray($state.campaigns)
+                                              ) {
+                                                $state.campaigns = [
+                                                  created,
+                                                  ...$state.campaigns
+                                                ];
+                                              }
+                                            } catch (err) {
+                                              console.error(
+                                                "[Create] \u274C Failed to create campaign:",
+                                                err
+                                              );
+                                            }
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }}
                             >
                               <div
                                 className={classNames(
