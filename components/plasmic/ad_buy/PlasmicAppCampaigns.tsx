@@ -147,6 +147,7 @@ export type PlasmicAppCampaigns__OverridesType = {
   focusPage?: Flex__<typeof Embed>;
   tableScroll?: Flex__<typeof Embed>;
   fadeStyles?: Flex__<typeof Embed>;
+  blockScroll?: Flex__<typeof Embed>;
 };
 
 export interface DefaultAppCampaignsProps {}
@@ -2981,7 +2982,27 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                 <div
                   data-plasmic-name={"mainParent"}
                   data-plasmic-override={overrides.mainParent}
-                  className={classNames(projectcss.all, sty.mainParent, ``)}
+                  className={classNames(
+                    projectcss.all,
+                    sty.mainParent,
+                    (() => {
+                      try {
+                        return !(
+                          $state?.campaigns && $state.campaigns.length > 0
+                        )
+                          ? "scrollBlock"
+                          : "";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()
+                  )}
                 >
                   <div
                     data-plasmic-name={"tableScrollWrapper"}
@@ -4610,6 +4631,15 @@ function PlasmicAppCampaigns__RenderFunc(props: {
               "<style>\n/* Fade an image from top (100%) \u2192 bottom (0%) */\n.imageFade {\n  position: relative;\n  display: block;\n\n  /* Apply mask to this entire container (Plasmic wraps img) */\n  -webkit-mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,1.0) 0%,     /* fully visible at the top */\n    rgba(0,0,0,0.85) 40%,   /* slight softening */\n    rgba(0,0,0,0.40) 75%,   /* stronger fade */\n    rgba(0,0,0,0.0) 100%    /* invisible at very bottom */\n  );\n  mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,1.0) 0%,\n    rgba(0,0,0,0.85) 40%,\n    rgba(0,0,0,0.40) 75%,\n    rgba(0,0,0,0.0) 100%\n  );\n\n  -webkit-mask-size: 100% 100%;\n  mask-size: 100% 100%;\n  -webkit-mask-repeat: no-repeat;\n  mask-repeat: no-repeat;\n}\n</style>\n\n\n<style>\n.halfOpacitygradient {\n  position: relative;\n\n  -webkit-mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,0.50) 0%,     /* 50% visible at top */\n    rgba(0,0,0,0.35) 45%,   /* soften through row 1 */\n    rgba(0,0,0,0.15) 75%,   /* light fade through row 2 */\n    rgba(0,0,0,0.05) 100%   /* nearly invisible at very bottom */\n  );\n  mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,0.50) 0%,\n    rgba(0,0,0,0.35) 45%,\n    rgba(0,0,0,0.15) 75%,\n    rgba(0,0,0,0.05) 100%\n  );\n\n  -webkit-mask-size: 100% 100%;\n  mask-size: 100% 100%;\n  -webkit-mask-repeat: no-repeat;\n  mask-repeat: no-repeat;\n}\n</style>\n\n\n\n\n<style>\n/* ---------------------------------------------\n   SIMPLE 50% OPACITY (unchanged)\n--------------------------------------------- */\n.halfOpacity {\n  opacity: 0.5;\n}\n.halfOpacity * {\n  opacity: 1;\n}\n</style>"
             }
           />
+
+          <Embed
+            data-plasmic-name={"blockScroll"}
+            data-plasmic-override={overrides.blockScroll}
+            className={classNames("__wab_instance", sty.blockScroll)}
+            code={
+              '<style>\n\n.scrollBlock {\n  position: relative;\n}\n\n.scrollBlock::after {\n  content: "";\n  position: absolute;\n  inset: 0;\n  z-index: 999999;\n  pointer-events: all; /* blocks scroll + interaction */\n}\n\n</style>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4673,7 +4703,8 @@ const PlasmicDescendants = {
     "budgetInput2",
     "focusPage",
     "tableScroll",
-    "fadeStyles"
+    "fadeStyles",
+    "blockScroll"
   ],
   appLayout: [
     "appLayout",
@@ -4969,7 +5000,8 @@ const PlasmicDescendants = {
   budgetInput2: ["budgetInput2"],
   focusPage: ["focusPage"],
   tableScroll: ["tableScroll"],
-  fadeStyles: ["fadeStyles"]
+  fadeStyles: ["fadeStyles"],
+  blockScroll: ["blockScroll"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5031,6 +5063,7 @@ type NodeDefaultElementType = {
   focusPage: typeof Embed;
   tableScroll: typeof Embed;
   fadeStyles: typeof Embed;
+  blockScroll: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5150,6 +5183,7 @@ export const PlasmicAppCampaigns = Object.assign(
     focusPage: makeNodeComponent("focusPage"),
     tableScroll: makeNodeComponent("tableScroll"),
     fadeStyles: makeNodeComponent("fadeStyles"),
+    blockScroll: makeNodeComponent("blockScroll"),
 
     // Metadata about props expected for PlasmicAppCampaigns
     internalVariantProps: PlasmicAppCampaigns__VariantProps,

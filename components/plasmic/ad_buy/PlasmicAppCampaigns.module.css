@@ -999,12 +999,10 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 100%;
   max-width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
   height: auto;
-  min-width: 0;
   border-top: 1px none #d3d3d3;
 }
 .halfOpacitygradient {
@@ -1456,12 +1454,11 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 100%;
+  width: 100vh;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__fCDnW {
@@ -2036,6 +2033,10 @@
   object-fit: cover;
 }
 .fadeStyles:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.blockScroll:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
