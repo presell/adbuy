@@ -4637,7 +4637,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
             data-plasmic-override={overrides.blockScroll}
             className={classNames("__wab_instance", sty.blockScroll)}
             code={
-              '<style>\n\n.scrollBlock {\n  position: relative;\n}\n\n.scrollBlock::after {\n  content: "";\n  position: absolute;\n  inset: 0;\n  z-index: 999999;\n  pointer-events: all; /* blocks scroll + interaction */\n}\n\n</style>'
+              '<style>\n\n.scrollBlock {\n  position: relative;\n}\n\n.scrollBlock::after {\n  content: "";\n  position: absolute;\n  inset: 0;\n  z-index: 99999;\n  pointer-events: all; /* blocks scroll + interaction */\n}\n\n</style>'
             }
           />
         </div>

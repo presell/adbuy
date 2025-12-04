@@ -1459,6 +1459,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  z-index: 999999;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
