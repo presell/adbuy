@@ -2202,6 +2202,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  z-index: 1;
   min-width: 0;
   flex-shrink: 0;
   border-bottom: 1px none #d3d3d3;
@@ -2221,6 +2222,7 @@
   max-width: 93%;
   justify-content: flex-start;
   align-items: center;
+  z-index: 2;
   min-width: 0;
   flex-shrink: 0;
 }

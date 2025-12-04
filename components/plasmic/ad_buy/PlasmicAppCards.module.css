@@ -34,10 +34,10 @@
   flex-direction: row;
   position: relative;
   width: 100%;
-  height: auto;
+  height: 500px;
   max-width: 100%;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   overflow: auto;
   min-width: 0;
 }
@@ -613,4 +613,9 @@
   width: auto;
   height: auto;
   max-width: 100%;
+}
+.blogAnimation:global(.__wab_instance) {
+  animation: none;
+  max-width: 100%;
+  object-fit: cover;
 }

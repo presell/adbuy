@@ -61,6 +61,7 @@ import {
 
 import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -95,6 +96,7 @@ export type PlasmicAppCards__OverridesType = {
   repeatingCard?: Flex__<"div">;
   hoverCard?: Flex__<"div">;
   hoverCard2?: Flex__<"div">;
+  blogAnimation?: Flex__<typeof Embed>;
 };
 
 export interface DefaultAppCardsProps {}
@@ -371,7 +373,8 @@ function PlasmicAppCards__RenderFunc(props: {
                             data-plasmic-override={overrides.repeatingCard}
                             className={classNames(
                               projectcss.all,
-                              sty.repeatingCard
+                              sty.repeatingCard,
+                              "blog-animation"
                             )}
                             key={currentIndex}
                             onMouseEnter={async event => {
@@ -1127,7 +1130,11 @@ function PlasmicAppCards__RenderFunc(props: {
                     <div
                       data-plasmic-name={"hoverCard2"}
                       data-plasmic-override={overrides.hoverCard2}
-                      className={classNames(projectcss.all, sty.hoverCard2)}
+                      className={classNames(
+                        projectcss.all,
+                        sty.hoverCard2,
+                        "blog-animation"
+                      )}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1895,6 +1902,15 @@ function PlasmicAppCards__RenderFunc(props: {
             page={"cards"}
             popOpen={generateStateValueProp($state, ["appLayout", "popOpen"])}
           />
+
+          <Embed
+            data-plasmic-name={"blogAnimation"}
+            data-plasmic-override={overrides.blogAnimation}
+            className={classNames("__wab_instance", sty.blogAnimation)}
+            code={
+              "<style>\n.blog-animation {\n  transition: transform 0.2s ease-in-out; /* Smooth transition for the movement */\n}\n\n.blog-animation:hover {\n  transform: translateY(5px); /* Moves the stack upwards on hover */\n}\n\n  </style>"
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -1908,7 +1924,8 @@ const PlasmicDescendants = {
     "sideEffect",
     "repeatingCard",
     "hoverCard",
-    "hoverCard2"
+    "hoverCard2",
+    "blogAnimation"
   ],
   appLayout: [
     "appLayout",
@@ -1920,7 +1937,8 @@ const PlasmicDescendants = {
   sideEffect: ["sideEffect"],
   repeatingCard: ["repeatingCard", "hoverCard"],
   hoverCard: ["hoverCard"],
-  hoverCard2: ["hoverCard2"]
+  hoverCard2: ["hoverCard2"],
+  blogAnimation: ["blogAnimation"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1932,6 +1950,7 @@ type NodeDefaultElementType = {
   repeatingCard: "div";
   hoverCard: "div";
   hoverCard2: "div";
+  blogAnimation: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2001,6 +2020,7 @@ export const PlasmicAppCards = Object.assign(
     repeatingCard: makeNodeComponent("repeatingCard"),
     hoverCard: makeNodeComponent("hoverCard"),
     hoverCard2: makeNodeComponent("hoverCard2"),
+    blogAnimation: makeNodeComponent("blogAnimation"),
 
     // Metadata about props expected for PlasmicAppCards
     internalVariantProps: PlasmicAppCards__VariantProps,
