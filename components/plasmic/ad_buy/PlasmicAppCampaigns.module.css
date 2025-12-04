@@ -98,7 +98,12 @@
   top: 0px;
   left: 0px;
   z-index: 10;
-  min-width: 1200px;
+  min-width: 1100px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .innerTable {
+    min-width: 380px;
+  }
 }
 .campaignHeader {
   animation: none;
