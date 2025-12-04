@@ -102,7 +102,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .innerTable {
-    min-width: 380px;
+    min-width: 385px;
   }
 }
 .campaignHeader {
