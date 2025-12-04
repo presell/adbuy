@@ -4343,127 +4343,14 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                               onClick={async event => {
                                 const $steps = {};
 
-                                $steps["updateAppLayoutPopOpen"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: ["appLayout", "popOpen"]
-                                        },
-                                        operation: 0,
-                                        value: true
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateAppLayoutPopOpen"] != null &&
-                                  typeof $steps["updateAppLayoutPopOpen"] ===
-                                    "object" &&
-                                  typeof $steps["updateAppLayoutPopOpen"]
-                                    .then === "function"
-                                ) {
-                                  $steps["updateAppLayoutPopOpen"] =
-                                    await $steps["updateAppLayoutPopOpen"];
-                                }
-
                                 $steps["runCode"] = true
                                   ? (() => {
                                       const actionArgs = {
                                         customFunction: async () => {
-                                          return (async function getLoggedInUser() {
-                                            const { data } =
-                                              await window.supabase.auth.getSession();
-                                            const sessionUser =
-                                              data?.session?.user;
-                                            if (sessionUser) {
-                                              return {
-                                                id: sessionUser.id,
-                                                email: sessionUser.email,
-                                                source: "supabase"
-                                              };
-                                            }
-                                            const plasmicUser =
-                                              window.__PLASMIC_USER__;
-                                            if (plasmicUser?.email) {
-                                              return {
-                                                id: plasmicUser.id,
-                                                email: plasmicUser.email,
-                                                source: "cookie"
-                                              };
-                                            }
-                                            return null;
-                                          })(async () => {
-                                            try {
-                                              while (
-                                                !window.__supabaseReady__
-                                              ) {
-                                                await new Promise(r =>
-                                                  setTimeout(r, 100)
-                                                );
-                                              }
-                                              const user =
-                                                await getLoggedInUser();
-                                              if (!user) {
-                                                console.warn(
-                                                  "[Create] \u274C No logged-in user \u2014 cannot create campaign."
-                                                );
-                                                return;
-                                              }
-                                              console.log(
-                                                "[Create] Creating campaign for:",
-                                                user.email,
-                                                "(via",
-                                                user.source,
-                                                ")"
-                                              );
-                                              const { data: created, error } =
-                                                await window.supabase
-                                                  .from("campaigns")
-                                                  .insert({ user_id: user.id })
-                                                  .select()
-                                                  .single();
-                                              if (error) throw error;
-                                              console.log(
-                                                "[Create] \u2705 Created campaign row:",
-                                                created
-                                              );
-                                              localStorage.setItem(
-                                                "campaignId",
-                                                String(created.id)
-                                              );
-                                              console.log(
-                                                "[Create] Saved campaignId to localStorage \u2192",
-                                                created.id
-                                              );
-                                              if (
-                                                Array.isArray($state.campaigns)
-                                              ) {
-                                                $state.campaigns = [
-                                                  created,
-                                                  ...$state.campaigns
-                                                ];
-                                              }
-                                            } catch (err) {
-                                              console.error(
-                                                "[Create] \u274C Failed to create campaign:",
-                                                err
-                                              );
-                                            }
+                                          return (() => {
+                                            const btn =
+                                              document.querySelector(".navBtn");
+                                            if (btn) return btn.click();
                                           })();
                                         }
                                       };

@@ -2183,7 +2183,7 @@ function PlasmicAppLayout__RenderFunc(props: {
             <div
               data-plasmic-name={"btn12"}
               data-plasmic-override={overrides.btn12}
-              className={classNames(projectcss.all, sty.btn12, "button", {
+              className={classNames(projectcss.all, sty.btn12, "navBtn", {
                 [sty.btn12page_cards]: hasVariant($state, "page", "cards")
               })}
               onClick={args.navBtnclick}
