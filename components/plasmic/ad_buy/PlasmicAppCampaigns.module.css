@@ -70,6 +70,8 @@
   background: none;
   overflow: auto;
   min-width: 0;
+  border-radius: 15px;
+  border: 1px solid #d3d3d3;
 }
 .tableScrollWrapper {
   display: flex;
@@ -109,12 +111,15 @@
   width: auto;
   height: auto;
   max-width: none;
-  background: #eeeeee;
+  background: none;
   left: 0px;
   top: 0px;
   z-index: 10;
   position: sticky;
-  border-radius: 10px;
+  border-bottom-style: none;
+  border-bottom-width: 1px;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .campaignHeader {
@@ -151,6 +156,7 @@
   height: 14px;
   width: 14px;
   flex-shrink: 0;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__c7CvT {
@@ -209,6 +215,7 @@
   max-width: 100%;
   margin-right: 5px;
   height: 14px;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__mFzY0 {
@@ -268,6 +275,7 @@
   max-width: 100%;
   margin-right: 5px;
   height: 14px;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__ms0DI {
@@ -327,6 +335,7 @@
   max-width: 100%;
   margin-right: 5px;
   height: 14px;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg___0NQsR {
@@ -386,6 +395,7 @@
   max-width: 100%;
   margin-right: 5px;
   height: 14px;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg___4YUYj {
@@ -445,6 +455,7 @@
   max-width: 100%;
   margin-right: 5px;
   height: 14px;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg___4Y5Z4 {
@@ -551,7 +562,8 @@
   cursor: pointer;
   overflow: visible;
   min-width: 0;
-  border-bottom: 1px solid #d3d3d3;
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px none #d3d3d3;
 }
 .offOn {
   display: flex;
@@ -970,6 +982,19 @@
   .mobileedit7 {
     animation: none;
   }
+}
+.freeBox__auV9 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  height: 5px;
+  min-width: 0;
+  flex-shrink: 0;
+  border-top: 1px solid #d3d3d3;
 }
 .freeBox__qnqdv {
   display: flex;

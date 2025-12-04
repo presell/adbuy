@@ -3678,6 +3678,28 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                           </div>
                         );
                       })}
+                      {(() => {
+                        try {
+                          return (
+                            !$state?.campaigns || $state.campaigns.length === 0
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__auV9
+                          )}
+                        />
+                      ) : null}
                     </div>
                   </div>
                 </div>
