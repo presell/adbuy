@@ -3003,7 +3003,23 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           sty.campaignHeader,
-                          "halfOpacity"
+                          (() => {
+                            try {
+                              return !(
+                                $state?.campaigns && $state.campaigns.length > 0
+                              )
+                                ? "halfOpacity"
+                                : "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
                         )}
                       >
                         <div
