@@ -99,6 +99,7 @@
   top: 0px;
   left: 0px;
   z-index: 10;
+  min-width: 1200px;
 }
 .campaignHeader {
   animation: none;
@@ -1519,7 +1520,7 @@
   position: relative;
   width: auto;
   height: auto;
-  max-width: 30%;
+  max-width: 40%;
   font-weight: 400;
   font-size: 14.5px;
   font-family: var(--plasmic-font-geologica);
@@ -1540,7 +1541,7 @@
   .text__yDwLd {
     animation: none;
     font-size: 12.5px;
-    max-width: 60%;
+    max-width: 70%;
   }
 }
 .freeBox___3S4TN {
