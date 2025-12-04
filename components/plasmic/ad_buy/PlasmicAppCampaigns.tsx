@@ -3442,6 +3442,35 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                     sty.freeBox__akrfe
                                   )}
                                 >
+                                  {(() => {
+                                    try {
+                                      return (
+                                        (currentItem?.targeting || [])
+                                          .slice(0, 3)
+                                          .map(s => s.value)
+                                          .join(", ") == ""
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return true;
+                                      }
+                                      throw e;
+                                    }
+                                  })() ? (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__hnwJr
+                                      )}
+                                    >
+                                      {"-"}
+                                    </div>
+                                  ) : null}
                                   <div
                                     className={classNames(
                                       projectcss.all,
