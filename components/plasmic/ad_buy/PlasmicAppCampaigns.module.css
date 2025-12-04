@@ -98,7 +98,7 @@
   top: 0px;
   left: 0px;
   z-index: 10;
-  min-width: 1150px;
+  min-width: 1200px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .innerTable {
