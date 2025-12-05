@@ -586,6 +586,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/debt"
+        },
+        {
+          "id": "7EwlW1_spdne",
+          "name": "AppContainer",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppContainer.tsx",
+          "importSpec": {
+            "modulePath": "AppContainer.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppContainer.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -908,6 +921,11 @@
           "id": "VGwllik7uwYn",
           "name": "CanvasPlusSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__CanvasPlusSvg.tsx"
+        },
+        {
+          "id": "zWug_iP9VWff",
+          "name": "ClockSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ClockSvg.tsx"
         }
       ],
       "images": [

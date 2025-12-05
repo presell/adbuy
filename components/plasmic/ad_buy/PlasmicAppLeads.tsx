@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import AppLayout from "../../AppLayout"; // plasmic-import: 3-ESBXWrTc3V/component
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/styleTokensProvider
 
@@ -67,6 +68,14 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic.module.css"; // plasmic-import: fKsvVS5XnenaZB1533Xwx5/projectcss
 import sty from "./PlasmicAppLeads.module.css"; // plasmic-import: Jvzp_CwYp3lA/css
+
+import ToggleLeftSvgIcon from "./icons/PlasmicIcon__ToggleLeftSvg"; // plasmic-import: 4yAUxwLLbNVI/icon
+import DollarSign1SvgIcon from "./icons/PlasmicIcon__DollarSign1Svg"; // plasmic-import: e7anIF66FNNl/icon
+import MapPinSvgIcon from "./icons/PlasmicIcon__MapPinSvg"; // plasmic-import: -SnCIoFrsIAj/icon
+import MoveUpRightSvgIcon from "./icons/PlasmicIcon__MoveUpRightSvg"; // plasmic-import: yPw2r6PF5Lx4/icon
+import ClockSvgIcon from "./icons/PlasmicIcon__ClockSvg"; // plasmic-import: zWug_iP9VWff/icon
+import EditActiveSvgIcon from "./icons/PlasmicIcon__EditActiveSvg"; // plasmic-import: 2DRB0xm4Rnlz/icon
+import EnterSvgIcon from "./icons/PlasmicIcon__EnterSvg"; // plasmic-import: x8a8y30xjfZo/icon
 
 createPlasmicElementProxy;
 
@@ -82,6 +91,32 @@ export const PlasmicAppLeads__ArgProps = new Array<ArgPropType>();
 export type PlasmicAppLeads__OverridesType = {
   root?: Flex__<"div">;
   appLayout?: Flex__<typeof AppLayout>;
+  mainParentempty2?: Flex__<"div">;
+  tableScrollWrapper3?: Flex__<"div">;
+  innerTable3?: Flex__<"div">;
+  campaignHeader3?: Flex__<"div">;
+  leadsHeader3?: Flex__<"div">;
+  callsHeader3?: Flex__<"div">;
+  spendHeader3?: Flex__<"div">;
+  emptyParent3?: Flex__<"div">;
+  halfOpacitygradient3?: Flex__<"div">;
+  campaignRow5?: Flex__<"div">;
+  offOn5?: Flex__<"div">;
+  budget5?: Flex__<"div">;
+  mobileedit28?: Flex__<"svg">;
+  location5?: Flex__<"div">;
+  meter7?: Flex__<"div">;
+  campaign5?: Flex__<"div">;
+  leads5?: Flex__<"div">;
+  mobileedit29?: Flex__<"svg">;
+  calls5?: Flex__<"div">;
+  mobileedit30?: Flex__<"svg">;
+  spend5?: Flex__<"div">;
+  mobileedit31?: Flex__<"svg">;
+  imageFade3?: Flex__<"div">;
+  img?: Flex__<typeof PlasmicImg__>;
+  tableScroll?: Flex__<typeof Embed>;
+  fadeStyles?: Flex__<typeof Embed>;
 };
 
 export interface DefaultAppLeadsProps {}
@@ -125,6 +160,8 @@ function PlasmicAppLeads__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const currentUser = useCurrentUser?.() || {};
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
@@ -134,6 +171,12 @@ function PlasmicAppLeads__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "leads",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -200,6 +243,1012 @@ function PlasmicAppLeads__RenderFunc(props: {
             data-plasmic-name={"appLayout"}
             data-plasmic-override={overrides.appLayout}
             className={classNames("__wab_instance", sty.appLayout)}
+            contents2={
+              <div
+                data-plasmic-name={"mainParentempty2"}
+                data-plasmic-override={overrides.mainParentempty2}
+                className={classNames(projectcss.all, sty.mainParentempty2)}
+              >
+                <div
+                  data-plasmic-name={"tableScrollWrapper3"}
+                  data-plasmic-override={overrides.tableScrollWrapper3}
+                  className={classNames(
+                    projectcss.all,
+                    sty.tableScrollWrapper3,
+                    "table-scroll"
+                  )}
+                >
+                  <div
+                    data-plasmic-name={"innerTable3"}
+                    data-plasmic-override={overrides.innerTable3}
+                    className={classNames(projectcss.all, sty.innerTable3)}
+                  >
+                    <div
+                      data-plasmic-name={"campaignHeader3"}
+                      data-plasmic-override={overrides.campaignHeader3}
+                      className={classNames(
+                        projectcss.all,
+                        sty.campaignHeader3,
+                        (() => {
+                          try {
+                            return !($state?.leads && $state.leads.length > 0)
+                              ? "halfOpacity"
+                              : "";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__i46OQ
+                        )}
+                      >
+                        <ToggleLeftSvgIcon
+                          className={classNames(projectcss.all, sty.svg__mcJsz)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pyNtJ,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {"Name"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ecarv
+                        )}
+                      >
+                        <DollarSign1SvgIcon
+                          className={classNames(projectcss.all, sty.svg__pzkcn)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ir4Gu,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {"Type"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__y07T4
+                        )}
+                      >
+                        <MapPinSvgIcon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___0Eoos
+                          )}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__cqKpv,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {"Score"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__jmWq
+                        )}
+                      >
+                        <MoveUpRightSvgIcon
+                          className={classNames(projectcss.all, sty.svg__sZqEs)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__q0SOt,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {"Next Action"}
+                        </div>
+                      </div>
+                      <div
+                        data-plasmic-name={"leadsHeader3"}
+                        data-plasmic-override={overrides.leadsHeader3}
+                        className={classNames(projectcss.all, sty.leadsHeader3)}
+                      >
+                        <DollarSign1SvgIcon
+                          className={classNames(projectcss.all, sty.svg__pWfWi)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__voqR,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {"Phone"}
+                        </div>
+                      </div>
+                      <div
+                        data-plasmic-name={"callsHeader3"}
+                        data-plasmic-override={overrides.callsHeader3}
+                        className={classNames(projectcss.all, sty.callsHeader3)}
+                      >
+                        <DollarSign1SvgIcon
+                          className={classNames(projectcss.all, sty.svg__h340Q)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__u6Tde,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {"Email"}
+                        </div>
+                      </div>
+                      {false ? (
+                        <div
+                          data-plasmic-name={"spendHeader3"}
+                          data-plasmic-override={overrides.spendHeader3}
+                          className={classNames(
+                            projectcss.all,
+                            sty.spendHeader3
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___4G4Q
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__d6DKb,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Spend"}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                    <div
+                      data-plasmic-name={"emptyParent3"}
+                      data-plasmic-override={overrides.emptyParent3}
+                      className={classNames(projectcss.all, sty.emptyParent3)}
+                    >
+                      <div
+                        data-plasmic-name={"halfOpacitygradient3"}
+                        data-plasmic-override={overrides.halfOpacitygradient3}
+                        className={classNames(
+                          projectcss.all,
+                          sty.halfOpacitygradient3,
+                          "halfOpacitygradient"
+                        )}
+                      >
+                        {(_par =>
+                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                          (() => {
+                            try {
+                              return [
+                                {
+                                  id: "lead-001",
+                                  full_name: "Debra Santos",
+                                  lead_type: "Cryotherapy",
+                                  score: 24,
+                                  created_at: "2025-12-04T21:52:00Z",
+                                  next_action_type: "SMS",
+                                  next_action_cadence: "Welcome",
+                                  next_action_step: 1
+                                },
+                                {
+                                  id: "lead-002",
+                                  full_name: "James Coleman",
+                                  lead_type: "Window Replacement",
+                                  score: 61,
+                                  created_at: "2025-12-02T21:30:00Z",
+                                  next_action_type: "Call",
+                                  next_action_cadence: "Welcome",
+                                  next_action_step: 2
+                                }
+                              ];
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
+                            }
+                          })()
+                        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                          const currentItem = __plasmic_item_0;
+                          const currentIndex = __plasmic_idx_0;
+                          return (
+                            <div
+                              data-plasmic-name={"campaignRow5"}
+                              data-plasmic-override={overrides.campaignRow5}
+                              className={classNames(
+                                projectcss.all,
+                                sty.campaignRow5,
+                                ``
+                              )}
+                              key={currentIndex}
+                            >
+                              <div
+                                data-plasmic-name={"offOn5"}
+                                data-plasmic-override={overrides.offOn5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.offOn5
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___5RjAt
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem.full_name;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Debra Santos";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__wSDmE
+                                  )}
+                                >
+                                  {"Today at "}
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__fIrCi
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__gpn8H
+                                    )}
+                                  />
+
+                                  <ClockSvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__scCPg
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__ivh5X,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (() => {
+                                            const ts = new Date(
+                                              currentItem.created_at
+                                            );
+                                            const now = new Date();
+                                            const diffMs = now - ts;
+                                            const diffMinutes = Math.floor(
+                                              diffMs / 60000
+                                            );
+
+                                            if (diffMinutes < 1)
+                                              return "Just now";
+                                            if (diffMinutes < 60)
+                                              return `${diffMinutes} minute${diffMinutes === 1 ? "" : "s"} ago`;
+
+                                            const diffHours = Math.floor(
+                                              diffMinutes / 60
+                                            );
+                                            if (diffHours < 24)
+                                              return `${diffHours} hour${diffHours === 1 ? "" : "s"} ago`;
+
+                                            const diffDays = Math.floor(
+                                              diffHours / 24
+                                            );
+                                            return `${diffDays} day${diffDays === 1 ? "" : "s"} ago`;
+                                          })();
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "8 minutes ago";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__nExLu,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    {"\u00b7"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___7MzQ5,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (() => {
+                                            const ts = new Date(
+                                              currentItem.created_at
+                                            );
+                                            const month = String(
+                                              ts.getMonth() + 1
+                                            ).padStart(2, "0");
+                                            const day = String(
+                                              ts.getDate()
+                                            ).padStart(2, "0");
+                                            const year = ts.getFullYear();
+                                            return `${month}/${day}/${year}`;
+                                          })();
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "12/04/2025";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                data-plasmic-name={"budget5"}
+                                data-plasmic-override={overrides.budget5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.budget5
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__eeLi
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__zQ4Dc
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem.lead_type;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Cryotherapy";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___6Obr
+                                    )}
+                                  >
+                                    {"Daily"}
+                                  </div>
+                                </div>
+                                <EditActiveSvgIcon
+                                  data-plasmic-name={"mobileedit28"}
+                                  data-plasmic-override={overrides.mobileedit28}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.mobileedit28
+                                  )}
+                                  role={"img"}
+                                />
+                              </div>
+                              <div
+                                data-plasmic-name={"location5"}
+                                data-plasmic-override={overrides.location5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.location5
+                                )}
+                              >
+                                <div
+                                  data-plasmic-name={"meter7"}
+                                  data-plasmic-override={overrides.meter7}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.meter7
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__zcxmP
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__cd3Nk
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__kYrgg
+                                        )}
+                                      >
+                                        {"Transferred"}
+                                      </div>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___5RHdJ
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return currentItem.score;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "24";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___2Spbp
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__adXfD
+                                      )}
+                                    />
+
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__kkw6K
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                data-plasmic-name={"campaign5"}
+                                data-plasmic-override={overrides.campaign5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.campaign5
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__cQ8V0
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___7GN34
+                                    )}
+                                  />
+
+                                  <ClockSvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__qDnjt
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__qK9TQ,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem.next_action_type;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "SMS";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__sbFns,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    {"\u00b7"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___45NEp,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem.next_action_cadence;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "Welcome";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__grQDj,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    {"\u00b7"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___4KUvD,
+                                      "geologica-text-regular"
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return currentItem.next_action_step;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "1";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                data-plasmic-name={"leads5"}
+                                data-plasmic-override={overrides.leads5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.leads5
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___9NDju
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__fDva4
+                                    )}
+                                  >
+                                    {"-"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__v3Snw
+                                    )}
+                                  >
+                                    {"$- each"}
+                                  </div>
+                                </div>
+                                <EditActiveSvgIcon
+                                  data-plasmic-name={"mobileedit29"}
+                                  data-plasmic-override={overrides.mobileedit29}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.mobileedit29
+                                  )}
+                                  role={"img"}
+                                />
+                              </div>
+                              <div
+                                data-plasmic-name={"calls5"}
+                                data-plasmic-override={overrides.calls5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.calls5
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__xNb5I
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__ss4T
+                                    )}
+                                  >
+                                    {"-"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__ahKee
+                                    )}
+                                  >
+                                    {"$24.53 each"}
+                                  </div>
+                                </div>
+                                <EditActiveSvgIcon
+                                  data-plasmic-name={"mobileedit30"}
+                                  data-plasmic-override={overrides.mobileedit30}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.mobileedit30
+                                  )}
+                                  role={"img"}
+                                />
+                              </div>
+                              {false ? (
+                                <div
+                                  data-plasmic-name={"spend5"}
+                                  data-plasmic-override={overrides.spend5}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.spend5
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__aAtmT
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__mZoiU
+                                      )}
+                                    >
+                                      {"-"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__s1Azi
+                                      )}
+                                    >
+                                      {"Since 10/15/2025"}
+                                    </div>
+                                  </div>
+                                  <EditActiveSvgIcon
+                                    data-plasmic-name={"mobileedit31"}
+                                    data-plasmic-override={
+                                      overrides.mobileedit31
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.mobileedit31
+                                    )}
+                                    role={"img"}
+                                  />
+                                </div>
+                              ) : null}
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__rSn3K
+                        )}
+                      >
+                        {false ? (
+                          <div
+                            data-plasmic-name={"imageFade3"}
+                            data-plasmic-override={overrides.imageFade3}
+                            className={classNames(
+                              projectcss.all,
+                              sty.imageFade3,
+                              "imageFade"
+                            )}
+                          >
+                            <PlasmicImg__
+                              data-plasmic-name={"img"}
+                              data-plasmic-override={overrides.img}
+                              alt={""}
+                              class={``}
+                              className={classNames(sty.img)}
+                              displayHeight={"165px"}
+                              displayMaxHeight={"none"}
+                              displayMaxWidth={"100%"}
+                              displayMinHeight={"0"}
+                              displayMinWidth={"0"}
+                              displayWidth={"100%"}
+                              loading={"eager"}
+                              src={{
+                                src: "/plasmic/ad_buy/images/samplePng.png",
+                                fullWidth: 1971,
+                                fullHeight: 1151,
+                                aspectRatio: undefined
+                              }}
+                            />
+                          </div>
+                        ) : null}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dnOne,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {"Leads"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__gs4WJ,
+                            "geologica-text-medium"
+                          )}
+                        >
+                          {
+                            "Receive real-time, exclusive leads routed instantly to you. Starts once your campaign goes live."
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__pi8Vu
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["goToAppCampaigns"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    destination: `/app/campaigns`
+                                  };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["goToAppCampaigns"] != null &&
+                              typeof $steps["goToAppCampaigns"] === "object" &&
+                              typeof $steps["goToAppCampaigns"].then ===
+                                "function"
+                            ) {
+                              $steps["goToAppCampaigns"] =
+                                await $steps["goToAppCampaigns"];
+                            }
+                          }}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___7CpJc,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Create Campaign"}
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__hhn3B
+                            )}
+                          >
+                            {false ? (
+                              <EnterSvgIcon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__w2Nfg
+                                )}
+                                role={"img"}
+                              />
+                            ) : null}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__a7J7F,
+                                "geologica-h1"
+                              )}
+                            >
+                              {"C"}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+            navBtnclick={async event => {
+              const $steps = {};
+
+              $steps["goToAppCampaigns"] = true
+                ? (() => {
+                    const actionArgs = { destination: `/app/campaigns` };
+                    return (({ destination }) => {
+                      if (
+                        typeof destination === "string" &&
+                        destination.startsWith("#")
+                      ) {
+                        document
+                          .getElementById(destination.substr(1))
+                          .scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        __nextRouter?.push(destination);
+                      }
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["goToAppCampaigns"] != null &&
+                typeof $steps["goToAppCampaigns"] === "object" &&
+                typeof $steps["goToAppCampaigns"].then === "function"
+              ) {
+                $steps["goToAppCampaigns"] = await $steps["goToAppCampaigns"];
+              }
+            }}
             onPopOpenChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["appLayout", "popOpen"]).apply(
                 null,
@@ -217,6 +1266,24 @@ function PlasmicAppLeads__RenderFunc(props: {
             page={"leads"}
             popOpen={generateStateValueProp($state, ["appLayout", "popOpen"])}
           />
+
+          <Embed
+            data-plasmic-name={"tableScroll"}
+            data-plasmic-override={overrides.tableScroll}
+            className={classNames("__wab_instance", sty.tableScroll)}
+            code={
+              "<style>\n\n.table-scroll {\n  overflow-x: auto !important;\n  overflow-y: visible !important;\n  -webkit-overflow-scrolling: touch !important;\n  display: block !important;\n  position: relative !important;\n  white-space: nowrap !important;\n}\n\n</style>"
+            }
+          />
+
+          <Embed
+            data-plasmic-name={"fadeStyles"}
+            data-plasmic-override={overrides.fadeStyles}
+            className={classNames("__wab_instance", sty.fadeStyles)}
+            code={
+              "<style>\n/* Fade an image from top (100%) \u2192 bottom (0%) */\n.imageFade {\n  position: relative;\n  display: block;\n\n  /* Apply mask to this entire container (Plasmic wraps img) */\n  -webkit-mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,1.0) 0%,     /* fully visible at the top */\n    rgba(0,0,0,0.85) 40%,   /* slight softening */\n    rgba(0,0,0,0.40) 75%,   /* stronger fade */\n    rgba(0,0,0,0.0) 100%    /* invisible at very bottom */\n  );\n  mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,1.0) 0%,\n    rgba(0,0,0,0.85) 40%,\n    rgba(0,0,0,0.40) 75%,\n    rgba(0,0,0,0.0) 100%\n  );\n\n  -webkit-mask-size: 100% 100%;\n  mask-size: 100% 100%;\n  -webkit-mask-repeat: no-repeat;\n  mask-repeat: no-repeat;\n}\n</style>\n\n\n<style>\n.halfOpacitygradient {\n  position: relative;\n\n  -webkit-mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,0.50) 0%,     /* 50% visible at top */\n    rgba(0,0,0,0.35) 45%,   /* soften through row 1 */\n    rgba(0,0,0,0.15) 75%,   /* light fade through row 2 */\n    rgba(0,0,0,0.05) 100%   /* nearly invisible at very bottom */\n  );\n  mask-image: linear-gradient(\n    to bottom,\n    rgba(0,0,0,0.50) 0%,\n    rgba(0,0,0,0.35) 45%,\n    rgba(0,0,0,0.15) 75%,\n    rgba(0,0,0,0.05) 100%\n  );\n\n  -webkit-mask-size: 100% 100%;\n  mask-size: 100% 100%;\n  -webkit-mask-repeat: no-repeat;\n  mask-repeat: no-repeat;\n}\n</style>\n\n\n\n\n<style>\n/* ---------------------------------------------\n   SIMPLE 50% OPACITY (unchanged)\n--------------------------------------------- */\n.halfOpacity {\n  opacity: 0.5;\n}\n.halfOpacity * {\n  opacity: 1;\n}\n</style>"
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -224,8 +1291,213 @@ function PlasmicAppLeads__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "appLayout"],
-  appLayout: ["appLayout"]
+  root: [
+    "root",
+    "appLayout",
+    "mainParentempty2",
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "img",
+    "tableScroll",
+    "fadeStyles"
+  ],
+  appLayout: [
+    "appLayout",
+    "mainParentempty2",
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "img"
+  ],
+  mainParentempty2: [
+    "mainParentempty2",
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "img"
+  ],
+  tableScrollWrapper3: [
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "img"
+  ],
+  innerTable3: [
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "img"
+  ],
+  campaignHeader3: [
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3"
+  ],
+  leadsHeader3: ["leadsHeader3"],
+  callsHeader3: ["callsHeader3"],
+  spendHeader3: ["spendHeader3"],
+  emptyParent3: [
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "img"
+  ],
+  halfOpacitygradient3: [
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31"
+  ],
+  campaignRow5: [
+    "campaignRow5",
+    "offOn5",
+    "budget5",
+    "mobileedit28",
+    "location5",
+    "meter7",
+    "campaign5",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31"
+  ],
+  offOn5: ["offOn5"],
+  budget5: ["budget5", "mobileedit28"],
+  mobileedit28: ["mobileedit28"],
+  location5: ["location5", "meter7"],
+  meter7: ["meter7"],
+  campaign5: ["campaign5"],
+  leads5: ["leads5", "mobileedit29"],
+  mobileedit29: ["mobileedit29"],
+  calls5: ["calls5", "mobileedit30"],
+  mobileedit30: ["mobileedit30"],
+  spend5: ["spend5", "mobileedit31"],
+  mobileedit31: ["mobileedit31"],
+  imageFade3: ["imageFade3", "img"],
+  img: ["img"],
+  tableScroll: ["tableScroll"],
+  fadeStyles: ["fadeStyles"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -233,6 +1505,32 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   appLayout: typeof AppLayout;
+  mainParentempty2: "div";
+  tableScrollWrapper3: "div";
+  innerTable3: "div";
+  campaignHeader3: "div";
+  leadsHeader3: "div";
+  callsHeader3: "div";
+  spendHeader3: "div";
+  emptyParent3: "div";
+  halfOpacitygradient3: "div";
+  campaignRow5: "div";
+  offOn5: "div";
+  budget5: "div";
+  mobileedit28: "svg";
+  location5: "div";
+  meter7: "div";
+  campaign5: "div";
+  leads5: "div";
+  mobileedit29: "svg";
+  calls5: "div";
+  mobileedit30: "svg";
+  spend5: "div";
+  mobileedit31: "svg";
+  imageFade3: "div";
+  img: typeof PlasmicImg__;
+  tableScroll: typeof Embed;
+  fadeStyles: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -298,6 +1596,32 @@ export const PlasmicAppLeads = Object.assign(
   {
     // Helper components rendering sub-elements
     appLayout: makeNodeComponent("appLayout"),
+    mainParentempty2: makeNodeComponent("mainParentempty2"),
+    tableScrollWrapper3: makeNodeComponent("tableScrollWrapper3"),
+    innerTable3: makeNodeComponent("innerTable3"),
+    campaignHeader3: makeNodeComponent("campaignHeader3"),
+    leadsHeader3: makeNodeComponent("leadsHeader3"),
+    callsHeader3: makeNodeComponent("callsHeader3"),
+    spendHeader3: makeNodeComponent("spendHeader3"),
+    emptyParent3: makeNodeComponent("emptyParent3"),
+    halfOpacitygradient3: makeNodeComponent("halfOpacitygradient3"),
+    campaignRow5: makeNodeComponent("campaignRow5"),
+    offOn5: makeNodeComponent("offOn5"),
+    budget5: makeNodeComponent("budget5"),
+    mobileedit28: makeNodeComponent("mobileedit28"),
+    location5: makeNodeComponent("location5"),
+    meter7: makeNodeComponent("meter7"),
+    campaign5: makeNodeComponent("campaign5"),
+    leads5: makeNodeComponent("leads5"),
+    mobileedit29: makeNodeComponent("mobileedit29"),
+    calls5: makeNodeComponent("calls5"),
+    mobileedit30: makeNodeComponent("mobileedit30"),
+    spend5: makeNodeComponent("spend5"),
+    mobileedit31: makeNodeComponent("mobileedit31"),
+    imageFade3: makeNodeComponent("imageFade3"),
+    img: makeNodeComponent("img"),
+    tableScroll: makeNodeComponent("tableScroll"),
+    fadeStyles: makeNodeComponent("fadeStyles"),
 
     // Metadata about props expected for PlasmicAppLeads
     internalVariantProps: PlasmicAppLeads__VariantProps,

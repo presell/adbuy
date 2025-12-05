@@ -86,9 +86,23 @@ export type PlasmicAppCampaigns__VariantsArgs = {};
 type VariantPropType = keyof PlasmicAppCampaigns__VariantsArgs;
 export const PlasmicAppCampaigns__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicAppCampaigns__ArgsType = {};
+export type PlasmicAppCampaigns__ArgsType = {
+  campaignHeader7?: React.ReactNode;
+  halfOpacitygradient7?: React.ReactNode;
+  children3?: React.ReactNode;
+  campaignHeader8?: React.ReactNode;
+  halfOpacitygradient8?: React.ReactNode;
+  children4?: React.ReactNode;
+};
 type ArgPropType = keyof PlasmicAppCampaigns__ArgsType;
-export const PlasmicAppCampaigns__ArgProps = new Array<ArgPropType>();
+export const PlasmicAppCampaigns__ArgProps = new Array<ArgPropType>(
+  "campaignHeader7",
+  "halfOpacitygradient7",
+  "children3",
+  "campaignHeader8",
+  "halfOpacitygradient8",
+  "children4"
+);
 
 export type PlasmicAppCampaigns__OverridesType = {
   root?: Flex__<"div">;
@@ -156,6 +170,41 @@ export type PlasmicAppCampaigns__OverridesType = {
   spend4?: Flex__<"div">;
   mobileedit25?: Flex__<"svg">;
   imageFade2?: Flex__<"div">;
+  mainParentempty2?: Flex__<"div">;
+  tableScrollWrapper3?: Flex__<"div">;
+  innerTable3?: Flex__<"div">;
+  campaignHeader3?: Flex__<"div">;
+  leadsHeader3?: Flex__<"div">;
+  callsHeader3?: Flex__<"div">;
+  spendHeader3?: Flex__<"div">;
+  emptyParent3?: Flex__<"div">;
+  halfOpacitygradient3?: Flex__<"div">;
+  campaignRow5?: Flex__<"div">;
+  offOn5?: Flex__<"div">;
+  campaign5?: Flex__<"div">;
+  mobileedit26?: Flex__<"svg">;
+  location5?: Flex__<"div">;
+  mobileedit27?: Flex__<"svg">;
+  budget5?: Flex__<"div">;
+  mobileedit28?: Flex__<"svg">;
+  leads5?: Flex__<"div">;
+  mobileedit29?: Flex__<"svg">;
+  calls5?: Flex__<"div">;
+  mobileedit30?: Flex__<"svg">;
+  spend5?: Flex__<"div">;
+  mobileedit31?: Flex__<"svg">;
+  imageFade3?: Flex__<"div">;
+  appContainer2?: Flex__<"div">;
+  empty2?: Flex__<"div">;
+  innerTable5?: Flex__<"div">;
+  campaignHeader9?: Flex__<"div">;
+  emptyParent5?: Flex__<"div">;
+  halfOpacitygradient9?: Flex__<"div">;
+  filled2?: Flex__<"div">;
+  innerTable6?: Flex__<"div">;
+  campaignHeader10?: Flex__<"div">;
+  emptyParent6?: Flex__<"div">;
+  halfOpacitygradient10?: Flex__<"div">;
   industryDrop?: Flex__<typeof Dropdown>;
   productDropEmpty?: Flex__<typeof Dropdown>;
   productDropInsurance?: Flex__<typeof Dropdown>;
@@ -3017,27 +3066,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                   <div
                     data-plasmic-name={"mainParent"}
                     data-plasmic-override={overrides.mainParent}
-                    className={classNames(
-                      projectcss.all,
-                      sty.mainParent,
-                      (() => {
-                        try {
-                          return !(
-                            $state?.campaigns && $state.campaigns.length > 0
-                          )
-                            ? "scrollBlock"
-                            : "";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()
-                    )}
+                    className={classNames(projectcss.all, sty.mainParent)}
                   >
                     <div
                       data-plasmic-name={"tableScrollWrapper"}
@@ -5488,6 +5517,2533 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                     </div>
                   </div>
                 ) : null}
+                <div
+                  data-plasmic-name={"mainParentempty2"}
+                  data-plasmic-override={overrides.mainParentempty2}
+                  className={classNames(projectcss.all, sty.mainParentempty2)}
+                >
+                  <div
+                    data-plasmic-name={"tableScrollWrapper3"}
+                    data-plasmic-override={overrides.tableScrollWrapper3}
+                    className={classNames(
+                      projectcss.all,
+                      sty.tableScrollWrapper3,
+                      "table-scroll"
+                    )}
+                  >
+                    <div
+                      data-plasmic-name={"innerTable3"}
+                      data-plasmic-override={overrides.innerTable3}
+                      className={classNames(projectcss.all, sty.innerTable3)}
+                    >
+                      <div
+                        data-plasmic-name={"campaignHeader3"}
+                        data-plasmic-override={overrides.campaignHeader3}
+                        className={classNames(
+                          projectcss.all,
+                          sty.campaignHeader3
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__yAtqQ
+                          )}
+                        >
+                          <ToggleLeftSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__w6Yd
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__xFsS,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Off/On"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__hniGv
+                          )}
+                        >
+                          <MoveUpRightSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__oj8Ra
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__yv9Hi,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Campaign"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__ajgbg
+                          )}
+                        >
+                          <MapPinSvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__n5SZ
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__ruiMx,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Location"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__btt8K
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__x5PsI
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___95Cg,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Budget"}
+                          </div>
+                        </div>
+                        <div
+                          data-plasmic-name={"leadsHeader3"}
+                          data-plasmic-override={overrides.leadsHeader3}
+                          className={classNames(
+                            projectcss.all,
+                            sty.leadsHeader3
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__phi5Q
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__naE7I,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Leads"}
+                          </div>
+                        </div>
+                        <div
+                          data-plasmic-name={"callsHeader3"}
+                          data-plasmic-override={overrides.callsHeader3}
+                          className={classNames(
+                            projectcss.all,
+                            sty.callsHeader3
+                          )}
+                        >
+                          <DollarSign1SvgIcon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__kfrqF
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___46MiX,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Calls"}
+                          </div>
+                        </div>
+                        {false ? (
+                          <div
+                            data-plasmic-name={"spendHeader3"}
+                            data-plasmic-override={overrides.spendHeader3}
+                            className={classNames(
+                              projectcss.all,
+                              sty.spendHeader3
+                            )}
+                          >
+                            <DollarSign1SvgIcon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__o4EOr
+                              )}
+                              role={"img"}
+                            />
+
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__kefnm,
+                                "geologica-text-medium"
+                              )}
+                            >
+                              {"Spend"}
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
+                      <div
+                        data-plasmic-name={"emptyParent3"}
+                        data-plasmic-override={overrides.emptyParent3}
+                        className={classNames(projectcss.all, sty.emptyParent3)}
+                      >
+                        <div
+                          data-plasmic-name={"halfOpacitygradient3"}
+                          data-plasmic-override={overrides.halfOpacitygradient3}
+                          className={classNames(
+                            projectcss.all,
+                            sty.halfOpacitygradient3,
+                            "halfOpacitygradient"
+                          )}
+                        >
+                          {(_par =>
+                            !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                            (() => {
+                              try {
+                                return [
+                                  {
+                                    id: 101,
+                                    created_at: "2025-01-01T10:00:00.000Z",
+                                    industry: "Insurance",
+                                    product: "Final Expense",
+                                    targeting: [
+                                      { label: "North Carolina", value: "NC" },
+                                      { label: "South Carolina", value: "SC" },
+                                      { label: "Georgia", value: "GA" }
+                                    ],
+
+                                    budget: 1200,
+                                    user_id:
+                                      "11111111-aaaa-4444-bbbb-222222222222"
+                                  },
+                                  {
+                                    id: 102,
+                                    created_at: "2025-01-05T14:12:33.000Z",
+                                    industry: "Mortgage",
+                                    product: "Refinance Leads",
+                                    targeting: [
+                                      { label: "Texas", value: "TX" },
+                                      { label: "Florida", value: "FL" }
+                                    ],
+
+                                    budget: 500,
+                                    user_id:
+                                      "11111111-aaaa-4444-bbbb-222222222222"
+                                  }
+                                ];
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
+                              }
+                            })()
+                          ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                            const currentItem = __plasmic_item_0;
+                            const currentIndex = __plasmic_idx_0;
+                            return (
+                              <div
+                                data-plasmic-name={"campaignRow5"}
+                                data-plasmic-override={overrides.campaignRow5}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.campaignRow5,
+                                  ``
+                                )}
+                                key={currentIndex}
+                              >
+                                <div
+                                  data-plasmic-name={"offOn5"}
+                                  data-plasmic-override={overrides.offOn5}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.offOn5
+                                  )}
+                                >
+                                  <Toggle
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.toggle__zr8Mx
+                                    )}
+                                    small={true}
+                                  />
+                                </div>
+                                <div
+                                  data-plasmic-name={"campaign5"}
+                                  data-plasmic-override={overrides.campaign5}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.campaign5
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__nk66I
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__dGoYa
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return currentItem?.industry;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "Industry";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___2BDjZ
+                                      )}
+                                    >
+                                      {"|"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__wxY9
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return currentItem?.product;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "Product";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                    <EditActiveSvgIcon
+                                      data-plasmic-name={"mobileedit26"}
+                                      data-plasmic-override={
+                                        overrides.mobileedit26
+                                      }
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.mobileedit26
+                                      )}
+                                      role={"img"}
+                                    />
+                                  </div>
+                                </div>
+                                <div
+                                  data-plasmic-name={"location5"}
+                                  data-plasmic-override={overrides.location5}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.location5
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__tbHUu
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__mPqni
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__hjyRl
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return (
+                                                currentItem?.targeting || []
+                                              )
+                                                .slice(0, 3)
+                                                .map(s => s.value)
+                                                .join(", ");
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "NC, SC, VA";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      </div>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            Math.max(
+                                              0,
+                                              (currentItem?.targeting?.length ||
+                                                0) - 3
+                                            ) != 0
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return true;
+                                          }
+                                          throw e;
+                                        }
+                                      })() ? (
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__mAhDm
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__zmxnd
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    "+ " +
+                                                    Math.max(
+                                                      0,
+                                                      (currentItem?.targeting
+                                                        ?.length || 0) - 3
+                                                    )
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "+ 7";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                        </div>
+                                      ) : null}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text___9Pd6R
+                                      )}
+                                    >
+                                      {"Plus 8 Others"}
+                                    </div>
+                                  </div>
+                                  <EditActiveSvgIcon
+                                    data-plasmic-name={"mobileedit27"}
+                                    data-plasmic-override={
+                                      overrides.mobileedit27
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.mobileedit27
+                                    )}
+                                    role={"img"}
+                                  />
+                                </div>
+                                <div
+                                  data-plasmic-name={"budget5"}
+                                  data-plasmic-override={overrides.budget5}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.budget5
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__nVtTi
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__x7DGz
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return "$" + currentItem?.budget;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "$-";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__uRweY
+                                      )}
+                                    >
+                                      {"Daily"}
+                                    </div>
+                                  </div>
+                                  <EditActiveSvgIcon
+                                    data-plasmic-name={"mobileedit28"}
+                                    data-plasmic-override={
+                                      overrides.mobileedit28
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.mobileedit28
+                                    )}
+                                    role={"img"}
+                                  />
+                                </div>
+                                <div
+                                  data-plasmic-name={"leads5"}
+                                  data-plasmic-override={overrides.leads5}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.leads5
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__usbav
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__q7KdW
+                                      )}
+                                    >
+                                      {"-"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__y718
+                                      )}
+                                    >
+                                      {"$- each"}
+                                    </div>
+                                  </div>
+                                  <EditActiveSvgIcon
+                                    data-plasmic-name={"mobileedit29"}
+                                    data-plasmic-override={
+                                      overrides.mobileedit29
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.mobileedit29
+                                    )}
+                                    role={"img"}
+                                  />
+                                </div>
+                                <div
+                                  data-plasmic-name={"calls5"}
+                                  data-plasmic-override={overrides.calls5}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.calls5
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___7RbOb
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__w3Vfc
+                                      )}
+                                    >
+                                      {"-"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__na6K
+                                      )}
+                                    >
+                                      {"$24.53 each"}
+                                    </div>
+                                  </div>
+                                  <EditActiveSvgIcon
+                                    data-plasmic-name={"mobileedit30"}
+                                    data-plasmic-override={
+                                      overrides.mobileedit30
+                                    }
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.mobileedit30
+                                    )}
+                                    role={"img"}
+                                  />
+                                </div>
+                                {false ? (
+                                  <div
+                                    data-plasmic-name={"spend5"}
+                                    data-plasmic-override={overrides.spend5}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.spend5
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__bj0UF
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__j4H0I
+                                        )}
+                                      >
+                                        {"-"}
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__rG4Rp
+                                        )}
+                                      >
+                                        {"Since 10/15/2025"}
+                                      </div>
+                                    </div>
+                                    <EditActiveSvgIcon
+                                      data-plasmic-name={"mobileedit31"}
+                                      data-plasmic-override={
+                                        overrides.mobileedit31
+                                      }
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.mobileedit31
+                                      )}
+                                      role={"img"}
+                                    />
+                                  </div>
+                                ) : null}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___8853Z
+                          )}
+                        >
+                          {false ? (
+                            <div
+                              data-plasmic-name={"imageFade3"}
+                              data-plasmic-override={overrides.imageFade3}
+                              className={classNames(
+                                projectcss.all,
+                                sty.imageFade3,
+                                "imageFade"
+                              )}
+                            >
+                              <PlasmicImg__
+                                alt={""}
+                                class={``}
+                                className={classNames(sty.img___8YCuM)}
+                                displayHeight={"165px"}
+                                displayMaxHeight={"none"}
+                                displayMaxWidth={"100%"}
+                                displayMinHeight={"0"}
+                                displayMinWidth={"0"}
+                                displayWidth={"100%"}
+                                loading={"eager"}
+                                src={{
+                                  src: "/plasmic/ad_buy/images/samplePng.png",
+                                  fullWidth: 1971,
+                                  fullHeight: 1151,
+                                  aspectRatio: undefined
+                                }}
+                              />
+                            </div>
+                          ) : null}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__d0XpE,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {"Campaigns"}
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__cqmiP,
+                              "geologica-text-medium"
+                            )}
+                          >
+                            {
+                              "Set up in minutes with zero learning curve \u2014 just choose your industry, product, budget, and location."
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__oLKr
+                            )}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["runCode"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return (() => {
+                                          const btn =
+                                            document.querySelector(".navBtn");
+                                          if (btn) return btn.click();
+                                        })();
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["runCode"] != null &&
+                                typeof $steps["runCode"] === "object" &&
+                                typeof $steps["runCode"].then === "function"
+                              ) {
+                                $steps["runCode"] = await $steps["runCode"];
+                              }
+                            }}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__tL4Zg,
+                                "geologica-text-medium"
+                              )}
+                            >
+                              {"Create"}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox___1BKXq
+                              )}
+                            >
+                              {false ? (
+                                <EnterSvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__wXSlT
+                                  )}
+                                  role={"img"}
+                                />
+                              ) : null}
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__zjSZf,
+                                  "geologica-h1"
+                                )}
+                              >
+                                {"C"}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  data-plasmic-name={"appContainer2"}
+                  data-plasmic-override={overrides.appContainer2}
+                  className={classNames(projectcss.all, sty.appContainer2)}
+                >
+                  <div
+                    data-plasmic-name={"empty2"}
+                    data-plasmic-override={overrides.empty2}
+                    className={classNames(
+                      projectcss.all,
+                      sty.empty2,
+                      "table-scroll"
+                    )}
+                  >
+                    <div
+                      data-plasmic-name={"innerTable5"}
+                      data-plasmic-override={overrides.innerTable5}
+                      className={classNames(projectcss.all, sty.innerTable5)}
+                    >
+                      <div
+                        data-plasmic-name={"campaignHeader9"}
+                        data-plasmic-override={overrides.campaignHeader9}
+                        className={classNames(
+                          projectcss.all,
+                          sty.campaignHeader9,
+                          (() => {
+                            try {
+                              return !(
+                                $state?.campaigns && $state.campaigns.length > 0
+                              )
+                                ? "halfOpacity"
+                                : "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        )}
+                      >
+                        {renderPlasmicSlot({
+                          defaultContents: (
+                            <React.Fragment>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__c9GQ4
+                                )}
+                              >
+                                <ToggleLeftSvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__ebQ6J
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__x6NjR,
+                                    "geologica-text-medium"
+                                  )}
+                                >
+                                  {"Off/On"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__o7Kih
+                                )}
+                              >
+                                <MoveUpRightSvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg___0G0Bj
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__nkzl,
+                                    "geologica-text-medium"
+                                  )}
+                                >
+                                  {"Campaign"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___5P3Cj
+                                )}
+                              >
+                                <MapPinSvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__jLawG
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__pnyPa,
+                                    "geologica-text-medium"
+                                  )}
+                                >
+                                  {"Location"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__sL9Wd
+                                )}
+                              >
+                                <DollarSign1SvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__qhzWw
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___53Srn,
+                                    "geologica-text-medium"
+                                  )}
+                                >
+                                  {"Budget"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__c0Es2
+                                )}
+                              >
+                                <DollarSign1SvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__uYpgu
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___4QOmm,
+                                    "geologica-text-medium"
+                                  )}
+                                >
+                                  {"Leads"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__qb43Z
+                                )}
+                              >
+                                <DollarSign1SvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg___5CuFi
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__q89,
+                                    "geologica-text-medium"
+                                  )}
+                                >
+                                  {"Calls"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__dqeXw
+                                )}
+                              >
+                                <DollarSign1SvgIcon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__hFfTx
+                                  )}
+                                  role={"img"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___9C2Yg,
+                                    "geologica-text-medium"
+                                  )}
+                                >
+                                  {"Spend"}
+                                </div>
+                              </div>
+                            </React.Fragment>
+                          ),
+                          value: args.campaignHeader7
+                        })}
+                      </div>
+                      {(() => {
+                        try {
+                          return (
+                            !$state?.campaigns || $state.campaigns.length === 0
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          data-plasmic-name={"emptyParent5"}
+                          data-plasmic-override={overrides.emptyParent5}
+                          className={classNames(
+                            projectcss.all,
+                            sty.emptyParent5
+                          )}
+                        >
+                          <div
+                            data-plasmic-name={"halfOpacitygradient9"}
+                            data-plasmic-override={
+                              overrides.halfOpacitygradient9
+                            }
+                            className={classNames(
+                              projectcss.all,
+                              sty.halfOpacitygradient9,
+                              "halfOpacitygradient"
+                            )}
+                          >
+                            {renderPlasmicSlot({
+                              defaultContents: (_par =>
+                                !_par
+                                  ? []
+                                  : Array.isArray(_par)
+                                    ? _par
+                                    : [_par])(
+                                (() => {
+                                  try {
+                                    return [
+                                      {
+                                        id: 101,
+                                        created_at: "2025-01-01T10:00:00.000Z",
+                                        industry: "Insurance",
+                                        product: "Final Expense",
+                                        targeting: [
+                                          {
+                                            label: "North Carolina",
+                                            value: "NC"
+                                          },
+                                          {
+                                            label: "South Carolina",
+                                            value: "SC"
+                                          },
+                                          { label: "Georgia", value: "GA" }
+                                        ],
+
+                                        budget: 1200,
+                                        user_id:
+                                          "11111111-aaaa-4444-bbbb-222222222222"
+                                      },
+                                      {
+                                        id: 102,
+                                        created_at: "2025-01-05T14:12:33.000Z",
+                                        industry: "Mortgage",
+                                        product: "Refinance Leads",
+                                        targeting: [
+                                          { label: "Texas", value: "TX" },
+                                          { label: "Florida", value: "FL" }
+                                        ],
+
+                                        budget: 500,
+                                        user_id:
+                                          "11111111-aaaa-4444-bbbb-222222222222"
+                                      }
+                                    ];
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return [];
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                                const currentItem = __plasmic_item_0;
+                                const currentIndex = __plasmic_idx_0;
+                                return (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___89Jce,
+                                      ``
+                                    )}
+                                    key={currentIndex}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__eNra
+                                      )}
+                                    >
+                                      <Toggle
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.toggle__prgrl
+                                        )}
+                                        small={true}
+                                      />
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox___7335
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__opc55
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__twsC
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return currentItem?.industry;
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "Industry";
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          </React.Fragment>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__olVdG
+                                          )}
+                                        >
+                                          {"|"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__kJqlr
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return currentItem?.product;
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "Product";
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          </React.Fragment>
+                                        </div>
+                                        <EditActiveSvgIcon
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.svg__bIgz2
+                                          )}
+                                          role={"img"}
+                                        />
+                                      </div>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__klvQb
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__rr6Dk
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox___83933
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__hRbWm
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    currentItem?.targeting || []
+                                                  )
+                                                    .slice(0, 3)
+                                                    .map(s => s.value)
+                                                    .join(", ");
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "NC, SC, VA";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox___19IOv
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__zZbRw
+                                              )}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return (
+                                                      "+ " +
+                                                      Math.max(
+                                                        0,
+                                                        (currentItem?.targeting
+                                                          ?.length || 0) - 3
+                                                      )
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "+ 7";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__yuJjn
+                                          )}
+                                        >
+                                          {"Plus 8 Others"}
+                                        </div>
+                                      </div>
+                                      <EditActiveSvgIcon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__bfAQb
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__lVd
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox___6XKi3
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__rFw4
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return (
+                                                  "$" + currentItem?.budget
+                                                );
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "$-";
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          </React.Fragment>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__vQt2W
+                                          )}
+                                        >
+                                          {"Daily"}
+                                        </div>
+                                      </div>
+                                      <EditActiveSvgIcon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__dC3Ky
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox___6OCfe
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__lHRzv
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text___6Yc8I
+                                          )}
+                                        >
+                                          {"-"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__p56Q1
+                                          )}
+                                        >
+                                          {"$- each"}
+                                        </div>
+                                      </div>
+                                      <EditActiveSvgIcon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__bmBl5
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__bGmUd
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__skwpr
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__vohCu
+                                          )}
+                                        >
+                                          {"-"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text___6I76H
+                                          )}
+                                        >
+                                          {"$24.53 each"}
+                                        </div>
+                                      </div>
+                                      <EditActiveSvgIcon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg___9QNAm
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__c9JaQ
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__drxtz
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__tQxRn
+                                          )}
+                                        >
+                                          {"-"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text___6PSba
+                                          )}
+                                        >
+                                          {"Since 10/15/2025"}
+                                        </div>
+                                      </div>
+                                      <EditActiveSvgIcon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__z1UWp
+                                        )}
+                                        role={"img"}
+                                      />
+                                    </div>
+                                  </div>
+                                );
+                              }),
+                              value: args.halfOpacitygradient7
+                            })}
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__dtxbV
+                            )}
+                          >
+                            {renderPlasmicSlot({
+                              defaultContents: (
+                                <React.Fragment>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__bEbxs,
+                                      "imageFade"
+                                    )}
+                                  >
+                                    <PlasmicImg__
+                                      alt={""}
+                                      class={``}
+                                      className={classNames(sty.img__tFtof)}
+                                      displayHeight={"165px"}
+                                      displayMaxHeight={"none"}
+                                      displayMaxWidth={"100%"}
+                                      displayMinHeight={"0"}
+                                      displayMinWidth={"0"}
+                                      displayWidth={"100%"}
+                                      loading={"eager"}
+                                      src={{
+                                        src: "/plasmic/ad_buy/images/samplePng.png",
+                                        fullWidth: 1971,
+                                        fullHeight: 1151,
+                                        aspectRatio: undefined
+                                      }}
+                                    />
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__r3DZq,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Campaigns"}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__raVlr,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {
+                                      "Set up in minutes with zero learning curve \u2014 just choose your industry, product, budget, and location."
+                                    }
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__ybYdf
+                                    )}
+                                    onClick={async event => {
+                                      const $steps = {};
+
+                                      $steps["runCode"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (() => {
+                                                  const btn =
+                                                    document.querySelector(
+                                                      ".navBtn"
+                                                    );
+                                                  if (btn) return btn.click();
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode"] != null &&
+                                        typeof $steps["runCode"] === "object" &&
+                                        typeof $steps["runCode"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode"] =
+                                          await $steps["runCode"];
+                                      }
+                                    }}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__uDcxg,
+                                        "geologica-text-medium"
+                                      )}
+                                    >
+                                      {"Create"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__tuu1
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__zgQtT,
+                                          "geologica-h1"
+                                        )}
+                                      >
+                                        {"C"}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </React.Fragment>
+                              ),
+                              value: args.children3
+                            })}
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                  {false ? (
+                    <div
+                      data-plasmic-name={"filled2"}
+                      data-plasmic-override={overrides.filled2}
+                      className={classNames(
+                        projectcss.all,
+                        sty.filled2,
+                        "table-scroll"
+                      )}
+                    >
+                      <div
+                        data-plasmic-name={"innerTable6"}
+                        data-plasmic-override={overrides.innerTable6}
+                        className={classNames(projectcss.all, sty.innerTable6)}
+                      >
+                        <div
+                          data-plasmic-name={"campaignHeader10"}
+                          data-plasmic-override={overrides.campaignHeader10}
+                          className={classNames(
+                            projectcss.all,
+                            sty.campaignHeader10,
+                            (() => {
+                              try {
+                                return !(
+                                  $state?.campaigns &&
+                                  $state.campaigns.length > 0
+                                )
+                                  ? "halfOpacity"
+                                  : "";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()
+                          )}
+                        >
+                          {renderPlasmicSlot({
+                            defaultContents: (
+                              <React.Fragment>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__qXfj2
+                                  )}
+                                >
+                                  <ToggleLeftSvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__awj1S
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__jDdy,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Off/On"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__ndE5
+                                  )}
+                                >
+                                  <MoveUpRightSvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__mOcCj
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__daoGy,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Campaign"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__cxeZ4
+                                  )}
+                                >
+                                  <MapPinSvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__sGkd9
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__eXmql,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Location"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__osApv
+                                  )}
+                                >
+                                  <DollarSign1SvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__bAw08
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__mOmSb,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Budget"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__o0CwP
+                                  )}
+                                >
+                                  <DollarSign1SvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__xwppm
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__bpOtA,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Leads"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___9Md8B
+                                  )}
+                                >
+                                  <DollarSign1SvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__fwGUd
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__gd94,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Calls"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___224Cv
+                                  )}
+                                >
+                                  <DollarSign1SvgIcon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__sdp5M
+                                    )}
+                                    role={"img"}
+                                  />
+
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__yYz9,
+                                      "geologica-text-medium"
+                                    )}
+                                  >
+                                    {"Spend"}
+                                  </div>
+                                </div>
+                              </React.Fragment>
+                            ),
+                            value: args.campaignHeader8
+                          })}
+                        </div>
+                        {(() => {
+                          try {
+                            return (
+                              !$state?.campaigns ||
+                              $state.campaigns.length === 0
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            data-plasmic-name={"emptyParent6"}
+                            data-plasmic-override={overrides.emptyParent6}
+                            className={classNames(
+                              projectcss.all,
+                              sty.emptyParent6
+                            )}
+                          >
+                            <div
+                              data-plasmic-name={"halfOpacitygradient10"}
+                              data-plasmic-override={
+                                overrides.halfOpacitygradient10
+                              }
+                              className={classNames(
+                                projectcss.all,
+                                sty.halfOpacitygradient10,
+                                "halfOpacitygradient"
+                              )}
+                            >
+                              {renderPlasmicSlot({
+                                defaultContents: (_par =>
+                                  !_par
+                                    ? []
+                                    : Array.isArray(_par)
+                                      ? _par
+                                      : [_par])(
+                                  (() => {
+                                    try {
+                                      return [
+                                        {
+                                          id: 101,
+                                          created_at:
+                                            "2025-01-01T10:00:00.000Z",
+                                          industry: "Insurance",
+                                          product: "Final Expense",
+                                          targeting: [
+                                            {
+                                              label: "North Carolina",
+                                              value: "NC"
+                                            },
+                                            {
+                                              label: "South Carolina",
+                                              value: "SC"
+                                            },
+                                            { label: "Georgia", value: "GA" }
+                                          ],
+
+                                          budget: 1200,
+                                          user_id:
+                                            "11111111-aaaa-4444-bbbb-222222222222"
+                                        },
+                                        {
+                                          id: 102,
+                                          created_at:
+                                            "2025-01-05T14:12:33.000Z",
+                                          industry: "Mortgage",
+                                          product: "Refinance Leads",
+                                          targeting: [
+                                            { label: "Texas", value: "TX" },
+                                            { label: "Florida", value: "FL" }
+                                          ],
+
+                                          budget: 500,
+                                          user_id:
+                                            "11111111-aaaa-4444-bbbb-222222222222"
+                                        }
+                                      ];
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return [];
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                                  const currentItem = __plasmic_item_0;
+                                  const currentIndex = __plasmic_idx_0;
+                                  return (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox___1T02K,
+                                        ``
+                                      )}
+                                      key={currentIndex}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__bXpGd
+                                        )}
+                                      >
+                                        <Toggle
+                                          className={classNames(
+                                            "__wab_instance",
+                                            sty.toggle__versl
+                                          )}
+                                          small={true}
+                                        />
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__xtXhG
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__ghh3I
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__gSr6
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return currentItem?.industry;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "Industry";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text___4IuQo
+                                            )}
+                                          >
+                                            {"|"}
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__jbXIj
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return currentItem?.product;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "Product";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                          <EditActiveSvgIcon
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.svg__ngAen
+                                            )}
+                                            role={"img"}
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox___4MZ4O
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__rKjHn
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__hQ1QW
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__tacvH
+                                              )}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return (
+                                                      currentItem?.targeting ||
+                                                      []
+                                                    )
+                                                      .slice(0, 3)
+                                                      .map(s => s.value)
+                                                      .join(", ");
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "NC, SC, VA";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__rmiV0
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__rTcQ4
+                                                )}
+                                              >
+                                                <React.Fragment>
+                                                  {(() => {
+                                                    try {
+                                                      return (
+                                                        "+ " +
+                                                        Math.max(
+                                                          0,
+                                                          (currentItem
+                                                            ?.targeting
+                                                            ?.length || 0) - 3
+                                                        )
+                                                      );
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return "+ 7";
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()}
+                                                </React.Fragment>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__m9Oa
+                                            )}
+                                          >
+                                            {"Plus 8 Others"}
+                                          </div>
+                                        </div>
+                                        <EditActiveSvgIcon
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.svg__uw0RZ
+                                          )}
+                                          role={"img"}
+                                        />
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__xs2ZR
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__uQ5Ch
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__nbDcB
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    "$" + currentItem?.budget
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "$-";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__mIpUn
+                                            )}
+                                          >
+                                            {"Daily"}
+                                          </div>
+                                        </div>
+                                        <EditActiveSvgIcon
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.svg__rv3BX
+                                          )}
+                                          role={"img"}
+                                        />
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox___1LDgZ
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__efVb6
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__jsAu4
+                                            )}
+                                          >
+                                            {"-"}
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text___1VqB
+                                            )}
+                                          >
+                                            {"$- each"}
+                                          </div>
+                                        </div>
+                                        <EditActiveSvgIcon
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.svg__xl8Su
+                                          )}
+                                          role={"img"}
+                                        />
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox___4VgqL
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__o64DD
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__oeqv1
+                                            )}
+                                          >
+                                            {"-"}
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__r4PaA
+                                            )}
+                                          >
+                                            {"$24.53 each"}
+                                          </div>
+                                        </div>
+                                        <EditActiveSvgIcon
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.svg___7Ocjy
+                                          )}
+                                          role={"img"}
+                                        />
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__pQbZi
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox___8TwBt
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__lfab9
+                                            )}
+                                          >
+                                            {"-"}
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__cHMg
+                                            )}
+                                          >
+                                            {"Since 10/15/2025"}
+                                          </div>
+                                        </div>
+                                        <EditActiveSvgIcon
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.svg__dOkG
+                                          )}
+                                          role={"img"}
+                                        />
+                                      </div>
+                                    </div>
+                                  );
+                                }),
+                                value: args.halfOpacitygradient8
+                              })}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__ubEai
+                              )}
+                            >
+                              {renderPlasmicSlot({
+                                defaultContents: (
+                                  <React.Fragment>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__fWyj,
+                                        "imageFade"
+                                      )}
+                                    >
+                                      <PlasmicImg__
+                                        alt={""}
+                                        class={``}
+                                        className={classNames(sty.img__zs9Ur)}
+                                        displayHeight={"165px"}
+                                        displayMaxHeight={"none"}
+                                        displayMaxWidth={"100%"}
+                                        displayMinHeight={"0"}
+                                        displayMinWidth={"0"}
+                                        displayWidth={"100%"}
+                                        loading={"eager"}
+                                        src={{
+                                          src: "/plasmic/ad_buy/images/samplePng.png",
+                                          fullWidth: 1971,
+                                          fullHeight: 1151,
+                                          aspectRatio: undefined
+                                        }}
+                                      />
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__p1TBh,
+                                        "geologica-text-medium"
+                                      )}
+                                    >
+                                      {"Campaigns"}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__sboyo,
+                                        "geologica-text-medium"
+                                      )}
+                                    >
+                                      {
+                                        "Set up in minutes with zero learning curve \u2014 just choose your industry, product, budget, and location."
+                                      }
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__lKCb2
+                                      )}
+                                      onClick={async event => {
+                                        const $steps = {};
+
+                                        $steps["runCode"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                customFunction: async () => {
+                                                  return (() => {
+                                                    const btn =
+                                                      document.querySelector(
+                                                        ".navBtn"
+                                                      );
+                                                    if (btn) return btn.click();
+                                                  })();
+                                                }
+                                              };
+                                              return (({ customFunction }) => {
+                                                return customFunction();
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["runCode"] != null &&
+                                          typeof $steps["runCode"] ===
+                                            "object" &&
+                                          typeof $steps["runCode"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["runCode"] =
+                                            await $steps["runCode"];
+                                        }
+                                      }}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__oYrx,
+                                          "geologica-text-medium"
+                                        )}
+                                      >
+                                        {"Create"}
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox___574T4
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__eMeFd,
+                                            "geologica-h1"
+                                          )}
+                                        >
+                                          {"C"}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </React.Fragment>
+                                ),
+                                value: args.children4
+                              })}
+                            </div>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
               </React.Fragment>
             }
             navBtnclick={async event => {
@@ -5731,6 +8287,41 @@ const PlasmicDescendants = {
     "spend4",
     "mobileedit25",
     "imageFade2",
+    "mainParentempty2",
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "appContainer2",
+    "empty2",
+    "innerTable5",
+    "campaignHeader9",
+    "emptyParent5",
+    "halfOpacitygradient9",
+    "filled2",
+    "innerTable6",
+    "campaignHeader10",
+    "emptyParent6",
+    "halfOpacitygradient10",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -5811,6 +8402,41 @@ const PlasmicDescendants = {
     "spend4",
     "mobileedit25",
     "imageFade2",
+    "mainParentempty2",
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3",
+    "appContainer2",
+    "empty2",
+    "innerTable5",
+    "campaignHeader9",
+    "emptyParent5",
+    "halfOpacitygradient9",
+    "filled2",
+    "innerTable6",
+    "campaignHeader10",
+    "emptyParent6",
+    "halfOpacitygradient10",
     "industryDrop",
     "productDropEmpty",
     "productDropInsurance",
@@ -6195,6 +8821,201 @@ const PlasmicDescendants = {
   spend4: ["spend4", "mobileedit25"],
   mobileedit25: ["mobileedit25"],
   imageFade2: ["imageFade2"],
+  mainParentempty2: [
+    "mainParentempty2",
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3"
+  ],
+  tableScrollWrapper3: [
+    "tableScrollWrapper3",
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3"
+  ],
+  innerTable3: [
+    "innerTable3",
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3",
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3"
+  ],
+  campaignHeader3: [
+    "campaignHeader3",
+    "leadsHeader3",
+    "callsHeader3",
+    "spendHeader3"
+  ],
+  leadsHeader3: ["leadsHeader3"],
+  callsHeader3: ["callsHeader3"],
+  spendHeader3: ["spendHeader3"],
+  emptyParent3: [
+    "emptyParent3",
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31",
+    "imageFade3"
+  ],
+  halfOpacitygradient3: [
+    "halfOpacitygradient3",
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31"
+  ],
+  campaignRow5: [
+    "campaignRow5",
+    "offOn5",
+    "campaign5",
+    "mobileedit26",
+    "location5",
+    "mobileedit27",
+    "budget5",
+    "mobileedit28",
+    "leads5",
+    "mobileedit29",
+    "calls5",
+    "mobileedit30",
+    "spend5",
+    "mobileedit31"
+  ],
+  offOn5: ["offOn5"],
+  campaign5: ["campaign5", "mobileedit26"],
+  mobileedit26: ["mobileedit26"],
+  location5: ["location5", "mobileedit27"],
+  mobileedit27: ["mobileedit27"],
+  budget5: ["budget5", "mobileedit28"],
+  mobileedit28: ["mobileedit28"],
+  leads5: ["leads5", "mobileedit29"],
+  mobileedit29: ["mobileedit29"],
+  calls5: ["calls5", "mobileedit30"],
+  mobileedit30: ["mobileedit30"],
+  spend5: ["spend5", "mobileedit31"],
+  mobileedit31: ["mobileedit31"],
+  imageFade3: ["imageFade3"],
+  appContainer2: [
+    "appContainer2",
+    "empty2",
+    "innerTable5",
+    "campaignHeader9",
+    "emptyParent5",
+    "halfOpacitygradient9",
+    "filled2",
+    "innerTable6",
+    "campaignHeader10",
+    "emptyParent6",
+    "halfOpacitygradient10"
+  ],
+  empty2: [
+    "empty2",
+    "innerTable5",
+    "campaignHeader9",
+    "emptyParent5",
+    "halfOpacitygradient9"
+  ],
+  innerTable5: [
+    "innerTable5",
+    "campaignHeader9",
+    "emptyParent5",
+    "halfOpacitygradient9"
+  ],
+  campaignHeader9: ["campaignHeader9"],
+  emptyParent5: ["emptyParent5", "halfOpacitygradient9"],
+  halfOpacitygradient9: ["halfOpacitygradient9"],
+  filled2: [
+    "filled2",
+    "innerTable6",
+    "campaignHeader10",
+    "emptyParent6",
+    "halfOpacitygradient10"
+  ],
+  innerTable6: [
+    "innerTable6",
+    "campaignHeader10",
+    "emptyParent6",
+    "halfOpacitygradient10"
+  ],
+  campaignHeader10: ["campaignHeader10"],
+  emptyParent6: ["emptyParent6", "halfOpacitygradient10"],
+  halfOpacitygradient10: ["halfOpacitygradient10"],
   industryDrop: ["industryDrop"],
   productDropEmpty: ["productDropEmpty"],
   productDropInsurance: ["productDropInsurance"],
@@ -6279,6 +9100,41 @@ type NodeDefaultElementType = {
   spend4: "div";
   mobileedit25: "svg";
   imageFade2: "div";
+  mainParentempty2: "div";
+  tableScrollWrapper3: "div";
+  innerTable3: "div";
+  campaignHeader3: "div";
+  leadsHeader3: "div";
+  callsHeader3: "div";
+  spendHeader3: "div";
+  emptyParent3: "div";
+  halfOpacitygradient3: "div";
+  campaignRow5: "div";
+  offOn5: "div";
+  campaign5: "div";
+  mobileedit26: "svg";
+  location5: "div";
+  mobileedit27: "svg";
+  budget5: "div";
+  mobileedit28: "svg";
+  leads5: "div";
+  mobileedit29: "svg";
+  calls5: "div";
+  mobileedit30: "svg";
+  spend5: "div";
+  mobileedit31: "svg";
+  imageFade3: "div";
+  appContainer2: "div";
+  empty2: "div";
+  innerTable5: "div";
+  campaignHeader9: "div";
+  emptyParent5: "div";
+  halfOpacitygradient9: "div";
+  filled2: "div";
+  innerTable6: "div";
+  campaignHeader10: "div";
+  emptyParent6: "div";
+  halfOpacitygradient10: "div";
   industryDrop: typeof Dropdown;
   productDropEmpty: typeof Dropdown;
   productDropInsurance: typeof Dropdown;
@@ -6421,6 +9277,41 @@ export const PlasmicAppCampaigns = Object.assign(
     spend4: makeNodeComponent("spend4"),
     mobileedit25: makeNodeComponent("mobileedit25"),
     imageFade2: makeNodeComponent("imageFade2"),
+    mainParentempty2: makeNodeComponent("mainParentempty2"),
+    tableScrollWrapper3: makeNodeComponent("tableScrollWrapper3"),
+    innerTable3: makeNodeComponent("innerTable3"),
+    campaignHeader3: makeNodeComponent("campaignHeader3"),
+    leadsHeader3: makeNodeComponent("leadsHeader3"),
+    callsHeader3: makeNodeComponent("callsHeader3"),
+    spendHeader3: makeNodeComponent("spendHeader3"),
+    emptyParent3: makeNodeComponent("emptyParent3"),
+    halfOpacitygradient3: makeNodeComponent("halfOpacitygradient3"),
+    campaignRow5: makeNodeComponent("campaignRow5"),
+    offOn5: makeNodeComponent("offOn5"),
+    campaign5: makeNodeComponent("campaign5"),
+    mobileedit26: makeNodeComponent("mobileedit26"),
+    location5: makeNodeComponent("location5"),
+    mobileedit27: makeNodeComponent("mobileedit27"),
+    budget5: makeNodeComponent("budget5"),
+    mobileedit28: makeNodeComponent("mobileedit28"),
+    leads5: makeNodeComponent("leads5"),
+    mobileedit29: makeNodeComponent("mobileedit29"),
+    calls5: makeNodeComponent("calls5"),
+    mobileedit30: makeNodeComponent("mobileedit30"),
+    spend5: makeNodeComponent("spend5"),
+    mobileedit31: makeNodeComponent("mobileedit31"),
+    imageFade3: makeNodeComponent("imageFade3"),
+    appContainer2: makeNodeComponent("appContainer2"),
+    empty2: makeNodeComponent("empty2"),
+    innerTable5: makeNodeComponent("innerTable5"),
+    campaignHeader9: makeNodeComponent("campaignHeader9"),
+    emptyParent5: makeNodeComponent("emptyParent5"),
+    halfOpacitygradient9: makeNodeComponent("halfOpacitygradient9"),
+    filled2: makeNodeComponent("filled2"),
+    innerTable6: makeNodeComponent("innerTable6"),
+    campaignHeader10: makeNodeComponent("campaignHeader10"),
+    emptyParent6: makeNodeComponent("emptyParent6"),
+    halfOpacitygradient10: makeNodeComponent("halfOpacitygradient10"),
     industryDrop: makeNodeComponent("industryDrop"),
     productDropEmpty: makeNodeComponent("productDropEmpty"),
     productDropInsurance: makeNodeComponent("productDropInsurance"),
