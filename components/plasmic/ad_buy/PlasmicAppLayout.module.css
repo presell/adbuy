@@ -181,7 +181,6 @@
   padding: 0px 0px 8px;
 }
 .freeBox__hhXVz {
-  display: flex;
   flex-direction: column;
   position: relative;
   width: 45px;
@@ -192,6 +191,7 @@
   background: none;
   cursor: pointer;
   flex-shrink: 0;
+  display: none;
   border-radius: 8px;
   padding: 8px;
   margin: 0px 0px 12px;
@@ -207,7 +207,6 @@
   flex-shrink: 0;
 }
 .freeBox__nlZf {
-  display: flex;
   flex-direction: column;
   position: relative;
   width: 45px;
@@ -218,6 +217,7 @@
   background: none;
   cursor: pointer;
   flex-shrink: 0;
+  display: none;
   border-radius: 8px;
   padding: 8px;
   margin: 0px 0px 12px;
