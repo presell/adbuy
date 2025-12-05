@@ -4743,7 +4743,7 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                 "geologica-text-medium"
                               )}
                             >
-                              {"Leads"}
+                              {"Results"}
                             </div>
                           </div>
                           <div
@@ -5231,31 +5231,6 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                         sty.leads4
                                       )}
                                     >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox___338Fp
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__ar3Pl
-                                          )}
-                                        >
-                                          {"-"}
-                                        </div>
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__d5IBt
-                                          )}
-                                        >
-                                          {"$- each"}
-                                        </div>
-                                      </div>
                                       <EditActiveSvgIcon
                                         data-plasmic-name={"mobileedit23"}
                                         data-plasmic-override={
@@ -5267,6 +5242,32 @@ function PlasmicAppCampaigns__RenderFunc(props: {
                                         )}
                                         role={"img"}
                                       />
+
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__ejDVc
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__p55Uo
+                                          )}
+                                        >
+                                          {"55 Leads"}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__gm6Uz
+                                          )}
+                                        >
+                                          {"$4.87 CPL"}
+                                        </div>
+                                      </div>
                                     </div>
                                     <div
                                       data-plasmic-name={"calls4"}

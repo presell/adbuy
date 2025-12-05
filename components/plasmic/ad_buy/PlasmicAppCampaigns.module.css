@@ -1726,7 +1726,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 115px;
+  width: 140px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -1789,7 +1789,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 280px;
+  width: 300px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -1849,7 +1849,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 165px;
+  width: 200px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -1909,7 +1909,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 165px;
+  width: 230px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -1969,7 +1969,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 165px;
+  width: 175px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -2026,7 +2026,6 @@
 }
 .callsHeader2 {
   animation: none;
-  display: flex;
   flex-direction: row;
   position: relative;
   width: 165px;
@@ -2035,6 +2034,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
+  display: none;
   padding: 8px 16px 8px 35px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -2183,7 +2183,7 @@
 .offOn4 {
   display: flex;
   flex-direction: column;
-  width: 115px;
+  width: 140px;
   height: auto;
   max-width: 100%;
   justify-content: center;
@@ -2206,7 +2206,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 280px;
+  width: 300px;
   height: auto;
   max-width: 100%;
   justify-content: center;
@@ -2273,7 +2273,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 165px;
+  width: 200px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -2366,7 +2366,7 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 165px;
+  width: 230px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
@@ -2424,44 +2424,13 @@
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 165px;
+  width: 175px;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
   padding: 8px 16px 8px 35px;
-}
-.freeBox___338Fp {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-}
-.text__ar3Pl {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-weight: 500;
-  font-size: 14.5px;
-  min-width: 0;
-}
-.text__d5IBt {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-weight: 300;
-  padding-bottom: 0px;
-  min-width: 0;
-  display: none;
 }
 .mobileedit23 {
   animation: none;
@@ -2480,8 +2449,36 @@
     animation: none;
   }
 }
-.calls4 {
+.freeBox__ejDVc {
   display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+}
+.text__p55Uo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 500;
+  font-size: 14.5px;
+  min-width: 0;
+}
+.text__gm6Uz {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 12px;
+  font-weight: 300;
+  min-width: 0;
+}
+.calls4 {
   flex-direction: row;
   position: relative;
   width: 165px;
@@ -2490,6 +2487,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-shrink: 0;
+  display: none;
   padding: 8px 16px 8px 35px;
 }
 .freeBox__kThmJ {
