@@ -926,6 +926,11 @@
           "id": "zWug_iP9VWff",
           "name": "ClockSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__ClockSvg.tsx"
+        },
+        {
+          "id": "PMi8rGMI31Ll",
+          "name": "DownloadIconSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__DownloadIconSvg.tsx"
         }
       ],
       "images": [
