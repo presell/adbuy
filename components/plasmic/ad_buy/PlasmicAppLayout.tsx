@@ -83,7 +83,6 @@ import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-impor
 import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
 import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
-import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 import PanelSvgIcon from "./icons/PlasmicIcon__PanelSvg"; // plasmic-import: eDFyNm28uzac/icon
 import EnterSvgIcon from "./icons/PlasmicIcon__EnterSvg"; // plasmic-import: x8a8y30xjfZo/icon
 import LeadsProductSvgIcon from "./icons/PlasmicIcon__LeadsProductSvg"; // plasmic-import: zxoMIvW6Akl7/icon
@@ -2032,7 +2031,7 @@ function PlasmicAppLayout__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox___3ILu5)}>
               <div className={classNames(projectcss.all, sty.freeBox___4ZqZ)}>
-                <CallSvgrepoComSvgIcon
+                <WorkflowsiconSvgIcon
                   className={classNames(projectcss.all, sty.svg__iwuZq)}
                   role={"img"}
                 />
@@ -2045,7 +2044,7 @@ function PlasmicAppLayout__RenderFunc(props: {
                     "geologica-h1"
                   )}
                 >
-                  {"Calls Today"}
+                  {"Events Today"}
                 </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__nxHy6)}
