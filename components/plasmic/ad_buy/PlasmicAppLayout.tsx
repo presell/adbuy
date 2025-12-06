@@ -77,10 +77,11 @@ import HelpSvgIcon from "./icons/PlasmicIcon__HelpSvg"; // plasmic-import: omxN7
 import LogoutCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__LogoutCircleSvgrepoComSvg"; // plasmic-import: pWrPQKIqDtgo/icon
 import Building2SvgIcon from "./icons/PlasmicIcon__Building2Svg"; // plasmic-import: zs93xyGd0bQn/icon
 import LeadAppSvgIcon from "./icons/PlasmicIcon__LeadAppSvg"; // plasmic-import: 0splylcoynac/icon
-import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
-import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
+import EventsSvgIcon from "./icons/PlasmicIcon__EventsSvg"; // plasmic-import: nVTY2c1F7xXr/icon
 import CreditCardSvgIcon from "./icons/PlasmicIcon__CreditCardSvg"; // plasmic-import: 8wp36EsoJArA/icon
 import DocumentSvgIcon from "./icons/PlasmicIcon__DocumentSvg"; // plasmic-import: Q8BUWmPptTcP/icon
+import PhoneSvgIcon from "./icons/PlasmicIcon__PhoneSvg"; // plasmic-import: eBcKEzruN5_L/icon
+import AnalyticsSharpSvgrepoComSvgIcon from "./icons/PlasmicIcon__AnalyticsSharpSvgrepoComSvg"; // plasmic-import: SblPtQiKCaIH/icon
 import ThinChevronRightSvgIcon from "./icons/PlasmicIcon__ThinChevronRightSvg"; // plasmic-import: Srne4mVNsLJU/icon
 import CallSvgrepoComSvgIcon from "./icons/PlasmicIcon__CallSvgrepoComSvg"; // plasmic-import: bAyy2Q1Fh9Vl/icon
 import PanelSvgIcon from "./icons/PlasmicIcon__PanelSvg"; // plasmic-import: eDFyNm28uzac/icon
@@ -95,7 +96,7 @@ export type PlasmicAppLayout__VariantMembers = {
   page:
     | "campaigns"
     | "leads"
-    | "calls"
+    | "events"
     | "analytics"
     | "cards"
     | "invoices"
@@ -106,7 +107,7 @@ export type PlasmicAppLayout__VariantsArgs = {
   page?: SingleChoiceArg<
     | "campaigns"
     | "leads"
-    | "calls"
+    | "events"
     | "analytics"
     | "cards"
     | "invoices"
@@ -173,7 +174,7 @@ export interface DefaultAppLayoutProps {
   page?: SingleChoiceArg<
     | "campaigns"
     | "leads"
-    | "calls"
+    | "events"
     | "analytics"
     | "cards"
     | "invoices"
@@ -281,13 +282,13 @@ function PlasmicAppLayout__RenderFunc(props: {
             "analytics"
           ),
           [sty.appLayoutpage_api]: hasVariant($state, "page", "api"),
-          [sty.appLayoutpage_calls]: hasVariant($state, "page", "calls"),
           [sty.appLayoutpage_campaigns]: hasVariant(
             $state,
             "page",
             "campaigns"
           ),
           [sty.appLayoutpage_cards]: hasVariant($state, "page", "cards"),
+          [sty.appLayoutpage_events]: hasVariant($state, "page", "events"),
           [sty.appLayoutpage_invoices]: hasVariant($state, "page", "invoices"),
           [sty.appLayoutpage_leads]: hasVariant($state, "page", "leads"),
           [sty.appLayoutpage_workflows]: hasVariant($state, "page", "workflows")
@@ -687,15 +688,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                       "page",
                       "analytics"
                     ),
-                    [sty.linkpage_calls__upfKhxO156]: hasVariant(
-                      $state,
-                      "page",
-                      "calls"
-                    ),
                     [sty.linkpage_cards__upfKhtk8Pz]: hasVariant(
                       $state,
                       "page",
                       "cards"
+                    ),
+                    [sty.linkpage_events__upfKhxO156]: hasVariant(
+                      $state,
+                      "page",
+                      "events"
                     ),
                     [sty.linkpage_invoices__upfKhQBuoH]: hasVariant(
                       $state,
@@ -725,15 +726,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                       "page",
                       "analytics"
                     ),
-                    [sty.svgpage_calls__vn3NhxO156]: hasVariant(
-                      $state,
-                      "page",
-                      "calls"
-                    ),
                     [sty.svgpage_cards__vn3Nhtk8Pz]: hasVariant(
                       $state,
                       "page",
                       "cards"
+                    ),
+                    [sty.svgpage_events__vn3NhxO156]: hasVariant(
+                      $state,
+                      "page",
+                      "events"
                     ),
                     [sty.svgpage_invoices__vn3NhQBuoH]: hasVariant(
                       $state,
@@ -761,11 +762,6 @@ function PlasmicAppLayout__RenderFunc(props: {
                         "page",
                         "analytics"
                       ),
-                      [sty.textpage_calls___2XDLxO156]: hasVariant(
-                        $state,
-                        "page",
-                        "calls"
-                      ),
                       [sty.textpage_campaigns___2XDLpKxs6]: hasVariant(
                         $state,
                         "page",
@@ -775,6 +771,11 @@ function PlasmicAppLayout__RenderFunc(props: {
                         $state,
                         "page",
                         "cards"
+                      ),
+                      [sty.textpage_events___2XDLxO156]: hasVariant(
+                        $state,
+                        "page",
+                        "events"
                       ),
                       [sty.textpage_invoices___2XDLQBuoH]: hasVariant(
                         $state,
@@ -859,10 +860,10 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.a,
                   sty.link__rfN8P,
                   {
-                    [sty.linkpage_calls__rfN8PxO156]: hasVariant(
+                    [sty.linkpage_events__rfN8PxO156]: hasVariant(
                       $state,
                       "page",
-                      "calls"
+                      "events"
                     )
                   }
                 )}
@@ -870,12 +871,12 @@ function PlasmicAppLayout__RenderFunc(props: {
                 href={`/app/campaigns/calls`}
                 platform={"nextjs"}
               >
-                <PhoneSvgIcon
+                <WorkflowsiconSvgIcon
                   className={classNames(projectcss.all, sty.svg__ou0Lv, {
-                    [sty.svgpage_calls__ou0LvxO156]: hasVariant(
+                    [sty.svgpage_events__ou0LvxO156]: hasVariant(
                       $state,
                       "page",
-                      "calls"
+                      "events"
                     )
                   })}
                   role={"img"}
@@ -888,15 +889,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                     sty.text__apwZ,
                     "geologica-h2",
                     {
-                      [sty.textpage_calls__apwZxO156]: hasVariant(
+                      [sty.textpage_events__apwZxO156]: hasVariant(
                         $state,
                         "page",
-                        "calls"
+                        "events"
                       )
                     }
                   )}
                 >
-                  {"Calls"}
+                  {"Events"}
                 </div>
               </PlasmicLink__>
               <div
@@ -926,7 +927,7 @@ function PlasmicAppLayout__RenderFunc(props: {
                 href={`/app/campaigns/analytics`}
                 platform={"nextjs"}
               >
-                <AnalyticsSharpSvgrepoComSvgIcon
+                <EventsSvgIcon
                   className={classNames(projectcss.all, sty.svg__mcxJk, {
                     [sty.svgpage_analytics__mcxJk3CU1K]: hasVariant(
                       $state,
@@ -1113,15 +1114,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                       "page",
                       "analytics"
                     ),
-                    [sty.linkpage_calls___4UqsVxO156]: hasVariant(
-                      $state,
-                      "page",
-                      "calls"
-                    ),
                     [sty.linkpage_cards___4UqsVtk8Pz]: hasVariant(
                       $state,
                       "page",
                       "cards"
+                    ),
+                    [sty.linkpage_events___4UqsVxO156]: hasVariant(
+                      $state,
+                      "page",
+                      "events"
                     ),
                     [sty.linkpage_invoices___4UqsVqBuoH]: hasVariant(
                       $state,
@@ -1151,15 +1152,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                       "page",
                       "analytics"
                     ),
-                    [sty.svgpage_calls__yd9EIxO156]: hasVariant(
-                      $state,
-                      "page",
-                      "calls"
-                    ),
                     [sty.svgpage_cards__yd9EItk8Pz]: hasVariant(
                       $state,
                       "page",
                       "cards"
+                    ),
+                    [sty.svgpage_events__yd9EIxO156]: hasVariant(
+                      $state,
+                      "page",
+                      "events"
                     ),
                     [sty.svgpage_invoices__yd9EIqBuoH]: hasVariant(
                       $state,
@@ -1187,11 +1188,6 @@ function PlasmicAppLayout__RenderFunc(props: {
                         "page",
                         "analytics"
                       ),
-                      [sty.textpage_calls___9L0AExO156]: hasVariant(
-                        $state,
-                        "page",
-                        "calls"
-                      ),
                       [sty.textpage_campaigns___9L0AEpKxs6]: hasVariant(
                         $state,
                         "page",
@@ -1201,6 +1197,11 @@ function PlasmicAppLayout__RenderFunc(props: {
                         $state,
                         "page",
                         "cards"
+                      ),
+                      [sty.textpage_events___9L0AExO156]: hasVariant(
+                        $state,
+                        "page",
+                        "events"
                       ),
                       [sty.textpage_invoices___9L0AeqBuoH]: hasVariant(
                         $state,
@@ -1285,10 +1286,10 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.a,
                   sty.link___33EIt,
                   {
-                    [sty.linkpage_calls___33EItxO156]: hasVariant(
+                    [sty.linkpage_events___33EItxO156]: hasVariant(
                       $state,
                       "page",
-                      "calls"
+                      "events"
                     )
                   }
                 )}
@@ -1298,10 +1299,10 @@ function PlasmicAppLayout__RenderFunc(props: {
               >
                 <PhoneSvgIcon
                   className={classNames(projectcss.all, sty.svg__fcwX, {
-                    [sty.svgpage_calls__fcwXxO156]: hasVariant(
+                    [sty.svgpage_events__fcwXxO156]: hasVariant(
                       $state,
                       "page",
-                      "calls"
+                      "events"
                     )
                   })}
                   role={"img"}
@@ -1314,10 +1315,10 @@ function PlasmicAppLayout__RenderFunc(props: {
                     sty.text___7QqlJ,
                     "geologica-h2",
                     {
-                      [sty.textpage_calls___7QqlJxO156]: hasVariant(
+                      [sty.textpage_events___7QqlJxO156]: hasVariant(
                         $state,
                         "page",
-                        "calls"
+                        "events"
                       )
                     }
                   )}
@@ -1532,15 +1533,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                       "page",
                       "analytics"
                     ),
-                    [sty.linkpage_calls__mvmeXO156]: hasVariant(
-                      $state,
-                      "page",
-                      "calls"
-                    ),
                     [sty.linkpage_cards__mvmeTk8Pz]: hasVariant(
                       $state,
                       "page",
                       "cards"
+                    ),
+                    [sty.linkpage_events__mvmeXO156]: hasVariant(
+                      $state,
+                      "page",
+                      "events"
                     ),
                     [sty.linkpage_invoices__mvmeQBuoH]: hasVariant(
                       $state,
@@ -1570,15 +1571,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                       "page",
                       "analytics"
                     ),
-                    [sty.svgpage_calls__asr1JxO156]: hasVariant(
-                      $state,
-                      "page",
-                      "calls"
-                    ),
                     [sty.svgpage_cards__asr1Jtk8Pz]: hasVariant(
                       $state,
                       "page",
                       "cards"
+                    ),
+                    [sty.svgpage_events__asr1JxO156]: hasVariant(
+                      $state,
+                      "page",
+                      "events"
                     ),
                     [sty.svgpage_invoices__asr1JQBuoH]: hasVariant(
                       $state,
@@ -1606,11 +1607,6 @@ function PlasmicAppLayout__RenderFunc(props: {
                         "page",
                         "analytics"
                       ),
-                      [sty.textpage_calls__r0YjNxO156]: hasVariant(
-                        $state,
-                        "page",
-                        "calls"
-                      ),
                       [sty.textpage_campaigns__r0YjNpKxs6]: hasVariant(
                         $state,
                         "page",
@@ -1620,6 +1616,11 @@ function PlasmicAppLayout__RenderFunc(props: {
                         $state,
                         "page",
                         "cards"
+                      ),
+                      [sty.textpage_events__r0YjNxO156]: hasVariant(
+                        $state,
+                        "page",
+                        "events"
                       ),
                       [sty.textpage_invoices__r0YjNqBuoH]: hasVariant(
                         $state,
@@ -1704,10 +1705,10 @@ function PlasmicAppLayout__RenderFunc(props: {
                   projectcss.a,
                   sty.link__ggEM,
                   {
-                    [sty.linkpage_calls__ggEMxO156]: hasVariant(
+                    [sty.linkpage_events__ggEMxO156]: hasVariant(
                       $state,
                       "page",
-                      "calls"
+                      "events"
                     )
                   }
                 )}
@@ -1717,10 +1718,10 @@ function PlasmicAppLayout__RenderFunc(props: {
               >
                 <PhoneSvgIcon
                   className={classNames(projectcss.all, sty.svg__v7Hji, {
-                    [sty.svgpage_calls__v7HjixO156]: hasVariant(
+                    [sty.svgpage_events__v7HjixO156]: hasVariant(
                       $state,
                       "page",
-                      "calls"
+                      "events"
                     )
                   })}
                   role={"img"}
@@ -1733,10 +1734,10 @@ function PlasmicAppLayout__RenderFunc(props: {
                     sty.text___01TlM,
                     "geologica-h2",
                     {
-                      [sty.textpage_calls___01TlMxO156]: hasVariant(
+                      [sty.textpage_events___01TlMxO156]: hasVariant(
                         $state,
                         "page",
-                        "calls"
+                        "events"
                       )
                     }
                   )}
@@ -2136,15 +2137,15 @@ function PlasmicAppLayout__RenderFunc(props: {
                     "page",
                     "api"
                   ),
-                  [sty.textpage_calls__qILiDxO156]: hasVariant(
-                    $state,
-                    "page",
-                    "calls"
-                  ),
                   [sty.textpage_cards__qILiDtk8Pz]: hasVariant(
                     $state,
                     "page",
                     "cards"
+                  ),
+                  [sty.textpage_events__qILiDxO156]: hasVariant(
+                    $state,
+                    "page",
+                    "events"
                   ),
                   [sty.textpage_invoices__qILiDqBuoH]: hasVariant(
                     $state,
@@ -2174,8 +2175,8 @@ function PlasmicAppLayout__RenderFunc(props: {
                       ? "Cards"
                       : hasVariant($state, "page", "analytics")
                         ? "Analytics"
-                        : hasVariant($state, "page", "calls")
-                          ? "Calls"
+                        : hasVariant($state, "page", "events")
+                          ? "Events"
                           : hasVariant($state, "page", "leads")
                             ? "Leads"
                             : "Campaigns"}
@@ -2184,7 +2185,14 @@ function PlasmicAppLayout__RenderFunc(props: {
               data-plasmic-name={"btn12"}
               data-plasmic-override={overrides.btn12}
               className={classNames(projectcss.all, sty.btn12, "navBtn", {
-                [sty.btn12page_cards]: hasVariant($state, "page", "cards")
+                [sty.btn12page_analytics]: hasVariant(
+                  $state,
+                  "page",
+                  "analytics"
+                ),
+                [sty.btn12page_cards]: hasVariant($state, "page", "cards"),
+                [sty.btn12page_events]: hasVariant($state, "page", "events"),
+                [sty.btn12page_invoices]: hasVariant($state, "page", "invoices")
               })}
               onClick={args.navBtnclick}
             >
@@ -2278,15 +2286,15 @@ function PlasmicAppLayout__RenderFunc(props: {
               }
             })(),
             {
-              [sty.drawerOverlaypage_calls]: hasVariant(
-                $state,
-                "page",
-                "calls"
-              ),
               [sty.drawerOverlaypage_cards]: hasVariant(
                 $state,
                 "page",
                 "cards"
+              ),
+              [sty.drawerOverlaypage_events]: hasVariant(
+                $state,
+                "page",
+                "events"
               ),
               [sty.drawerOverlaypage_leads]: hasVariant($state, "page", "leads")
             }
@@ -2346,11 +2354,6 @@ function PlasmicAppLayout__RenderFunc(props: {
             sty.createBackground,
             "blur-overlay",
             {
-              [sty.createBackgroundpage_calls]: hasVariant(
-                $state,
-                "page",
-                "calls"
-              ),
               [sty.createBackgroundpage_campaigns]: hasVariant(
                 $state,
                 "page",
@@ -2360,6 +2363,11 @@ function PlasmicAppLayout__RenderFunc(props: {
                 $state,
                 "page",
                 "cards"
+              ),
+              [sty.createBackgroundpage_events]: hasVariant(
+                $state,
+                "page",
+                "events"
               ),
               [sty.createBackgroundpage_leads]: hasVariant(
                 $state,

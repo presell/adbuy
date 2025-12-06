@@ -200,6 +200,7 @@ function PlasmicAppAnalytics__RenderFunc(props: {
             data-plasmic-name={"appLayout"}
             data-plasmic-override={overrides.appLayout}
             className={classNames("__wab_instance", sty.appLayout)}
+            contents2={null}
             onPopOpenChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["appLayout", "popOpen"]).apply(
                 null,

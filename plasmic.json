@@ -599,6 +599,20 @@
           "cssFilePath": "plasmic/ad_buy/PlasmicAppContainer.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "SapC-YuZNb7v",
+          "name": "AppEvents",
+          "type": "managed",
+          "projectId": "fKsvVS5XnenaZB1533Xwx5",
+          "renderModuleFilePath": "plasmic/ad_buy/PlasmicAppEvents.tsx",
+          "importSpec": {
+            "modulePath": "../pages/app/campaigns/events.tsx"
+          },
+          "cssFilePath": "plasmic/ad_buy/PlasmicAppEvents.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/app/campaigns/events"
         }
       ],
       "icons": [
@@ -931,6 +945,11 @@
           "id": "PMi8rGMI31Ll",
           "name": "DownloadIconSvgIcon",
           "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__DownloadIconSvg.tsx"
+        },
+        {
+          "id": "nVTY2c1F7xXr",
+          "name": "EventsSvgIcon",
+          "moduleFilePath": "plasmic/ad_buy/icons/PlasmicIcon__EventsSvg.tsx"
         }
       ],
       "images": [
