@@ -1166,7 +1166,7 @@ function PlasmicAppEvents__RenderFunc(props: {
                             "geologica-text-medium"
                           )}
                         >
-                          {"Calls"}
+                          {"Events"}
                         </div>
                         <div
                           className={classNames(
@@ -1177,7 +1177,7 @@ function PlasmicAppEvents__RenderFunc(props: {
                           )}
                         >
                           {
-                            "Automated outbound calls that follow up instantly and persistently. Starts once your campaign goes live."
+                            "Automated outbound calls, SMS, and emails that follow up instantly and persistently. Starts once your campaign goes live."
                           }
                         </div>
                         <div

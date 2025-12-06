@@ -867,7 +867,7 @@ function PlasmicAppLayout__RenderFunc(props: {
                   }
                 )}
                 component={Link}
-                href={`/app/campaigns/calls`}
+                href={`/app/campaigns/events`}
                 platform={"nextjs"}
               >
                 <WorkflowsiconSvgIcon
@@ -2191,7 +2191,12 @@ function PlasmicAppLayout__RenderFunc(props: {
                 ),
                 [sty.btn12page_cards]: hasVariant($state, "page", "cards"),
                 [sty.btn12page_events]: hasVariant($state, "page", "events"),
-                [sty.btn12page_invoices]: hasVariant($state, "page", "invoices")
+                [sty.btn12page_invoices]: hasVariant(
+                  $state,
+                  "page",
+                  "invoices"
+                ),
+                [sty.btn12page_leads]: hasVariant($state, "page", "leads")
               })}
               onClick={args.navBtnclick}
             >
